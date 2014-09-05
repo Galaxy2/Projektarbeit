@@ -1,3 +1,4 @@
-Ideen f�r ein Game:
+Ideen für ein Game:
 - clean the pool
 - Staudamm
+- Spieler in einem absolut Kräftefreien Inertialfeld, der sich mit Bomben durch die Luft sprengen muss
