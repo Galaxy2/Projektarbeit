@@ -27,4 +27,14 @@ Methoden/Vorgehen:
 -------------------
 Um unser erstes Ziel zu erreichen müssen noch drei Personen das Programmieren erlernen.
 Dies soll in einem Intensivblock von einigen Monaten stattfinden und wird von Patrick geleitet. 
-Dafür hat er einen Grobplan angefertigt 
+Dafür hat er einen Grobplan angefertigt:
+
+* Grundstruktur eines Programmes
+* Die Basisdatentypen string, int, float kennen 
+* Kontrollstrukturen if-else/for/while
+* Funktionen, Rückgabewerte, void Typen
+* Zeiger, Referenzen
+* Namespaces
+* Klassen, Objekte
+* STL-Templates
+* SFML
