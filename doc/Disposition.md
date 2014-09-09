@@ -8,13 +8,31 @@
 Wir haben uns dafür entschieden, ein kleines 2D-Spiel zu erfinden und zu entwickeln.
 
 ### Wissensstand/Quellen:
-Patrick verfügt über fortgeschrittene Erfahrungen in der Programmiersprache C++. Jan und Gabriel haben fast keine Erfahrungen als Programmierer.
-In der Projektvorbereitung haben wir uns sehr oberflächlich in die Entwicklungsumgebung **Code::Blocks** eingearbeitet, und mit dem OpenSource Multimedia Framework SFML eine Lösung für das Anzeigen und Abspielen von Grafiken und anderen Multimediaelementen gefunden. Unser Wissen beziehen wir aus Büchern, offiziellen Dokumentationen und dem Internet.
+Patrick verfügt über fortgeschrittene Erfahrungen in der Programmiersprache **C++**. Jan und Gabriel haben fast keine Erfahrungen als Programmierer.
+In der Projektvorbereitung haben wir uns sehr oberflächlich mit der Entwicklungsumgebung **Code::Blocks** beschäftigt,
+und mit dem OpenSource Multimedia Framework **SFML** eine Lösung für das Anzeigen und Abspielen von Grafiken und anderen Multimediaelementen gefunden.
+Unser Wissen beziehen wir aus hauptsächlich Büchern, offiziellen Dokumentationen und dem Internet.
 
 ### Begriffsbestimmung:
 
-* Multimedia Framework SFML:
-  * Eine Bibliothek von Programmen, die sich in C++-Programme einbinden lassen. Damit kann man verschiedene Aufgaben plattformübergreifend bewältigen.
+* Multimedia Framework:
+  * Eine Bibliothek mit Funktionen, die sich in C++-Programme einbinden lassen. Damit kann man verschiedene Aufgaben plattformübergreifend bewältigen.
+
+* OpenSource:
+  * Eine Lizenz, die das Einsehen, das Verändern und das Weiternutzen des Quellcodes erlaubt.
+
+* Versionskontrollsystem:
+  * Ein Programm, das Veränderungen an Dateien aufzeichnet und speichert, sodass mehrere Entwickler den Code gleichzeitig ohne Redundanz verändern können.
+
+* GitHub:
+  * Für OpenSource-Entwickler kostenlose Plattform, um die über das Versionskontrollsystem *git* aufgezeichneten Veränderungen übersichtlich zugänglich zu machen.
+
+* Travis CI:
+  * Für OpenSource-Entwickler kostenlose Plattform zur Qualitätssicherung: Kompiliert das Projekt automatisch nach jeder Änderungen und führt Tests durch, um zu sicherzustellen, dass das Programm einwandfrei funktioniert.
+
+* Coverity:
+  * Für OpenSource-Entwickler kostenlose Plattform: Führt eine tiefgreifende statische Quellcodeanalyse durch, und hilft so Programmierfehler zu vermeiden und zu finden.
+
 
 ### Projektziele/Fragestellung:
 Ziel unseres Projektes ist neben der Entwicklung eines 2D-Spiels auch die Anwendung der Techniken der Sprache C++ zu lernen und zu beherrschen. Dies wollen wir 
@@ -44,11 +62,11 @@ Unser Grobplan zum Erlenen von C++:
 * STL-Templates
 * SFML
 
-Anschliessend werden wir eine realisierbare Spielidee entwickeln. Die Umsetzung des Spiels wird sorgfältig geplant und jedem Teammitglied wird seine Aufgaben zugeteilt.
+Anschliessend werden wir eine realisierbare Spielidee entwickeln. Die Umsetzung des Spiels wird sorgfältig geplant und jedem Teammitglied werden ständig neue Aufgaben zugeteilt.
  
  
 ### Vorraussetzungen/Ressourcen
 Wir wollen unser 2D-Spiel nur für den Computer entwickeln; Portierungen auf Konsolen oder andere Plattformen
 sind nicht geplant. Zielbetriebssysteme sind gängige Linuxdistributionen und Microsoft Windows.
 Zum Entwickeln der Software verwenden wir nur OpenSource Software, und die für OpenSource Entwickler
-frei zugänglichen Plattformen *Github*, *Travis CI*, *Coverity*.
+frei zugänglichen Plattformen *GitHub*, *Travis CI*, *Coverity*.
