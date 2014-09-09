@@ -65,7 +65,7 @@ Unser Grobplan zum Erlenen von C++:
 Anschliessend werden wir eine realisierbare Spielidee entwickeln. Die Umsetzung des Spiels wird sorgfältig geplant und jedem Teammitglied werden ständig neue Aufgaben zugeteilt.
  
  
-### Vorraussetzungen/Ressourcen
+### Vorraussetzungen/Ressourcen:
 Wir wollen unser 2D-Spiel nur für den Computer entwickeln; Portierungen auf Konsolen oder andere Plattformen
 sind nicht geplant. Zielbetriebssysteme sind gängige Linuxdistributionen und Microsoft Windows.
 Zum Entwickeln der Software verwenden wir nur OpenSource Software, und die für OpenSource Entwickler
