@@ -9,7 +9,7 @@ Wir haben uns dafür entschieden, ein kleines 2D-Spiel zu erfinden und zu entwic
 
 ### Wissensstand/Quellen:
 Patrick verfügt über fortgeschrittene Erfahrungen in der Programmiersprache C++. Jan und Gabriel haben fast keine Erfahrungen als Programmierer.
-In der Projektvorbereitung haben wir eine uns sehr oberflächlich in die Entwicklungsumgebung **Code::Blocks** eingearbeitet, und mit dem OpenSource Multimedia Framework SFML eine Lösung für das Anzeigen und Abspielen von Grafiken und anderen Multimediaelementen gefunden. Unser Wissen beziehen wir aus Büchern, offiziellen Dokumentationen und dem Internet.
+In der Projektvorbereitung haben wir uns sehr oberflächlich in die Entwicklungsumgebung **Code::Blocks** eingearbeitet, und mit dem OpenSource Multimedia Framework SFML eine Lösung für das Anzeigen und Abspielen von Grafiken und anderen Multimediaelementen gefunden. Unser Wissen beziehen wir aus Büchern, offiziellen Dokumentationen und dem Internet.
 
 ### Begriffsbestimmung:
 
@@ -18,8 +18,8 @@ In der Projektvorbereitung haben wir eine uns sehr oberflächlich in die Entwick
 
 ### Projektziele/Fragestellung:
 Ziel unseres Projektes ist neben der Entwicklung eines 2D-Spiels auch die Anwendung der Techniken der Sprache C++ zu lernen und zu beherrschen. Dies wollen wir 
-durch Learning-By-Doing lernen. Jeder in der Gruppe soll am Ende
-mittel grosse C++-Programme selber programmieren können.
+durch das Prinzip Learning-by-Doing erreichen. Jeder in der Gruppe soll am Ende
+mittelgrosse C++-Programme selber programmieren können.
 Wir setzen uns zum Ziel, die Konzepte hinter Frameworks (namentlich SFML) zu verstehen
 und die programmiertechnischen Abläufe hinter dem Spiel zu kennen.
 Wir wollen unser Spiel komplett im Team entwickeln und mit dem Versionskontrollsystem
