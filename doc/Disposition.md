@@ -9,7 +9,7 @@ Wir haben uns dafür entschieden, ein kleines 2D-Spiel zu erfinden und zu entwic
 
 ### Wissensstand/Quellen:
 Patrick verfügt über fortgeschrittene Erfahrungen in der Programmiersprache C++. Jan und Gabriel haben fast keine Erfahrungen als Programmierer.
-In der Projektvorbereitung haben wir eine Entwicklungsumgebung in C++ gesucht und mit dem OpenSource Multimedia Framework SFML eine Lösung gefunden. Unser Wissen beziehen wir aus Büchern, offiziellen Dokumentationen und dem Intrenet.
+In der Projektvorbereitung haben wir eine uns sehr oberflächlich in die Entwicklungsumgebung **Code::Blocks** eingearbeitet, und mit dem OpenSource Multimedia Framework SFML eine Lösung für das Anzeigen und Abspielen von Grafiken und anderen Multimediaelementen gefunden. Unser Wissen beziehen wir aus Büchern, offiziellen Dokumentationen und dem Internet.
 
 ### Begriffsbestimmung:
 
