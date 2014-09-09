@@ -1,3 +1,5 @@
+Kopfzeile: Gabriel Gavrilas, Patrick Eigensatz, Jan Kunzmann
+
 Disposition
 ============
 
@@ -6,46 +8,46 @@ Programmieren eines 2D Spiels
 
 Thematische Beschreibung/Eingrenzung:
 --------------------------------------
-Wir haben uns entschieden ein kleines, aber feines - sprich: lustiges - 2D-Spiel zu entwickeln.
+Wir haben uns dafÃ¼r entschieden, ein kleines 2D-Spiel zu erfinden und zu entwickeln.
 
 Wissensstand/Quellen:
 -------------------------
-Patrick hat bereits fortgeschrittene Erfahrungen in der Programmiersprache C++. Die Anderen haben noch fast keine Erfahrungen mit Programmieren allgemein.
-In der Vorplanungsphase zu dieser Disposition haben wir das OpenSource Multimedia Framework SFML gefunden. Unser Wissen zu C++ und dem Toolkit
-beziehen wir einerseits aus Büchern, wie auch aus offiziellen Dokumentationen.
+Patrick verfÃ¼gt Ã¼ber fortgeschrittene Erfahrungen in der Programmiersprache C++. Jan und Gabriel haben fast keine Erfahrungen als Programmierer.
+In der Projektvorbereitung haben wir eine Entwicklungsumgebung in C++ gesucht und mit dem OpenSource Multimedia Framework SFML eine LÃ¶sung gefunden. Unser Wissen beziehen wir aus BÃ¼chern, offiziellen Dokumentationen und dem Intrenet.
 
 Begriffsbestimmung:
 ----------------------
-* Multimedia Framework:
-  * Eine Bibliothek, die sich in bestehende C++-Programme einbinden lässt und verschiedene Aufgaben plattformübergreifend bewältigen kann.
+* Multimedia Framework SFML:
+  * Eine Bibliothek von Programmen, die sich in C++-Programme einbinden lassen. Damit kann man verschiedene Aufgaben plattformÃ¼bergreifend bewÃ¤ltigen.
 
 Projektziele/Fragestellung:
 -----------------------------
-Ziel unseres Projektes ist nicht nur die Entwicklung eines 2D-Spiels, es geht darum
-Techniken der Sprache C++ anzuwenden und diese zu beherrschen. Dies erreichen wir vorallem
-durch Learning-By-Doing, also beim Programmieren selber. Jeder in der Gruppe soll am Ende
-kleinere bis mittel grosse C++-Programme selber programmieren können.
-Wir setzen uns zum Ziel, die Idee hinter Frameworks (namentlich SFML) zu verstehen,
-und den Programmiertechnische Aspekt, die Abläufe hinter dem Spielfeld, zu kennen.
-Wir wollen unser Spiel komplett im Team entwickeln, und mit dem verteilten Versionskontrollsystem
-git vertraut sein. Das alles soll uns später für eigene Projekte sowie unsere Maturaarbeit helfen.
+Ziel unseres Projektes ist neben der Entwicklung eines 2D-Spiels auch die Anwendung der Techniken der Sprache C++ zu lernen und zu beherrschen. Dies wollen wir 
+durch Learning-By-Doing lernen. Jeder in der Gruppe soll am Ende
+mittel grosse C++-Programme selber programmieren kÃ¶nnen.
+Wir setzen uns zum Ziel, die Konzepte hinter Frameworks (namentlich SFML) zu verstehen
+und die programmiertechnischen AblÃ¤ufe hinter dem Spiel zu kennen.
+Wir wollen unser Spiel komplett im Team entwickeln und mit dem Versionskontrollsystem
+gut vertraut werden. Das alles soll uns spÃ¤ter fÃ¼r eigene Projekte und unsere Maturaarbeit helfen.
 
 
 Methoden/Vorgehen:
 -------------------
-Um unser erstes Ziel zu erreichen müssen noch zwei Personen das Programmieren erlernen.
+Um unser erstes Ziel zu erreichen, mÃ¼ssen noch zwei Personen (Gabriel und Jan) das Programmieren erlernen.
 Dies soll in einem Intensivblock in wenigen Wochen stattfinden und wird von Patrick geleitet.
-Jeder trägt natürlich eine Verantwortung zum Gelingen dieses Projektes bei. Da die Projektziele
-ziemlich ambitioniert gesteckt sind, beschäftigen wir uns auch in unserer eher knappen Freizeit damit.
+Jeder trÃ¤gt natÃ¼rlich eine Verantwortung zum Gelingen dieses Projektes bei. Da die Projektziele
+ziemlich ambitioniert gesteckt sind, beschÃ¤ftigen wir uns auch in unserer eher knappen Freizeit damit.
 
 Unser Grobplan zum Erlenen von C++:
 
 * Grundstruktur eines Programmes
 * Die Basisdatentypen string, int, float kennen 
 * Kontrollstrukturen if-else/for/while
-* Funktionen, Rückgabewerte, void Typen
+* Funktionen, RÃ¼ckgabewerte, void Typen
 * Zeiger, Referenzen
 * Namespaces
 * Klassen, Objekte
 * STL-Templates
 * SFML
+
+Anschliessend werden wir eine realisierbare Spielidee entwickeln. Die Umsetzung des Spiels wird sorgfÃ¤ltig geplant und jedem Teammitglied seine Aufgaben verteilt.
