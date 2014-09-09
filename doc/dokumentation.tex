@@ -1,5 +1,5 @@
 \documentclass[12pt,a4paper]{scrartcl}
-\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -45,6 +45,26 @@ Patrick Eigensatz, G3C
 
 \section{Motivation}
 \subsection{Warum ein 2D-Spiel?}
+Als wir uns für ein Projektthema entscheiden mussten, haben
+wir uns die Entscheidung schwer gemacht. Aus 5 verschiedenen
+Bereichen, für die wir uns alle sehr interessierten, entschieden wir uns für die
+eines Computerspieles.
+
 \subsection{Warum C++ und SFML?}
+Um die Sache für uns attraktiv zu machen,
+wählten wir bewusst eine Programmiersprache, die noch nicht
+alle von uns beherrschten. Natürlich hätten wir genau so gut
+SDL oder direkt das darunterliegende OpenGL verwenden können. OpenGL
+schied aus, da der Aufwand bereits ein einfaches 2D-Spiel zu realisieren,
+schlichtweg nicht möglich gewesen wäre. SDL war unser Favorit, bis wir
+SFML entdeckten. Ganz im Gegensatz zu SDL schien SFML für C++ ausgerichtet
+zu sein. So wurden Klassen anstatt Strukturen verwendet, was den (für den
+Anfang komplizierten) Umgang mit Zeigern reduzierte. Ausserdem besitzen die
+Klassen eigene Konstruktoren, bzw. Destruktoren, was das Initialisieren
+oder das freigeben von Speicher überflüssig macht. Davon erhofften wir uns
+weniger Speicherzugriffsfehler und ein schnelleres programmieren. SFML
+überzeugte uns schlussendlich, als wir die in der offiziellen Dokumentation
+gezeigten Beispielprogramme angeschaut haben. 
+
 
 \end{document}
