@@ -1,7 +1,7 @@
 ###### Gabriel Gavrilas, Patrick Eigensatz, Jan Kunzmann
 
 
-# Disposition *Programmieren eines 2D-Spiels*
+# Disposition: *Programmieren eines 2D-Spiels*
 
 
 ### Thematische Beschreibung/Eingrenzung des Themas:
