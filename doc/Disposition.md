@@ -24,6 +24,7 @@ Wir setzen uns zum Ziel, die Konzepte hinter Frameworks (namentlich SFML) zu ver
 und die programmiertechnischen Abläufe hinter dem Spiel zu kennen.
 Wir wollen unser Spiel komplett im Team entwickeln und mit dem Versionskontrollsystem
 gut vertraut werden. Das alles soll uns später für eigene Projekte und unsere Maturaarbeit helfen.
+Das Spiel soll unter eine OpenSource Lizenz gestellt werden.
 
 ### Methoden/Vorgehen:
 Um unser erstes Ziel zu erreichen, müssen noch zwei Personen (Gabriel und Jan) das Programmieren erlernen.
@@ -45,3 +46,9 @@ Unser Grobplan zum Erlenen von C++:
 
 Anschliessend werden wir eine realisierbare Spielidee entwickeln. Die Umsetzung des Spiels wird sorgfältig geplant und jedem Teammitglied wird seine Aufgaben zugeteilt.
  
+ 
+### Vorraussetzungen/Ressourcen
+Wir wollen unser 2D-Spiel nur für den Computer entwickeln; Portierungen auf Konsolen oder andere Plattformen
+sind nicht geplant. Zielbetriebssysteme sind gängige Linuxdistributionen und Microsoft Windows.
+Zum Entwickeln der Software verwenden wir nur OpenSource Software, und die für OpenSource Entwickler
+frei zugänglichen Plattformen *Github*, *Travis CI*, *Coverity*.
