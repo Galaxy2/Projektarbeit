@@ -1,1 +1,0 @@
-22.08.2014:	Einführung in Git für die gemeinsame Arbeit.
