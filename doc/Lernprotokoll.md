@@ -1,1 +1,10 @@
 # Lernprotokoll
+
+(Format: Datum - Name)
+(Alle Commits: Eintrag Lernprotokoll)
+
+### 15.10.14
+
+Aktueller Stand: Jan und Gabriel haben sich mit C++ vertraut gemacht und verfügen einigermassen über Grundlagen. Patrick sich über SFML informiert und hat die beiden anderen beim lernen unterstützt.
+Wir sind heute zum Schluss gekommmen, dass nach dem erlernen von C++ nun fürs erste die Gameidee im Zentrum unseres Projektes steht. Wir haben beschlossen, dass wir bis am Freitag alle konkrete Ideen zu den jeweiligen Ideen mitbringen und wir haben uns Mittwoch den 22. Oktober als Datum festgelegt an dem wir eine einigermassen konkrete Idee haben und an dem der Projektvertrag fertig ist. Aus unserer Sicht sind wir auf gutem Wege und haben ein gutes Gefühl.
+
