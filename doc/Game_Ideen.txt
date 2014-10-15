@@ -4,7 +4,6 @@ Ideen für ein Game:
 - Spieler in einem absolut Kräftefreien Inertialfeld, der sich mit Bomben durch die Luft sprengen muss
 - the water is coming
 - Elektronen (Maximaler Fluss)
-
 - 2D Rennspiel: Der Spieler muss versuchen eine Strecke möglichst unbeschadet abzufahren. Es verfolgen ihn zahlreiche
   Gegner. Diese stossen von der Seite der Strecke dazu und versuchen den Spieler mittels ihren Waffen zu eliminieren,
   oder für einen Moment langsamer zu machen. Die Strecke beeinhaltet Hindernisse wie gecrashte Ufos, unfreundliche
@@ -15,3 +14,4 @@ Ideen für ein Game:
   erweitert oder gestaucht werden. Eine kluge künstliche Intelligenz, bzw. die anderen Spieler sollen dem Spiel
   ein gewisses Suchtpotenzial verleihen, sodass man es immer wieder versuchen will. Denkbar wären auch eine
   Onlineanbindung mit Bestenliste, etc... :) Bitte diese Idee kreativ erweitern, wenn sie euch gefällt! ;)
+- Butterfly effect/ Chaos-theorie
