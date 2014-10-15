@@ -3,12 +3,12 @@
 ## 1. Vertragsparteien:
 
 #### Schüler:
-Gabriel Gavrilas
-Patrick Eigensatz
-Jan Kunzmann
+* Gabriel Gavrilas
+* Patrick Eigensatz
+* Jan Kunzmann
 
 #### Lehrperson/en:
-Roger Sax
+* Roger Sax
 
 ## 2. Thema
 ### Arbeitstitel
@@ -34,17 +34,23 @@ Roger Sax
 ## 5. Zeitplan / Besprechungstermine
 
 ### Recherche
+Unsere Bücher und andere Quellen haben wir in unserem Rechercheprotokoll festgelegt.
 
 ### Datenerhebung
+Für unser Projekt benötigen wir keine besonderen Daten, wie beispielsweise
+aus Umfrage.
 
 ### Auswertung
 
 ### Zusammenstellung / Gestaltung
 
 ### Abgabetermin
+Abgabetermin ist der 21. Januar 2015.
 
 ## 6. Themenspezifische Beurteilungskriterien
-o keine
-o siehe Beilage
+* keine
+* siehe Beilage?
 
-## darstellung von Zitaten, Literatur- und Quellenangaben
+Abklären!
+
+## Darstellung von Zitaten, Literatur- und Quellenangaben
