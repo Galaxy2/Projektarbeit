@@ -53,3 +53,46 @@ kann man mit der Maus auch noch Münzensammeln oder so. Und es hat noch fix inst
 
 ### Butterfly effect / Chaos Theorie
 Hab keine Ahnung was damit gemeint mein könnte.
+
+
+## Vorstellung der Ideen von Gabriel
+
+### Clean the pool
+Man ist ein Angestellter bei einer Poolreinigungsgesellschaft in Bewerly Hills und muss bei reichen Leuten den Pool reinigen.
+Erstes Problem ist die Hinfahrt, die man heil überstehen muss.
+Danach kommt man zu den reichen leuten und muss ihnen den Pool reinigen.
+Dabei verschwinden die meisten wieder und man ist alleine mit dem Pool beschäftigt.
+Im Pool liegen verschiedene Gegenstände zB: Uhren, Ketten, Geld, Portemonnaies, Fahrräder etc. neben den üblichen Sachen wie Laub und Haare oder Dreck.
+Wenn man nun so einen Gegenstand findet und fertig geputzt hat, kann man versuchen zu verschwinden ohne dass der Besitzer es merkt. ( Firma ist auf Schwarzmarkt spezialisiert )
+Dabei muss man über die gigantischen Villengelände fliehen an Hunden, Alarmsystemen und Wachen vorbei.
+Das Ziel ist es, so viel Geld wie möglich anzusammeln, oder den Pool mit dem Auto aus Gold zu finden.
+
+### Staudamm
+Clash of clans wurde bereits erwähnt :).
+Story basiertes spiel: Am Fusse eines Gigantischen Staudamms, der die Wasserversorgung der reichen Bevölkerung sichert, in der fiktiven Welt Toria hat sich ein Slum gebildet.
+Dieses lebt von den spärlichen Ausflüssen des Staudamms und hat bereits über eine Million Einwohner.
+Der Spieler ist ein jugendlicher, der versucht den Staudamm zu brechen.
+
+### Spieler in einem absolut Kräftefreien Inertialfeld
+Der Spieler muss ins Ziel kommen indem er sich Gravitationsfelder und Anti-Gravitationsfelder.
+Dadurch kann er um Hindernisse herumkommen und kann Feinde aufsaugen.
+(Muss graphisch sehr ansprechend sein, um Spielprinzip zu überdecken)
+
+### The water is coming
+( Wasser ist ein wenig ein Problem ;) )
+Es ist geplant einen Staudam zu bauen. Dabei will die Regierung möglichst viele Dörfer niederreissen, da sie meist verarmt sind.
+Ziel ist es möglichst viele Dörfer durch den Bau des Staudammes zu zerstören.
+Achtung! Gebildete Bürger werden in die sichere Zone ziehen.
+
+### Elektronen
+Der Spieler ist ein Elektron. Er muss durch verschiedene Materialien hindurch um zum anderen Pol zu kommen.
+Er kann seine Geschwindigkeit regulieren und kann nach links oder rechts steuern(von oben).
+Er steht jedoch unter zeitdruck und wenn er die dichteren Materilien braucht bekommt er mehr Punkte oder ist früher am anderen Pol.
+
+### 2D-Rennspiel
+...
+
+### Butterfly effect/ Chaos theorie
+Man besitzt eine ultimative Zeitmaschiene, mit der man jeden möglichen Zeitstrang sehen kann.
+Man kann in die Vergangenheit reisen, jedoch verursacht jedes Reisen eine kleine Veränderung in der Gegenwart.
+Das Ziel des Spiel ist es, die Probleme zu beseitigen, die von Anfang an da sind. Und zum Schluss muss man dann das Raum-Zeit-Kontinuum wieder reparieren.
