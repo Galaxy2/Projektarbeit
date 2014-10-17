@@ -15,7 +15,7 @@
   ein gewisses Suchtpotenzial verleihen, sodass man es immer wieder versuchen will. Denkbar wären auch eine
   Onlineanbindung mit Bestenliste, etc... :) Bitte diese Idee kreativ erweitern, wenn sie euch gefällt! ;)
 * Butterfly effect/ Chaos-theorie
-
+* 2D Jump and Run?
 
 
 ##Vorstellung der Umsetzung der Ideen von Jan:
@@ -122,7 +122,7 @@ Ich würde - sofern möglich - darauf verzichten. Die Idee, das man allerdings e
 vor etwas anderem schützen muss, gefällt mir. ;)
 
 ### Elektronen
-Elekronen versuchen von links nach rechts über den Bildschirm zu kommen, und verlassen
+Elektronen versuchen von links nach rechts über den Bildschirm zu kommen, und verlassen
 sich dabei auf ein Drahtnetz, das vom Spieler gebaut wird. Zur Verfügung stehen unterschiedliche
 Arten Draht, mit unterschiedlichen spezifischen Widerständen und Dicken. (Bsp. Silber, Kupfer, ..., Gold, Salzwasser) 
 Wenn man die gewünschte Anzahl Elektronen in einer vorgeschriebenen Zeit von links nach rechts "retten" kann,
