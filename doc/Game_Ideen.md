@@ -1,4 +1,4 @@
-﻿# Ideen für ein Game:
+﻿# Ideen für unser Spiel:
 * clean the pool
 * Staudamm
 * Spieler in einem absolut Kräftefreien Inertialfeld, der sich mit Bomben durch die Luft sprengen muss
@@ -96,3 +96,47 @@ Er steht jedoch unter zeitdruck und wenn er die dichteren Materilien braucht bek
 Man besitzt eine ultimative Zeitmaschiene, mit der man jeden möglichen Zeitstrang sehen kann.
 Man kann in die Vergangenheit reisen, jedoch verursacht jedes Reisen eine kleine Veränderung in der Gegenwart.
 Das Ziel des Spiel ist es, die Probleme zu beseitigen, die von Anfang an da sind. Und zum Schluss muss man dann das Raum-Zeit-Kontinuum wieder reparieren.
+
+
+## Vorstellung der Ideen von Patrick
+### Clean the pool
+Jan hat die Idee, so wie ich sie verstanden habe, sehr gut beschrieben. Man putzt die Flächen
+im Pool mit verschiedenen Utensilien. Ich weiss allerdings nicht, ob dieses Spiel nach 5 Minuten
+auch noch Spass machen würde.
+
+### Staudamm
+Mit dem `Clash of Clans`-Prinzip ist sicher gemeint, dass der Spieler seinen eigenen Staudamm hat,
+den er dann mit Geld entsprechend aufrüsten kann. Für das Spiel müsste man natürlich zuerst die Ideen
+für Aufrüstungen haben, nachher muss man all diese implementieren. Das scheint mir, der Anzahl der benötigten
+Möglichkeiten wegen, sehr aufwendig. Das Spiel müsste man mit Extras ergänzen, damit es nicht nur um den
+Staudamm geht, da es schnell langweilig werden könnte.
+
+### Spieler in einem absolut kräftefreien Inertialfeld
+Die Grundidee war - finde ich - ja nicht schlecht. Allerdings müsste man das Spiel auf ganz verschiedene
+Art erweitern, und immer wieder Neues bringen, da es sonst schnell langweilig wird. Mit lustigen Vorgängen,
+aufgrund der Schwerelosigkeit, könnte es sehr lustig sein.
+
+### The water is coming
+Wie Gabriel erwähnt hat, sind schwappende oder fallende Flüssigkeiten nicht sehr leicht zu programmieren.
+Ich würde - sofern möglich - darauf verzichten. Die Idee, das man allerdings etwas
+vor etwas anderem schützen muss, gefällt mir. ;)
+
+### Elektronen
+Elekronen versuchen von links nach rechts über den Bildschirm zu kommen, und verlassen
+sich dabei auf ein Drahtnetz, das vom Spieler gebaut wird. Zur Verfügung stehen unterschiedliche
+Arten Draht, mit unterschiedlichen spezifischen Widerständen und Dicken. (Bsp. Silber, Kupfer, ..., Gold, Salzwasser) 
+Wenn man die gewünschte Anzahl Elektronen in einer vorgeschriebenen Zeit von links nach rechts "retten" kann,
+gewinnt man das Level.
+
+### 2D Rennspiel
+Zum 2D Rennspiel erwähne ich nicht mehr viel, siehe die Ideenbeschreibung oben. Mir würde die
+Idee sehr gefallen (ich finde sie hat einen gewissen Spielreiz), und sie wäre sehr flexibel erweiterbar.
+(Bsp. Umsteigen vom Boden in die Luft, etc...) Je nach Zeitmöglichkeiten wären auch mehrere Modi
+(z. Bsp. ein Multiplayermodus) möglich. 
+
+### Butterfly effect
+Die Idee zum Butterflyeffekt gefällt mir sehr. Man stelle sich die vielen möglichen
+Zusammenhänge vor, die sich ergeben, wenn man das Zeitgeschehen verändern kann. Für eine
+richtig spannende Welt mit vielen interaktiven Dingen, die man manipulieren kann, fehlt uns
+allerdings klar die Zeit. Das Spiel wäre etwas, wenn wir es in der Freizeit programmieren würden,
+und am Anfang viel Zeit für eine initiale Planung hätten.
