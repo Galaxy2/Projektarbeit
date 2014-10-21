@@ -24,20 +24,23 @@ Kenntnisse der Programmiersprache C++. In der Projektvorbereitung haben wir uns 
 Multimedia Framework:
 	Eine Bibliothek mit Funktionen, die sich in C++-Programme einbinden lassen. Damit kann man verschiedene Aufgaben plattformübergreifend bewältigen.
 
-OpenSource:
+OpenSource-Lizenz:
 	Eine Lizenz, die das Einsehen, das Verändern und das Weiternutzen des Quellcodes erlaubt.
+
+OpenSource-Software (OSS:
+	Software, die unter einer OpenSource-Lizenz verfügbar ist.
 
 Versionskontrollsystem:
 	Ein Programm, das Veränderungen an Dateien aufzeichnet und speichert, sodass mehrere Entwickler den Code gleichzeitig ohne Redundanz verändern können.
 
 GitHub:
-	Für OpenSource-Entwickler kostenlose Plattform, um die über das Versionskontrollsystem git aufgezeichneten Veränderungen übersichtlich zugänglich zu machen.
+	Für OSS-Entwickler von OpenSource kostenlose Plattform, um die über das Versionskontrollsystem git aufgezeichneten Veränderungen übersichtlich zugänglich zu machen.
 
 Travis CI:
-	Für OpenSource-Entwickler kostenlose Plattform zur Qualitätssicherung: Kompiliert das Projekt automatisch nach jeder Änderungen und führt Tests durch, um zu sicherzustellen, dass das Programm einwandfrei funktioniert.
+	Für OSS-Entwickler kostenlose Plattform zur Qualitätssicherung: Kompiliert das Projekt automatisch nach jeder Änderungen und führt Tests durch, um zu sicherzustellen, dass das Programm einwandfrei funktioniert.
 
 Coverity:
-        Für OpenSource-Entwickler kostenlose Plattform: Führt eine tiefgreifende statische Quellcodeanalyse durch, und hilft so Programmierfehler zu vermeiden und zu finden.
+        Für OSS-Entwickler kostenlose Plattform: Führt eine tiefgreifende statische Quellcodeanalyse durch, und hilft so Programmierfehler zu vermeiden und zu finden.
 
 ### Projektziele / Hypothesen / Fragestellung
 Ziel unseres Projektes ist neben der Entwicklung eines 2D-Spiels auch die Anwendung der Techniken der Sprache C++ zu lernen und zu beherrschen. Dies wollen wir durch das Prinzip Learning-by-Doing erreichen. Jeder in der Gruppe soll am Ende mittelgrosse C++-Programme selber programmieren können. Wir setzen uns zum Ziel, die Konzepte hinter Frameworks (namentlich SFML) zu verstehen und die programmiertechnischen Abläufe hinter dem Spiel zu kennen. Wir wollen unser Spiel komplett im Team entwickeln und mit dem Versionskontrollsystem gut vertraut werden. Das alles soll uns später für eigene Projekte und unsere Maturaarbeit helfen. Das Spiel soll unter eine OpenSource Lizenz gestellt werden.
