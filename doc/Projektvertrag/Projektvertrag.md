@@ -17,7 +17,8 @@
 
 
 ### Wissensstand, mögliche Quellen
-Patrick verfügt über fortgeschrittene Erfahrungen in der Programmiersprache C++. Jan und Gabriel haben fast keine Erfahrungen als Programmierer. In der Projektvorbereitung haben wir uns sehr oberflächlich mit der Entwicklungsumgebung Code::Blocks beschäftigt, und mit dem OpenSource Multimedia Framework SFML eine Lösung für das Anzeigen und Abspielen von Grafiken und anderen Multimediaelementen gefunden. Unser Wissen beziehen wir aus hauptsächlich Büchern, offiziellen Dokumentationen und dem Internet.
+Patrick verfügt über fortgeschrittene Erfahrungen in der Programmiersprache C++. Jan und Gabriel besitzen grundlegende
+Kenntnisse der Programmiersprache C++. In der Projektvorbereitung haben wir uns sehr oberflächlich mit der Entwicklungsumgebung Code::Blocks beschäftigt, und mit dem OpenSource Multimedia Framework SFML eine Lösung für das Anzeigen und Abspielen von Grafiken und anderen Multimediaelementen gefunden. Unser Wissen beziehen wir aus hauptsächlich Büchern, offiziellen Dokumentationen und dem Internet.
 
 ### Begriffsbestimmungen
 Multimedia Framework:
@@ -69,18 +70,24 @@ Man könnte sich auch überlegen die Gameidee in ein 3D Game umzusetzen. Das ang
 Unsere Arbeit werden wir in Deutsch schreiben. Aufgrund unserer Thematik
 werden oft englische Ausdrücke vorkommen, die man im technischen Jargon
 gar nicht übersetzt, oder für die keine korrekte deutsche Übersetzung existiert.
-So oft wie möglich sollen auch Deutsche Begriffe den englischen vorgezogen werden. So zum Beispiel bei Namen und Bezeichnungen. Dies soll die verständlichkeit untereinander fördern.
+So oft wie möglich sollen auch Deutsche Begriffe den englischen vorgezogen werden. So zum Beispiel bei Namen und Bezeichnungen. Dies soll die Verständlichkeit untereinander fördern.
 
 ## 4. Aufbau der Arbeit
-Gemäss den Vorgaben im Handbuch für den Projektunterricht
+Gemäss den Vorgaben im Handbuch für den Projektunterricht. Das heisst eine Dokumentation, ein Arbeitsprotokoll,
+sowie ein Lernbericht und natürlich das entstandene Spiel selber.
 
 ## 5. Zeitplan / Besprechungstermine
+Während der Arbeit sind mehrere Fixpunktgespräche mit unserem Betreuer, Herr Sax, vorgesehen.
+Obwohl die Softwareentwicklung etwas sehr dynamisches, unkalkulierbares hat, versuchen wir uns
+so gut wie möglich an die zeitlichen Abmachungen verschiedener Projektzielen untereinander zu halten.
+Unsere Zeit, sowie die Aufgaben teilen wir auf GitHub ein.
+
 
 ### Recherche
-Unsere Quellen haben wir in unserem Rechercheprotokoll festgelegt.
+Unsere Quellen haben wir in der Vorbereitung in unserem Rechercheprotokoll festgelegt.
 Die Recherche wird wahrscheinlich in der Dokumentation nachzulesen sein.
-Im verlauf der Arbeit kann es zu weiteren Recherchen kommen,
-jedoch zu Problemen, welche uns während der Arbeit in den Weg kommen.
+Im Verlauf der Arbeit kann es zu weiteren Recherchen kommen,
+falls es zu Problemen kommt, welche uns während der Arbeit in den Weg kommen.
 
 ### Datenerhebung
 Für unser Projekt benötigen wir keine besonderen Daten, wie beispielsweise
