@@ -15,8 +15,6 @@
 
 #### Programmieren eines 2D-Spiels
 
-### Beschreibung des Themas / grobes Inhaltsverzeichnis(Was wollen wir hier noch schreiben??)
-Wir haben uns dafür entschieden, ein 2D-Spiel zu erfinden und zu entwickeln.
 
 ### Wissensstand, mögliche Quellen
 Patrick verfügt über fortgeschrittene Erfahrungen in der Programmiersprache C++. Jan und Gabriel haben fast keine Erfahrungen als Programmierer. In der Projektvorbereitung haben wir uns sehr oberflächlich mit der Entwicklungsumgebung Code::Blocks beschäftigt, und mit dem OpenSource Multimedia Framework SFML eine Lösung für das Anzeigen und Abspielen von Grafiken und anderen Multimediaelementen gefunden. Unser Wissen beziehen wir aus hauptsächlich Büchern, offiziellen Dokumentationen und dem Internet.
@@ -65,12 +63,13 @@ Anschliessend werden wir eine realisierbare Spielidee entwickeln. Die Umsetzung 
 Wir wollen unser 2D-Spiel nur für den Computer entwickeln; Portierungen auf Konsolen oder andere Plattformen sind nicht geplant. Zielbetriebssysteme sind gängige Linuxdistributionen und Microsoft Windows. Zum Entwickeln der Software verwenden wir nur OpenSource Software, und die für OpenSource Entwickler frei zugänglichen Plattformen GitHub, Travis CI, Coverity.
 
 ### Mögliche Erweiterungen des Themas
-Man könnte sich auch überlegen die Gameidee in ein 3D Game umzusetzen. Das angeeignete Wissen und die Erfahrung können auch für eine neue aufwändigere Gameidee gebraucht werden. (Noch mehr!!) 
+Man könnte sich auch überlegen die Gameidee in ein 3D Game umzusetzen. Das angeeignete Wissen und die Erfahrung können auch für eine neue aufwändigere Gameidee gebraucht werden. Ausserdem könnte man sich auch in die graphische Gestaltung eines Spieles einarbeiten, was bei unserem Spiel kein Ziel ist, jedoch berücksichtigt wird.
 
 ## 3. Sprache
 Unsere Arbeit werden wir in Deutsch schreiben. Aufgrund unserer Thematik
 werden oft englische Ausdrücke vorkommen, die man im technischen Jargon
 gar nicht übersetzt, oder für die keine korrekte deutsche Übersetzung existiert.
+So oft wie möglich sollen auch Deutsche Begriffe den englischen vorgezogen werden. So zum Beispiel bei Namen und Bezeichnungen. Dies soll die verständlichkeit untereinander fördern.
 
 ## 4. Aufbau der Arbeit
 Gemäss den Vorgaben im Handbuch für den Projektunterricht
@@ -80,6 +79,8 @@ Gemäss den Vorgaben im Handbuch für den Projektunterricht
 ### Recherche
 Unsere Quellen haben wir in unserem Rechercheprotokoll festgelegt.
 Die Recherche wird wahrscheinlich in der Dokumentation nachzulesen sein.
+Im verlauf der Arbeit kann es zu weiteren Recherchen kommen,
+jedoch zu Problemen, welche uns während der Arbeit in den Weg kommen.
 
 ### Datenerhebung
 Für unser Projekt benötigen wir keine besonderen Daten, wie beispielsweise
@@ -88,10 +89,9 @@ aus einer Umfrage.
 ### Auswertung
 Am Ende der Arbeit, liegen
  * eine Dokumentation, die die Motivation, das Herangehen und die Entwicklung beschreibt,
- * ein Arbeitsprotokoll, das Arbeitsvorgänge und Termine beschreibt. (Auszug aus git)
+ * ein Arbeitsprotokoll, das Arbeitsvorgänge und Termine beschreibt (Auszug aus git) und
  * ein Lernprotokoll, das heisst, eine Auflistung von Daten mit den dazugehörigen
-   Aktivitäten und Besprechungen.
-vor.
+   Aktivitäten und Besprechungen vor.
 
 ### Zusammenstellung / Gestaltung
 Die Arbeit liegt am Schluss in digitaler Form vor. Die Dokumentation
