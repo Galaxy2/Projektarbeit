@@ -1,8 +1,8 @@
-# Projektvertrag
+﻿# Projektvertrag
 
 ## 1. Vertragsparteien:
 
-#### Schüler:
+#### Schüler: 
 * Gabriel Gavrilas
 * Patrick Eigensatz
 * Jan Kunzmann
@@ -46,9 +46,7 @@ Coverity:
 Ziel unseres Projektes ist neben der Entwicklung eines 2D-Spiels auch die Anwendung der Techniken der Sprache C++ zu lernen und zu beherrschen. Dies wollen wir durch das Prinzip Learning-by-Doing erreichen. Jeder in der Gruppe soll am Ende mittelgrosse C++-Programme selber programmieren können. Wir setzen uns zum Ziel, die Konzepte hinter Frameworks (namentlich SFML) zu verstehen und die programmiertechnischen Abläufe hinter dem Spiel zu kennen. Wir wollen unser Spiel komplett im Team entwickeln und mit dem Versionskontrollsystem gut vertraut werden. Das alles soll uns später für eigene Projekte und unsere Maturaarbeit helfen. Das Spiel soll unter eine OpenSource Lizenz gestellt werden.
 
 ### Methode / Vorgehen
-Um unser erstes Ziel zu erreichen, haben zwei Personen (Gabriel und Jan) das Programmieren in C++ erlernt.
-Jeder trägt natürlich eine Verantwortung zum Gelingen dieses Projektes bei. Da die Projektziele ziemlich ambitioniert gesteckt sind, beschäftigen wir uns auch in unserer eher knappen Freizeit damit.
-
+Um unser erstes Ziel zu erreichen, haben Gabriel und Jan das Programmieren in C++ erlernt.
 Unser Grobplan beim Erlernen von C++:
 
 * Grundstruktur eines Programmes
@@ -61,13 +59,15 @@ Unser Grobplan beim Erlernen von C++:
 * STL-Templates
 * SFML
 
-Anschliessend werden wir eine realisierbare Spielidee entwickeln. Die Umsetzung des Spiels wird sorgfältig geplant und jedem Teammitglied werden ständig neue Aufgaben zugeteilt.
+Jeder trägt natürlich eine Verantwortung zum Gelingen dieses Projektes bei. Da die Projektziele ziemlich ambitioniert gesteckt sind, beschäftigen wir uns auch in unserer Freizeit damit.
+
+Wir haben jetzt die Spielidee von einem Game als Einbrecher festgelegt. Dabei steigt man in die Rolle des Diebes und versucht unenteckt Gegenstände zu stehlen. Die Umsetzung des Spiels wird nun noch sorgfältig durchgeplant und jedem Teammitglied werden ständig neue Aufgaben zugeteilt.
 
 ### Ressourcen / Voraussetzungen
 Wir wollen unser 2D-Spiel nur für den Computer entwickeln; Portierungen auf Konsolen oder andere Plattformen sind nicht geplant. Zielbetriebssysteme sind gängige Linuxdistributionen und Microsoft Windows. Zum Entwickeln der Software verwenden wir nur OpenSource Software, und die für OpenSource Entwickler frei zugänglichen Plattformen GitHub, Travis CI, Coverity.
 
 ### Mögliche Erweiterungen des Themas
-Man könnte sich auch überlegen die Gameidee in ein 3D Game umzusetzen. Das angeeignete Wissen und die Erfahrung können auch für eine neue aufwändigere Gameidee gebraucht werden. Ausserdem könnte man sich auch in die graphische Gestaltung eines Spieles einarbeiten, was bei unserem Spiel kein Ziel ist, jedoch berücksichtigt wird.
+Man könnte sich auch überlegen die Gameidee in ein 3D Game umzusetzen oder für weiter Konsolen erhältlich machen. Das angeeignete Wissen und die Erfahrung können auch für eine neue, aufwändigere Gameidee gebraucht werden. Ausserdem könnte man sich auch in die graphische Gestaltung eines Spieles vertieft einarbeiten.
 
 ## 3. Sprache
 Unsere Arbeit werden wir in Deutsch schreiben. Aufgrund unserer Thematik
@@ -77,20 +77,23 @@ So oft wie möglich sollen auch Deutsche Begriffe den englischen vorgezogen werd
 
 ## 4. Aufbau der Arbeit
 Gemäss den Vorgaben im Handbuch für den Projektunterricht. Das heisst eine Dokumentation, ein Arbeitsprotokoll,
-sowie ein Lernbericht und natürlich das entstandene Spiel selber.
+sowie ein Lernbericht und natürlich das entstandene Spiel selber werden geschrieben.
 
 ## 5. Zeitplan / Besprechungstermine
 Während der Arbeit sind mehrere Fixpunktgespräche mit unserem Betreuer, Herr Sax, vorgesehen.
 Obwohl die Softwareentwicklung etwas sehr dynamisches, unkalkulierbares hat, versuchen wir uns
-so gut wie möglich an die zeitlichen Abmachungen verschiedener Projektzielen untereinander zu halten.
+so gut wie möglich an die zeitlichen Abmachungen verschiedener, untereinander abgemachten Projektziele zu halten.
 Unsere Zeit, sowie die Aufgaben teilen wir auf GitHub ein.
-
+Die bereits festgelegten Fixpunkte sind:
+*Abgabe Lernbericht am 10.12.14
+*Fixpunktgespräch am 17.12.14
+*Abgabe Projektarbeit am 21.01.15
 
 ### Recherche
 Unsere Quellen haben wir in der Vorbereitung in unserem Rechercheprotokoll festgelegt.
-Die Recherche wird wahrscheinlich in der Dokumentation nachzulesen sein.
+Die Recherche wird in der Dokumentation nachzulesen sein.
 Im Verlauf der Arbeit kann es zu weiteren Recherchen kommen,
-falls es zu Problemen kommt, welche uns während der Arbeit in den Weg kommen.
+um unerwarteten Probleme während der Arbeit zu lösen.
 
 ### Datenerhebung
 Für unser Projekt benötigen wir keine besonderen Daten, wie beispielsweise
@@ -98,9 +101,9 @@ aus einer Umfrage.
 
 ### Auswertung
 Am Ende der Arbeit, liegen
- * eine Dokumentation, die die Motivation, das Herangehen und die Entwicklung beschreibt,
- * ein Arbeitsprotokoll, das Arbeitsvorgänge und Termine beschreibt (Auszug aus git) und
- * ein Lernprotokoll, das heisst, eine Auflistung von Daten mit den dazugehörigen
+ * eine Dokumentation, welche die Motivation, das Herangehen und die Entwicklung beschreibt,
+ * ein Arbeitsprotokoll, welches Arbeitsvorgänge und Termine beschreibt (Auszug aus git) und
+ * ein Lernprotokoll, welches eine Auflistung von Daten mit den dazugehörigen
    Aktivitäten und Besprechungen vor.
 
 ### Zusammenstellung / Gestaltung
@@ -111,12 +114,8 @@ und die obligatorischen Protokolle können ausgedruckt werden.
 Abgabetermin ist der 21. Januar 2015.
 
 ## 6. Themenspezifische Beurteilungskriterien
-* keine
-* siehe Beilage?
-
-Abklären!
+* keine besonderen Kentnisse
 
 ## Darstellung von Zitaten, Literatur- und Quellenangaben
-Literatur und Zitate werden wir, da wir die Dokumentation und (fast)
-alle Dokumente, die wir am Ende der Arbeit abgeben müssen, mit dem Textsatzsystem LaTeX
-schreiben, mit BibTeX automatisch referenzieren lassen.
+Literatur und Zitate werden wir mit BibTeX automatisch referenzieren lassen. Da wir viele 
+Dokumente mit dem Textsatzsystem LaTeX schreiben.
