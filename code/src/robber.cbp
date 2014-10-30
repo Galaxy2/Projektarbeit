@@ -7,8 +7,9 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/robber" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
+				<Option output="../bin/Debug/robber" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../src" />
+				<Option object_output="../obj/Debug" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -18,13 +19,41 @@
 					<Add library="sfml-graphics-d" />
 					<Add library="sfml-window-d" />
 					<Add library="sfml-system-d" />
+					<Add library="mingw32" />
+					<Add library="user32" />
+					<Add library="gdi32" />
+					<Add library="winmm" />
+					<Add library="dxguid" />
 				</Linker>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/robber" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Release/" />
+				<Option output="../bin/Release/robber" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../src" />
+				<Option object_output="../obj/Release" />
 				<Option type="0" />
 				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="sfml-graphics" />
+					<Add library="sfml-window" />
+					<Add library="sfml-system" />
+					<Add library="mingw32" />
+					<Add library="user32" />
+					<Add library="gdi32" />
+					<Add library="winmm" />
+					<Add library="dxguid" />
+				</Linker>
+			</Target>
+			<Target title="linux">
+				<Option output="../bin/linux/robber" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../src" />
+				<Option object_output="../obj/linux" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option projectCompilerOptionsRelation="1" />
 				<Compiler>
 					<Add option="-O2" />
 				</Compiler>
@@ -41,11 +70,6 @@
 			<Add directory="C:/SFML-2.1/include" />
 		</Compiler>
 		<Linker>
-			<Add library="mingw32" />
-			<Add library="user32" />
-			<Add library="gdi32" />
-			<Add library="winmm" />
-			<Add library="dxguid" />
 			<Add directory="C:/SFML-2.1/lib" />
 		</Linker>
 		<Unit filename="main.cpp" />
