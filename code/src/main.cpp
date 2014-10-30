@@ -1,8 +1,21 @@
 #include <iostream>
 #include <SFML/Window.hpp>
 
+#include "main.h"
+
+using namespace std;
+
 int main(void)
 {
+    // Update Überprüfung
+    if(newVersionAvailable()){
+        cout << endl << "! Es steht eine Aktualisierung des Spiels zum Herunterladen bereit !" << endl << endl;
+    } else {
+        cout << endl << "Das Spiel läuft in der aktuellsten Version!" << endl << endl;
+    }
+
+
+    // Fenster
     sf::Window fenster(sf::VideoMode::getDesktopMode(), "Robber", sf::Style::Fullscreen);
 
     // Solange das Fenster geöffnet ist

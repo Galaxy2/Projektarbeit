@@ -19,6 +19,7 @@
 					<Add library="sfml-graphics-d" />
 					<Add library="sfml-window-d" />
 					<Add library="sfml-system-d" />
+					<Add library="sfml-network-d" />
 					<Add library="mingw32" />
 					<Add library="user32" />
 					<Add library="gdi32" />
@@ -40,6 +41,7 @@
 					<Add library="sfml-graphics" />
 					<Add library="sfml-window" />
 					<Add library="sfml-system" />
+					<Add library="sfml-network" />
 					<Add library="mingw32" />
 					<Add library="user32" />
 					<Add library="gdi32" />
@@ -62,6 +64,7 @@
 					<Add library="sfml-graphics" />
 					<Add library="sfml-window" />
 					<Add library="sfml-system" />
+					<Add library="sfml-network" />
 				</Linker>
 			</Target>
 		</Build>
@@ -73,6 +76,9 @@
 			<Add directory="C:/SFML-2.1/lib" />
 		</Linker>
 		<Unit filename="main.cpp" />
+		<Unit filename="main.h" />
+		<Unit filename="updates.cpp" />
+		<Unit filename="updates.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
