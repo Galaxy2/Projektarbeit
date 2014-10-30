@@ -2,6 +2,7 @@
 1414595838 source:/home/patrick/Projektarbeit/src/main.cpp
 	<iostream>
 
-1414595838 source:/home/patrick/Projektarbeit/code/src/main.cpp
+1414673414 source:/home/patrick/Projektarbeit/code/src/main.cpp
 	<iostream>
+	<SFML/Window.hpp>
 
