@@ -1,5 +1,7 @@
 #include <iostream>
+#include <sstream>
 #include <SFML/Window.hpp>
+#include <SFML/Graphics.hpp>
 
 #include "main.h"
 
@@ -8,15 +10,26 @@ using namespace std;
 int main(void)
 {
     // Update Überprüfung
+    stringstream updateVerfuegbarText;
+    updateVerfuegbarText << "Robber " << ROBBER_VERSION;
+
     if(newVersionAvailable()){
         cout << endl << "! Es steht eine Aktualisierung des Spiels zum Herunterladen bereit !" << endl << endl;
+        updateVerfuegbarText << " (Update verfuegbar!)";
     } else {
         cout << endl << "Das Spiel läuft in der aktuellsten Version!" << endl << endl;
     }
 
+    // Version im Spiel anzeigen!
+    sf::Font standardSchriftart;
+    standardSchriftart.loadFromFile("resources/DejaVuSans.ttf");
+
+
+    sf::Text versionsText(updateVerfuegbarText.str(), standardSchriftart, 20);
+    versionsText.setPosition(50, 50);
 
     // Fenster
-    sf::Window fenster(sf::VideoMode::getDesktopMode(), "Robber", sf::Style::Fullscreen);
+    sf::RenderWindow fenster(sf::VideoMode::getDesktopMode(), "Robber", sf::Style::Fullscreen);
 
     // Solange das Fenster geöffnet ist
     while(fenster.isOpen())
@@ -34,7 +47,8 @@ int main(void)
                 fenster.close();
             }
 
-            fenster.setActive();
+            fenster.draw(versionsText);
+            //fenster.setActive();
             fenster.display();
 
         }
