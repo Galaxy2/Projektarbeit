@@ -7,8 +7,13 @@ void hintergrundLaden(sf::Sprite& s, sf::Texture& h){
         std::cerr << "Fehler Hintergrund";
     }
 
+    sf::VideoMode aufloesung = sf::VideoMode::getDesktopMode();
+
+    // Berechne Skalierungsfaktor
+    float factor = aufloesung.width/1920.0f;
+
     s.setTexture(h);
-    s.setScale(0.7, 0.7);
+    s.setScale(factor, factor);
 }
 
 
