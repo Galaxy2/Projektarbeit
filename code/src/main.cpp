@@ -31,7 +31,11 @@ int main(void)
     versionsText.setPosition(25, 25);
 
     // Fenster
-    sf::RenderWindow fenster(sf::VideoMode::getDesktopMode(), "Robber", sf::Style::None);
+    #ifndef LINUX
+        sf::RenderWindow fenster(sf::VideoMode::getDesktopMode(), "Robber", sf::Style::None);
+    #else
+        sf::RenderWindow fenster(sf::VideoMode::getDesktopMode(), "Robber", sf::Style::Fullscreen);
+    #endif
 
     // Hintergrundbild
     sf::Texture hintergrundTextur;
