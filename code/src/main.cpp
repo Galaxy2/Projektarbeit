@@ -48,7 +48,6 @@ int main(void)
             }
 
             fenster.draw(versionsText);
-            //fenster.setActive();
             fenster.display();
 
         }
