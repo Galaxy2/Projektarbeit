@@ -77,6 +77,8 @@
 		</Linker>
 		<Unit filename="main.cpp" />
 		<Unit filename="main.h" />
+		<Unit filename="screen.cpp" />
+		<Unit filename="screen.h" />
 		<Unit filename="updates.cpp" />
 		<Unit filename="updates.h" />
 		<Extensions>
