@@ -5,6 +5,7 @@
 
 #include "main.h"
 #include "screen.h"
+#include "updates.h"
 
 using namespace std;
 
@@ -16,7 +17,7 @@ int main(void)
 
     if(newVersionAvailable()){
         cout << endl << "! Es steht eine Aktualisierung des Spiels zum Herunterladen bereit !" << endl << endl;
-        updateVerfuegbarText << " (Update verfuegbar!)";
+        updateVerfuegbarText << " (Update verfuegbar: " << LATEST_VERSION << " )";
     } else {
         cout << endl << "Das Spiel läuft in der aktuellsten Version!" << endl << endl;
     }
@@ -30,7 +31,11 @@ int main(void)
     versionsText.setPosition(25, 25);
 
     // Fenster
-    sf::RenderWindow fenster(sf::VideoMode::getDesktopMode(), "Robber", sf::Style::None);
+    #ifndef LINUX
+        sf::RenderWindow fenster(sf::VideoMode::getDesktopMode(), "Robber", sf::Style::None);
+    #else
+        sf::RenderWindow fenster(sf::VideoMode::getDesktopMode(), "Robber", sf::Style::Fullscreen);
+    #endif
 
     // Hintergrundbild
     sf::Texture hintergrundTextur;

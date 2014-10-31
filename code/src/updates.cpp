@@ -4,6 +4,8 @@
 
 #include "updates.h"
 
+std::string ROBBER_VERSION = "0.01-alpha";
+std::string LATEST_VERSION;
 
 bool newVersionAvailable(void)
 {
@@ -18,8 +20,11 @@ bool newVersionAvailable(void)
         return false;
     }
 
-    std::cout << "Lokale Version:     " << ROBBER_VERSION << std::endl;
-    std::cout << "Aktuellste Version: " << versionResponse.getBody() << std::endl;
+    LATEST_VERSION = versionResponse.getBody();
 
-    return (ROBBER_VERSION != versionResponse.getBody());
+    std::cout << "Lokale Version:     " << ROBBER_VERSION << std::endl;
+    std::cout << "Aktuellste Version: " << LATEST_VERSION << std::endl;
+
+    return (ROBBER_VERSION != LATEST_VERSION);
 }
+
