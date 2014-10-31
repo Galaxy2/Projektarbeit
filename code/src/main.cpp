@@ -33,9 +33,17 @@ int main(void)
     sf::RenderWindow fenster(sf::VideoMode::getDesktopMode(), "Robber", sf::Style::None);
 
     // Hintergrundbild
-    sf::Texture Hintergrund;
-    sf::Sprite Hintergrundsprite;
-    hintergrundLaden(Hintergrundsprite, Hintergrund);
+    sf::Texture hintergrundTextur;
+    sf::Sprite hintergrund;
+    hintergrundLaden(hintergrund, hintergrundTextur);
+
+    sf::Texture spielerTexture;
+    sf::Sprite spieler;
+    spielerTexture.loadFromFile("resources/spieler.png");
+    spieler.setTexture(spielerTexture);
+    spieler.setScale(0.5, 0.5);
+    spieler.setPosition(100, 100);
+
 
 
     // Solange das Fenster geöffnet ist
@@ -54,8 +62,9 @@ int main(void)
                 fenster.close();
             }
 
-            fenster.draw(Hintergrundsprite);
+            fenster.draw(hintergrundsprite);
             fenster.draw(versionsText);
+            fenster.draw(spieler);
             fenster.display();
 
         }
