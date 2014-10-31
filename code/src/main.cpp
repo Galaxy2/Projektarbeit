@@ -26,10 +26,10 @@ int main(void)
 
 
     sf::Text versionsText(updateVerfuegbarText.str(), standardSchriftart, 20);
-    versionsText.setPosition(50, 50);
+    versionsText.setPosition(25, 25);
 
     // Fenster
-    sf::RenderWindow fenster(sf::VideoMode::getDesktopMode(), "Robber", sf::Style::Fullscreen);
+    sf::RenderWindow fenster(sf::VideoMode::getDesktopMode(), "Robber", sf::Style::None);
 
     // Solange das Fenster geöffnet ist
     while(fenster.isOpen())
