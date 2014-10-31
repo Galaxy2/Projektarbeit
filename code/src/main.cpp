@@ -62,7 +62,7 @@ int main(void)
                 fenster.close();
             }
 
-            fenster.draw(hintergrundsprite);
+            fenster.draw(hintergrund);
             fenster.draw(versionsText);
             fenster.draw(spieler);
             fenster.display();
