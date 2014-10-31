@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "main.h"
+#include "screen.h"
 
 using namespace std;
 
@@ -31,6 +32,12 @@ int main(void)
     // Fenster
     sf::RenderWindow fenster(sf::VideoMode::getDesktopMode(), "Robber", sf::Style::None);
 
+    // Hintergrundbild
+    sf::Texture Hintergrund;
+    sf::Sprite Hintergrundsprite;
+    hintergrundLaden(Hintergrundsprite, Hintergrund);
+
+
     // Solange das Fenster geöffnet ist
     while(fenster.isOpen())
     {
@@ -47,6 +54,7 @@ int main(void)
                 fenster.close();
             }
 
+            fenster.draw(Hintergrundsprite);
             fenster.draw(versionsText);
             fenster.display();
 
