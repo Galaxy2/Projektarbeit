@@ -58,6 +58,7 @@
 				<Option projectCompilerOptionsRelation="1" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-DLINUX" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
