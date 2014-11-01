@@ -57,11 +57,11 @@
 				<Option compiler="gcc" />
 				<Option projectCompilerOptionsRelation="1" />
 				<Compiler>
-					<Add option="-O2" />
+					<Add option="-std=c++11" />
+					<Add option="-g" />
 					<Add option="-DLINUX" />
 				</Compiler>
 				<Linker>
-					<Add option="-s" />
 					<Add library="sfml-graphics" />
 					<Add library="sfml-window" />
 					<Add library="sfml-system" />

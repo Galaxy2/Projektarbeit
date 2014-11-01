@@ -4,8 +4,6 @@
 #include <SFML/Graphics.hpp>
 
 #include "main.h"
-#include "screen.h"
-#include "updates.h"
 
 using namespace std;
 
@@ -47,9 +45,15 @@ int main(void)
     spielerTexture.loadFromFile("resources/spieler.png");
     spieler.setTexture(spielerTexture);
     spieler.setScale(0.5, 0.5);
-    spieler.setPosition(100, 100);
+    spieler.setPosition(700, 1000);
+
+    // Level laden!
+    level demoLevel;
 
 
+    demoLevel.loadFromFile("levels/test/test.lvl");
+
+    sf::FloatRect spielerEcken = spieler.getGlobalBounds();
 
     // Solange das Fenster geöffnet ist
     while(fenster.isOpen())
@@ -57,20 +61,61 @@ int main(void)
         sf::Event event;
         while(fenster.pollEvent(event))
         {
-            if(event.type == sf::Event::Closed){
+            if(event.type == sf::Event::Closed)
+            {
                 fenster.close();
             }
 
 
-            // Input Loop
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+            {
                 fenster.close();
             }
 
+
+            // Input loop
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+            {
+                // Zuerst Kollision überprüfen!
+                spielerEcken.top -= 5;
+                if(demoLevel.checkCollision(spielerEcken))
+                {
+                    // Nicht bewegen!
+                    spielerEcken.top += 5;
+                }
+                else
+                {
+                    // Bewegen!
+                    spieler.move(0, -5);
+                }
+
+            }
+
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+            {
+                // Zuerst Kollision überprüfen!
+                spielerEcken.top += 5;
+                if(demoLevel.checkCollision(spielerEcken))
+                {
+                    // Nicht bewegen!
+                    spielerEcken.top -= 5;
+                }
+                else
+                {
+                    // Bewegen!
+                    spieler.move(0, 5);
+                }
+
+            }
+
+
+
+            // Render loop
             fenster.draw(hintergrund);
             fenster.draw(versionsText);
             fenster.draw(spieler);
             fenster.display();
+
 
         }
 

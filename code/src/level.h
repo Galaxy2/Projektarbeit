@@ -8,8 +8,9 @@ using namespace std;
 
 class level{
     public:
-    list<sf::Rect<int> > mauern;
+    list<sf::FloatRect> mauern;
     void loadFromFile(string pfad);
+    bool checkCollision(sf::FloatRect& spielerPosition);
 
 };
 

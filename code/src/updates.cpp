@@ -4,6 +4,7 @@
 
 #include "updates.h"
 
+
 std::string ROBBER_VERSION = "0.01-alpha";
 std::string LATEST_VERSION;
 
