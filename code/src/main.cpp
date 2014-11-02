@@ -45,7 +45,8 @@ int main(void)
     spielerTexture.loadFromFile("resources/spieler.png");
     spieler.setTexture(spielerTexture);
     spieler.setScale(0.5, 0.5);
-    spieler.setPosition(700, 1000);
+    spieler.setPosition(300, 500);
+    spieler.setOrigin(sf::Vector2f(50, 50));
 
     // Level laden!
     level demoLevel;
@@ -87,8 +88,23 @@ int main(void)
                 {
                     // Bewegen!
                     spieler.move(0, -5);
+                    spieler.setRotation(0);
                 }
 
+            }
+
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+            {
+                spielerEcken.width -=5;
+                if(demoLevel.checkCollision(spielerEcken))
+                {
+                    spielerEcken.width +=5;
+                }
+                else
+                {
+                    spieler.move(-5, 0);
+                    spieler.setRotation(270);
+                }
             }
 
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
@@ -104,8 +120,23 @@ int main(void)
                 {
                     // Bewegen!
                     spieler.move(0, 5);
+                    spieler.setRotation(180);
                 }
 
+            }
+
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+            {
+                spielerEcken.width +=5;
+                if(demoLevel.checkCollision(spielerEcken))
+                {
+                    spielerEcken.width -=5;
+                }
+                else
+                {
+                    spieler.move(5, 0);
+                    spieler.setRotation(90);
+                }
             }
 
 
