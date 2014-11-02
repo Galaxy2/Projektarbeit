@@ -87,8 +87,8 @@ int main(void)
                 else
                 {
                     // Bewegen!
-                    spieler.move(0, -5);
                     spieler.setRotation(0);
+                    spieler.move(0, -5);
                 }
 
             }
@@ -102,8 +102,8 @@ int main(void)
                 }
                 else
                 {
-                    spieler.move(-5, 0);
                     spieler.setRotation(270);
+                    spieler.move(-5, 0);
                 }
             }
 
@@ -119,8 +119,8 @@ int main(void)
                 else
                 {
                     // Bewegen!
-                    spieler.move(0, 5);
                     spieler.setRotation(180);
+                    spieler.move(0, 5);
                 }
 
             }
@@ -134,8 +134,8 @@ int main(void)
                 }
                 else
                 {
-                    spieler.move(5, 0);
                     spieler.setRotation(90);
+                    spieler.move(5, 0);
                 }
             }
 
