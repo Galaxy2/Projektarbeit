@@ -1,6 +1,14 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
+#include "screen.h"
+using namespace screen;
+
+namespace screen{
+    float factor;
+}
+
+
 void hintergrundLaden(sf::Sprite& s, sf::Texture& h){
 
     if(!h.loadFromFile("levels/test/test.png")){
@@ -10,8 +18,8 @@ void hintergrundLaden(sf::Sprite& s, sf::Texture& h){
     sf::VideoMode aufloesung = sf::VideoMode::getDesktopMode();
 
     // Berechne Skalierungsfaktor
-    float factor = aufloesung.width/1920.0f;
-    std:: cout << factor;
+    factor = aufloesung.width/1920.0f;
+    std::cout << factor;
     if (factor > 1){
             factor = 1;
     }
