@@ -19,7 +19,7 @@ void hintergrundLaden(sf::Sprite& s, sf::Texture& h){
 
     // Berechne Skalierungsfaktor
     factor = aufloesung.width/1920.0f;
-    std::cout << factor;
+    std::cout << "Factor: " << factor << std::endl;
     if (factor > 1){
             factor = 1;
     }

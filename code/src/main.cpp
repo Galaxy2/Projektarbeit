@@ -140,10 +140,19 @@ int main(void)
             }
 
 
+            // Mauer Debug
+            sf::RectangleShape demoMauer;
+            demoMauer.setPosition(demoLevel.mauern.front().left, demoLevel.mauern.front().top);
+
+            sf::Vector2f groesse(demoLevel.mauern.front().width, demoLevel.mauern.front().height);
+            demoMauer.setSize(groesse);
+            demoMauer.setFillColor(sf::Color::Green);
+
 
             // Render loop
             fenster.draw(hintergrund);
             fenster.draw(versionsText);
+            fenster.draw(demoMauer);
             fenster.draw(spieler);
             fenster.display();
 
