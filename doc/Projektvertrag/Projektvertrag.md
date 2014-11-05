@@ -11,7 +11,7 @@
 * Roger Sax
 
 ## 2. Thema
-### Arbeitstitel
+### Robber
 
 #### Programmieren eines 2D-Spiels
 
@@ -27,7 +27,7 @@ Multimedia Framework:
 OpenSource-Lizenz:
 	Eine Lizenz, die das Einsehen, das Verändern und das Weiternutzen des Quellcodes erlaubt.
 
-OpenSource-Software (OSS:
+OpenSource-Software (OSS):
 	Software, die unter einer OpenSource-Lizenz verfügbar ist.
 
 Versionskontrollsystem:
@@ -43,11 +43,12 @@ Coverity:
         Für OSS-Entwickler kostenlose Plattform: Führt eine tiefgreifende statische Quellcodeanalyse durch, und hilft so Programmierfehler zu vermeiden und zu finden.
 
 ### Projektziele / Hypothesen / Fragestellung
-Ziel unseres Projektes ist neben der Entwicklung eines 2D-Spiels auch die Anwendung der Techniken der Sprache C++ zu lernen und zu beherrschen. Dies wollen wir durch das Prinzip Learning-by-Doing erreichen. Jeder in der Gruppe soll am Ende mittelgrosse C++-Programme selber programmieren können. Wir setzen uns zum Ziel, die Konzepte hinter Frameworks (namentlich SFML) zu verstehen und die programmiertechnischen Abläufe hinter dem Spiel zu kennen. Wir wollen unser Spiel komplett im Team entwickeln und mit dem Versionskontrollsystem gut vertraut werden. Das alles soll uns später für eigene Projekte und unsere Maturaarbeit helfen. Das Spiel soll unter eine OpenSource Lizenz gestellt werden.
+Ziel unseres Projektes ist ein 2D-Einbrecherspiel zu entwickeln. Der Spieler soll eine Figur spielen, die in Häuser einbrechen muss und unentdeckt Gegenstände enwendet. Ein weiteres Ziel ist die Anwendung der Techniken der Sprache C++ zu lernen und zu beherrschen. Dies wollen wir durch das Prinzip Learning-by-Doing erreichen. Jeder in der Gruppe soll am Ende mittelgrosse C++-Programme selber programmieren können. Wir setzen uns zum Ziel, die Konzepte hinter Frameworks (namentlich SFML) zu verstehen und die programmiertechnischen Abläufe hinter dem Spiel zu kennen. Wir wollen unser Spiel komplett im Team entwickeln und mit dem Versionskontrollsystem gut vertraut werden. Das alles soll uns später für eigene Projekte und unsere Maturaarbeit helfen. Das Spiel soll unter eine OpenSource Lizenz gestellt werden.
+
 
 ### Methode / Vorgehen
 Um unser erstes Ziel zu erreichen, haben Gabriel und Jan das Programmieren in C++ erlernt.
-Unser Grobplan beim Erlernen von C++:
+Unser Grobplan beim Erlernen von C++ war:
 
 * Grundstruktur eines Programmes
 * Die Basisdatentypen string, int, float kennen
@@ -59,15 +60,13 @@ Unser Grobplan beim Erlernen von C++:
 * STL-Templates
 * SFML
 
-Jeder trägt natürlich eine Verantwortung zum Gelingen dieses Projektes bei. Da die Projektziele ziemlich ambitioniert gesteckt sind, beschäftigen wir uns auch in unserer Freizeit damit.
-
-Wir haben jetzt die Spielidee von einem Game als Einbrecher festgelegt. Dabei steigt man in die Rolle des Diebes und versucht unenteckt Gegenstände zu stehlen. Die Umsetzung des Spiels wird nun noch sorgfältig durchgeplant und jedem Teammitglied werden ständig neue Aufgaben zugeteilt.
+Das Spiel selber entwickeln wir aufbauend. Wir wenden uns laufend den verschiedenen Aspekten des Programmierens eines Spieles zu, z.B: Strukturierung, Graphik, Spielprinzip. Wir teilen diese Aufgaben entweder untereinander auf, oder wir bearbeiten sie direkt zusammen. Das Spiel soll auf den Zielbetriebssystemen spielbar sein, weswegen wir sowohl untereinander, als auch später über Feedbacks die Probleme analysieren. Über die eben genannten Feedbacks werden wir auch in der Schlussphase noch Verbesserungen am Spiel allgemein vornehmen.
 
 ### Ressourcen / Voraussetzungen
 Wir wollen unser 2D-Spiel nur für den Computer entwickeln; Portierungen auf Konsolen oder andere Plattformen sind nicht geplant. Zielbetriebssysteme sind gängige Linuxdistributionen und Microsoft Windows. Zum Entwickeln der Software verwenden wir nur OpenSource Software, und die für OpenSource Entwickler frei zugänglichen Plattformen GitHub, Travis CI, Coverity.
 
 ### Mögliche Erweiterungen des Themas
-Man könnte sich auch überlegen die Gameidee in ein 3D Game umzusetzen oder für weiter Konsolen erhältlich machen. Das angeeignete Wissen und die Erfahrung können auch für eine neue, aufwändigere Gameidee gebraucht werden. Ausserdem könnte man sich auch in die graphische Gestaltung eines Spieles vertieft einarbeiten.
+Da wir die Gameidee gut erweiterbar gewält haben, könnte man das Spiel noch detailreicher und realitätsnaher gestalten. Man könnte sich auch überlegen die Gameidee in ein 3D Game umzusetzen oder für weiter Konsolen erhältlich machen. Das angeeignete Wissen und die Erfahrung können auch für eine neue, aufwändigere Gameidee gebraucht werden. Ausserdem könnte man sich auch in die graphische Gestaltung eines Spieles vertieft einarbeiten.
 
 ## 3. Sprache
 Unsere Arbeit werden wir in Deutsch schreiben. Aufgrund unserer Thematik

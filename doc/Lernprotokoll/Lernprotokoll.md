@@ -16,3 +16,9 @@ Wir haben uns auf eine Spielidee geeinigt: Wir programmieren ein Einbrecherspiel
   3. Einen möglichst hohen Wert erreichen
 
 ### 29.10.14
+
+Die Spielidee haben wir bereits verfeinert und haben uns erste Ziele gesetzt: Bis nächsten Montag soll ein Bild im Hintergrund des Spieles geladen werden und es sollte eine Figur haben die man über den Bildschirm bewegen kann. Ausserdem sollten auch Mauern und eine Kolliosionsüberprüfung vorhanden sein. Wir haben heute die main.cpp Datei erstellt und  somit offiziel mit dem Programmieren des Spiels angefangen. Dazu haben wir ein Demo-Hintergrundbild, Demo-Level und Demo-Spielertextur erstellt um das Spiel testen zu können.
+
+### 04.11.14 - Gabriel Gavrilas
+
+Wir haben den Projektvertag nun vollständig abgabebereit. Der Demo-Level funktioniert bereits, wobei wir jedoch probleme mit dem definieren der Mauern haben. Dadurch bleibt unser Spiel momentan noch eine Figur, die sich auf einem gezeichneten Hintergrund bewegt. Bei Jan funktioniert das Laden des Hintergrundes und der Spielerfigur nicht perfekt. Wir freuen uns, dass wir unsere Ziele grösstenteils erreicht haben. Als nächstes sollten wir weitere Elemente in die Demo-Version einfügen.
