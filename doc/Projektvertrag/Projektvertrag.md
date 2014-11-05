@@ -11,7 +11,7 @@
 * Roger Sax
 
 ## 2. Thema
-### Arbeitstitel
+### Robber
 
 #### Programmieren eines 2D-Spiels
 
