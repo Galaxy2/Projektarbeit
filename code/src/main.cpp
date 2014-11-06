@@ -67,6 +67,7 @@ int main(void)
                 fenster.close();
             }
 
+        }
 
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
             {
@@ -155,9 +156,6 @@ int main(void)
             fenster.draw(demoMauer);
             fenster.draw(spieler);
             fenster.display();
-
-
-        }
 
     }
 
