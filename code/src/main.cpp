@@ -1,11 +1,14 @@
 #include <iostream>
 #include <sstream>
+#include <list>
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
 #include "main.h"
 
 using namespace std;
+
+sf::Font standardSchriftart;
 
 int main(void)
 {
@@ -20,14 +23,6 @@ int main(void)
         cout << endl << "Das Spiel läuft in der aktuellsten Version!" << endl << endl;
     }
 
-    // Version im Spiel anzeigen!
-    sf::Font standardSchriftart;
-    standardSchriftart.loadFromFile("resources/DejaVuSans.ttf");
-
-
-    sf::Text versionsText(updateVerfuegbarText.str(), standardSchriftart, 20);
-    versionsText.setPosition(25, 25);
-
     // Fenster
     #ifndef LINUX
         sf::RenderWindow fenster(sf::VideoMode::getDesktopMode(), "Robber", sf::Style::None);
@@ -35,10 +30,26 @@ int main(void)
         sf::RenderWindow fenster(sf::VideoMode::getDesktopMode(), "Robber", sf::Style::Fullscreen);
     #endif
 
+    // Renderlist vorbereiten
+    list<sf::Drawable *> renderList;
+
     // Hintergrundbild
     sf::Texture hintergrundTextur;
     sf::Sprite hintergrund;
     hintergrundLaden(hintergrund, hintergrundTextur);
+    renderList.push_front(&hintergrund);
+
+
+    // Schriftart laden!
+    standardSchriftart.loadFromFile("resources/DejaVuSans.ttf");
+
+    // Version im Spiel anzeigen!
+    benachrichtigung version(updateVerfuegbarText.str());
+    version.text.setPosition(25, 25);
+    version.text.setCharacterSize(20);
+    renderList.push_back((sf::Drawable *)&version.text);
+
+
 
     sf::Texture spielerTexture;
     sf::Sprite spieler;
@@ -47,6 +58,9 @@ int main(void)
     spieler.setScale(0.5, 0.5);
     spieler.setPosition(300, 500);
     spieler.setOrigin(sf::Vector2f(50, 50));
+
+    // Spieler immer anzeigen!
+    renderList.push_back(&spieler);
 
     // Level laden!
     level demoLevel;
@@ -150,6 +164,8 @@ int main(void)
 
             // Mauer Debug
             sf::RectangleShape demoMauer;
+            renderList.push_back(&demoMauer);
+
             demoMauer.setPosition(demoLevel.mauern.front().left, demoLevel.mauern.front().top);
 
             sf::Vector2f groesse(demoLevel.mauern.front().width, demoLevel.mauern.front().height);
@@ -158,10 +174,12 @@ int main(void)
 
 
             // Render loop
-            fenster.draw(hintergrund);
-            fenster.draw(versionsText);
-            fenster.draw(demoMauer);
-            fenster.draw(spieler);
+            fenster.clear();
+
+            for(auto object : renderList){
+                fenster.draw(*object);
+            }
+
             fenster.display();
 
     }

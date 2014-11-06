@@ -81,6 +81,8 @@
 		<Unit filename="level.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="main.h" />
+		<Unit filename="notification.cpp" />
+		<Unit filename="notification.h" />
 		<Unit filename="screen.cpp" />
 		<Unit filename="screen.h" />
 		<Unit filename="updates.cpp" />
