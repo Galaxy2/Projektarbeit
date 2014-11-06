@@ -76,6 +76,7 @@ int main(void)
 
 
             // Input loop
+            // Nur in eine Richtung auf einmal!
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
             {
                 // Zuerst Kollision überprüfen!
@@ -94,6 +95,8 @@ int main(void)
 
             }
 
+            else
+
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
             {
                 spielerEcken.width -=5;
@@ -107,6 +110,8 @@ int main(void)
                     spieler.move(-5, 0);
                 }
             }
+
+            else
 
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
             {
@@ -125,6 +130,8 @@ int main(void)
                 }
 
             }
+
+            else
 
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
             {
