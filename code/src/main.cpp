@@ -44,9 +44,7 @@ int main(void)
     standardSchriftart.loadFromFile("resources/DejaVuSans.ttf");
 
     // Version im Spiel anzeigen!
-    benachrichtigung version(updateVerfuegbarText.str());
-    version.text.setPosition(25, 25);
-    version.text.setCharacterSize(20);
+    benachrichtigung version(updateVerfuegbarText.str(), 25, 25, 20);
     renderList.push_back((sf::Drawable *)&version.text);
 
 
