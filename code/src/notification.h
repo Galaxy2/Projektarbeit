@@ -14,6 +14,7 @@ class benachrichtigung{
 
     benachrichtigung(std::string text, int xpos, int ypos, int charSize);
     void updateText(std::string text);
+    void test(void);
 };
 
 #endif // __NOTIFICATION_H__

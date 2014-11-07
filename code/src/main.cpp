@@ -9,7 +9,17 @@
 using namespace std;
 
 sf::Font standardSchriftart;
-// benachrichtigung debugMsg("", 25, 60, 20);
+benachrichtigung debugMsg("Debug Mode", 25, 80, 20);
+
+
+sf::RenderWindow* globalFenster;
+
+sf::Vector2f koordinaten(int x, int y){
+    sf::Vector2i pos(x, y);
+    return globalFenster->mapPixelToCoords(pos);
+}
+
+
 
 int main(void)
 {
@@ -24,12 +34,33 @@ int main(void)
         cout << endl << "Das Spiel läuft in der aktuellsten Version!" << endl << endl;
     }
 
-    // Fenster
+
+
+    // Fenster und Grafik
+
+    sf::VideoMode aufloesung = sf::VideoMode::getDesktopMode();
+
+
+
     #ifndef LINUX
-        sf::RenderWindow fenster(sf::VideoMode::getDesktopMode(), "Robber", sf::Style::None);
+        sf::RenderWindow fenster(aufloesung, "Robber", sf::Style::None);
     #else
-        sf::RenderWindow fenster(sf::VideoMode::getDesktopMode(), "Robber", sf::Style::Fullscreen);
+        sf::RenderWindow fenster(aufloesung, "Robber", sf::Style::Fullscreen);
     #endif
+
+    globalFenster = &fenster;
+
+
+    sf::Vector2u fensterGroesse = fenster.getSize();
+    float factor =  1920.0f / fensterGroesse.x;
+
+    sf::View ansicht(sf::FloatRect(0,0, aufloesung.width, aufloesung.height));
+    ansicht.zoom(factor);
+
+    ansicht.setViewport(sf::FloatRect(0,0, 1, 1));
+    fenster.setView(ansicht);
+
+
 
     // Renderlist vorbereiten
     list<sf::Drawable *> renderList;
@@ -49,7 +80,7 @@ int main(void)
     renderList.push_back((sf::Drawable *)&version.text);
 
     // DebugMsg anzeigen!
-    //renderList.push_back((sf::Drawable *)&debugMsg.text);
+    renderList.push_back((sf::Drawable *)&debugMsg.text);
 
     sf::Texture spielerTexture;
     sf::Sprite spieler;
@@ -68,11 +99,103 @@ int main(void)
 
     demoLevel.loadFromFile("levels/test/test.lvl");
 
+
+    debugMsg.test();
+    debugMsg.updateText("Debug Mode!");
+
+
+    // Kollisionsdetektion
+
     sf::FloatRect spielerEcken = spieler.getGlobalBounds();
 
     // Solange das Fenster geöffnet ist
     while(fenster.isOpen())
     {
+        // Eingabeüberprüfung!
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+        {
+            fenster.close();
+        }
+
+
+        // Input loop
+        // Nur in eine Richtung auf einmal!
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+        {
+            cout << "W" << endl;
+
+            // Zuerst Kollision überprüfen!
+            spielerEcken.top -= 5;
+            if(demoLevel.checkCollision(spielerEcken))
+            {
+                // Nicht bewegen!
+                spielerEcken.top += 5;
+            }
+            else
+            {
+                // Bewegen!
+                spieler.setRotation(0);
+                spieler.move(0, -5);
+            }
+
+        }
+
+        else
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        {
+            spielerEcken.width -=5;
+            if(demoLevel.checkCollision(spielerEcken))
+            {
+                spielerEcken.width +=5;
+            }
+            else
+            {
+                spieler.setRotation(270);
+                spieler.move(-5, 0);
+            }
+        }
+
+        else
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+        {
+            // Zuerst Kollision überprüfen!
+            spielerEcken.top += 5;
+            if(demoLevel.checkCollision(spielerEcken))
+            {
+                // Nicht bewegen!
+                spielerEcken.top -= 5;
+            }
+            else
+            {
+                // Bewegen!
+                spieler.setRotation(180);
+                spieler.move(0, 5);
+            }
+
+        }
+
+        else
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        {
+            spielerEcken.width +=5;
+            if(demoLevel.checkCollision(spielerEcken))
+            {
+                spielerEcken.width -=5;
+            }
+            else
+            {
+                spieler.setRotation(90);
+                spieler.move(5, 0);
+            }
+        }
+
+
+        // Ende der Eingabeüberprüfung
+        // Event Poll!
+
         sf::Event event;
         while(fenster.pollEvent(event))
         {
@@ -83,106 +206,30 @@ int main(void)
 
         }
 
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-            {
-                fenster.close();
-            }
 
 
-            // Input loop
-            // Nur in eine Richtung auf einmal!
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-            {
-                cout << "W" << endl;
+        // Mauer Debug
+        sf::RectangleShape demoMauer;
+        renderList.push_back(&demoMauer);
 
-                // Zuerst Kollision überprüfen!
-                spielerEcken.top -= 5;
-                if(demoLevel.checkCollision(spielerEcken))
-                {
-                    // Nicht bewegen!
-                    spielerEcken.top += 5;
-                }
-                else
-                {
-                    // Bewegen!
-                    spieler.setRotation(0);
-                    spieler.move(0, -5);
-                }
+        demoMauer.setPosition(demoLevel.mauern.front().left, demoLevel.mauern.front().top);
 
-            }
-
-            else
-
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-            {
-                spielerEcken.width -=5;
-                if(demoLevel.checkCollision(spielerEcken))
-                {
-                    spielerEcken.width +=5;
-                }
-                else
-                {
-                    spieler.setRotation(270);
-                    spieler.move(-5, 0);
-                }
-            }
-
-            else
-
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-            {
-                // Zuerst Kollision überprüfen!
-                spielerEcken.top += 5;
-                if(demoLevel.checkCollision(spielerEcken))
-                {
-                    // Nicht bewegen!
-                    spielerEcken.top -= 5;
-                }
-                else
-                {
-                    // Bewegen!
-                    spieler.setRotation(180);
-                    spieler.move(0, 5);
-                }
-
-            }
-
-            else
-
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-            {
-                spielerEcken.width +=5;
-                if(demoLevel.checkCollision(spielerEcken))
-                {
-                    spielerEcken.width -=5;
-                }
-                else
-                {
-                    spieler.setRotation(90);
-                    spieler.move(5, 0);
-                }
-            }
+        sf::Vector2f groesse(demoLevel.mauern.front().width, demoLevel.mauern.front().height);
+        demoMauer.setSize(groesse);
+        demoMauer.setFillColor(sf::Color::Green);
 
 
-            // Mauer Debug
-            sf::RectangleShape demoMauer;
-            renderList.push_back(&demoMauer);
+        // Ansicht anpassen!
+        fenster.setView(ansicht);
 
-            demoMauer.setPosition(demoLevel.mauern.front().left, demoLevel.mauern.front().top);
+        // Render loop
+        fenster.clear();
 
-            sf::Vector2f groesse(demoLevel.mauern.front().width, demoLevel.mauern.front().height);
-            demoMauer.setSize(groesse);
-            demoMauer.setFillColor(sf::Color::Green);
+        for(auto object : renderList){
+            fenster.draw(*object);
+        }
 
-
-            // Render loop
-            fenster.clear();
-
-            for(auto object : renderList){
-                fenster.draw(*object);
-            }
-
-            fenster.display();
+        fenster.display();
 
     }
 
