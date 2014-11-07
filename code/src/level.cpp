@@ -45,7 +45,9 @@ bool level::checkCollision(sf::FloatRect& spielerPosition)
 {
     for(sf::FloatRect mauer : mauern){
         if(spielerPosition.intersects(mauer))
-            debugMsg.updateText("Intersect!");
+            // Diese Zeile verhindert eine Bewegung des Spielers
+            //debugMsg.updateText("Intersect!");
+
             return true;
     }
 
