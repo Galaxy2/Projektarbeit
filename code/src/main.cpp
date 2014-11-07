@@ -9,6 +9,7 @@
 using namespace std;
 
 sf::Font standardSchriftart;
+// benachrichtigung debugMsg("", 25, 60, 20);
 
 int main(void)
 {
@@ -47,7 +48,8 @@ int main(void)
     benachrichtigung version(updateVerfuegbarText.str(), 25, 25, 20);
     renderList.push_back((sf::Drawable *)&version.text);
 
-
+    // DebugMsg anzeigen!
+    //renderList.push_back((sf::Drawable *)&debugMsg.text);
 
     sf::Texture spielerTexture;
     sf::Sprite spieler;
@@ -91,6 +93,8 @@ int main(void)
             // Nur in eine Richtung auf einmal!
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
             {
+                cout << "W" << endl;
+
                 // Zuerst Kollision überprüfen!
                 spielerEcken.top -= 5;
                 if(demoLevel.checkCollision(spielerEcken))

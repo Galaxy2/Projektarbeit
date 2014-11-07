@@ -9,6 +9,9 @@ namespace screen{
 }
 
 
+extern benachrichtigung debugMsg;
+
+
 void hintergrundLaden(sf::Sprite& s, sf::Texture& h){
 
     if(!h.loadFromFile("levels/test/test.png")){

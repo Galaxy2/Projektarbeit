@@ -3,6 +3,11 @@
 
 #include "level.h"
 #include "screen.h"
+#include "notification.h"
+
+
+extern benachrichtigung debugMsg;
+
 
 void level::loadFromFile(string pfad)
 {
@@ -40,6 +45,7 @@ bool level::checkCollision(sf::FloatRect& spielerPosition)
 {
     for(sf::FloatRect mauer : mauern){
         if(spielerPosition.intersects(mauer))
+            // debugMsg.updateText("Intersect!");
             return true;
     }
 

@@ -6,3 +6,7 @@ benachrichtigung::benachrichtigung(std::string text, int xpos=50, int ypos=50, i
     this->text.setPosition(xpos, ypos);
     this->text.setCharacterSize(charSize);
 }
+
+void benachrichtigung::updateText(std::string text){
+    this->text.setString(text);
+}

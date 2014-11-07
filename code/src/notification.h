@@ -11,7 +11,9 @@ extern sf::Font standardSchriftart;
 class benachrichtigung{
     public:
     sf::Text text;
+
     benachrichtigung(std::string text, int xpos, int ypos, int charSize);
+    void updateText(std::string text);
 };
 
 #endif // __NOTIFICATION_H__
