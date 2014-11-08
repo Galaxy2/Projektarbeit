@@ -49,7 +49,7 @@ int main(void)
     #endif
 
     globalFenster = &fenster;
-
+    fenster.setFramerateLimit(30);
 
     sf::Vector2u fensterGroesse = fenster.getSize();
     float factor =  1920.0f / fensterGroesse.x;
@@ -122,17 +122,17 @@ int main(void)
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
             // Zuerst Kollision überprüfen!
-            spielerEcken.top -= 5;
+            spielerEcken.top -= 10;
             if(demoLevel.checkCollision(spielerEcken))
             {
                 // Nicht bewegen!
-                spielerEcken.top += 5;
+                spielerEcken.top += 10;
             }
             else
             {
                 // Bewegen!
                 spieler.setRotation(0);
-                spieler.move(0, -5);
+                spieler.move(0, -10);
             }
 
         }
@@ -141,15 +141,15 @@ int main(void)
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
-            spielerEcken.width -=5;
+            spielerEcken.width -=10;
             if(demoLevel.checkCollision(spielerEcken))
             {
-                spielerEcken.width +=5;
+                spielerEcken.width +=10;
             }
             else
             {
                 spieler.setRotation(270);
-                spieler.move(-5, 0);
+                spieler.move(-10, 0);
             }
         }
 
@@ -158,17 +158,17 @@ int main(void)
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         {
             // Zuerst Kollision überprüfen!
-            spielerEcken.top += 5;
+            spielerEcken.top += 10;
             if(demoLevel.checkCollision(spielerEcken))
             {
                 // Nicht bewegen!
-                spielerEcken.top -= 5;
+                spielerEcken.top -= 10;
             }
             else
             {
                 // Bewegen!
                 spieler.setRotation(180);
-                spieler.move(0, 5);
+                spieler.move(0, 10);
             }
 
         }
@@ -177,15 +177,15 @@ int main(void)
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
-            spielerEcken.width +=5;
+            spielerEcken.width +=10;
             if(demoLevel.checkCollision(spielerEcken))
             {
-                spielerEcken.width -=5;
+                spielerEcken.width -=10;
             }
             else
             {
                 spieler.setRotation(90);
-                spieler.move(5, 0);
+                spieler.move(10, 0);
             }
         }
 
