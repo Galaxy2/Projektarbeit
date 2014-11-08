@@ -104,9 +104,6 @@ int main(void)
     debugMsg.updateText("Debug Mode!");
 
 
-    // Kollisionsdetektion
-
-    sf::FloatRect spielerEcken = spieler.getGlobalBounds();
 
     // Solange das Fenster geöffnet ist
     while(fenster.isOpen())
@@ -117,13 +114,13 @@ int main(void)
             fenster.close();
         }
 
+        // Kollisionsdetektion
+        sf::FloatRect spielerEcken = spieler.getGlobalBounds();
 
         // Input loop
         // Nur in eine Richtung auf einmal!
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
-            cout << "W" << endl;
-
             // Zuerst Kollision überprüfen!
             spielerEcken.top -= 5;
             if(demoLevel.checkCollision(spielerEcken))

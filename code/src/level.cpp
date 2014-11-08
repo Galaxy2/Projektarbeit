@@ -21,17 +21,10 @@ void level::loadFromFile(string pfad)
     for(unsigned int i=0; i<N; i++){
         levelDatei >> x1 >> y1 >> x2 >> y2;
 
-        cout << x1 << " " << y1 << " " << x2 << " " << y2 << endl;
+        sf::Vector2f koordinatenOben = koordinaten(x1, y1);
+        sf::Vector2f koordinatenUnten = koordinaten(x2, y2);
 
-        // Skalierungsfix
-        x1 *= screen::factor;
-        y1 *= screen::factor;
-        x2 *= screen::factor;
-        y2 *= screen::factor;
-
-        cout << x1 << " " << y1 << " " << x2 << " " << y2 << endl;
-
-        mauern.push_back(sf::FloatRect(x1, y2, x2-x1, y2-y1));
+        mauern.push_back(sf::FloatRect(koordinatenOben.x, koordinatenUnten.y, koordinatenUnten.x-koordinatenOben.x, koordinatenUnten.y-koordinatenOben.y));
     }
 
     if(levelDatei.fail())
@@ -44,11 +37,11 @@ void level::loadFromFile(string pfad)
 bool level::checkCollision(sf::FloatRect& spielerPosition)
 {
     for(sf::FloatRect mauer : mauern){
-        if(spielerPosition.intersects(mauer))
+        if(mauer.intersects(spielerPosition)){
             // Diese Zeile verhindert eine Bewegung des Spielers
             //debugMsg.updateText("Intersect!");
-
             return true;
+        }
     }
 
     return false;

@@ -6,6 +6,8 @@
 
 using namespace std;
 
+extern sf::Vector2f koordinaten(int x, int y);
+
 class level{
     public:
     list<sf::FloatRect> mauern;
