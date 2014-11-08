@@ -96,6 +96,21 @@ des Spiels auszuleuchten und uns zu überlegen, wie wir das ganze Spiel technisc
 \includegraphics[scale=0.25]{img/grafiken.png}
 \caption{Ein Beispiellevel mit der Spielfigur}
 \end{figure}
+
 \subsection{Kollisionsdetektion}
+Die Kollisionsdetektion war zu Beginn der Entwicklungen etwas fehleranfällig. So gab es vereinzelt
+Schlupflöcher ganz geringer Breite, sodass man durch die Mauer wandern konnte. Neben der Mauer hingegen,
+versteckte sich eine unsichtbare Mauer, das heisst, es wurde eine Kollision gemeldet, obwohl an der
+Spielerposition gar keine Mauer lag. Um das Problem zu Erforschen und schliesslich zu beheben, haben
+wir die Mauerabschnitte einzeln geladen und ein grünes Rechteck darübergezeichnet. So fiel uns auf, dass
+die Koordinaten der Mauer zwar richtig gelesen, aber falsch verarbeitet wurden. Die Koordinaten mussten
+von absoluten Bildschirmkoordinaten in Fenster/Spielkoordinaten umgerechnet werden.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.3]{img/kollisionsdetektion.png}
+\caption{Debugging der Kollisionsdetektion}
+\end{figure}
+
 
 \end{document}
