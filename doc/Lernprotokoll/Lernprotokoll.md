@@ -22,3 +22,12 @@ Die Spielidee haben wir bereits verfeinert und haben uns erste Ziele gesetzt: Bi
 ### 04.11.14 - Gabriel Gavrilas
 
 Wir haben den Projektvertag nun vollständig abgabebereit. Der Demo-Level funktioniert bereits, wobei wir jedoch probleme mit dem definieren der Mauern haben. Dadurch bleibt unser Spiel momentan noch eine Figur, die sich auf einem gezeichneten Hintergrund bewegt. Bei Jan funktioniert das Laden des Hintergrundes und der Spielerfigur nicht perfekt. Wir freuen uns, dass wir unsere Ziele grösstenteils erreicht haben. Als nächstes sollten wir weitere Elemente in die Demo-Version einfügen.
+
+### 08.11.14 - Patrick Eigensatz
+
+Heute sind uns einige Errungenschaften gelungen: Zum einen haben wir die `sf::View` Klasse, die SFML bereitstellt erfolgreich einsetzen können, d. h. das Spiel müsste jetzt,
+unabhängig von der Auflösung oder der Bildschirmgrösse immer gleich aussehen. Schuld, dass es bis jetzt nicht funktionierte, war ein Missverständnis der SFML-Dokumentation,
+das auch etwas durch eine Inkonsistenz der SFML-Funktionen entstand. Ausserdem wurden diverse Probleme mit der Kollisionsdetektion gelöst. Es gibt keine "Schlupflöcher" mehr
+in den Mauern und man kann problemlos um die Mauer herumlaufen. (Es existieren also auch keine unsichtbaren Mauern mehr!)
+
+
