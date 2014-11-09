@@ -14,10 +14,14 @@ benachrichtigung debugMsg("Debug Mode", 25, 80, 20);
 
 sf::RenderWindow* globalFenster;
 
-sf::Vector2f koordinaten(int x, int y){
+
+
+sf::Vector2f koordinaten(int x, int y ){
     sf::Vector2i pos(x, y);
     return globalFenster->mapPixelToCoords(pos);
 }
+
+
 
 
 
@@ -55,7 +59,7 @@ int main(void)
     float factor =  1920.0f / fensterGroesse.x;
 
     sf::View ansicht(sf::FloatRect(0,0, aufloesung.width, aufloesung.height));
-    ansicht.zoom(factor);
+    //ansicht.zoom(factor);
 
     ansicht.setViewport(sf::FloatRect(0,0, 1, 1));
     fenster.setView(ansicht);
@@ -141,10 +145,10 @@ int main(void)
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
-            spielerEcken.width -=10;
+            spielerEcken.left-=10;
             if(demoLevel.checkCollision(spielerEcken))
             {
-                spielerEcken.width +=10;
+                spielerEcken.left +=10;
             }
             else
             {
@@ -227,7 +231,9 @@ int main(void)
         }
 
         fenster.display();
-
+        sf::Vector2f TEST = koordinaten(100, 100);
+        cout << TEST.x << "|" << TEST.y << endl;
+        cout << spieler.getPosition().x << spieler.getPosition().y << endl;
     }
 
     return 0;
