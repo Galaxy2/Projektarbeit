@@ -8,8 +8,9 @@
 
 extern sf::Font standardSchriftart;
 
-class benachrichtigung{
-    public:
+class benachrichtigung
+{
+public:
     sf::Text text;
 
     benachrichtigung(std::string text, int xpos, int ypos, int charSize);

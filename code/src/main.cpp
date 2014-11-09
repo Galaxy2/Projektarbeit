@@ -16,7 +16,8 @@ sf::RenderWindow* globalFenster;
 
 
 
-sf::Vector2f koordinaten(int x, int y ){
+sf::Vector2f koordinaten(int x, int y )
+{
     sf::Vector2i pos(x, y);
     return globalFenster->mapPixelToCoords(pos);
 }
@@ -31,10 +32,13 @@ int main(void)
     stringstream updateVerfuegbarText;
     updateVerfuegbarText << "Robber " << ROBBER_VERSION;
 
-    if(newVersionAvailable()){
+    if(newVersionAvailable())
+    {
         cout << endl << "! Es steht eine Aktualisierung des Spiels zum Herunterladen bereit !" << endl << endl;
         updateVerfuegbarText << " (Update verfuegbar: " << LATEST_VERSION << " )";
-    } else {
+    }
+    else
+    {
         cout << endl << "Das Spiel läuft in der aktuellsten Version!" << endl << endl;
     }
 
@@ -46,11 +50,11 @@ int main(void)
 
 
 
-    #ifndef LINUX
-        sf::RenderWindow fenster(aufloesung, "Robber", sf::Style::None);
-    #else
-        sf::RenderWindow fenster(aufloesung, "Robber", sf::Style::Fullscreen);
-    #endif
+#ifndef LINUX
+    sf::RenderWindow fenster(aufloesung, "Robber", sf::Style::None);
+#else
+    sf::RenderWindow fenster(aufloesung, "Robber", sf::Style::Fullscreen);
+#endif
 
     globalFenster = &fenster;
     fenster.setFramerateLimit(30);
@@ -143,55 +147,55 @@ int main(void)
 
         else
 
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-        {
-            spielerEcken.left-=10;
-            if(demoLevel.checkCollision(spielerEcken))
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
             {
-                spielerEcken.left +=10;
+                spielerEcken.left-=10;
+                if(demoLevel.checkCollision(spielerEcken))
+                {
+                    spielerEcken.left +=10;
+                }
+                else
+                {
+                    spieler.setRotation(270);
+                    spieler.move(-10, 0);
+                }
             }
+
             else
-            {
-                spieler.setRotation(270);
-                spieler.move(-10, 0);
-            }
-        }
 
-        else
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+                {
+                    // Zuerst Kollision überprüfen!
+                    spielerEcken.top += 10;
+                    if(demoLevel.checkCollision(spielerEcken))
+                    {
+                        // Nicht bewegen!
+                        spielerEcken.top -= 10;
+                    }
+                    else
+                    {
+                        // Bewegen!
+                        spieler.setRotation(180);
+                        spieler.move(0, 10);
+                    }
 
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-        {
-            // Zuerst Kollision überprüfen!
-            spielerEcken.top += 10;
-            if(demoLevel.checkCollision(spielerEcken))
-            {
-                // Nicht bewegen!
-                spielerEcken.top -= 10;
-            }
-            else
-            {
-                // Bewegen!
-                spieler.setRotation(180);
-                spieler.move(0, 10);
-            }
+                }
 
-        }
+                else
 
-        else
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-        {
-            spielerEcken.width +=10;
-            if(demoLevel.checkCollision(spielerEcken))
-            {
-                spielerEcken.width -=10;
-            }
-            else
-            {
-                spieler.setRotation(90);
-                spieler.move(10, 0);
-            }
-        }
+                    if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+                    {
+                        spielerEcken.width +=10;
+                        if(demoLevel.checkCollision(spielerEcken))
+                        {
+                            spielerEcken.width -=10;
+                        }
+                        else
+                        {
+                            spieler.setRotation(90);
+                            spieler.move(10, 0);
+                        }
+                    }
 
 
         // Ende der Eingabeüberprüfung
@@ -226,7 +230,8 @@ int main(void)
         // Render loop
         fenster.clear();
 
-        for(auto object : renderList){
+        for(auto object : renderList)
+        {
             fenster.draw(*object);
         }
 

@@ -3,8 +3,9 @@
 
 #include "notification.h"
 
-namespace screen{
-    extern float factor;
+namespace screen
+{
+extern float factor;
 };
 
 extern void hintergrundLaden(sf::Sprite& s, sf::Texture& h);

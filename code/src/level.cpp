@@ -4,10 +4,11 @@
 #include "level.h"
 #include "screen.h"
 #include "notification.h"
-    sf::VideoMode aufloesung = sf::VideoMode::getDesktopMode();
 
-    // Berechne Skalierungsfaktor
-    float factor = aufloesung.width/1920.0f;
+sf::VideoMode aufloesung = sf::VideoMode::getDesktopMode();
+
+// Berechne Skalierungsfaktor
+float factor = aufloesung.width/1920.0f;
 extern benachrichtigung debugMsg;
 
 
@@ -20,7 +21,8 @@ void level::loadFromFile(string pfad)
     levelDatei >> N;
 
     unsigned int x1, y1, x2, y2;
-    for(unsigned int i=0; i<N; i++){
+    for(unsigned int i=0; i<N; i++)
+    {
         levelDatei >> x1 >> y1 >> x2 >> y2;
         x1 *= factor;
         y1 *= factor;
@@ -41,8 +43,10 @@ void level::loadFromFile(string pfad)
 
 bool level::checkCollision(sf::FloatRect& spielerPosition)
 {
-    for(sf::FloatRect mauer : mauern){
-        if(mauer.intersects(spielerPosition)){
+    for(sf::FloatRect mauer : mauern)
+    {
+        if(mauer.intersects(spielerPosition))
+        {
             // Diese Zeile verhindert eine Bewegung des Spielers
             debugMsg.updateText("Intersect!");
             return true;

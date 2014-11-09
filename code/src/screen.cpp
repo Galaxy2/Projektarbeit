@@ -4,17 +4,20 @@
 #include "screen.h"
 using namespace screen;
 
-namespace screen{
-    float factor;
+namespace screen
+{
+float factor;
 }
 
 
 extern benachrichtigung debugMsg;
 
 
-void hintergrundLaden(sf::Sprite& s, sf::Texture& h){
+void hintergrundLaden(sf::Sprite& s, sf::Texture& h)
+{
 
-    if(!h.loadFromFile("levels/test/test.png")){
+    if(!h.loadFromFile("levels/test/test.png"))
+    {
         std::cerr << "Fehler Hintergrund";
     }
 
@@ -23,8 +26,9 @@ void hintergrundLaden(sf::Sprite& s, sf::Texture& h){
     // Berechne Skalierungsfaktor
     factor = aufloesung.width/1920.0f;
     std::cout << "Factor: " << factor << std::endl;
-    if (factor > 1){
-            factor = 1;
+    if (factor > 1)
+    {
+        factor = 1;
     }
 
     s.setTexture(h);
