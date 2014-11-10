@@ -31,3 +31,9 @@ das auch etwas durch eine Inkonsistenz der SFML-Funktionen entstand. Ausserdem w
 in den Mauern und man kann problemlos um die Mauer herumlaufen. (Es existieren also auch keine unsichtbaren Mauern mehr!)
 
 
+### 09.11.14 - Patrick Eigensatz
+
+Gabriel hat durch langes Ausprobieren und tüfteln unsere Bildschirmauflösungsprobleme fast überall verbannt. Auch hat er es geschafft, die Benachrichtigungsklasse im Spiel richtig einzusetzen, bzw. zum Laufen zu bringen. Jan meldet
+noch vereinzelt Probleme mit seinem Laptop, das Spiel scheint aber bei allen anderen Versuchspcs (mehr als 7!)
+ohne Probleme zu funktionieren. Wir sind an einer Lösung dran, lassen diese jetzt aber bewusst im Hintergrund und
+kümmern uns darum wichtige Teile des Spiels (GUI, Updater, Schätze, Spielfluss) zu implementieren.
