@@ -107,9 +107,7 @@ int main(void)
 
     demoLevel.loadFromFile("levels/test/test.lvl");
 
-
-    debugMsg.test();
-    debugMsg.updateText("Debug Mode!");
+    debugMsg.updateText("Game running in Debug Mode!");
 
 
 
@@ -236,9 +234,13 @@ int main(void)
         }
 
         fenster.display();
-        sf::Vector2f TEST = koordinaten(100, 100);
-        cout << TEST.x << "|" << TEST.y << endl;
-        cout << spieler.getPosition().x << spieler.getPosition().y << endl;
+
+        // Debugstring aktualisieren
+        stringstream debugMsgText;
+        debugMsgText << "Spielerposition: " << spieler.getPosition().x << ", " << spieler.getPosition().y;
+
+        debugMsg.updateText(debugMsgText.str());
+
     }
 
     return 0;
