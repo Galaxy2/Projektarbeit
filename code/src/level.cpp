@@ -6,9 +6,8 @@
 #include "notification.h"
 
 sf::VideoMode aufloesung = sf::VideoMode::getDesktopMode();
-
-// Berechne Skalierungsfaktor
 float factor = aufloesung.width/1920.0f;
+
 extern benachrichtigung debugMsg;
 
 
