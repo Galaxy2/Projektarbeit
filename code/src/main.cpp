@@ -98,7 +98,7 @@ int main(void)
     spielerTexture.loadFromFile("resources/spieler.png");
     spieler.setTexture(spielerTexture);
     spieler.setScale(0.5, 0.5);
-    spieler.setPosition(300, 500);
+    spieler.setPosition(310, 10);
     spieler.setOrigin(sf::Vector2f(50, 50));
 
     // Spieler immer anzeigen!
@@ -217,18 +217,6 @@ int main(void)
             }
 
         }
-
-
-
-        // Mauer Debug
-        sf::RectangleShape demoMauer;
-        renderList.push_back(&demoMauer);
-
-        demoMauer.setPosition(demoLevel.mauern.front().left, demoLevel.mauern.front().top);
-
-        sf::Vector2f groesse(demoLevel.mauern.front().width, demoLevel.mauern.front().height);
-        demoMauer.setSize(groesse);
-        demoMauer.setFillColor(sf::Color::Green);
 
 
         // Ansicht anpassen!
