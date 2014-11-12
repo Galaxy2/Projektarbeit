@@ -24,12 +24,14 @@ void hintergrundLaden(sf::Sprite& s, sf::Texture& h)
     sf::VideoMode aufloesung = sf::VideoMode::getDesktopMode();
 
     // Berechne Skalierungsfaktor
-    factor = aufloesung.width/1920.0f;
+    /*factor = aufloesung.width/1920.0f;
     std::cout << "Factor: " << factor << std::endl;
     if (factor > 1)
     {
-        factor = 1;
-    }
+        factor = 1; */
+
+float factor = aufloesung.width/1920.0f;
+
 
     s.setTexture(h);
     s.setScale(factor, factor);
