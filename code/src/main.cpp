@@ -114,7 +114,7 @@ int main(void)
 
 
     // Test: Pfeilanimation
-    animation pfeil("resources/pfeil", 5, 0.1, 375, 20);
+    animation pfeil("resources/pfeil", 5, 0.05, 525, 20);
     pfeil.sprite.setScale(0.5, 0.5);
     pfeil.sprite.setRotation(90);
     renderList.push_back(&pfeil.sprite);
