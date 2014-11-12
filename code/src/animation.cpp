@@ -1,6 +1,11 @@
 #include "animation.h"
 #include <cstdio>
 
+#ifndef LINUX
+    #include <sstream>
+#endif // LINUX
+
+
 using namespace std;
 
 animation::animation(string n, int N, float dT, int x, int y)
@@ -11,8 +16,17 @@ animation::animation(string n, int N, float dT, int x, int y)
     deltaT = dT;
     sprite.setPosition(x, y);
 
+    string dateiName;
     for(int i=0; i<N; i++){
-        string dateiName = n + "_" + to_string(i) + ".png";
+        #ifndef LINUX
+
+            stringstream dateiNameStream;
+            dateiNameStream << n << "_" << i << ".png";
+
+            dateiName = dateiNameStream.str();
+        #else
+            dateiName = n + "_" + to_string(i) + ".png";
+        #endif // LINUX
 
         sf::Texture *textur = new sf::Texture;
         textur->loadFromFile(dateiName);
