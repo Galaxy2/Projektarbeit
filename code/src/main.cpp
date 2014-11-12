@@ -69,9 +69,12 @@ int main(void)
     fenster.setView(ansicht);
 
 
+    // AnimationList vorbereiten
+    list<animation *> animationList;
 
     // Renderlist vorbereiten
     list<sf::Drawable *> renderList;
+
 
     // Hintergrundbild
     sf::Texture hintergrundTextur;
@@ -110,6 +113,12 @@ int main(void)
     debugMsg.updateText("Game running in Debug Mode!");
 
 
+    // Test: Pfeilanimation
+    animation pfeil("resources/pfeil", 5, 0.1, 375, 20);
+    pfeil.sprite.setScale(0.5, 0.5);
+    pfeil.sprite.setRotation(90);
+    renderList.push_back(&pfeil.sprite);
+    animationList.push_back(&pfeil);
 
     // Solange das Fenster geöffnet ist
     while(fenster.isOpen())
@@ -224,6 +233,14 @@ int main(void)
 
         // Ansicht anpassen!
         fenster.setView(ansicht);
+
+
+        // Animation Loop
+        for(animation* a : animationList)
+        {
+            a->animationAusfuehren();
+        }
+
 
         // Render loop
         fenster.clear();
