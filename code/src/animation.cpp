@@ -3,15 +3,16 @@
 
 using namespace std;
 
-animation::animation(string n, int N, float dT)
+animation::animation(string n, int N, float dT, int x, int y)
 {
     schritt = 0;
     name = n;
     anzahlSchritte = N;
     deltaT = dT;
+    sprite.setPosition(x, y);
 
     for(int i=0; i<N; i++){
-        string dateiName = n + to_string(i);
+        string dateiName = n + "_" + to_string(i) + ".png";
 
         sf::Texture *textur = new sf::Texture;
         textur->loadFromFile(dateiName);

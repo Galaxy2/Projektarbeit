@@ -23,7 +23,7 @@ class animation
 
     void animationAusfuehren(void);
 
-    animation(string n, int N, float dT);
+    animation(string n, int N, float dT, int x, int y);
     ~animation(void);
 };
 

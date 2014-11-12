@@ -5,6 +5,7 @@
 #include "screen.h"
 #include "level.h"
 #include "notification.h"
+#include "animation.h"
 
 
 #endif // __MAIN_H__
