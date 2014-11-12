@@ -76,10 +76,20 @@ int main(void)
     list<sf::Drawable *> renderList;
 
 
-    // Hintergrundbild
+    // Level laden!
+    level demoLevel;
+
+    // Level hier anpassen
+    string levelName = "test1";
+
+    string levelDateiName = "levels/" + levelName + "/" + levelName + ".lvl";
+    demoLevel.loadFromFile(levelDateiName);
+
+
+    // Hintergrundbild laden
     sf::Texture hintergrundTextur;
     sf::Sprite hintergrund;
-    hintergrundLaden(hintergrund, hintergrundTextur);
+    hintergrundLaden("test1", hintergrund, hintergrundTextur);
     renderList.push_front(&hintergrund);
 
 
@@ -104,11 +114,6 @@ int main(void)
     // Spieler immer anzeigen!
     renderList.push_back(&spieler);
 
-    // Level laden!
-    level demoLevel;
-
-
-    demoLevel.loadFromFile("levels/test1/test1.lvl");
 
     debugMsg.updateText("Game running in Debug Mode!");
 

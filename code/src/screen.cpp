@@ -3,22 +3,24 @@
 
 #include "screen.h"
 using namespace screen;
+using namespace std;
 
 namespace screen
 {
-float factor;
+    float factor;
 }
 
 
 extern benachrichtigung debugMsg;
 
 
-void hintergrundLaden(sf::Sprite& s, sf::Texture& h)
+void hintergrundLaden(string levelName, sf::Sprite& s, sf::Texture& h)
 {
+    string dateiName = "levels/" + levelName + "/" + levelName + ".png";
 
-    if(!h.loadFromFile("levels/test1/test1.png"))
+    if(!h.loadFromFile(dateiName))
     {
-        std::cerr << "Fehler Hintergrund";
+        std::cerr << "Fehler beim Laden des Hintergrunds\n";
     }
 
     sf::VideoMode aufloesung = sf::VideoMode::getDesktopMode();
