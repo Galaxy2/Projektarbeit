@@ -77,6 +77,8 @@
 		<Linker>
 			<Add directory="C:/SFML-2.1/lib" />
 		</Linker>
+		<Unit filename="animation.cpp" />
+		<Unit filename="animation.h" />
 		<Unit filename="level.cpp" />
 		<Unit filename="level.h" />
 		<Unit filename="main.cpp" />
