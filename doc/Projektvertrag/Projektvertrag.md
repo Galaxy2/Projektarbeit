@@ -11,7 +11,11 @@
 * Roger Sax
 
 ## 2. Thema
-### Robber
+### TITEL Robber
+
+Was ist speziell an diesem Spiel? Warum diese Idee? Warum ein zusätzliches Spiel? 
+
+
 
 #### Programmieren eines 2D-Spiels
 
@@ -19,31 +23,39 @@
 ### Wissensstand, mögliche Quellen
 Patrick verfügt über fortgeschrittene Erfahrungen in der Programmiersprache C++. Jan und Gabriel besitzen grundlegende
 Kenntnisse der Programmiersprache C++. In der Projektvorbereitung haben wir uns sehr oberflächlich mit der Entwicklungsumgebung Code::Blocks beschäftigt, und mit dem OpenSource Multimedia Framework SFML eine Lösung für das Anzeigen und Abspielen von Grafiken und anderen Multimediaelementen gefunden. Unser Wissen beziehen wir aus hauptsächlich Büchern, offiziellen Dokumentationen und dem Internet.
+Wissensstand Gamedesign? Nein... Quellen vom Rechercheprotokoll reinkopieren!
+
 
 ### Begriffsbestimmungen
-Multimedia Framework:
-	Eine Bibliothek mit Funktionen, die sich in C++-Programme einbinden lassen. Damit kann man verschiedene Aufgaben plattformübergreifend bewältigen.
+* Multimedia Framework:
+	* Eine Bibliothek mit Funktionen, die sich in C++-Programme einbinden lassen. Damit kann man verschiedene Aufgaben plattformübergreifend bewältigen.
 
-OpenSource-Lizenz:
-	Eine Lizenz, die das Einsehen, das Verändern und das Weiternutzen des Quellcodes erlaubt.
+* OpenSource-Lizenz:
+	* Eine Lizenz, die das Einsehen, das Verändern und das Weiternutzen des Quellcodes erlaubt.
 
-OpenSource-Software (OSS):
-	Software, die unter einer OpenSource-Lizenz verfügbar ist.
+* OpenSource-Software (OSS):
+	* Software, die unter einer OpenSource-Lizenz verfügbar ist.
 
-Versionskontrollsystem:
-	Ein Programm, das Veränderungen an Dateien aufzeichnet und speichert, sodass mehrere Entwickler den Code gleichzeitig ohne Redundanz verändern können.
+* Versionskontrollsystem:
+	* Ein Programm, das Veränderungen an Dateien aufzeichnet und speichert, sodass mehrere Entwickler den Code gleichzeitig ohne Redundanz verändern können.
 
-GitHub:
-	Für OSS-Entwickler von OpenSource kostenlose Plattform, um die über das Versionskontrollsystem git aufgezeichneten Veränderungen übersichtlich zugänglich zu machen.
+* GitHub:
+	* Für OSS-Entwickler von OpenSource kostenlose Plattform, um die über das Versionskontrollsystem git aufgezeichneten Veränderungen übersichtlich zugänglich zu machen.
 
-Travis CI:
-	Für OSS-Entwickler kostenlose Plattform zur Qualitätssicherung: Kompiliert das Projekt automatisch nach jeder Änderungen und führt Tests durch, um zu sicherzustellen, dass das Programm einwandfrei funktioniert.
+* Travis CI:
+	* Für OSS-Entwickler kostenlose Plattform zur Qualitätssicherung: Kompiliert das Projekt automatisch nach jeder Änderungen und führt Tests durch, um zu sicherzustellen, dass das Programm einwandfrei funktioniert.
 
-Coverity:
-        Für OSS-Entwickler kostenlose Plattform: Führt eine tiefgreifende statische Quellcodeanalyse durch, und hilft so Programmierfehler zu vermeiden und zu finden.
+* Coverity:
+        * Für OSS-Entwickler kostenlose Plattform: Führt eine tiefgreifende statische Quellcodeanalyse durch, und hilft so Programmierfehler zu vermeiden und zu finden.
 
 ### Projektziele / Hypothesen / Fragestellung
-Ziel unseres Projektes ist ein 2D-Einbrecherspiel zu entwickeln. Der Spieler soll eine Figur spielen, die in Häuser einbrechen muss und unentdeckt Gegenstände enwendet. Ein weiteres Ziel ist die Anwendung der Techniken der Sprache C++ zu lernen und zu beherrschen. Dies wollen wir durch das Prinzip Learning-by-Doing erreichen. Jeder in der Gruppe soll am Ende mittelgrosse C++-Programme selber programmieren können. Wir setzen uns zum Ziel, die Konzepte hinter Frameworks (namentlich SFML) zu verstehen und die programmiertechnischen Abläufe hinter dem Spiel zu kennen. Wir wollen unser Spiel komplett im Team entwickeln und mit dem Versionskontrollsystem gut vertraut werden. Das alles soll uns später für eigene Projekte und unsere Maturaarbeit helfen. Das Spiel soll unter eine OpenSource Lizenz gestellt werden.
+Ziel unseres Projektes ist ein 2D-Einbrecherspiel zu entwickeln. Der Spieler soll eine Figur spielen, die in Häuser einbrechen muss und unentdeckt
+Gegenstände enwendet. Ein weiteres Ziel ist die Anwendung der Techniken der Sprache C++ zu lernen und zu beherrschen.
+Dies wollen wir durch das Prinzip Learning-by-Doing erreichen. Jeder in der Gruppe soll am Ende mittelgrosse C++-Programme
+selber programmieren können. Wir setzen uns zum Ziel, die Konzepte hinter Frameworks (namentlich SFML) zu verstehen und
+die programmiertechnischen Abläufe hinter dem Spiel zu kennen. Wir wollen unser Spiel komplett im Team entwickeln
+und mit dem Versionskontrollsystem gut vertraut werden. Das alles soll uns später für eigene Projekte und unsere
+Maturaarbeit helfen. Das Spiel soll/muss unter eine OpenSource Lizenz gestellt werden.
 
 
 ### Methode / Vorgehen
@@ -60,7 +72,13 @@ Unser Grobplan beim Erlernen von C++ war:
 * STL-Templates
 * SFML
 
-Das Spiel selber entwickeln wir aufbauend. Wir wenden uns laufend den verschiedenen Aspekten des Programmierens eines Spieles zu, z.B: Strukturierung, Graphik, Spielprinzip. Wir teilen diese Aufgaben entweder untereinander auf, oder wir bearbeiten sie direkt zusammen. Das Spiel soll auf den Zielbetriebssystemen spielbar sein, weswegen wir sowohl untereinander, als auch später über Feedbacks die Probleme analysieren. Über die eben genannten Feedbacks werden wir auch in der Schlussphase noch Verbesserungen am Spiel allgemein vornehmen.
+Das Spiel selber entwickeln wir aufbauend. Wir wenden uns laufend den verschiedenen Aspekten des Programmierens
+eines Spieles zu, z.B: Strukturierung, Graphik, Spielprinzip. Das Spiel soll auf den Zielbetriebssystemen (siehe unten) spielbar sein,
+weswegen wir sowohl untereinander, als auch später über *Feedbacks* die Probleme analysieren. Über die eben genannten
+Feedbacks werden wir auch in der Schlussphase noch Verbesserungen am Spiel allgemein vornehmen.
+
+## TODO: Was für Feedbacks?
+
 
 ### Ressourcen / Voraussetzungen
 Wir wollen unser 2D-Spiel nur für den Computer entwickeln; Portierungen auf Konsolen oder andere Plattformen sind nicht geplant. Zielbetriebssysteme sind gängige Linuxdistributionen und Microsoft Windows. Zum Entwickeln der Software verwenden wir nur OpenSource Software, und die für OpenSource Entwickler frei zugänglichen Plattformen GitHub, Travis CI, Coverity.
@@ -72,7 +90,7 @@ Da wir die Gameidee gut erweiterbar gewält haben, könnte man das Spiel noch de
 Unsere Arbeit werden wir in Deutsch schreiben. Aufgrund unserer Thematik
 werden oft englische Ausdrücke vorkommen, die man im technischen Jargon
 gar nicht übersetzt, oder für die keine korrekte deutsche Übersetzung existiert.
-So oft wie möglich sollen auch Deutsche Begriffe den englischen vorgezogen werden. So zum Beispiel bei Namen und Bezeichnungen. Dies soll die Verständlichkeit untereinander fördern.
+(zum Beispiel bei Namen und Bezeichnungen)
 
 ## 4. Aufbau der Arbeit
 Gemäss den Vorgaben im Handbuch für den Projektunterricht. Das heisst eine Dokumentation, ein Arbeitsprotokoll,
@@ -94,6 +112,7 @@ Die Recherche wird in der Dokumentation nachzulesen sein.
 Im Verlauf der Arbeit kann es zu weiteren Recherchen kommen,
 um unerwarteten Probleme während der Arbeit zu lösen.
 
+## TODO: Datenerhebung - Feedbacks?
 ### Datenerhebung
 Für unser Projekt benötigen wir keine besonderen Daten, wie beispielsweise
 aus einer Umfrage.
@@ -103,7 +122,8 @@ Am Ende der Arbeit, liegen
  * eine Dokumentation, welche die Motivation, das Herangehen und die Entwicklung beschreibt,
  * ein Arbeitsprotokoll, welches Arbeitsvorgänge und Termine beschreibt (Auszug aus git) und
  * ein Lernprotokoll, welches eine Auflistung von Daten mit den dazugehörigen
-   Aktivitäten und Besprechungen vor.
+   Aktivitäten und Besprechungen enthält,
+vor.
 
 ### Zusammenstellung / Gestaltung
 Die Arbeit liegt am Schluss in digitaler Form vor. Die Dokumentation
@@ -113,8 +133,12 @@ und die obligatorischen Protokolle können ausgedruckt werden.
 Abgabetermin ist der 21. Januar 2015.
 
 ## 6. Themenspezifische Beurteilungskriterien
-* keine besonderen Kentnisse
+* Bewertungskriterien im Anhang
 
-## Darstellung von Zitaten, Literatur- und Quellenangaben
-Literatur und Zitate werden wir mit BibTeX automatisch referenzieren lassen. Da wir viele 
-Dokumente mit dem Textsatzsystem LaTeX schreiben.
+## 7. Darstellung von Zitaten, Literatur- und Quellenangaben
+Literatur und Zitate werden wir gemäss dem Handbuch erwähnen und zitieren.
+
+# Orthographie, etc ;)
+
+
+# Vertragsparteien + Unterschrift
