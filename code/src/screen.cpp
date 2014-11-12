@@ -16,7 +16,7 @@ extern benachrichtigung debugMsg;
 void hintergrundLaden(sf::Sprite& s, sf::Texture& h)
 {
 
-    if(!h.loadFromFile("levels/test/test.png"))
+    if(!h.loadFromFile("levels/test1/test1.png"))
     {
         std::cerr << "Fehler Hintergrund";
     }

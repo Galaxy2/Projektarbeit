@@ -108,7 +108,7 @@ int main(void)
     level demoLevel;
 
 
-    demoLevel.loadFromFile("levels/test/test.lvl");
+    demoLevel.loadFromFile("levels/test1/test1.lvl");
 
     debugMsg.updateText("Game running in Debug Mode!");
 
@@ -131,6 +131,9 @@ int main(void)
 
         // Kollisionsdetektion
         sf::FloatRect spielerEcken = spieler.getGlobalBounds();
+
+        // Zoom erneut auf 1 setzen
+        float zoom = 1.0f;
 
         // Input loop
         // Nur in eine Richtung auf einmal!
@@ -204,6 +207,19 @@ int main(void)
                         }
                     }
 
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num0))
+            {
+                zoom -= 0.05;
+                ansicht.zoom(zoom);
+            }
+
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num9))
+            {
+                zoom += 0.05;
+                ansicht.zoom(zoom);
+            }
+
+
 
         // Ende der Eingabeüberprüfung
         // Event Poll!
@@ -218,9 +234,16 @@ int main(void)
 
         }
 
-
         // Ansicht anpassen!
+        ansicht.setCenter(spieler.getPosition());
         fenster.setView(ansicht);
+
+        // Fixe Elemente neu setzen
+        sf::Vector2i versionPosition(25, 25);
+        sf::Vector2i debugPosition(25, 65);
+
+        version.text.setPosition(fenster.mapPixelToCoords(versionPosition));
+        debugMsg.text.setPosition(fenster.mapPixelToCoords(debugPosition));
 
 
         // Animation Loop
@@ -239,6 +262,7 @@ int main(void)
         }
 
         fenster.display();
+
 
         // Debugstring aktualisieren
         stringstream debugMsgText;
