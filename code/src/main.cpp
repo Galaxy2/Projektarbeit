@@ -10,7 +10,7 @@ using namespace std;
 
 sf::Font standardSchriftart;
 benachrichtigung debugMsg("Debug Mode", 25, 80, 20);
-
+benachrichtigung debugMsg2("Debug Mode", 25, 110, 20);
 
 sf::RenderWindow* globalFenster;
 
@@ -103,6 +103,10 @@ int main(void)
     // DebugMsg anzeigen!
     renderList.push_back((sf::Drawable *)&debugMsg.text);
 
+    // DebugMsg2 anzeigen!
+    renderList.push_back((sf::Drawable *)&debugMsg2.text);
+
+
     sf::Texture spielerTexture;
     sf::Sprite spieler;
     spielerTexture.loadFromFile("resources/spieler.png");
@@ -117,6 +121,8 @@ int main(void)
 
     debugMsg.updateText("Game running in Debug Mode!");
 
+    // Konsole!
+    renderList.push_back((sf::Drawable *)&console::eingabeFeld);
 
     // Test: Pfeilanimation
     animation pfeil("resources/pfeil", 8, 0.05, 525, 20);
@@ -125,8 +131,6 @@ int main(void)
     renderList.push_back(&pfeil.sprite);
     animationList.push_back(&pfeil);
 
-    // Konsole!
-    renderList.push_back(&console::eingabeFeld);
 
     // Solange das Fenster geöffnet ist
     while(fenster.isOpen())
@@ -248,6 +252,12 @@ int main(void)
         if(console::activated && sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
         {
             cout << "Ausfuehren: '" << console::eingabeText.str() << "'" << endl;
+
+            if(console::eingabeText.str() == "9990")
+            {
+                debugMsg2.updateText("----- LOL -----");
+            }
+
             hideConsole();
         }
 
@@ -284,7 +294,8 @@ int main(void)
 
         version.text.setPosition(fenster.mapPixelToCoords(versionPosition));
         debugMsg.text.setPosition(fenster.mapPixelToCoords(debugPosition));
-        console::eingabeFeld.setPosition(fenster.mapPixelToCoords(consolePosition));
+        debugMsg2.text.setPosition(fenster.mapPixelToCoords(consolePosition));
+        //console::eingabeFeld.setPosition(fenster.mapPixelToCoords(consolePosition));
 
         // Animation Loop
         for(animation* a : animationList)
