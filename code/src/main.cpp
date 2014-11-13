@@ -125,6 +125,9 @@ int main(void)
     renderList.push_back(&pfeil.sprite);
     animationList.push_back(&pfeil);
 
+    // Konsole!
+    renderList.push_back(&console::eingabeFeld);
+
     // Solange das Fenster geöffnet ist
     while(fenster.isOpen())
     {
@@ -141,89 +144,112 @@ int main(void)
         float zoom = 1.0f;
 
         // Input loop
-        // Nur in eine Richtung auf einmal!
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+
+        // Nur wenn Konsole nicht aktiviert!
+        if(!console::activated)
         {
-            // Zuerst Kollision überprüfen!
-            spielerEcken.top -= 10;
-            if(demoLevel.checkCollision(spielerEcken))
+
+            // Nur in eine Richtung auf einmal!
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
             {
-                // Nicht bewegen!
-                spielerEcken.top += 10;
+                // Zuerst Kollision überprüfen!
+                spielerEcken.top -= 10;
+                if(demoLevel.checkCollision(spielerEcken))
+                {
+                    // Nicht bewegen!
+                    spielerEcken.top += 10;
+                }
+                else
+                {
+                    // Bewegen!
+                    spieler.setRotation(0);
+                    spieler.move(0, -10);
+                }
+
             }
+
             else
+
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+                {
+                    spielerEcken.left-=10;
+                    if(demoLevel.checkCollision(spielerEcken))
+                    {
+                        spielerEcken.left +=10;
+                    }
+                    else
+                    {
+                        spieler.setRotation(270);
+                        spieler.move(-10, 0);
+                    }
+                }
+
+                else
+
+                    if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+                    {
+                        // Zuerst Kollision überprüfen!
+                        spielerEcken.top += 10;
+                        if(demoLevel.checkCollision(spielerEcken))
+                        {
+                            // Nicht bewegen!
+                            spielerEcken.top -= 10;
+                        }
+                        else
+                        {
+                            // Bewegen!
+                            spieler.setRotation(180);
+                            spieler.move(0, 10);
+                        }
+
+                    }
+
+                    else
+
+                        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+                        {
+                            spielerEcken.width +=10;
+                            if(demoLevel.checkCollision(spielerEcken))
+                            {
+                                spielerEcken.width -=10;
+                            }
+                            else
+                            {
+                                spieler.setRotation(90);
+                                spieler.move(10, 0);
+                            }
+                        }
+
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num0))
+                {
+                    zoom -= 0.05;
+                    ansicht.zoom(zoom);
+                }
+
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num9))
+                {
+                    zoom += 0.05;
+                    ansicht.zoom(zoom);
+                }
+        }
+
+
+        if(!console::activated && sf::Keyboard::isKeyPressed(sf::Keyboard::RShift))
+        {
+            if(!console::activated)
             {
-                // Bewegen!
-                spieler.setRotation(0);
-                spieler.move(0, -10);
+                showConsole();
+                cerr << "SHOW" << endl;
             }
 
         }
 
-        else
 
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-            {
-                spielerEcken.left-=10;
-                if(demoLevel.checkCollision(spielerEcken))
-                {
-                    spielerEcken.left +=10;
-                }
-                else
-                {
-                    spieler.setRotation(270);
-                    spieler.move(-10, 0);
-                }
-            }
-
-            else
-
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-                {
-                    // Zuerst Kollision überprüfen!
-                    spielerEcken.top += 10;
-                    if(demoLevel.checkCollision(spielerEcken))
-                    {
-                        // Nicht bewegen!
-                        spielerEcken.top -= 10;
-                    }
-                    else
-                    {
-                        // Bewegen!
-                        spieler.setRotation(180);
-                        spieler.move(0, 10);
-                    }
-
-                }
-
-                else
-
-                    if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-                    {
-                        spielerEcken.width +=10;
-                        if(demoLevel.checkCollision(spielerEcken))
-                        {
-                            spielerEcken.width -=10;
-                        }
-                        else
-                        {
-                            spieler.setRotation(90);
-                            spieler.move(10, 0);
-                        }
-                    }
-
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num0))
-            {
-                zoom -= 0.05;
-                ansicht.zoom(zoom);
-            }
-
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num9))
-            {
-                zoom += 0.05;
-                ansicht.zoom(zoom);
-            }
-
+        if(console::activated && sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+        {
+            cout << "Ausfuehren: '" << console::eingabeText.str() << "'" << endl;
+            hideConsole();
+        }
 
 
         // Ende der Eingabeüberprüfung
@@ -237,7 +263,15 @@ int main(void)
                 fenster.close();
             }
 
+            else
+
+            if(console::activated && event.type == sf::Event::TextEntered)
+            {
+                // Wenn Konsole aktiviert, Eingabe lesen!
+                updateConsole(static_cast<char>(event.text.unicode));
+            }
         }
+
 
         // Ansicht anpassen!
         ansicht.setCenter(spieler.getPosition());
@@ -246,10 +280,11 @@ int main(void)
         // Fixe Elemente neu setzen
         sf::Vector2i versionPosition(25, 25);
         sf::Vector2i debugPosition(25, 65);
+        sf::Vector2i consolePosition(25, 95);
 
         version.text.setPosition(fenster.mapPixelToCoords(versionPosition));
         debugMsg.text.setPosition(fenster.mapPixelToCoords(debugPosition));
-
+        console::eingabeFeld.setPosition(fenster.mapPixelToCoords(consolePosition));
 
         // Animation Loop
         for(animation* a : animationList)

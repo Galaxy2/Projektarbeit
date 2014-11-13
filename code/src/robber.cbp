@@ -79,6 +79,8 @@
 		</Linker>
 		<Unit filename="animation.cpp" />
 		<Unit filename="animation.h" />
+		<Unit filename="console.cpp" />
+		<Unit filename="console.h" />
 		<Unit filename="level.cpp" />
 		<Unit filename="level.h" />
 		<Unit filename="main.cpp" />
