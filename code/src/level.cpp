@@ -42,6 +42,10 @@ void level::loadFromFile(string pfad)
 
 bool level::checkCollision(sf::FloatRect& spielerPosition)
 {
+    if(!collisionsActivated)
+        return false;
+
+
     for(sf::FloatRect mauer : mauern)
     {
         if(mauer.intersects(spielerPosition))

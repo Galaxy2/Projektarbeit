@@ -254,11 +254,18 @@ int main(void)
 
         if(console::activated && sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
         {
-            cout << "Ausfuehren: '" << console::eingabeText.str() << "'" << endl;
+            string befehl = console::eingabeText.str();
 
-            if(console::eingabeText.str() == "9990")
+            cout << "Ausfuehren: '" << befehl << "'" << endl;
+
+            if(befehl == "9990")
             {
                 debugMsg2.updateText("----- LOL -----");
+            }
+            else
+            if(befehl == "toggleWalls")
+            {
+                demoLevel.collisionsActivated = (!demoLevel.collisionsActivated);
             }
 
             hideConsole();

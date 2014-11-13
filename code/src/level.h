@@ -14,7 +14,7 @@ public:
     list<sf::FloatRect> mauern;
     void loadFromFile(string pfad);
     bool checkCollision(sf::FloatRect& spielerPosition);
-
+    bool collisionsActivated = true;
 };
 
 
