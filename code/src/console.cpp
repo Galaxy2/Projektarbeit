@@ -16,9 +16,6 @@ void showConsole(void)
 {
     eingabeFeld.setString("> ");
     eingabeText.str("");
-    eingabeFeld.setColor(sf::Color::Red);
-    eingabeFeld.setCharacterSize(20);
-
     activated = true;
 }
 
@@ -32,5 +29,4 @@ void updateConsole(char c)
 {
     eingabeText << c;
     eingabeFeld.setString("> " + eingabeText.str());
-    std::cerr << "> " + eingabeText.str() << std::endl;
 }

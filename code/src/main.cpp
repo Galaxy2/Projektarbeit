@@ -122,6 +122,10 @@ int main(void)
     debugMsg.updateText("Game running in Debug Mode!");
 
     // Konsole!
+    console::eingabeFeld.setFont(standardSchriftart);
+    console::eingabeFeld.setColor(sf::Color::Red);
+    console::eingabeFeld.setCharacterSize(20);
+
     renderList.push_back((sf::Drawable *)&console::eingabeFeld);
 
     // Test: Pfeilanimation
@@ -243,7 +247,6 @@ int main(void)
             if(!console::activated)
             {
                 showConsole();
-                cerr << "SHOW" << endl;
             }
 
         }
@@ -289,13 +292,15 @@ int main(void)
 
         // Fixe Elemente neu setzen
         sf::Vector2i versionPosition(25, 25);
-        sf::Vector2i debugPosition(25, 65);
-        sf::Vector2i consolePosition(25, 95);
+        sf::Vector2i debugPosition(25, 50);
+        sf::Vector2i debug2Position(25, 75);
+
+        sf::Vector2i consolePosition(25, 100);
 
         version.text.setPosition(fenster.mapPixelToCoords(versionPosition));
         debugMsg.text.setPosition(fenster.mapPixelToCoords(debugPosition));
-        debugMsg2.text.setPosition(fenster.mapPixelToCoords(consolePosition));
-        //console::eingabeFeld.setPosition(fenster.mapPixelToCoords(consolePosition));
+        debugMsg2.text.setPosition(fenster.mapPixelToCoords(debug2Position));
+        console::eingabeFeld.setPosition(fenster.mapPixelToCoords(consolePosition));
 
         // Animation Loop
         for(animation* a : animationList)
