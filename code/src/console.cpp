@@ -27,6 +27,18 @@ void hideConsole(void)
 
 void updateConsole(char c)
 {
-    eingabeText << c;
+    // Wenn "Backspace"
+    if(c == 8)
+    {
+        std::string text = eingabeText.str();
+        text.pop_back();
+        eingabeText.str("");
+        eingabeText << text;
+    }
+    else
+    {
+        eingabeText << c;
+    }
+
     eingabeFeld.setString("> " + eingabeText.str());
 }
