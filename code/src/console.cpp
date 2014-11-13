@@ -31,9 +31,14 @@ void updateConsole(char c)
     if(c == 8)
     {
         std::string text = eingabeText.str();
-        text.pop_back();
-        eingabeText.str("");
-        eingabeText << text;
+
+        if(text.length() > 0)
+        {
+            text.pop_back();
+
+            eingabeText.str("");
+            eingabeText << text;
+        }
     }
     else
     {
