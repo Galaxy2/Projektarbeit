@@ -15,6 +15,7 @@
 				<Compiler>
 					<Add option="-std=c++11" />
 					<Add option="-g" />
+					<Add directory="C:/SFML-2.1/include" />
 				</Compiler>
 				<Linker>
 					<Add library="sfml-graphics-d" />
@@ -26,6 +27,7 @@
 					<Add library="gdi32" />
 					<Add library="winmm" />
 					<Add library="dxguid" />
+					<Add directory="C:/SFML-2.1/lib" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -36,6 +38,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="C:/SFML-2.1/include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -48,6 +51,7 @@
 					<Add library="gdi32" />
 					<Add library="winmm" />
 					<Add library="dxguid" />
+					<Add directory="C:/SFML-2.1/lib" />
 				</Linker>
 			</Target>
 			<Target title="linux">
@@ -72,11 +76,7 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add directory="C:/SFML-2.1/include" />
 		</Compiler>
-		<Linker>
-			<Add directory="C:/SFML-2.1/lib" />
-		</Linker>
 		<Unit filename="animation.cpp" />
 		<Unit filename="animation.h" />
 		<Unit filename="console.cpp" />
