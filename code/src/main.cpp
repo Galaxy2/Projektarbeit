@@ -337,5 +337,12 @@ int main(void)
 
     }
 
+    // Meamleak Fix!
+    if(hintergrundTextur != 0x0 && hintergrund != 0x0)
+    {
+        delete hintergrundTextur;
+        delete hintergrund;
+    }
+
     return 0;
 }
