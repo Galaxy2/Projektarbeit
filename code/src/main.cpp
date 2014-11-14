@@ -58,6 +58,7 @@ int main(void)
 
     globalFenster = &fenster;
     fenster.setFramerateLimit(50);
+    fenster.setVerticalSyncEnabled(true);
 
     sf::Vector2u fensterGroesse = fenster.getSize();
     float factor =  1920.0f / fensterGroesse.x;
