@@ -76,8 +76,8 @@ int main(void)
     list<sf::Drawable *> renderList;
 
     // Hintergrundbild
-    sf::Texture hintergrundTextur;
-    sf::Sprite hintergrund;
+    sf::Texture* hintergrundTextur = 0x0;
+    sf::Sprite* hintergrund = 0x0;
 
     // Level laden!
     level demoLevel;

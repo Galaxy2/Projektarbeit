@@ -58,8 +58,18 @@ bool level::checkCollision(sf::FloatRect& spielerPosition)
 }
 
 
-void level::loadToScreen(sf::Texture& hintergrundTextur, sf::Sprite& hintergrund, list<sf::Drawable *>& renderList)
+void level::loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergrund, list<sf::Drawable *>& renderList)
 {
+    if(hintergrundTextur != 0x0 && hintergrund != 0x0)
+    {
+        delete hintergrundTextur;
+        delete hintergrund;
+    }
+
+    hintergrundTextur = new sf::Texture;
+    hintergrund = new sf::Sprite;
+
+
     // Aktuelles Level leeren
     mauern.clear();
     collisionsActivated = true;
@@ -69,5 +79,5 @@ void level::loadToScreen(sf::Texture& hintergrundTextur, sf::Sprite& hintergrund
 
     // Hintergrundbild laden
     hintergrundLaden(name, hintergrund, hintergrundTextur);
-    renderList.push_front(&hintergrund);
+    renderList.push_front(hintergrund);
 }

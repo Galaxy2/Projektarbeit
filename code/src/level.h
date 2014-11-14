@@ -13,7 +13,7 @@ class level
 public:
     void loadFromFile(string pfad);
     bool checkCollision(sf::FloatRect& spielerPosition);
-    void loadToScreen(sf::Texture& hintergrundTextur, sf::Sprite& hintergrund, list<sf::Drawable *>& renderList);
+    void loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergrund, list<sf::Drawable *>& renderList);
 
     list<sf::FloatRect> mauern;
     bool collisionsActivated;

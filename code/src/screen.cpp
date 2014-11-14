@@ -14,11 +14,11 @@ namespace screen
 extern benachrichtigung debugMsg;
 
 
-void hintergrundLaden(string levelName, sf::Sprite& s, sf::Texture& h)
+void hintergrundLaden(string levelName, sf::Sprite* s, sf::Texture* h)
 {
     string dateiName = "levels/" + levelName + "/" + levelName + ".png";
 
-    if(!h.loadFromFile(dateiName))
+    if(!h->loadFromFile(dateiName))
     {
         std::cerr << "Fehler beim Laden des Hintergrunds\n";
     }
@@ -32,11 +32,11 @@ void hintergrundLaden(string levelName, sf::Sprite& s, sf::Texture& h)
     {
         factor = 1; */
 
-float factor = aufloesung.width/1920.0f;
+    float factor = aufloesung.width/1920.0f;
 
 
-    s.setTexture(h);
-    s.setScale(factor, factor);
+    s->setTexture(*h);
+    s->setScale(factor, factor);
 }
 
 
