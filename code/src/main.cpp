@@ -75,22 +75,16 @@ int main(void)
     // Renderlist vorbereiten
     list<sf::Drawable *> renderList;
 
+    // Hintergrundbild
+    sf::Texture hintergrundTextur;
+    sf::Sprite hintergrund;
 
     // Level laden!
     level demoLevel;
 
     // Level hier anpassen
-    string levelName = "test";
-
-    string levelDateiName = "levels/" + levelName + "/" + levelName + ".lvl";
-    demoLevel.loadFromFile(levelDateiName);
-
-
-    // Hintergrundbild laden
-    sf::Texture hintergrundTextur;
-    sf::Sprite hintergrund;
-    hintergrundLaden(levelName, hintergrund, hintergrundTextur);
-    renderList.push_front(&hintergrund);
+    demoLevel.name = "test"; // Todo: Konstruktor erstellen!
+    demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList);
 
 
     // Schriftart laden!
@@ -266,6 +260,13 @@ int main(void)
             if(befehl == "toggleWalls")
             {
                 demoLevel.collisionsActivated = (!demoLevel.collisionsActivated);
+            }
+            else
+            if(befehl.find("loadLevel ") == 0)
+            {
+                demoLevel.name = befehl.substr(befehl.find("loadLevel ") + 10);
+                cerr << "Lade: '" << demoLevel.name << "'" << endl;
+                demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList);
             }
 
             hideConsole();

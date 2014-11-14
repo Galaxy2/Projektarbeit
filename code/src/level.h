@@ -11,10 +11,13 @@ extern sf::Vector2f koordinaten(int x, int y);
 class level
 {
 public:
-    list<sf::FloatRect> mauern;
     void loadFromFile(string pfad);
     bool checkCollision(sf::FloatRect& spielerPosition);
-    bool collisionsActivated = true;
+    void loadToScreen(sf::Texture& hintergrundTextur, sf::Sprite& hintergrund, list<sf::Drawable *>& renderList);
+
+    list<sf::FloatRect> mauern;
+    bool collisionsActivated;
+    string name;
 };
 
 

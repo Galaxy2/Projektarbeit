@@ -56,3 +56,18 @@ bool level::checkCollision(sf::FloatRect& spielerPosition)
 
     return false;
 }
+
+
+void level::loadToScreen(sf::Texture& hintergrundTextur, sf::Sprite& hintergrund, list<sf::Drawable *>& renderList)
+{
+    // Aktuelles Level leeren
+    mauern.clear();
+    collisionsActivated = true;
+
+    string levelDateiName = "levels/" + name + "/" + name + ".lvl";
+    this->loadFromFile(levelDateiName);
+
+    // Hintergrundbild laden
+    hintergrundLaden(name, hintergrund, hintergrundTextur);
+    renderList.push_front(&hintergrund);
+}
