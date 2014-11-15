@@ -131,6 +131,11 @@ der die Bilder bereits lädt, die Position und die Zeitspanne $\Delta t$ zwische
 	\includegraphics[scale=0.3]{img/animation_pfeil.png}
 	\caption{Die erste Animation im Spiel: Ein blinkender Einstiegspfeil}
 \end{figure}
+Innerhalb unserer $main()$-Funktion nützten wir eine $std::list<animation *>$ Liste aus der STL\footnote{Standard Template Library}.
+Bevor die Sprites in das Fenster gezeichnet werden, werden die Texturen der Sprites dem Animationszeitpunkt entsprechend
+neu geladen. So entsteht das Gefühl einer Bewegung, bzw. hier Anpassung der Farbe. Entscheidend ist dabei die Methode
+$animationAusfuehren()$, die überprüft, ob bereits genug Zeit vergangen ist, das neue Bild anzuzeigen und dies gegebenenfalls
+übernimmt.
 
 \newpage
 \listoffigures
