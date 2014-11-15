@@ -77,6 +77,7 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add option="-g" />
 		</Compiler>
 		<Unit filename="animation.cpp" />
 		<Unit filename="animation.h" />

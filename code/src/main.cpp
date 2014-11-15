@@ -1,5 +1,6 @@
 #include <iostream>
 #include <sstream>
+#include <vector>
 #include <list>
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
@@ -85,7 +86,7 @@ int main(void)
 
     // Level hier anpassen
     demoLevel.name = "test"; // Todo: Konstruktor erstellen!
-    demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList);
+    demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
 
     // Schriftart laden!
@@ -124,12 +125,13 @@ int main(void)
     renderList.push_back((sf::Drawable *)&console::eingabeFeld);
 
     // Test: Pfeilanimation
-    animation pfeil("resources/pfeil", 8, 0.05, 525, 20);
-    pfeil.sprite.setScale(0.5, 0.5);
-    pfeil.sprite.setRotation(90);
-    renderList.push_back(&pfeil.sprite);
-    animationList.push_back(&pfeil);
-
+    /*
+        animation pfeil("resources/pfeil", 8, 0.05, 525, 20);
+        pfeil.sprite.setScale(0.5, 0.5);
+        pfeil.sprite.setRotation(90);
+        renderList.push_back(&pfeil.sprite);
+        animationList.push_back(&pfeil);
+    */
 
     // Solange das Fenster geöffnet ist
     while(fenster.isOpen())
@@ -267,7 +269,14 @@ int main(void)
             {
                 demoLevel.name = befehl.substr(befehl.find("loadLevel ") + 10);
                 cerr << "Lade: '" << demoLevel.name << "'" << endl;
-                demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList);
+                demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+
+                // Den Spieler wieder anzeigen
+                renderList.push_back(&spieler);
+                renderList.push_back((sf::Drawable *)&version.text);
+                renderList.push_back((sf::Drawable *)&debugMsg.text);
+                renderList.push_back((sf::Drawable *)&debugMsg2.text);
+                renderList.push_back((sf::Drawable *)&console::eingabeFeld);
             }
 
             hideConsole();
