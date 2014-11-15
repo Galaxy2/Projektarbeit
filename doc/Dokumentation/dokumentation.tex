@@ -6,6 +6,9 @@
 \usepackage{amssymb}
 \usepackage{blindtext}
 \usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+
+
 \usepackage[left=2.5cm,right=1.5cm,top=2cm,bottom=2.8cm]{geometry}
 
 
@@ -112,5 +115,23 @@ von absoluten Bildschirmkoordinaten in Fenster/Spielkoordinaten umgerechnet werd
 \caption{Debugging der Kollisionsdetektion}
 \end{figure}
 
+\subsection{Animationen}
+Von Anfang an waren auch Animationen in unserem Spiel eingeplant. So sollen zum Beispiel ausserhalb eines Hauses
+Türen durch grün blinkende/aufleuchtende Pfeile markiert werden. Für solche Animationen wurde eigens eine Klasse
+implementiert.
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.3]{img/animation_uml.png}
+	\caption{UML: Animationsklasse}
+\end{figure}
+Um Animationen später oft und möglichst einfach verwenden zu können, besitzt die Klasse einen einfachen Konstruktor,
+der die Bilder bereits lädt, die Position und die Zeitspanne $\Delta t$ zwischen den einzelnen Bildern festlegt.
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.3]{img/animation_pfeil.png}
+	\caption{Die erste Animation im Spiel: Ein blinkender Einstiegspfeil}
+\end{figure}
 
+\newpage
+\listoffigures
 \end{document}
