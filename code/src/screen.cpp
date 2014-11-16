@@ -7,7 +7,7 @@ using namespace std;
 
 namespace screen
 {
-    float factor;
+float factor;
 }
 
 

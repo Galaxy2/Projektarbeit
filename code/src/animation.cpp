@@ -2,7 +2,7 @@
 #include <cstdio>
 
 #ifndef LINUX
-    #include <sstream>
+#include <sstream>
 #endif // LINUX
 
 
@@ -17,16 +17,17 @@ animation::animation(string n, int N, float dT, int x, int y)
     sprite.setPosition(x, y);
 
     string dateiName;
-    for(int i=0; i<N; i++){
-        #ifndef LINUX
+    for(int i=0; i<N; i++)
+    {
+#ifndef LINUX
 
-            stringstream dateiNameStream;
-            dateiNameStream << n << "_" << i << ".png";
+        stringstream dateiNameStream;
+        dateiNameStream << n << "_" << i << ".png";
 
-            dateiName = dateiNameStream.str();
-        #else
-            dateiName = n + "_" + to_string(i) + ".png";
-        #endif // LINUX
+        dateiName = dateiNameStream.str();
+#else
+        dateiName = n + "_" + to_string(i) + ".png";
+#endif // LINUX
 
         sf::Texture *textur = new sf::Texture;
         textur->loadFromFile(dateiName);

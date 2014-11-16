@@ -10,7 +10,7 @@ using namespace std;
 
 class animation
 {
-    public:
+public:
     int anzahlSchritte;
     int schritt;
 
