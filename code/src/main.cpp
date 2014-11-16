@@ -1,5 +1,6 @@
 #include <iostream>
 #include <sstream>
+#include <vector>
 #include <list>
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
@@ -58,6 +59,7 @@ int main(void)
 
     globalFenster = &fenster;
     fenster.setFramerateLimit(50);
+    fenster.setVerticalSyncEnabled(true);
 
     sf::Vector2u fensterGroesse = fenster.getSize();
     float factor =  1920.0f / fensterGroesse.x;
@@ -75,22 +77,16 @@ int main(void)
     // Renderlist vorbereiten
     list<sf::Drawable *> renderList;
 
+    // Hintergrundbild
+    sf::Texture* hintergrundTextur = 0x0;
+    sf::Sprite* hintergrund = 0x0;
 
     // Level laden!
     level demoLevel;
 
     // Level hier anpassen
-    string levelName = "test";
-
-    string levelDateiName = "levels/" + levelName + "/" + levelName + ".lvl";
-    demoLevel.loadFromFile(levelDateiName);
-
-
-    // Hintergrundbild laden
-    sf::Texture hintergrundTextur;
-    sf::Sprite hintergrund;
-    hintergrundLaden(levelName, hintergrund, hintergrundTextur);
-    renderList.push_front(&hintergrund);
+    demoLevel.name = "test"; // Todo: Konstruktor erstellen!
+    demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
 
     // Schriftart laden!
@@ -129,12 +125,13 @@ int main(void)
     renderList.push_back((sf::Drawable *)&console::eingabeFeld);
 
     // Test: Pfeilanimation
-    animation pfeil("resources/pfeil", 8, 0.05, 525, 20);
-    pfeil.sprite.setScale(0.5, 0.5);
-    pfeil.sprite.setRotation(90);
-    renderList.push_back(&pfeil.sprite);
-    animationList.push_back(&pfeil);
-
+    /*
+        animation pfeil("resources/pfeil", 8, 0.05, 525, 20);
+        pfeil.sprite.setScale(0.5, 0.5);
+        pfeil.sprite.setRotation(90);
+        renderList.push_back(&pfeil.sprite);
+        animationList.push_back(&pfeil);
+    */
 
     // Solange das Fenster geöffnet ist
     while(fenster.isOpen())
@@ -267,6 +264,20 @@ int main(void)
             {
                 demoLevel.collisionsActivated = (!demoLevel.collisionsActivated);
             }
+            else
+            if(befehl.find("loadLevel ") == 0)
+            {
+                demoLevel.name = befehl.substr(befehl.find("loadLevel ") + 10);
+                cerr << "Lade: '" << demoLevel.name << "'" << endl;
+                demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+
+                // Den Spieler wieder anzeigen
+                renderList.push_back(&spieler);
+                renderList.push_back((sf::Drawable *)&version.text);
+                renderList.push_back((sf::Drawable *)&debugMsg.text);
+                renderList.push_back((sf::Drawable *)&debugMsg2.text);
+                renderList.push_back((sf::Drawable *)&console::eingabeFeld);
+            }
 
             hideConsole();
         }
@@ -335,6 +346,13 @@ int main(void)
 
         debugMsg.updateText(debugMsgText.str());
 
+    }
+
+    // Meamleak Fix!
+    if(hintergrundTextur != 0x0 && hintergrund != 0x0)
+    {
+        delete hintergrundTextur;
+        delete hintergrund;
     }
 
     return 0;
