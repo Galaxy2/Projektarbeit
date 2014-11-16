@@ -36,7 +36,7 @@ float factor = aufloesung.width/1920.0f;
 
 
     s.setTexture(h);
-    s.setScale(factor, factor);
+//    s.setScale(factor, factor);
 }
 
 

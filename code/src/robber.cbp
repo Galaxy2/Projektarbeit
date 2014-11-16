@@ -89,6 +89,7 @@
 		<Unit filename="notification.h" />
 		<Unit filename="screen.cpp" />
 		<Unit filename="screen.h" />
+		<Unit filename="tuere.cpp" />
 		<Unit filename="updates.cpp" />
 		<Unit filename="updates.h" />
 		<Extensions>
