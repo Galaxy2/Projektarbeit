@@ -37,7 +37,7 @@ void hintergrundLaden(string levelName, sf::Sprite* s, sf::Texture* h)
 
 //  s.setScale(factor, factor);
     s->setTexture(*h);
-    s->setScale(factor, factor);
+//    s->setScale(factor, factor);
 }
 
 
