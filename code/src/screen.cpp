@@ -35,13 +35,9 @@ void hintergrundLaden(string levelName, sf::Sprite* s, sf::Texture* h)
     float factor = aufloesung.width/1920.0f;
 
 
-<<<<<<< HEAD
-    s.setTexture(h);
-//    s.setScale(factor, factor);
-=======
+//  s.setScale(factor, factor);
     s->setTexture(*h);
     s->setScale(factor, factor);
->>>>>>> 18449c2b7473032a46ad70974beab9be746ef7b1
 }
 
 
