@@ -24,7 +24,7 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
     {
         levelDatei >> x >> y >> r;
 
-        pfeile.push_back(new animation("resources/pfeil", 8, 0.05, x, y));
+        pfeile.push_back(new animation("resources/pfeil", 8, true, 0.05, x, y));
         pfeile[i]->sprite.setOrigin(100, 50);
         pfeile[i]->sprite.setRotation(r);
 
@@ -37,7 +37,7 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
     {
         levelDatei >> x >> y >> r;
 
-        tueren.push_back(new animation("resources/tuere", 8, 0.1, x, y));
+        tueren.push_back(new animation("resources/tuere", 8, true, 0.1, x, y));
         tueren[i]->sprite.setRotation(r);
         tueren[i]->sprite.setOrigin(0, 200);
 
@@ -53,10 +53,10 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
     for(unsigned int i=0; i<N; i++)
     {
         levelDatei >> x1 >> y1 >> x2 >> y2;
-       /* x1 *= factor;
-        y1 *= factor;
-        x2 *= factor;
-        y2 *= factor;*/
+        /* x1 *= factor;
+         y1 *= factor;
+         x2 *= factor;
+         y2 *= factor;*/
         sf::Vector2f koordinatenOben(x1, y1);
         sf::Vector2f koordinatenUnten(x2, y2);
 

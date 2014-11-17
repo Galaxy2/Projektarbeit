@@ -63,6 +63,8 @@ int main(void)
 
     sf::Vector2u fensterGroesse = fenster.getSize();
 
+    //float factor =  1920.0f / fensterGroesse.x;
+
     sf::View ansicht(sf::FloatRect(0,0, aufloesung.width, aufloesung.height));
     //ansicht.zoom(1.5);
 
@@ -224,17 +226,17 @@ int main(void)
                             }
                         }
 
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num0))
-                {
-                    zoom -= 0.05;
-                    ansicht.zoom(zoom);
-                }
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num0))
+            {
+                zoom -= 0.05;
+                ansicht.zoom(zoom);
+            }
 
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num9))
-                {
-                    zoom += 0.05;
-                    ansicht.zoom(zoom);
-                }
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num9))
+            {
+                zoom += 0.05;
+                ansicht.zoom(zoom);
+            }
         }
 
 
@@ -258,13 +260,11 @@ int main(void)
             {
                 debugMsg2.updateText("----- LOL -----");
             }
-            else
-            if(befehl == "toggleWalls")
+            else if(befehl == "toggleWalls")
             {
                 demoLevel.collisionsActivated = (!demoLevel.collisionsActivated);
             }
-            else
-            if(befehl.find("loadLevel ") == 0)
+            else if(befehl.find("loadLevel ") == 0)
             {
                 demoLevel.name = befehl.substr(befehl.find("loadLevel ") + 10);
                 cerr << "Lade: '" << demoLevel.name << "'" << endl;
@@ -295,13 +295,12 @@ int main(void)
 
             else
 
-            if(console::activated && event.type == sf::Event::TextEntered)
-            {
-                // Wenn Konsole aktiviert, Eingabe lesen!
-                updateConsole(static_cast<char>(event.text.unicode));
-            }
+                if(console::activated && event.type == sf::Event::TextEntered)
+                {
+                    // Wenn Konsole aktiviert, Eingabe lesen!
+                    updateConsole(static_cast<char>(event.text.unicode));
+                }
         }
-
 
         // Ansicht anpassen!
         ansicht.setCenter(spieler.getPosition());

@@ -10,20 +10,22 @@ using namespace std;
 
 class animation
 {
-    public:
+public:
     int anzahlSchritte;
     int schritt;
 
     string name;
     std::vector<sf::Texture*> texturen;
 
+    bool endlos;
     float deltaT;
     sf::Clock t;
     sf::Sprite sprite;
 
     void animationAusfuehren(void);
+    void neustart(void);
 
-    animation(string n, int N, float dT, int x, int y);
+    animation(string n, int N, bool endlos, float dT, int x, int y);
     ~animation(void);
 };
 

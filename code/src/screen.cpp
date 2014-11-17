@@ -7,7 +7,7 @@ using namespace std;
 /*
 namespace screen
 {
-    float factor;
+//float factor;
 }
 */
 
@@ -32,11 +32,9 @@ void hintergrundLaden(string levelName, sf::Sprite* s, sf::Texture* h)
     {
         factor = 1; */
 
-    //float factor = aufloesung.width/1920.0f;
-
-
     s->setTexture(*h);
-//    s.setScale(factor, factor);
+//    s->setScale(factor, factor);
+
 }
 
 

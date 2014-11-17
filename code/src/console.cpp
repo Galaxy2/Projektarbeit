@@ -4,9 +4,9 @@
 
 namespace console
 {
-    sf::Text eingabeFeld;
-    std::stringstream eingabeText;
-    bool activated = false;
+sf::Text eingabeFeld;
+std::stringstream eingabeText;
+bool activated = false;
 }
 
 using namespace console;
