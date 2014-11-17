@@ -5,8 +5,8 @@
 #include "screen.h"
 #include "notification.h"
 
-sf::VideoMode aufloesung = sf::VideoMode::getDesktopMode();
-float factor = aufloesung.width/1920.0f;
+//sf::VideoMode aufloesung = sf::VideoMode::getDesktopMode();
+//float factor = aufloesung.width/1920.0f;
 
 extern benachrichtigung debugMsg;
 

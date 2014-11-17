@@ -62,7 +62,7 @@ int main(void)
     fenster.setVerticalSyncEnabled(true);
 
     sf::Vector2u fensterGroesse = fenster.getSize();
-    float factor =  1920.0f / fensterGroesse.x;
+    //float factor =  1920.0f / fensterGroesse.x;
 
     sf::View ansicht(sf::FloatRect(0,0, aufloesung.width, aufloesung.height));
     //ansicht.zoom(1.5);

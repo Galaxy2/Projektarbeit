@@ -1,14 +1,14 @@
 #include <SFML/Graphics.hpp>
 #include "main.h"
 
-/*
-sf::Sprite tuereGeschlossen{
+
+void tuereGeschlossen(){
     sf::Sprite tuere;
     sf::Texture tuereTextur;
     tuereTextur.loadFromFile("resources/tuere_0.png");
     tuere.setTexture(tuereTextur);
     tuere.setPosition(1286, 680);
-    return tuere;
+    //return tuere;
 }
 
 void tuereOffen(){
@@ -18,5 +18,5 @@ void tuereOffen(){
     tuere.setTexture(tuereTextur);
     tuere.setPosition(1286, 680);
 }
-*/
+
 

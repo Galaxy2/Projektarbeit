@@ -7,7 +7,7 @@
 
 namespace screen
 {
-extern float factor;
+//extern float factor;
 };
 
 extern void hintergrundLaden(std::string levelName, sf::Sprite* s, sf::Texture* h);
