@@ -92,6 +92,7 @@
 		<Unit filename="screen.cpp" />
 		<Unit filename="screen.h" />
 		<Unit filename="tuere.cpp" />
+		<Unit filename="tuere.h" />
 		<Unit filename="updates.cpp" />
 		<Unit filename="updates.h" />
 		<Extensions>

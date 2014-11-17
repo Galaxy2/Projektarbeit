@@ -20,6 +20,7 @@ public:
 
     list<sf::FloatRect> mauern;
     vector<animation *> pfeile;
+    vector<animation *> tueren;
     bool collisionsActivated;
     string name;
 };

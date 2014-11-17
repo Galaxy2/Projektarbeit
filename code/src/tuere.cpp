@@ -1,6 +1,15 @@
 #include <SFML/Graphics.hpp>
-#include "main.h"
 
+#include "main.h"
+#include "tuere.h"
+
+bool tuerenOeffnen(sf::FloatRect& spielerPosition)
+{
+    if(tuereOffen == false)
+    {
+
+    }
+}
 /*
 sf::Sprite tuereGeschlossen{
     sf::Sprite tuere;

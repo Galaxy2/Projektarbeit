@@ -5,10 +5,10 @@
 #include "notification.h"
 
 
-namespace screen
+/*namespace screen
 {
 extern float factor;
-};
+};*/
 
 extern void hintergrundLaden(std::string levelName, sf::Sprite* s, sf::Texture* h);
 
