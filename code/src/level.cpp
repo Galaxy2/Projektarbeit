@@ -24,7 +24,7 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
     {
         levelDatei >> x >> y >> r;
 
-        pfeile.push_back(new animation("resources/pfeil", 8, 0.05, x, y));
+        pfeile.push_back(new animation("resources/pfeil", 8, true, 0.05, x, y));
         pfeile[i]->sprite.setOrigin(100, 50);
         pfeile[i]->sprite.setRotation(r);
 
