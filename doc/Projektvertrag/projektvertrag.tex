@@ -1,0 +1,208 @@
+\documentclass[parskip=half]{scrreprt} 
+
+\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc} 
+\usepackage[ngerman]{babel} 
+\usepackage{lmodern} 
+\usepackage[juratotoc]{scrjura} 
+\usepackage[left=2.5cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+  
+\makeatletter 
+\renewcommand*{\parformat}{% 
+  \global\hangindent 2em 
+  \makebox[2em][l]{(\thepar)\hfill}\hspace{-0,3cm} 
+} 
+\makeatother 
+ 
+\begin{document} 
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
+% Vertragsgegenstand                          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\addchap{Projektvertrag: Entwicklung eines 2D-Spiels} 
+
+\begin{contract} 
+\Paragraph{title={Vertragsparteien}} 
+% Vertragsparteien 
+Zwischen
+\begin{itemize}
+\item Jan Kunzmann, G3C der AKSA
+\item Gabriel Gavrilas, G3C der AKSA
+\item Patrick Eigensatz, G3C der AKSA
+\end{itemize}
+und
+\begin{itemize}
+\item Roger Sax, Mathematiklehrer der AKSA
+\end{itemize}
+wird folgendes vereinbart:
+
+
+
+\Paragraph{title={Thema der Projektarbeit}} 
+  
+Das Ziel des Projektes ist es, ein lauffähiges, lustiges 2D-Computerspiel zu entwickeln. Natürlich
+ist nicht nur das Endprodukt, also das Spiel selber, sondern auch der ganze
+Entwicklungsprozess davor, von grosser Bedeutung. Es soll kein Kampf oder Fluchtspiel sein, sondern ein Spiel,
+bei dem man nicht entdeckt werden, also möglichst verdeckt agieren soll. Der Spielspass entsteht nicht durch exorbitante Grafiken, sondern durch einfaches Design und knifflige Situationen im Spiel.
+
+Es geht nicht darum, ein gigantisches Spiel zu machen, sondern die Programmierung eines Computerspieles in allen Facetten zu lernen.
+
+
+\Paragraph{title={Wissensstand und mögliche Quellen}} 
+Patrick verfügt über fortgeschrittene Erfahrungen in der Programmiersprache C++. Jan und Gabriel besitzen grundlegende Kenntnisse der Programmiersprache C++.
+
+In der Projektvorbereitung haben wir uns sehr oberflächlich mit der Entwicklungsumgebung Code::Blocks beschäftigt, und mit dem Open Source Multimedia Framework SFML eine Lösung für das Anzeigen und Abspielen von Grafiken und anderen Multimediaelementen gefunden.
+
+Im Umgang mit Gamedesign bringt keiner von uns Erfahrungen mit.
+
+Unser Wissen beziehen wir hauptsächlich aus Büchern, offiziellen Dokumentationen und dem Internet. Im Anhang sind die genauen Quellen in unserem Rechercheprotokoll angegeben.
+
+
+\Paragraph{title={Begriffsbestimmungen}} 
+\subparagraph{Multimedia Framework:}
+Eine Bibliothek mit Funktionen, die sich in C++-Programme einbinden lassen. Damit kann man verschiedene Aufgaben plattformübergreifend bewältigen und muss nicht alle Details selber programmieren.
+
+\subparagraph{OpenSource Lizenz:}
+
+Eine Lizenz, die das Einsehen, das Verändern und das Weiterverteilen des Quellcodes erlaubt.
+
+\subparagraph{OpenSource-Software (OSS):}
+Software, die unter einer OpenSource-Lizenz verfügbar ist.
+
+\subparagraph{Versionskontrollsystem:}
+Ein Programm, das Veränderungen an Dateien aufzeichnet und speichert, sodass mehrere Entwickler den Code gleichzeitig ohne Redundanz verändern können.
+
+\subparagraph{GitHub:}
+Für OSS-Entwickler von OpenSource kostenlose Plattform, um die über das Versionskontrollsystem git aufgezeichneten Veränderungen übersichtlich zugänglich zu machen.
+
+\subparagraph{Travis CI:}
+Für OSS-Entwickler kostenlose Plattform zur Qualitätssicherung: Kompiliert das Projekt automatisch nach jeder Änderungen und führt Tests durch, um zu sicherzustellen, dass das Programm einwandfrei funktioniert.
+
+\subparagraph{Coverity:}
+Für OSS-Entwickler kostenlose Plattform: Führt eine tiefgreifende statische Quellcodeanalyse durch, und hilft so Programmierfehler zu vermeiden und zu finden.
+
+
+\Paragraph{title={Projektziele / Hypothesen / Fragestellung}}
+Ziel unseres Projektes ist ein 2D-Einbrecherspiel zu entwickeln. Der Spieler soll eine Figur spielen, die in Häuser einbrechen muss und dort unentdeckt Gegenstände entwenden soll.
+
+Unser persönliches Ziel ist es, durch dieses Projekt, die Anwendung der Techniken der
+Programmiersprache C++ zu lernen und zu vertiefen. Dies wollen wir durch
+das Prinzip Learning-by-Doing erreichen. Jeder in der Gruppe soll am Ende
+mittelgrosse C++-Programme selber programmieren können.
+
+Wir setzen uns zum Ziel,
+die Konzepte hinter Frameworks (namentlich SFML) zu verstehen und die
+programmiertechnischen Abläufe hinter dem Spiel zu definieren und
+umzusetzen.
+
+Wir wollen unser Spiel komplett im Team entwickeln und
+mit dem Versionskontrollsystem gut vertraut werden. Das alles soll uns später
+für eigene Projekte und unsere Maturaarbeit helfen.
+
+Das Spiel soll/muss untereine OpenSource Lizenz gestellt werden.
+
+
+\Paragraph{title={Methode / Vorgehen}}
+Um unser erstes Ziel zu erreichen, haben Gabriel und Jan das Programmieren in C++ erlernt. Unser Grobplan beim Erlernen von C++ war:
+\begin{itemize}
+\item Grundstruktur eines Programmes
+\item Die Basisdatentypen string, int, float kennen
+\item Kontrollstrukturen if-else/for/while
+\item Funktionen, Rückgabewerte, void Typen
+\item Zeiger, Referenzen
+\item Namespaces
+\item Klassen, Objekte
+\item STL-Templates
+\item SFML
+\end{itemize}
+
+Das Spiel selber entwickeln wir aufbauend. Wir wenden uns laufend den verschiedenen Aspekten des Programmierens eines Spieles zu. Zum Beispiel: Strukturierung, Graphik und Spielprinzip. Das Spiel soll auf den Zielbetriebssystemen (siehe unten) spielbar sein. Da wir selber verschiedene Betriebssysteme haben, können wir das Programm auf unseren eigenen PCs testen.
+
+
+\Paragraph{title={Ressourcen / Voraussetzungen}}
+Wir wollen unser 2D-Spiel nur für den Computer entwickeln. Portierungen auf Konsolen oder andere Plattformen sind nicht geplant.
+
+Zielbetriebssysteme sind gängige Linuxdistributionen und Microsoft Windows.
+
+Zum Entwickeln der Software verwenden wir nur OpenSource Software, und die für OpenSource Entwickler frei zugänglichen Plattformen GitHub, Travis CI, Coverity.
+
+
+\Paragraph{title={Mögliche Erweiterungen des Themas}}
+Da wir die Gameidee gut erweiterbar gewählt haben, könnte man das Spiel noch detailreicher und realitätsnäher gestalten. Man könnte sich auch überlegen die Gameidee in ein 3D Game umzusetzen oder für weiter Konsolen erhältlich machen.
+
+Das angeeignete Wissen und die Erfahrung können auch für eine neue, aufwändigere Gameidee gebraucht werden. Ausserdem könnte man sich auch in die graphische Gestaltung eines Spieles vertieft einarbeiten.
+
+
+\Paragraph{title={Sprache}}
+Unsere Arbeit werden wir in Deutsch schreiben. Aufgrund unserer Thematik werden oft englische Ausdrücke vorkommen, die man im technischen Jargon gar nicht übersetzt, oder für die keine korrekte deutsche Übersetzung existiert. (Zum Beispiel bei Namen und Bezeichnungen: ''pointer'' oder ''stack overflow'')
+
+
+\Paragraph{title={Aufbau der Arbeit}}
+Gemäss den Vorgaben im Handbuch für den Projektunterricht. Das heisst es werden folgende Dokumente geschrieben:
+\begin{itemize}
+\item Eine Dokumentation
+\item Ein Arbeitsprotokoll
+\item Ein Lernbericht
+\item Das entstandene Spiel
+\end{itemize}
+
+\Paragraph{title={Zeitplan / Besprechungstermine}}
+\subparagraph{Wichtige Termine}
+Während der Arbeit ist mindestens ein Fixpunktgespräche mit unserem Betreuer, vorgesehen. Obwohl die Softwareentwicklung etwas sehr dynamisches, unkalkulierbares hat, versuchen wir uns so gut wie möglich an die zeitlichen Abmachungen verschiedener, untereinander abgemachten Projektmeilensteine zu halten. Unsere Zeit, sowie die Aufgaben teilen wir auf GitHub ein. Die bereits festgelegten Fixpunkte sind:
+
+\begin{tabular}{ll}
+\textbf{Abgabe Lernbericht:} & 10.12.14\\
+\textbf{Fixpunktgespräch:} & 17.12.14\\
+\textbf{Abgabe Projektarbeit:} & 21.01.15
+\end{tabular}
+
+\subparagraph{Recherchearbeiten}
+Unsere Quellen haben wir in der Vorbereitung in unserem Rechercheprotokoll festgelegt. (Siehe Anhang) Die Recherche wird in der Dokumentation nachzulesen sein. Im Verlauf der Arbeit kann es zu weiteren Recherchen kommen, um unerwarteten Probleme während der Arbeit zu lösen.
+
+\subparagraph{Datenerhebungen}
+Für unser Projekt benötigen wir keine besonderen Daten, wie beispielsweise aus einer Umfrage. Solche Arbeiten
+enfallen also.
+
+\subparagraph{Auswertung}
+Am Ende der Arbeit, liegen eine Dokumentation, welche die Motivation, das Herangehen und die Entwicklung beschreibt, ein Arbeitsprotokoll, welches Arbeitsvorgänge und Termine beschreibt (Auszug aus git) und ein Lernprotokoll, welches eine Auflistung von Daten mit den dazugehörigen Aktivitäten und Besprechungen enthält, vor. 
+
+Wir werten die Protokolle im Hinblick aus auf: Spezifische Herausforderungen beim Programmierung, Zusammenarbeit, Versionierung, Termineinhaltung, Rollenverteilung im Projekt und deren Lösung.
+
+\subparagraph{Zusammenstellung / Gestaltung}
+Die Arbeit liegt am Schluss in digitaler Form vor. Die Dokumentation und die obligatorischen Protokolle werden ausgedruckt abgegeben.
+
+\subparagraph{Abgabetermin}
+Der Abgabetermin ist, wie oben genannt, der 21. Januar 2015.
+
+
+\Paragraph{title={Themenspezifische Beurteilungskriterien}}
+Die Bewertungskriterien befinden sich im Anhang.
+
+\Paragraph{title={Darstellung von Zitaten, Literatur- und Quellenangaben}}
+Literatur und Zitate werden wir gemäss der Variante 1 im Handbuch erwähnen und zitieren.
+Wir benützen BibTeX zum Bibliographieren.
+
+\end{contract} 
+  
+ 
+
+% Ort und Datum  
+\vspace{1,5 cm} 
+\begin{tabular}{p{7cm}p{.5cm}l}
+\dotfill \\ 
+Ort, Datum
+\end{tabular}% 
+
+% Hier kommen die Unterschriten hin
+\vspace{1,5 cm} 
+\begin{tabular}{p{7cm}p{.5cm}l}
+\dotfill \\ 
+Unterschrift der Gruppe 
+\end{tabular}% 
+\hfill 
+\begin{tabular}{p{7cm}p{.5cm}l}
+\dotfill \\ 
+Unterschrift des Betreuers
+\end{tabular}% 
+  
+\end{document}
