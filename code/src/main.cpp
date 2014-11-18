@@ -111,6 +111,7 @@ int main(void)
     spieler.setScale(0.5, 0.5);
     spieler.setPosition(310, 10);
     spieler.setOrigin(sf::Vector2f(50, 50));
+    spieler.setPosition(demoLevel.spielerPosition);
 
     // Spieler immer anzeigen!
     renderList.push_back(&spieler);
@@ -269,6 +270,9 @@ int main(void)
                 demoLevel.name = befehl.substr(befehl.find("loadLevel ") + 10);
                 cerr << "Lade: '" << demoLevel.name << "'" << endl;
                 demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+
+                // Neue Spielerposition setzen!
+                spieler.setPosition(demoLevel.spielerPosition);
 
                 // Den Spieler wieder anzeigen
                 renderList.push_back(&spieler);

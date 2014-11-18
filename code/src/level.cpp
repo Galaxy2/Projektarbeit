@@ -15,6 +15,10 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
 {
     fstream levelDatei(pfad.c_str(), fstream::in);
 
+
+    // Spieler Spawn Position lesen!
+    levelDatei >> spielerPosition.x >> spielerPosition.y;
+
     unsigned int N;
 
     // Anzahl Pfeile einlesen
