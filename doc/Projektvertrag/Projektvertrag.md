@@ -90,7 +90,7 @@ Da wir die Gameidee gut erweiterbar gewält haben, könnte man das Spiel noch de
 Unsere Arbeit werden wir in Deutsch schreiben. Aufgrund unserer Thematik
 werden oft englische Ausdrücke vorkommen, die man im technischen Jargon
 gar nicht übersetzt, oder für die keine korrekte deutsche Übersetzung existiert.
-(zum Beispiel bei Namen und Bezeichnungen)
+(zum Beispiel bei Namen und Bezeichnungen "Pointer", "Segfault")
 
 ## 4. Aufbau der Arbeit
 Gemäss den Vorgaben im Handbuch für den Projektunterricht. Das heisst eine Dokumentation, ein Arbeitsprotokoll,
