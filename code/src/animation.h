@@ -18,14 +18,21 @@ public:
     std::vector<sf::Texture*> texturen;
 
     bool endlos;
+    bool richtung;
+    bool aktiv;
+
     float deltaT;
     sf::Clock t;
     sf::Sprite sprite;
 
     void animationAusfuehren(void);
-    void neustart(void);
+    void start(void);
+    void stop(void);
+    void setRichtung(bool vorwaerts);
+    void zeigeSchritt(int k);
 
-    animation(string n, int N, bool endlos, float dT, int x, int y);
+
+    animation(string n, int N, bool endlos, bool start, bool vorwaerts, float dT, int x, int y);
     ~animation(void);
 };
 
