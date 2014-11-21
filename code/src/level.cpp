@@ -28,7 +28,8 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
     {
         levelDatei >> x >> y >> r;
 
-        pfeile.push_back(new animation("resources/pfeil", 8, true, 0.05, x, y));
+        pfeile.push_back(new animation("resources/pfeil", 8, true, true, true, 0.05, x, y));
+        pfeile[i]->zeigeSchritt(0);
         pfeile[i]->sprite.setOrigin(100, 50);
         pfeile[i]->sprite.setRotation(r);
 
@@ -37,19 +38,6 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
     }
 
 
- /*       levelDatei >>N;
-    for(unsigned int i=0; i<N; i++)
-        {
-            levelDatei >> x >> y >> r;
-
-            tueren.push_back(new animation("resources/tuere", 5, true, 0.1, x, y));
-            tueren[i]->sprite.setRotation(r);
-            tueren[i]->sprite.setOrigin(0, 200);
-
-            renderList.push_back(&tueren[i]->sprite);
-            animationList.push_back(tueren[i]);
-        }
-*/
     // Anzahl Mauern einlesen
     levelDatei >> N;
 
@@ -125,21 +113,3 @@ void level::loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergru
     renderList.push_front(hintergrund);
 }
 
-void tuere()
-{
-    loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<animation *>& animationList);
-
-    levelDatei >>N;
-    for(unsigned int i=0; i<N; i++)
-        {
-            levelDatei >> x >> y >> r;
-
-            tueren.push_back(new animation("resources/tuere", 5, true, 0.1, x, y));
-            tueren[i]->sprite.setRotation(r);
-            tueren[i]->sprite.setOrigin(0, 200);
-
-            renderList.push_back(&tueren[i]->sprite);
-            animationList.push_back(tueren[i]);
-        }
-
-}

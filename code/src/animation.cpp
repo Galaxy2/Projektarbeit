@@ -8,7 +8,7 @@
 
 using namespace std;
 
-animation::animation(string n, int N, bool endlos, float dT, int x, int y)
+animation::animation(string n, int N, bool endlos, bool start, bool vorwaerts, float dT, int x, int y)
 {
     schritt = 0;
     name = n;
@@ -16,6 +16,9 @@ animation::animation(string n, int N, bool endlos, float dT, int x, int y)
     this->endlos = endlos;
     deltaT = dT;
     sprite.setPosition(x, y);
+    aktiv = start;
+    richtung = vorwaerts;
+
 
     string dateiName;
     for(int i=0; i<N; i++)
@@ -33,6 +36,14 @@ animation::animation(string n, int N, bool endlos, float dT, int x, int y)
         textur->loadFromFile(dateiName);
         texturen.push_back(textur);
     }
+
+
+    // Das erste Bild laden, auch wenn die Animation nicht läuft
+    if(start)
+    {
+        sprite.setTexture(*texturen[0]);
+    }
+
 }
 
 
@@ -46,31 +57,81 @@ animation::~animation(void)
 }
 
 
+void animation::start(void)
+{
+    aktiv = true;
+
+    if(richtung)
+        schritt = 0;
+    else
+        schritt = anzahlSchritte - 1;
+
+    t.restart();
+}
+
+
+void animation::stop(void)
+{
+    aktiv = false;
+}
+
+
+void animation::setRichtung(bool vorwaerts)
+{
+    richtung = vorwaerts;
+}
+
+
+void animation::zeigeSchritt(int k)
+{
+    sprite.setTexture(*texturen[k]);
+}
+
+
 void animation::animationAusfuehren(void)
 {
-    if(t.getElapsedTime().asSeconds() < deltaT)
+    if(!aktiv || t.getElapsedTime().asSeconds() < deltaT)
         return;
 
     t.restart();
     sprite.setTexture(*texturen[schritt]);
 
+
     if(endlos)
     {
-        schritt = (schritt+1)%anzahlSchritte;
+        if(richtung)
+        {
+            schritt += 1;
+
+            if(schritt == anzahlSchritte)
+                schritt = 0;
+        }
+        else
+        {
+            schritt -= 1;
+
+            if(schritt < 0)
+                schritt = anzahlSchritte-1;
+        }
+
     }
     else
     {
-        if(schritt < anzahlSchritte-1)
+        if(richtung)
         {
-            ++schritt;
+            schritt += 1;
+
+            if(schritt == anzahlSchritte)
+                aktiv = false;
+        }
+        else
+        {
+            schritt -= 1;
+
+            if(schritt < 0)
+                aktiv = false;
         }
     }
 }
 
 
-void animation::neustart(void)
-{
-    schritt = 0;
-    t.restart();
-    sprite.setTexture(*texturen[schritt]);
-}

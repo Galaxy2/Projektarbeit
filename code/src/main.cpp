@@ -238,15 +238,6 @@ int main(void)
                 zoom += 0.05;
                 ansicht.zoom(zoom);
             }
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::E)))
-            {
-                tuereOffen = false;
-                if(tuereOffen ==  false)
-                    {
-                    tuere();
-                    //tueren.push_back(new animation("resources/tuere", 8, true, 0.1, x, y));
-                    }
-            }
         }
 
 
