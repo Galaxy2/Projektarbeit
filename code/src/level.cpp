@@ -36,25 +36,13 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
     {
         levelDatei >> x >> y >> r;
 
-        pfeile.push_back(new animation("resources/pfeil", 8, true, 0.05, x, y));
+        pfeile.push_back(new animation("resources/pfeil", 8, true, true, true, 0.05, x, y));
+        pfeile[i]->zeigeSchritt(0);
         pfeile[i]->sprite.setOrigin(100, 50);
         pfeile[i]->sprite.setRotation(r);
 
         renderList.push_back(&pfeile[i]->sprite);
         animationList.push_back(pfeile[i]);
-    }
-
-    levelDatei >>N;
-    for(unsigned int i=0; i<N; i++)
-    {
-        levelDatei >> x >> y >> r;
-
-        tueren.push_back(new animation("resources/tuere", 8, true, 0.1, x, y));
-        tueren[i]->sprite.setRotation(r);
-        tueren[i]->sprite.setOrigin(0, 200);
-
-        renderList.push_back(&tueren[i]->sprite);
-        animationList.push_back(tueren[i]);
     }
 
 
@@ -136,7 +124,6 @@ void level::loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergru
 
     pfeile.clear();
     mauern.clear();
-    tueren.clear();
     renderList.clear();
     animationList.clear();
 
@@ -149,3 +136,4 @@ void level::loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergru
     hintergrundLaden(name, hintergrund, hintergrundTextur);
     renderList.push_front(hintergrund);
 }
+
