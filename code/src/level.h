@@ -17,10 +17,10 @@ public:
     void loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<animation *>& animationList);
     bool checkCollision(sf::FloatRect& spielerPosition);
     void loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergrund, list<sf::Drawable *>& renderList, list<animation *>& animationList);
+    void tuere();
 
     list<sf::FloatRect> mauern;
     vector<animation *> pfeile;
-    vector<animation *> tueren;
 
     sf::Vector2f spielerPosition;
     bool collisionsActivated;

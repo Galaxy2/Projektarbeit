@@ -2,13 +2,11 @@
 
 #include "main.h"
 #include "tuere.h"
+#include "level.h"
 
-bool tuerenOeffnen(sf::FloatRect& spielerPosition)
+/*void tuere()
 {
-    if(tuereOffen == false)
-    {
 
-    }
 }
 /*
 
