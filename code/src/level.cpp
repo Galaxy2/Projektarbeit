@@ -5,8 +5,6 @@
 #include "screen.h"
 #include "notification.h"
 
-//sf::VideoMode aufloesung = sf::VideoMode::getDesktopMode();
-//float factor = aufloesung.width/1920.0f;
 
 extern benachrichtigung debugMsg;
 
@@ -65,10 +63,6 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
     for(unsigned int i=0; i<N; i++)
     {
         levelDatei >> x1 >> y1 >> x2 >> y2;
-        /* x1 *= factor;
-         y1 *= factor;
-         x2 *= factor;
-         y2 *= factor;*/
         sf::Vector2f koordinatenOben(x1, y1);
         sf::Vector2f koordinatenUnten(x2, y2);
 

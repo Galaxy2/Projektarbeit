@@ -7,6 +7,7 @@
 
 #include "main.h"
 
+
 using namespace std;
 
 sf::Font standardSchriftart;
@@ -14,16 +15,6 @@ benachrichtigung debugMsg("Debug Mode", 25, 80, 20);
 benachrichtigung debugMsg2("Debug Mode", 25, 110, 20);
 
 sf::RenderWindow* globalFenster;
-
-
-
-sf::Vector2f koordinaten(int x, int y )
-{
-    sf::Vector2i pos(x, y);
-    return globalFenster->mapPixelToCoords(pos);
-}
-
-
 
 
 
@@ -109,7 +100,6 @@ int main(void)
     spielerTexture.loadFromFile("resources/spieler.png");
     spieler.setTexture(spielerTexture);
     spieler.setScale(0.5, 0.5);
-    spieler.setPosition(310, 10);
     spieler.setOrigin(sf::Vector2f(50, 50));
     spieler.setPosition(demoLevel.spielerPosition);
 
@@ -126,14 +116,6 @@ int main(void)
 
     renderList.push_back((sf::Drawable *)&console::eingabeFeld);
 
-    // Test: Pfeilanimation
-    /*
-        animation pfeil("resources/pfeil", 8, 0.05, 525, 20);
-        pfeil.sprite.setScale(0.5, 0.5);
-        pfeil.sprite.setRotation(90);
-        renderList.push_back(&pfeil.sprite);
-        animationList.push_back(&pfeil);
-    */
 
     // Solange das Fenster geöffnet ist
     while(fenster.isOpen())
