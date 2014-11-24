@@ -57,7 +57,13 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
 
         renderList.push_back(&schaetze[i]->sprite);
         animationList.push_back(schaetze[i]);
+
+        sf::Vector2f koordinatenOben(xs, ys);
+        sf::Vector2f koordinatenUnten(xs+100, ys+100);
+
+        schaetzePositionen.push_back(sf::FloatRect(koordinatenOben.x, koordinatenOben.y,koordinatenUnten.x, koordinatenUnten.y));
     }
+
 
     // Anzahl Mauern einlesen
     levelDatei >> N;
@@ -101,6 +107,21 @@ bool level::checkCollision(sf::FloatRect& spielerPosition)
 
     return false;
 }
+
+//checkSchaetze
+bool level::checkCollisionSchaetze(sf::FloatRect& spielerPosition)
+{
+    for(sf::FloatRect schatz : schaetzePositionen)
+    {
+        if(schatz.intersects(spielerPosition))
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 
 
  /** \brief Lädt das ganze Level auf den Bildschirm zum Spielen
