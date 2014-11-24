@@ -43,6 +43,21 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
         animationList.push_back(pfeile[i]);
     }
 
+    // Anzahl Schätze einlesen
+    levelDatei >> N;
+    unsigned int xs, ys, rs;
+    for (unsigned int i=0; i<N; i++)
+    {
+        levelDatei >> x >> y >> rs;
+
+        schatz.push_back(new animation("resources/schatz", 1, true, true, true, 0.05, xs, ys));
+        schatz[i]->zeigeSchritt(0);
+        schatz[i]->sprite.setOrigin(100,25);
+        schatz[i]->sprite.setRotation(rs);
+
+        renderList.push_back(&schatz[i]->sprite);
+        animationList.push_back(schatz[i]);
+    }
 
     // Anzahl Mauern einlesen
     levelDatei >> N;
@@ -118,8 +133,10 @@ void level::loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergru
 
     pfeile.clear();
     mauern.clear();
+    schatz.clear();
     renderList.clear();
     animationList.clear();
+
 
     collisionsActivated = true;
 
