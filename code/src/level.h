@@ -21,7 +21,7 @@ public:
 
     list<sf::FloatRect> mauern;
     vector<animation *> pfeile;
-    vector<animation *> schatz;
+    vector<animation *> schaetze;
 
     sf::Vector2f spielerPosition;
     bool collisionsActivated;
