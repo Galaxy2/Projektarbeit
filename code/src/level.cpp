@@ -53,6 +53,7 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
         schaetze.push_back(new animation("resources/schatz", 1, true, false, true, 0.05, xs, ys));
         schaetze[i]->zeigeSchritt(0);
         schaetze[i]->sprite.setOrigin(100,25);
+        schaetze[i]->sprite.setScale(1.0f/3, 1.0f/3);
         schaetze[i]->sprite.setRotation(rs);
 
         renderList.push_back(&schaetze[i]->sprite);
