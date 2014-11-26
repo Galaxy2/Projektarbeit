@@ -31,7 +31,7 @@ public:
     void setRichtung(bool vorwaerts);
     void zeigeSchritt(int k);
 
-
+    animation(void);
     animation(string n, int N, bool endlos, bool start, bool vorwaerts, float dT, int x, int y);
     ~animation(void);
 };

@@ -8,6 +8,11 @@
 
 using namespace std;
 
+animation::animation(void)
+{
+    schritt = 0;
+}
+
 animation::animation(string n, int N, bool endlos, bool start, bool vorwaerts, float dT, int x, int y)
 {
     schritt = 0;

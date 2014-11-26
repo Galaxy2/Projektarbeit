@@ -48,12 +48,14 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
     {
         levelDatei >> x >> y >> r;
 
-        tueren.push_back(new animation("resources/tuere", 5, false, false, true, 0.1, x, y));
-        tueren[i]->zeigeSchritt(0);
-        tueren[i]->sprite.setRotation(r);
+        tueren.push_back(new tuere);
+        tueren[i]->t = animation("resources/tuere", 5, false, false, true, 0.1, x, y);
+        tueren[i]->offen = false;
+        tueren[i]->t.zeigeSchritt(0);
+        tueren[i]->t.sprite.setRotation(r);
 
-        renderList.push_back(&tueren[i]->sprite);
-        animationList.push_back(tueren[i]);
+        renderList.push_back(&tueren[i]->t.sprite);
+        animationList.push_back(&tueren[i]->t);
     }
 
 
@@ -83,6 +85,24 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
  * \return bool
  *
  */
+
+int level::checkTuere(sf::FloatRect& spielerPosition)
+{
+    int k = 0;
+    for(tuere* t : tueren)
+    {
+        if(t->t.sprite.getGlobalBounds().intersects(spielerPosition))
+        {
+            return k;
+        }
+
+        k++;
+    }
+
+    return -1;
+}
+
+
 bool level::checkCollision(sf::FloatRect& spielerPosition)
 {
     if(!collisionsActivated)
