@@ -82,6 +82,20 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
     }
 
 
+    //Anzahl Moebel einlesen
+    levelDatei >> N;
+
+    unsigned int x, y;
+
+    for(unsigned int i=0; i<N; i++)
+    {
+        levelDatei >> x >> y;
+        sf::Vector2f koordinatenOben(x, y);
+        sf::Vector2f koordinatenUnten(x+100,y+100);
+
+        moebel.push_back(sf::FloatRect(koordinatenOben.x, koordinatenOben.y, koordinatenUnten.x, koordinatenUnten.y));
+    }
+
     // Anzahl Mauern einlesen
     levelDatei >> N;
 
@@ -117,6 +131,15 @@ bool level::checkCollision(sf::FloatRect& spielerPosition)
     for(sf::FloatRect mauer : mauern)
     {
         if(mauer.intersects(spielerPosition))
+        {
+            return true;
+        }
+    }
+
+    //Möbelkollision überprüfung
+    for(sf::FloatRect mobel : moebel)
+    {
+        if(mobel.intersects(spielerPosition))
         {
             return true;
         }

@@ -20,6 +20,7 @@ public:
     void loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergrund, list<sf::Drawable *>& renderList, list<animation *>& animationList);
 
     list<sf::FloatRect> mauern;
+    list<sf::FloatRect> moebel;
     list<sf::FloatRect> schaetzePositionen;
     vector<animation *> pfeile;
     vector<animation *> tueren;
