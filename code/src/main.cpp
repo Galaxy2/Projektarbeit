@@ -220,6 +220,12 @@ int main(void)
                 zoom += 0.05;
                 ansicht.zoom(zoom);
             }
+
+
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::C))
+            {
+                    demoLevel.tueren[0]->start();
+            }
         }
 
 

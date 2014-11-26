@@ -43,6 +43,19 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
         animationList.push_back(pfeile[i]);
     }
 
+    levelDatei >> N;
+    for(unsigned int i=0; i<N; i++)
+    {
+        levelDatei >> x >> y >> r;
+
+        tueren.push_back(new animation("resources/tuere", 5, false, false, true, 0.1, x, y));
+        tueren[i]->zeigeSchritt(0);
+        tueren[i]->sprite.setRotation(r);
+
+        renderList.push_back(&tueren[i]->sprite);
+        animationList.push_back(tueren[i]);
+    }
+
 
     // Anzahl Mauern einlesen
     levelDatei >> N;
