@@ -43,6 +43,8 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
         animationList.push_back(pfeile[i]);
     }
 
+
+    // Anzahl Türen einlesen
     levelDatei >> N;
     for(unsigned int i=0; i<N; i++)
     {
@@ -54,6 +56,29 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
 
         renderList.push_back(&tueren[i]->sprite);
         animationList.push_back(tueren[i]);
+    }
+
+
+    // Anzahl Schätze einlesen
+    levelDatei >> N;
+    unsigned int xs, ys, rs;
+    for (unsigned int i=0; i<N; i++)
+    {
+        levelDatei >> xs >> ys >> rs;
+
+        schaetze.push_back(new animation("resources/schatz", 1, true, false, true, 0.05, xs, ys));
+        schaetze[i]->zeigeSchritt(0);
+        schaetze[i]->sprite.setOrigin(100,25);
+        schaetze[i]->sprite.setScale(1.0f/3, 1.0f/3);
+        schaetze[i]->sprite.setRotation(rs);
+
+        renderList.push_back(&schaetze[i]->sprite);
+        animationList.push_back(schaetze[i]);
+
+        sf::Vector2f koordinatenOben(xs, ys);
+        sf::Vector2f koordinatenUnten(xs+314, ys+213);
+
+        schaetzePositionen.push_back(sf::FloatRect(koordinatenOben.x-20, koordinatenOben.y-20,koordinatenUnten.x+20, koordinatenUnten.y+20));
     }
 
 
@@ -100,6 +125,21 @@ bool level::checkCollision(sf::FloatRect& spielerPosition)
     return false;
 }
 
+//checkSchaetze
+bool level::checkCollisionSchaetze(sf::FloatRect& spielerPosition)
+{
+    for(sf::FloatRect schatz : schaetzePositionen)
+    {
+        if(schatz.intersects(spielerPosition))
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+
 
  /** \brief Lädt das ganze Level auf den Bildschirm zum Spielen
  * Das heisst alle Animationen, Mauern, etc. werden mitgeladen
@@ -131,8 +171,10 @@ void level::loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergru
 
     pfeile.clear();
     mauern.clear();
+    schaetze.clear();
     renderList.clear();
     animationList.clear();
+
 
     collisionsActivated = true;
 
