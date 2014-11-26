@@ -207,6 +207,20 @@ int main(void)
                                 spieler.setRotation(90);
                                 spieler.move(10, 0);
                             }
+
+                        }
+
+                    else
+
+                        if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+                        {
+
+                            if(demoLevel.checkCollisionSchaetze(spielerEcken))
+
+                                {
+                                renderList.remove(&demoLevel.schaetze[0]->sprite);
+                                }
+
                         }
 
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num0))
