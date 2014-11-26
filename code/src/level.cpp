@@ -59,9 +59,9 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
         animationList.push_back(schaetze[i]);
 
         sf::Vector2f koordinatenOben(xs, ys);
-        sf::Vector2f koordinatenUnten(xs+100, ys+100);
+        sf::Vector2f koordinatenUnten(xs+314, ys+213);
 
-        schaetzePositionen.push_back(sf::FloatRect(koordinatenOben.x, koordinatenOben.y,koordinatenUnten.x, koordinatenUnten.y));
+        schaetzePositionen.push_back(sf::FloatRect(koordinatenOben.x-20, koordinatenOben.y-20,koordinatenUnten.x+20, koordinatenUnten.y+20));
     }
 
 
