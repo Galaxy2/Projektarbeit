@@ -6,6 +6,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "animation.h"
+#include "tuere.h"
 
 using namespace std;
 
@@ -18,11 +19,12 @@ public:
     bool checkCollision(sf::FloatRect& spielerPosition);
     bool checkCollisionSchaetze(sf::FloatRect& spielerPosition);
     void loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergrund, list<sf::Drawable *>& renderList, list<animation *>& animationList);
+    int checkTuere(sf::FloatRect& spielerPosition);
 
     list<sf::FloatRect> mauern;
     list<sf::FloatRect> schaetzePositionen;
     vector<animation *> pfeile;
-    vector<animation *> tueren;
+    vector<tuere *> tueren;
     vector<animation *> schaetze;
 
     sf::Vector2f spielerPosition;

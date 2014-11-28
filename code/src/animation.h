@@ -30,7 +30,7 @@ public:
     void stop(void);
     void setRichtung(bool vorwaerts);
     void zeigeSchritt(int k);
-
+    bool istBeendet(void);
 
     animation(string n, int N, bool endlos, bool start, bool vorwaerts, float dT, int x, int y);
     ~animation(void);
