@@ -8,14 +8,8 @@
 
 using namespace std;
 
-animation::animation(void)
-{
-    schritt = 0;
-}
-
 animation::animation(string n, int N, bool endlos, bool start, bool vorwaerts, float dT, int x, int y)
 {
-    schritt = 0;
     name = n;
     anzahlSchritte = N;
     this->endlos = endlos;
@@ -24,6 +18,14 @@ animation::animation(string n, int N, bool endlos, bool start, bool vorwaerts, f
     aktiv = start;
     richtung = vorwaerts;
 
+    if(vorwaerts)
+    {
+        schritt = 0;
+    }
+    else
+    {
+        schritt = anzahlSchritte-1;
+    }
 
     string dateiName;
     for(int i=0; i<N; i++)
@@ -46,7 +48,7 @@ animation::animation(string n, int N, bool endlos, bool start, bool vorwaerts, f
     // Das erste Bild laden, auch wenn die Animation nicht läuft
     if(start)
     {
-        sprite.setTexture(*texturen[0]);
+        sprite.setTexture(*texturen[schritt]);
     }
 
 }
@@ -140,3 +142,7 @@ void animation::animationAusfuehren(void)
 }
 
 
+bool animation::istBeendet(void)
+{
+    return (t.getElapsedTime().asSeconds() > anzahlSchritte * deltaT);
+}

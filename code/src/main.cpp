@@ -220,10 +220,10 @@ int main(void)
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::C))
             {
                 int tuereNummer = demoLevel.checkTuere(spielerEcken);
-                if(tuereNummer != -1)
+                if(tuereNummer != -1 && demoLevel.tueren[tuereNummer]->t->istBeendet())
                 {
-                    demoLevel.tueren[tuereNummer]->t.setRichtung(demoLevel.tueren[tuereNummer]->offen);
-                    demoLevel.tueren[tuereNummer]->t.start();
+                    demoLevel.tueren[tuereNummer]->t->setRichtung(demoLevel.tueren[tuereNummer]->offen);
+                    demoLevel.tueren[tuereNummer]->t->start();
                     demoLevel.tueren[tuereNummer]->offen = !demoLevel.tueren[tuereNummer]->offen;
                 }
 

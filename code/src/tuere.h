@@ -7,7 +7,7 @@
 class tuere
 {
 public:
-    animation t;
+    animation *t;
     bool offen;
 
     tuere(void);
