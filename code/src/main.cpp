@@ -1,11 +1,22 @@
 #include <iostream>
 #include <sstream>
+#include <vector>
+#include <list>
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
 #include "main.h"
 
+
 using namespace std;
+
+sf::Font standardSchriftart;
+benachrichtigung debugMsg("Debug Mode", 25, 80, 20);
+benachrichtigung debugMsg2("Debug Mode", 25, 110, 20);
+
+sf::RenderWindow* globalFenster;
+
+
 
 int main(void)
 {
@@ -13,51 +24,273 @@ int main(void)
     stringstream updateVerfuegbarText;
     updateVerfuegbarText << "Robber " << ROBBER_VERSION;
 
-    if(newVersionAvailable()){
+    if(newVersionAvailable())
+    {
         cout << endl << "! Es steht eine Aktualisierung des Spiels zum Herunterladen bereit !" << endl << endl;
         updateVerfuegbarText << " (Update verfuegbar: " << LATEST_VERSION << " )";
-    } else {
+    }
+    else
+    {
         cout << endl << "Das Spiel läuft in der aktuellsten Version!" << endl << endl;
     }
 
-    // Version im Spiel anzeigen!
-    sf::Font standardSchriftart;
-    standardSchriftart.loadFromFile("resources/DejaVuSans.ttf");
 
 
-    sf::Text versionsText(updateVerfuegbarText.str(), standardSchriftart, 20);
-    versionsText.setPosition(25, 25);
+    // Fenster und Grafik
 
-    // Fenster
-    #ifndef LINUX
-        sf::RenderWindow fenster(sf::VideoMode::getDesktopMode(), "Robber", sf::Style::None);
-    #else
-        sf::RenderWindow fenster(sf::VideoMode::getDesktopMode(), "Robber", sf::Style::Fullscreen);
-    #endif
+    sf::VideoMode aufloesung = sf::VideoMode::getDesktopMode();
+
+
+
+#ifndef LINUX
+    sf::RenderWindow fenster(aufloesung, "Robber", sf::Style::None);
+#else
+    sf::RenderWindow fenster(aufloesung, "Robber", sf::Style::Fullscreen);
+#endif
+
+    globalFenster = &fenster;
+    fenster.setFramerateLimit(50);
+    fenster.setVerticalSyncEnabled(true);
+
+    sf::Vector2u fensterGroesse = fenster.getSize();
+
+    //float factor =  1920.0f / fensterGroesse.x;
+
+    sf::View ansicht(sf::FloatRect(0,0, aufloesung.width, aufloesung.height));
+    //ansicht.zoom(1.5);
+
+    ansicht.setViewport(sf::FloatRect(0,0, 1, 1));
+    fenster.setView(ansicht);
+
+
+    // AnimationList vorbereiten
+    list<animation *> animationList;
+
+    // Renderlist vorbereiten
+    list<sf::Drawable *> renderList;
 
     // Hintergrundbild
-    sf::Texture hintergrundTextur;
-    sf::Sprite hintergrund;
-    hintergrundLaden(hintergrund, hintergrundTextur);
+    sf::Texture* hintergrundTextur = 0x0;
+    sf::Sprite* hintergrund = 0x0;
+
+    // Level laden!
+    level demoLevel;
+
+    // Level hier anpassen
+    demoLevel.name = "test"; // Todo: Konstruktor erstellen!
+    demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+
+
+    // Schriftart laden!
+    standardSchriftart.loadFromFile("resources/DejaVuSans.ttf");
+
+    // Version im Spiel anzeigen!
+    benachrichtigung version(updateVerfuegbarText.str(), 25, 25, 20);
+    renderList.push_back((sf::Drawable *)&version.text);
+
+    // DebugMsg anzeigen!
+    renderList.push_back((sf::Drawable *)&debugMsg.text);
+
+    // DebugMsg2 anzeigen!
+    renderList.push_back((sf::Drawable *)&debugMsg2.text);
+
 
     sf::Texture spielerTexture;
     sf::Sprite spieler;
     spielerTexture.loadFromFile("resources/spieler.png");
     spieler.setTexture(spielerTexture);
     spieler.setScale(0.5, 0.5);
-    spieler.setPosition(700, 1000);
+    spieler.setOrigin(sf::Vector2f(50, 50));
+    spieler.setPosition(demoLevel.spielerPosition);
 
-    // Level laden!
-    level demoLevel;
+    // Spieler immer anzeigen!
+    renderList.push_back(&spieler);
 
 
-    demoLevel.loadFromFile("levels/test/test.lvl");
+    debugMsg.updateText("Game running in Debug Mode!");
 
-    sf::FloatRect spielerEcken = spieler.getGlobalBounds();
+    // Konsole!
+    console::eingabeFeld.setFont(standardSchriftart);
+    console::eingabeFeld.setColor(sf::Color::Red);
+    console::eingabeFeld.setCharacterSize(20);
+
+    renderList.push_back((sf::Drawable *)&console::eingabeFeld);
+
 
     // Solange das Fenster geöffnet ist
     while(fenster.isOpen())
     {
+        // Eingabeüberprüfung!
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+        {
+            fenster.close();
+        }
+
+        // Kollisionsdetektion
+        sf::FloatRect spielerEcken = spieler.getGlobalBounds();
+
+        // Zoom erneut auf 1 setzen
+        float zoom = 1.0f;
+
+        // Input loop
+
+        // Nur wenn Konsole nicht aktiviert!
+        if(!console::activated)
+        {
+
+            // Nur in eine Richtung auf einmal!
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+            {
+                // Zuerst Kollision überprüfen!
+                spielerEcken.top -= 10;
+                if(demoLevel.checkCollision(spielerEcken))
+                {
+                    // Nicht bewegen!
+                    spielerEcken.top += 10;
+                }
+                else
+                {
+                    // Bewegen!
+                    spieler.setRotation(0);
+                    spieler.move(0, -10);
+                }
+
+            }
+
+            else
+
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+                {
+                    spielerEcken.left-=10;
+                    if(demoLevel.checkCollision(spielerEcken))
+                    {
+                        spielerEcken.left +=10;
+                    }
+                    else
+                    {
+                        spieler.setRotation(270);
+                        spieler.move(-10, 0);
+                    }
+                }
+
+                else
+
+                    if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+                    {
+                        // Zuerst Kollision überprüfen!
+                        spielerEcken.top += 10;
+                        if(demoLevel.checkCollision(spielerEcken))
+                        {
+                            // Nicht bewegen!
+                            spielerEcken.top -= 10;
+                        }
+                        else
+                        {
+                            // Bewegen!
+                            spieler.setRotation(180);
+                            spieler.move(0, 10);
+                        }
+
+                    }
+
+                    else
+
+                        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+                        {
+                            spielerEcken.width +=10;
+                            if(demoLevel.checkCollision(spielerEcken))
+                            {
+                                spielerEcken.width -=10;
+                            }
+                            else
+                            {
+                                spieler.setRotation(90);
+                                spieler.move(10, 0);
+                            }
+
+                        }
+
+                    else
+
+                        if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+                        {
+
+                            if(demoLevel.checkCollisionSchaetze(spielerEcken))
+
+                                {
+                                renderList.remove(&demoLevel.schaetze[0]->sprite);
+                                }
+
+                        }
+
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num0))
+            {
+                zoom -= 0.05;
+                ansicht.zoom(zoom);
+            }
+
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num9))
+            {
+                zoom += 0.05;
+                ansicht.zoom(zoom);
+            }
+
+
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::C))
+            {
+                    demoLevel.tueren[0]->start();
+            }
+        }
+
+
+        if(!console::activated && sf::Keyboard::isKeyPressed(sf::Keyboard::RShift))
+        {
+            if(!console::activated)
+            {
+                showConsole();
+            }
+
+        }
+
+
+        if(console::activated && sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+        {
+            string befehl = console::eingabeText.str();
+
+            cout << "Ausfuehren: '" << befehl << "'" << endl;
+
+            if(befehl == "9990")
+            {
+                debugMsg2.updateText("----- LOL -----");
+            }
+            else if(befehl == "toggleWalls")
+            {
+                demoLevel.collisionsActivated = (!demoLevel.collisionsActivated);
+            }
+            else if(befehl.find("loadLevel ") == 0)
+            {
+                demoLevel.name = befehl.substr(befehl.find("loadLevel ") + 10);
+                cerr << "Lade: '" << demoLevel.name << "'" << endl;
+                demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+
+                // Neue Spielerposition setzen!
+                spieler.setPosition(demoLevel.spielerPosition);
+
+                // Den Spieler wieder anzeigen
+                renderList.push_back(&spieler);
+                renderList.push_back((sf::Drawable *)&version.text);
+                renderList.push_back((sf::Drawable *)&debugMsg.text);
+                renderList.push_back((sf::Drawable *)&debugMsg2.text);
+                renderList.push_back((sf::Drawable *)&console::eingabeFeld);
+            }
+
+            hideConsole();
+        }
+
+
+        // Ende der Eingabeüberprüfung
+        // Event Poll!
+
         sf::Event event;
         while(fenster.pollEvent(event))
         {
@@ -66,59 +299,62 @@ int main(void)
                 fenster.close();
             }
 
+            else
 
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-            {
-                fenster.close();
-            }
-
-
-            // Input loop
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-            {
-                // Zuerst Kollision überprüfen!
-                spielerEcken.top -= 5;
-                if(demoLevel.checkCollision(spielerEcken))
+                if(console::activated && event.type == sf::Event::TextEntered)
                 {
-                    // Nicht bewegen!
-                    spielerEcken.top += 5;
+                    // Wenn Konsole aktiviert, Eingabe lesen!
+                    updateConsole(static_cast<char>(event.text.unicode));
                 }
-                else
-                {
-                    // Bewegen!
-                    spieler.move(0, -5);
-                }
-
-            }
-
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-            {
-                // Zuerst Kollision überprüfen!
-                spielerEcken.top += 5;
-                if(demoLevel.checkCollision(spielerEcken))
-                {
-                    // Nicht bewegen!
-                    spielerEcken.top -= 5;
-                }
-                else
-                {
-                    // Bewegen!
-                    spieler.move(0, 5);
-                }
-
-            }
-
-
-
-            // Render loop
-            fenster.draw(hintergrund);
-            fenster.draw(versionsText);
-            fenster.draw(spieler);
-            fenster.display();
-
-
         }
 
+        // Ansicht anpassen!
+        ansicht.setCenter(spieler.getPosition());
+        fenster.setView(ansicht);
+
+        // Fixe Elemente neu setzen
+        sf::Vector2i versionPosition(25, 25);
+        sf::Vector2i debugPosition(25, 50);
+        sf::Vector2i debug2Position(25, 75);
+
+        sf::Vector2i consolePosition(25, 100);
+
+        version.text.setPosition(fenster.mapPixelToCoords(versionPosition));
+        debugMsg.text.setPosition(fenster.mapPixelToCoords(debugPosition));
+        debugMsg2.text.setPosition(fenster.mapPixelToCoords(debug2Position));
+        console::eingabeFeld.setPosition(fenster.mapPixelToCoords(consolePosition));
+
+        // Animation Loop
+        for(animation* a : animationList)
+        {
+            a->animationAusfuehren();
+        }
+
+
+        // Render loop
+        fenster.clear();
+
+        for(auto object : renderList)
+        {
+            fenster.draw(*object);
+        }
+
+        fenster.display();
+
+
+        // Debugstring aktualisieren
+        stringstream debugMsgText;
+        debugMsgText << "Spielerposition: " << spieler.getPosition().x << ", " << spieler.getPosition().y;
+
+        debugMsg.updateText(debugMsgText.str());
+
+    }
+
+    // Meamleak Fix!
+    if(hintergrundTextur != 0x0 && hintergrund != 0x0)
+    {
+        delete hintergrundTextur;
+        delete hintergrund;
     }
 
     return 0;

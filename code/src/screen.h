@@ -1,6 +1,10 @@
 #ifndef __SCREEN_H__
 #define __SCREEN_H__
 
-extern void hintergrundLaden(sf::Sprite& s, sf::Texture& h);
+#include <string>
+#include "notification.h"
+
+
+extern void hintergrundLaden(std::string levelName, sf::Sprite* s, sf::Texture* h);
 
 #endif // __SCREEN_H__

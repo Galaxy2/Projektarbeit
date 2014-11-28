@@ -1,19 +1,25 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
-void hintergrundLaden(sf::Sprite& s, sf::Texture& h){
+#include "screen.h"
 
-    if(!h.loadFromFile("levels/test/test.png")){
-        std::cerr << "Fehler Hintergrund";
+using namespace std;
+
+
+extern benachrichtigung debugMsg;
+
+
+void hintergrundLaden(string levelName, sf::Sprite* s, sf::Texture* h)
+{
+    string dateiName = "levels/" + levelName + "/" + levelName + ".png";
+
+    if(!h->loadFromFile(dateiName))
+    {
+        std::cerr << "Fehler beim Laden des Hintergrunds\n";
     }
 
-    sf::VideoMode aufloesung = sf::VideoMode::getDesktopMode();
+    s->setTexture(*h);
 
-    // Berechne Skalierungsfaktor
-    float factor = aufloesung.width/1920.0f;
-
-    s.setTexture(h);
-    s.setScale(factor, factor);
 }
 
 

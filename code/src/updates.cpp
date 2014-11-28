@@ -16,7 +16,8 @@ bool newVersionAvailable(void)
 
     sf::Http::Response versionResponse = versionHttp.sendRequest(versionRequest, sf::seconds(1));
 
-    if(versionResponse.getStatus() == sf::Http::Response::ConnectionFailed || versionResponse.getBody() == ""){
+    if(versionResponse.getStatus() == sf::Http::Response::ConnectionFailed || versionResponse.getBody() == "")
+    {
         std::cout << "Verbindungsfehler beim Überprüfen auf Aktualisierungen!";
         return false;
     }
