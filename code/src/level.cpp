@@ -54,6 +54,7 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
         tueren[i]->t = new animation("resources/tuere", 5, false, false, true, 0.05, x, y);
         tueren[i]->offen = true;
         tueren[i]->t->zeigeSchritt(0);
+        tueren[i]->t->sprite.setOrigin(0, 200);
         tueren[i]->t->sprite.setRotation(r);
 
         renderList.push_back(&tueren[i]->t->sprite);

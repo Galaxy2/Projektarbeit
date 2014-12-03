@@ -8,6 +8,13 @@
 
 using namespace std;
 
+
+void defaultCB(sf::FloatRect)
+{
+    return;
+}
+
+
 animation::animation(string n, int N, bool endlos, bool start, bool vorwaerts, float dT, int x, int y)
 {
     name = n;
@@ -51,6 +58,8 @@ animation::animation(string n, int N, bool endlos, bool start, bool vorwaerts, f
         sprite.setTexture(*texturen[schritt]);
     }
 
+    // Setze default callback Funktion
+    animationEnde = defaultCB;
 }
 
 
@@ -139,6 +148,12 @@ void animation::animationAusfuehren(void)
                 aktiv = false;
         }
     }
+
+
+    if(!aktiv)
+    {
+        animationEnde(this->sprite.getGlobalBounds());
+    }
 }
 
 
@@ -146,3 +161,10 @@ bool animation::istBeendet(void)
 {
     return (t.getElapsedTime().asSeconds() > anzahlSchritte * deltaT);
 }
+
+
+void animation::setOnAnimationEnde(void (*callback)(sf::FloatRect))
+{
+    animationEnde = callback;
+}
+

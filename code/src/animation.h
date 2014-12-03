@@ -17,6 +17,7 @@ public:
     string name;
     std::vector<sf::Texture*> texturen;
 
+    // Animationsparameter
     bool endlos;
     bool richtung;
     bool aktiv;
@@ -25,12 +26,17 @@ public:
     sf::Clock t;
     sf::Sprite sprite;
 
+    // Event callback pointers
+    void (*animationEnde)(sf::FloatRect);
+
+    // Globale Funktionen
     void animationAusfuehren(void);
     void start(void);
     void stop(void);
     void setRichtung(bool vorwaerts);
     void zeigeSchritt(int k);
     bool istBeendet(void);
+    void setOnAnimationEnde(void (*callback)(sf::FloatRect));
 
     animation(string n, int N, bool endlos, bool start, bool vorwaerts, float dT, int x, int y);
     ~animation(void);
