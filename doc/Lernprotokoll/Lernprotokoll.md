@@ -1,4 +1,4 @@
-# Lernprotokoll
+﻿# Lernprotokoll
 
 (Format: Datum - Name)
 (Alle Commits: Eintrag Lernprotokoll)
@@ -37,3 +37,13 @@ Gabriel hat durch langes Ausprobieren und tüfteln unsere Bildschirmauflösungsp
 noch vereinzelt Probleme mit seinem Laptop, das Spiel scheint aber bei allen anderen Versuchspcs (mehr als 7!)
 ohne Probleme zu funktionieren. Wir sind an einer Lösung dran, lassen diese jetzt aber bewusst im Hintergrund und
 kümmern uns darum wichtige Teile des Spiels (GUI, Updater, Schätze, Spielfluss) zu implementieren.
+
+### 03.12.14 - Gabriel Gavrilas
+
+Wir arbeiten immernoch an den Türen. Diese lassen sich bereits öffnen und schliessen, doch sind geschlossene Türen noch passierbar.
+Wir müssen eine Mauer an der Position der Türe mit den Dimensionen und der Rotation der Türe erstellen.
+Dazu wollte Ich noch, dass diese entsprechende Mauer erst entsteht, wenn die Türe auch wirklich geschlossen ist.
+Wir haben nun eine Lösung gesucht, und haben schlussendlich, nach Patricks Empfehlung, auf Pointer auf Funktionen zurückgegriffen.
+Da uns allen dieses Gebiet noch nicht so bekannt war, mussten wir uns noch einarbeiten und haben dies heute noch nicht vollendet.
+Voraussichtlich werden wir in einigen Tagen auch dieses Problem behoben haben.
+Unsere nächsten Ziele werden ein GUI(Patrick), Möbel(Jan?), Aussenbereich des Hauses(Ich?), Gegner und Laserschranken, sowie Ton und Lärmpegeleinbau im Spiel.
