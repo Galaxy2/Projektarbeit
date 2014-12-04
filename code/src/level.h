@@ -16,15 +16,18 @@ class level
 public:
     void loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<animation *>& animationList);
     bool checkCollision(sf::FloatRect& spielerPosition);
+    bool checkCollisionMoebel(sf::FloatRect& spielerPosition);
     bool checkCollisionSchaetze(sf::FloatRect& spielerPosition);
     void loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergrund, list<sf::Drawable *>& renderList, list<animation *>& animationList);
 
-    list<sf::FloatRect> mauern;
-    list<sf::FloatRect> moebel;
+    list<sf::FloatRect> moebelPosition;
     list<sf::FloatRect> schaetzePositionen;
+    list<sf::FloatRect> mauern;
+
     vector<animation *> pfeile;
     vector<animation *> tueren;
     vector<animation *> schaetze;
+    vector<animation *> moebel;
 
     sf::Vector2f spielerPosition;
     bool collisionsActivated;

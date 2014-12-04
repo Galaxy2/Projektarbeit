@@ -85,15 +85,24 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
     //Anzahl Moebel einlesen
     levelDatei >> N;
 
-    unsigned int x, y;
+    unsigned int xm, ym, rm;
 
     for(unsigned int i=0; i<N; i++)
     {
-        levelDatei >> x >> y;
-        sf::Vector2f koordinatenOben(x, y);
-        sf::Vector2f koordinatenUnten(x+100,y+100);
+        levelDatei >> xm >> ym >> rm;
 
-        moebel.push_back(sf::FloatRect(koordinatenOben.x, koordinatenOben.y, koordinatenUnten.x, koordinatenUnten.y));
+        moebel.push_back(new animation("resources/sofa", 1, true, true, true, 0.05, xm, ym));
+        moebel[i]->zeigeSchritt(0);
+        moebel[i]->sprite.setOrigin(0,0);
+        moebel[i]->sprite.setRotation(rm);
+
+        renderList.push_back(&moebel[i]->sprite);
+        animationList.push_back(moebel[i]);
+
+        sf::Vector2f koordinatenOben(xm, ym);
+        sf::Vector2f koordinatenUnten(xm, ym);
+
+        moebelPosition.push_back(sf::FloatRect(koordinatenOben.x, koordinatenOben.y, koordinatenUnten.x+200, koordinatenUnten.y+150));
     }
 
     // Anzahl Mauern einlesen
@@ -137,7 +146,7 @@ bool level::checkCollision(sf::FloatRect& spielerPosition)
     }
 
     //Möbelkollision überprüfung
-    for(sf::FloatRect mobel : moebel)
+    for(sf::FloatRect mobel : moebelPosition)
     {
         if(mobel.intersects(spielerPosition))
         {
