@@ -12,6 +12,7 @@ using namespace std;
 
 extern sf::Vector2f koordinaten(int x, int y);
 
+
 class level
 {
 public:
@@ -20,7 +21,6 @@ public:
     bool checkCollisionSchaetze(sf::FloatRect& spielerPosition);
     void loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergrund, list<sf::Drawable *>& renderList, list<animation *>& animationList);
     int checkTuere(sf::FloatRect& spielerPosition);
-    void mauerErstellen(sf::FloatRect pos);
 
     list<sf::FloatRect> mauern;
     list<sf::FloatRect> schaetzePositionen;
@@ -33,5 +33,7 @@ public:
     string name;
 };
 
+
+extern void setzeMauer(int Id);
 
 #endif // __LEVEL_H__

@@ -9,7 +9,7 @@
 using namespace std;
 
 
-void defaultCB(sf::FloatRect)
+void defaultCB(int x)
 {
     return;
 }
@@ -152,7 +152,7 @@ void animation::animationAusfuehren(void)
 
     if(!aktiv)
     {
-        animationEnde(this->sprite.getGlobalBounds());
+        animationEnde(Id);
     }
 }
 
@@ -163,7 +163,7 @@ bool animation::istBeendet(void)
 }
 
 
-void animation::setOnAnimationEnde(void (*callback)(sf::FloatRect))
+void animation::setOnAnimationEnde(void (*callback)(int))
 {
     animationEnde = callback;
 }
