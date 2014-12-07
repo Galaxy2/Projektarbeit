@@ -109,4 +109,4 @@ die Animation zu Ende ist. Da erste Versuche mit modernem C++11 (d.h. der im `<f
 wir uns die guten, altbekannten C/C++ function pointer zu Hilfe. Wir definierten mit `void (*animationEnde)(int);` einen
 pointer auf eine Callbackfunktion. Der Wert dieses pointers kann über die (Animations-)Methode `setOnAnimationEnde` gesetzt werden.
 Nach kurzen Problemen aufgrund der Typisierung, d.h. weil wir unsere Callbackfunktion innerhalb einer Klasse definierten,
-funktionierte es am Schluss doch, weil wir Methodenzeiger verwendeten.
+funktionierte es am Schluss doch, als wir die Funktion global innerhalb der `level.cpp`-Datei definierten. 
