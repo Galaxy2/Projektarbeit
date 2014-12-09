@@ -64,17 +64,17 @@ Wir haben eine sehr nützliche und gut aufgebaute Kritik erhalten, so dass wir j
 
 ### 19.11.14
 
-Durch gute Zusammenarbeit konnten wir heute den Projektvertrag verbessert wieder mitbringen und haben den Vertrag alle zusammen unterschrieben. 
+Durch gute Zusammenarbeit konnten wir heute den Projektvertrag, verbessert, wieder mitbringen und haben den Vertrag zusammen unterschrieben. 
 Jan muss seine Programm-Zeilen noch einmal überarbeiten, da wir uns nach kurzer Absprache entschieden, die Schätze auch in die Animations-Klasse zu nehmen. 
 Diese hat Patrick kurzerhand selber geschrieben, sie dabei auch gleich für die Mauern kompatibel gemacht und die Pfeile eingefügt. 
-Patrick hat auch aus lauter Freude einen kleinen Cheat geschrieben, um durch Mauern gehen zu können. Dafür muss man die Konsole öffnen mit gedrückter Shift Taste. 
+Patrick hat auch aus lauter Freude einen kleinen Cheat geschrieben, um durch Mauern gehen zu können. Dafür muss man die Konsole öffnen durch drücken der Shift Taste. 
 Gabriel hat bereits die ersten Zeilen Code geschrieben für die Türen. Nach Absprache haben wir eine leicht verbesserte Variante gewählt, um die Türen besser zum Laufen zu bringen. 
 Wir bleiben am Ball. Die letzten „factor“ Funktionen wurden entfernt, da es diese nicht wirklich braucht.
 
 ### 26.11.14
 
 Wir haben bis und mit heute einen weiteren Schritt gemacht: Gabriel hat die Türen gezeichnet und nun ist es soweit, dass wir die Tür öffnen können. 
-Und heute ist es durch gemeinsame Denkarbeit sogar schon so weit, dass man die Türe öffnen und schliessen kann, wenn man auf dem Feld der Türe landet. Jetzt muss nur noch sichergestellt werden, dass man nicht mehr durch die Türen hindurch gehen kann. 
+Heute ist es durch gemeinsame Denkarbeit sogar schon so weit, dass man die Türe öffnen und schliessen kann, wenn man auf dem Feld der Türe landet. Jetzt muss nur noch sichergestellt werden, dass man nicht mehr durch die Türen hindurch gehen kann. 
 Jan hat die Schätze auch so weit, dass man sie auf Abfrage hin entfernen kann, wenn man auf ihnen gelandet ist. 
 Das Bild wird auch noch skaliert und so besser dem Spiel angepasst. 
 Wir schrieben uns auf, was es alles noch braucht, bis wir von einem kompletten Game sprechen können. 
@@ -93,6 +93,6 @@ Unsere nächsten Aufgaben werden ein GUI(Patrick), Möbel(Jan), Aussenbereich de
 
 ### 06.12.14
 
-Das von Gabriel geschilderte Problem (welches ???) ist behoben. Wie in der eventgesteuerten Programmierung üblich brauchten wir ein Funktionscallback der Animationsklasse. Sprich eine festlegbare Funktion,  die aufgerufen wird, wenn die Animation zu Ende ist. Da erste Versuche mit modernem C++11 (d.h. der im `<functional>` Header definierten `std::function`) fehlschlugen, nehmen wir uns die guten, altbekannten C/C++ function pointer zu Hilfe. Wir definierten mit `void (*animationEnde)(int);` einen
+Das von Gabriel geschilderte Problem, ist behoben. Wie in der eventgesteuerten Programmierung üblich brauchten wir ein Funktionscallback der Animationsklasse. Sprich eine festlegbare Funktion,  die aufgerufen wird, wenn die Animation zu Ende ist. Da erste Versuche mit modernem C++11 (d.h. der im `<functional>` Header definierten `std::function`) fehlschlugen, nehmen wir uns die guten, altbekannten C/C++ function pointer zu Hilfe. Wir definierten mit `void (*animationEnde)(int);` einen
 pointer auf eine Callbackfunktion. Der Wert dieses pointers kann über die (Animations-)Methode `setOnAnimationEnde` gesetzt werden.
 Nach kurzen Problemen aufgrund der Typisierung, d.h. weil wir unsere Callbackfunktion innerhalb einer Klasse definierten, funktionierte es am Schluss doch. Dazu mussten wir die Funktion global innerhalb der `level.cpp`-Datei definieren. 
