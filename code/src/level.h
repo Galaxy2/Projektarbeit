@@ -22,7 +22,7 @@ public:
     bool checkCollisionSchaetze(sf::FloatRect& spielerPosition);
     bool checkCollisionPfeile(sf::FloatRect& spielerPosition);
     void loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergrund, list<sf::Drawable *>& renderList, list<animation *>& animationList);
-    int checkTuere(sf::FloatRect& spielerPosition);
+    int checkCollisionTuere(sf::FloatRect& spielerPosition);
 
     list<sf::FloatRect> mauern;
     list<sf::FloatRect> schaetzePositionen;
