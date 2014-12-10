@@ -25,9 +25,10 @@ public:
     float deltaT;
     sf::Clock t;
     sf::Sprite sprite;
+    int Id;
 
     // Event callback pointers
-    void (*animationEnde)(sf::FloatRect);
+    void (*animationEnde)(int);
 
     // Globale Funktionen
     void animationAusfuehren(void);
@@ -36,7 +37,7 @@ public:
     void setRichtung(bool vorwaerts);
     void zeigeSchritt(int k);
     bool istBeendet(void);
-    void setOnAnimationEnde(void (*callback)(sf::FloatRect));
+    void setOnAnimationEnde(void (*callback)(int));
 
     animation(string n, int N, bool endlos, bool start, bool vorwaerts, float dT, int x, int y);
     ~animation(void);

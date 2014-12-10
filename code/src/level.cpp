@@ -6,6 +6,12 @@
 #include "notification.h"
 
 
+namespace globallvl
+{
+    list<sf::FloatRect> *mauern;
+}
+
+
 extern benachrichtigung debugMsg;
 
 
@@ -58,6 +64,8 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
         tueren[i]->t->zeigeSchritt(0);
         tueren[i]->t->sprite.setOrigin(0, 200);
         tueren[i]->t->sprite.setRotation(r);
+        tueren[i]->t->Id = i;
+        tueren[i]->t->setOnAnimationEnde(&setzeMauer);
 
         renderList.push_back(&tueren[i]->t->sprite);
         animationList.push_back(tueren[i]->t);
@@ -99,6 +107,8 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
 
         mauern.push_back(sf::FloatRect(koordinatenOben.x, koordinatenOben.y, koordinatenUnten.x-koordinatenOben.x, koordinatenUnten.y-koordinatenOben.y));
     }
+
+    globallvl::mauern = &mauern;
 
     if(levelDatei.fail())
         cerr << "Fehler beim Laden der Leveldatei" << endl;
@@ -217,5 +227,14 @@ void level::loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergru
     // Hintergrundbild laden
     hintergrundLaden(name, hintergrund, hintergrundTextur);
     renderList.push_front(hintergrund);
+}
+
+
+void setzeMauer(int Id)
+{
+    // Hier Mauer in globallvl::mauern einfügen
+
+    cout << "Animationsende" << endl;
+    return;
 }
 
