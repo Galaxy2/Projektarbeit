@@ -91,7 +91,7 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
     {
         levelDatei >> xm1 >> ym1 >> xm2 >> ym2 >> rm;
 
-        moebel.push_back(new animation("resources/sofa", 1, true, true, true, 0.05, xm1, ym1));
+        moebel.push_back(new animation("resources/sofa", 1, true, true, true, 1, xm1, ym1));
         moebel[i]->zeigeSchritt(0);
         moebel[i]->sprite.setOrigin(0,0);
         moebel[i]->sprite.setRotation(rm);
