@@ -34,13 +34,15 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
     {
         levelDatei >> x >> y >> r;
 
-        pfeile.push_back(new animation("resources/pfeil", 8, true, true, true, 0.05, x, y));
-        pfeile[i]->zeigeSchritt(0);
-        pfeile[i]->sprite.setOrigin(100, 50);
-        pfeile[i]->sprite.setRotation(r);
+        pfeile.push_back(new pfeil);
+        pfeile[i]->p = (new animation("resources/pfeil", 8, true, true, true, 0.05, x, y));
+        pfeile[i]->p->zeigeSchritt(0);
+        pfeile[i]->p->sprite.setOrigin(100, 50);
+        pfeile[i]->p->sprite.setRotation(r);
 
-        renderList.push_back(&pfeile[i]->sprite);
-        animationList.push_back(pfeile[i]);
+        renderList.push_back(&pfeile[i]->p->sprite);
+        animationList.push_back(pfeile[i]->p);
+
     }
 
 
@@ -104,20 +106,24 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
     levelDatei.close();
 }
 
+bool level::checkCollisionPfeile(sf::FloatRect& spielerPosition)
+{
+    for(pfeil* P : pfeile)
+    {
+        if(P->p->sprite.getGlobalBounds().intersects(spielerPosition))
+        {
+            return true;
+        }
+    }
+    return false;
+}
 
-/** \brief Kollisionsdetektion
- *
- * \param spielerPosition sf::FloatRect& Ein Rechteck mit den Koordinaten des Spielers
- * \return bool
- *
- */
-
-int level::checkTuere(sf::FloatRect& spielerPosition)
+int level::checkCollisionTuere(sf::FloatRect& spielerPosition)
 {
     int k = 0;
-    for(tuere* t : tueren)
+    for(tuere* T : tueren)
     {
-        if(t->t->sprite.getGlobalBounds().intersects(spielerPosition))
+        if(T->t->sprite.getGlobalBounds().intersects(spielerPosition))
         {
             return k;
         }
@@ -128,6 +134,12 @@ int level::checkTuere(sf::FloatRect& spielerPosition)
     return -1;
 }
 
+/** \brief Kollisionsdetektion
+ *
+ * \param spielerPosition sf::FloatRect& Ein Rechteck mit den Koordinaten des Spielers
+ * \return bool
+ *
+ */
 
 bool level::checkCollision(sf::FloatRect& spielerPosition)
 {

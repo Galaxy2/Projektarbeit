@@ -7,6 +7,7 @@
 
 #include "animation.h"
 #include "tuere.h"
+#include "pfeil.h"
 
 using namespace std;
 
@@ -18,13 +19,15 @@ public:
     void loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<animation *>& animationList);
     bool checkCollision(sf::FloatRect& spielerPosition);
     bool checkCollisionSchaetze(sf::FloatRect& spielerPosition);
+    bool checkCollisionPfeile(sf::FloatRect& spielerPosition);
     void loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergrund, list<sf::Drawable *>& renderList, list<animation *>& animationList);
-    int checkTuere(sf::FloatRect& spielerPosition);
+    int checkCollisionTuere(sf::FloatRect& spielerPosition);
     void mauerErstellen(sf::FloatRect pos);
 
     list<sf::FloatRect> mauern;
     list<sf::FloatRect> schaetzePositionen;
-    vector<animation *> pfeile;
+    list<sf::FloatRect> pfeilePositionen;
+    vector<pfeil *> pfeile;
     vector<tuere *> tueren;
     vector<animation *> schaetze;
 
