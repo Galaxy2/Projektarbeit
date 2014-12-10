@@ -85,13 +85,13 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
     //Anzahl Moebel einlesen
     levelDatei >> N;
 
-    unsigned int xm, ym, rm;
+    unsigned int xm1, ym1, xm2, ym2, rm;
 
     for(unsigned int i=0; i<N; i++)
     {
-        levelDatei >> xm >> ym >> rm;
+        levelDatei >> xm1 >> ym1 >> xm2 >> ym2 >> rm;
 
-        moebel.push_back(new animation("resources/sofa", 1, true, true, true, 0.05, xm, ym));
+        moebel.push_back(new animation("resources/sofa", 1, true, true, true, 0.05, xm1, ym1));
         moebel[i]->zeigeSchritt(0);
         moebel[i]->sprite.setOrigin(0,0);
         moebel[i]->sprite.setRotation(rm);
@@ -99,10 +99,10 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
         renderList.push_back(&moebel[i]->sprite);
         animationList.push_back(moebel[i]);
 
-        sf::Vector2f koordinatenOben(xm, ym);
-        sf::Vector2f koordinatenUnten(xm, ym);
+        sf::Vector2f koordinatenOben(xm1, ym1);
+        sf::Vector2f koordinatenUnten(xm2, ym2);
 
-        moebelPosition.push_back(sf::FloatRect(koordinatenOben.x, koordinatenOben.y, koordinatenUnten.x+200, koordinatenUnten.y+150));
+        moebelPosition.push_back(sf::FloatRect(koordinatenOben.x, koordinatenOben.y, koordinatenUnten.x, koordinatenUnten.y));
     }
 
     // Anzahl Mauern einlesen
