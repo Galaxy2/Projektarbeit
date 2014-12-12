@@ -217,6 +217,10 @@ int main(void)
                                 }
 
                         }
+            if(demoLevel.checkCollisionPfeile(spielerEcken))
+            {
+
+            }
 
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num0))
             {
@@ -233,7 +237,7 @@ int main(void)
 
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::C))
             {
-                int tuereNummer = demoLevel.checkTuere(spielerEcken);
+                int tuereNummer = demoLevel.checkCollisionTuere(spielerEcken);
                 if(tuereNummer != -1 && demoLevel.tueren[tuereNummer]->t->istBeendet())
                 {
                     // Türe als Mauer hinzufügen
