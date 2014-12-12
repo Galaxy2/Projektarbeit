@@ -248,14 +248,28 @@ int main(void)
 
                         // Der Punkt U ist das Rotationszentrum der Türe
                         float Ux = demoLevel.tueren[tuereNummer]->posX;
-                        float Uy = demoLevel.tueren[tuereNummer]->posY + 200;
+                        float Uy = demoLevel.tueren[tuereNummer]->posY;
 
                         // Der 1. Türenpunkt nach der Rotation (T1')
                         float T1x = Ux - 14;
-                        float T1y = Uy - 200 - 200;
+                        float T1y = Uy - 200;
 
                         demoLevel.mauern.remove(sf::FloatRect(demoLevel.tueren[tuereNummer]->posX, demoLevel.tueren[tuereNummer]->posY+179-200, 200, 14));
                         demoLevel.mauern.push_back(sf::FloatRect(T1x, T1y, 14, 200));
+                    }
+                    else
+                    {
+                        // Der Punkt U ist das Rotationszentrum der Türe
+                        float Ux = demoLevel.tueren[tuereNummer]->posX;
+                        float Uy = demoLevel.tueren[tuereNummer]->posY;
+
+                        // Der 1. Türenpunkt nach der Rotation (T1')
+                        float T1x = Ux - 14;
+                        float T1y = Uy - 200;
+
+                        cout << "Türe offen -> geschlossen\n";
+                        demoLevel.mauern.remove(sf::FloatRect(T1x, T1y, 14, 200));
+                        demoLevel.mauern.push_back(sf::FloatRect(Ux, Uy+179-200, 200, 14));
                     }
 
                     // Animation abspielen
