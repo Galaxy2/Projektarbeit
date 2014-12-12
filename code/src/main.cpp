@@ -168,55 +168,55 @@ int main(void)
                     }
                 }
 
-                else
+            else
 
-                    if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+                {
+                    // Zuerst Kollision überprüfen!
+                    spielerEcken.top += 10;
+                    if(demoLevel.checkCollision(spielerEcken))
                     {
-                        // Zuerst Kollision überprüfen!
-                        spielerEcken.top += 10;
-                        if(demoLevel.checkCollision(spielerEcken))
-                        {
-                            // Nicht bewegen!
-                            spielerEcken.top -= 10;
-                        }
-                        else
-                        {
-                            // Bewegen!
-                            spieler.setRotation(180);
-                            spieler.move(0, 10);
-                        }
-
+                        // Nicht bewegen!
+                        spielerEcken.top -= 10;
+                    }
+                    else
+                    {
+                        // Bewegen!
+                        spieler.setRotation(180);
+                        spieler.move(0, 10);
                     }
 
+                }
+
+            else
+
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+                {
+                    spielerEcken.width +=10;
+                    if(demoLevel.checkCollision(spielerEcken))
+                    {
+                        spielerEcken.width -=10;
+                    }
                     else
+                    {
+                        spieler.setRotation(90);
+                        spieler.move(10, 0);
+                    }
 
-                        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+                }
+
+            else
+
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+                {
+
+                    if(demoLevel.checkCollisionSchaetze(spielerEcken))
+
                         {
-                            spielerEcken.width +=10;
-                            if(demoLevel.checkCollision(spielerEcken))
-                            {
-                                spielerEcken.width -=10;
-                            }
-                            else
-                            {
-                                spieler.setRotation(90);
-                                spieler.move(10, 0);
-                            }
-
+                        renderList.remove(&demoLevel.schaetze[0]->sprite);
                         }
 
-                    else
-
-                        if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
-                        {
-
-                            if(demoLevel.checkCollisionSchaetze(spielerEcken))
-
-                                {
-                                renderList.remove(&demoLevel.schaetze[0]->sprite);
-                                }
-
-                        }
+                }
             if(demoLevel.checkCollisionPfeile(spielerEcken))
             {
 
