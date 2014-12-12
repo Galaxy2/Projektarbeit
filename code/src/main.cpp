@@ -250,6 +250,7 @@ int main(void)
                         float T1x = Ux - 14;
                         float T1y = Uy - 200 - 200;
 
+                        demoLevel.mauern.remove(sf::FloatRect(demoLevel.tueren[tuereNummer]->posX, demoLevel.tueren[tuereNummer]->posY+179-200, 200, 14));
                         demoLevel.mauern.push_back(sf::FloatRect(T1x, T1y, 14, 200));
                     }
 

@@ -68,6 +68,8 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
         tueren[i]->posY = y;
         tueren[i]->t->setOnAnimationEnde(&setzeMauer);
 
+        mauern.push_back(sf::FloatRect(x, y+179-200, 200, 14));
+
         renderList.push_back(&tueren[i]->t->sprite);
         animationList.push_back(tueren[i]->t);
     }
