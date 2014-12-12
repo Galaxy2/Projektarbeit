@@ -111,6 +111,8 @@ int main(void)
 
     renderList.push_back((sf::Drawable *)&console::eingabeFeld);
 
+    // Zoombegrenzung
+    int zoomLevel = 0;
 
     // Solange das Fenster geöffnet ist
     while(fenster.isOpen())
@@ -225,16 +227,23 @@ int main(void)
 
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num0))
             {
-                zoom -= 0.05;
-                ansicht.zoom(zoom);
+                if(zoomLevel > -10)
+                {
+                    zoom -= 0.05;
+                    zoomLevel--;
+                    ansicht.zoom(zoom);
+                }
             }
 
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num9))
             {
-                zoom += 0.05;
-                ansicht.zoom(zoom);
+                if(zoomLevel < 10)
+                {
+                    zoom += 0.05;
+                    zoomLevel++;
+                    ansicht.zoom(zoom);
+                }
             }
-
 
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
             {
