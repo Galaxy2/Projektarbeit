@@ -52,6 +52,8 @@ int main(void)
     fenster.setFramerateLimit(50);
     fenster.setVerticalSyncEnabled(true);
 
+    hauptmenu:
+
     // Menü view
     sf::View menu(sf::FloatRect(0,0, aufloesung.width, aufloesung.height));
 
@@ -356,6 +358,9 @@ int main(void)
                     ansicht.zoom(zoom);
                 }
             }
+
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::F12))
+                goto hauptmenu;
 
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
             {
