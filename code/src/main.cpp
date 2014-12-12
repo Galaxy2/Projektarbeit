@@ -89,7 +89,7 @@ int main(void)
     statusBar.setColor(sf::Color(100, 100, 100));
     sf::Clock statusBarClock;
 
-    sf::Text info("Robber (C) 2014", standardSchriftart);
+    sf::Text info(updateVerfuegbarText.str(), standardSchriftart);
     info.setPosition(10, aufloesung.height-25);
     info.setCharacterSize(16);
     info.setColor(sf::Color(100, 100, 100));
