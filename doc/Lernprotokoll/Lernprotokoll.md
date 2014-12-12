@@ -7,7 +7,7 @@
 
 Aktueller Stand: Jan und Gabriel haben sich mit C++ vertraut gemacht und verfügen nun über erste Grundlagen. 
 Patrick hat sich über SFML informiert und hat die beiden anderen Teammitglieder beim Lernen unterstützt.
-Wir sind heute zum Schluss gekommen, dass nach dem erlernen von C++ nun fürs Erste die Gameidee im Zentrum unseres Projektes steht.
+Wir sind heute zum Schluss gekommen, dass, nach dem erlernen von C++, nun fürs Erste die Gameidee im Zentrum unseres Projektes steht.
 Wir haben beschlossen, dass wir bis am kommenden Freitag alle konkrete Ideen zu den bereits aufgeschriebenen Ideen mitbringen. Zudem haben wir uns den Mittwoch, den 22. Oktober als Datum festgelegt, an dem wir uns für die Spiel-Ideen entscheiden wollen. 
 Aus unserer Sicht sind wir auf gutem Wege und haben ein gutes Gefühl.
 
@@ -20,8 +20,8 @@ Wir einigten uns auf eine Spielidee: Wir programmieren ein Einbrecherspiel. Wir 
 
 ### 29.10.14
 
-Die Spielidee haben wir bereits verfeinert und haben uns ein erste Ziele gesetzt: 
-Bis nächsten Montag soll ein Bild in den Hintergrund des Spieles geladen werden. Und es soll eine Figur haben, die man über den Bildschirm bewegen kann. 
+Die Spielidee haben wir bereits verfeinert und haben uns ein erstes Ziel gesetzt: 
+Bis nächsten Montag soll ein Bild in den Hintergrund des Spieles geladen werden. Und es soll eine Figur geben, die man über den Bildschirm bewegen kann. 
 Ausserdem sollen auch Mauern und eine Kollisionsüberprüfung eingebaut werden. 
 Wir haben heute die main.cpp Datei erstellt und somit offiziell mit dem Programmieren des Spiels angefangen. 
 Dazu haben wir ein Demo-Hintergrundbild, Demo-Level und Demo-Spielertextur erstellt, um das Spiel testen zu können.
@@ -29,8 +29,8 @@ Dazu haben wir ein Demo-Hintergrundbild, Demo-Level und Demo-Spielertextur erste
 ### 04.11.14
 
 Wir haben den Projektvertag nun vollständig zur Abgabe bereit. 
-Der Demo-Level funktioniert bereits. Wir haben noch Probleme mit dem definieren der Mauern. Dadurch besteht unser Spiel momentan noch aus einer Figur, die sich auf einem gezeichneten Hintergrund bewegt ohne Hindernisse durch Mauern. 
-Auf Jans Laptop funktioniert das Laden des Hintergrundes und der Spielerfigur nicht auf Anhieb. Wir freuen uns, dass wir unser erstes Ziele grösstenteils erreicht haben. 
+Das Demo-Level funktioniert bereits. Wir haben noch Probleme mit dem definieren der Mauern. Dadurch besteht unser Spiel momentan noch aus einer Figur, die sich auf einem gezeichneten Hintergrund bewegt, ohne Hindernisse durch Mauern. 
+Auf Jans Laptop funktioniert das Laden des Hintergrundes und der Spielerfigur nicht auf Anhieb. Wir freuen uns, dass wir unser erstes Ziel grösstenteils erreicht haben. 
 Als nächstes wollen wir weitere Elemente in die Demo-Version einfügen.
 
 ### 08.11.14
@@ -48,12 +48,12 @@ Jan meldet noch vereinzelt Probleme mit seinem Laptop, das Spiel scheint aber be
 
 ### 12.11.14
 
-Wir sind noch einmal zusammen gesessen und haben versucht, das Game auf Jans PC  zum Laufen zu bringen.
-Dabei entschieden wir auch, dass wir das Bild nach dem Spieler ausrichten so, dass der Spieler immer in der Mitte der Ansicht steht. 
+Wir haben uns noch einmal getroffen um das Game auf Jans PC zum Laufen zu bringen.
+Dabei entschieden wir auch, dass wir das Bild nach dem Spieler ausrichten, sodass der Spieler immer in der Mitte der Ansicht steht. 
 Wir dachten, dass das Problem mit Jans Laptop dadurch vielleicht einfacher zu beheben ist. Durch das Einführen einer Zoom-Funktion können wir nun manuell die Einstellung der Grösse und der Ansicht des Spielfeldes einstellen. 
 Damit ist das erste Problem der Ansicht schon einmal behoben. Jetzt bleiben nur noch die Mauern. 
-Im Zusammenhang mit diesen haben wir bemerkt, dass wir 2 Koordinatensysteme haben und Jans PC damit wohl Mühe hat. 
-Das konnten wir jetzt auch beheben: Jetzt werden die Mauern auch auf Jans Laptop richtig skaliert. 
+Beim bearbeiten der Mauern haben wir bemerkt, dass wir 2 Koordinatensysteme haben und Jans PC damit wohl Mühe hat. 
+Dadurch konnten wir jetzt auch das beheben: Jetzt werden die Mauern auch auf Jans Laptop richtig skaliert. 
 Das Einzige, das auf Jans Laptop noch nicht funktioniert, ist zur Zeit die Konsole, die nicht angezeigt wird. 
 Aber wir entschieden uns, dass dieses Problem im Moment nicht weiter verfolgt wird. Wir sind sehr froh, dass wir es hinbekommen haben, dass das Game auf all unseren 3 PCs läuft. 
 Nun fasst jeder von uns ein kleines neues Ziel. 
@@ -65,7 +65,7 @@ Wir haben eine sehr nützliche und gut aufgebaute Kritik erhalten, so dass wir j
 ### 19.11.14
 
 Durch gute Zusammenarbeit konnten wir heute den Projektvertrag, verbessert, wieder mitbringen und haben den Vertrag zusammen unterschrieben. 
-Jan muss seine Programm-Zeilen noch einmal überarbeiten, da wir uns nach kurzer Absprache entschieden, die Schätze auch in die Animations-Klasse zu nehmen. 
+Jan muss seine Programm-Zeile noch einmal überarbeiten, da wir uns nach kurzer Absprache entschieden haben, die Schätze auch in die Animations-Klasse zu nehmen. 
 Diese hat Patrick kurzerhand selber geschrieben, sie dabei auch gleich für die Mauern kompatibel gemacht und die Pfeile eingefügt. 
 Patrick hat auch aus lauter Freude einen kleinen Cheat geschrieben, um durch Mauern gehen zu können. Dafür muss man die Konsole öffnen durch drücken der Shift Taste. 
 Gabriel hat bereits die ersten Zeilen Code geschrieben für die Türen. Nach Absprache haben wir eine leicht verbesserte Variante gewählt, um die Türen besser zum Laufen zu bringen. 
@@ -79,7 +79,7 @@ Jan hat die Schätze auch so weit, dass man sie auf Abfrage hin entfernen kann, 
 Das Bild wird auch noch skaliert und so besser dem Spiel angepasst. 
 Wir schrieben uns auf, was es alles noch braucht, bis wir von einem kompletten Game sprechen können. 
 Das wären sicher Möbel, Zeitlimite, Sound, das Aussenlevel (mit weniger Gewichtung) und ein Startmenü. 
-Bis nächste Woche sollen sich alle ein paar Gedanken machen zum Problem  mit den Mauern, durch die man nicht hindurchlaufen kann.
+Bis nächste Woche sollen sich alle ein paar Gedanken machen zum Problem mit den Mauern, durch die man nicht hindurchlaufen kann.
 
 ### 03.12.14
 
