@@ -137,6 +137,23 @@ neu geladen. So entsteht das Gefühl einer Bewegung, bzw. hier Anpassung der Far
 $animationAusfuehren()$, die überprüft, ob bereits genug Zeit vergangen ist, das neue Bild anzuzeigen und dies gegebenenfalls
 übernimmt.
 
-\newpage
+
+\subsection{Türen}
+Das mühsamste beim Implementieren der Türen waren die dynamischen Mauern. Zwar kann die Mauer Liste mit den
+STL-Funktionen $push_back()$ und $remove()$ einfach hinzugefügt, bzw. entfernt werden, jedoch muss die Mauer
+immer entsprechend umgerechnet werden. Dies ist besonders bei den 4 verschiedenen möglichen Rotationen etwas mühsam.
+
+
+\subsection{Das Hauptmenü}
+Das Hauptmenü wurde bewusst relativ simpel gehalten und konnte dadurch sehr schnell erstellt werden. Mit GIMP wurden
+einige mehr oder weniger gut aussehende Grafiken erzeugt, die als Buttons verwendet werden konnten. 
+\begin{figure}
+\centering
+\includegraphics[scale=0.3]{img/hauptmenu.png}
+\caption{Das Hauptmenü}
+\end{figure}
+
+
+\clearpage
 \listoffigures
 \end{document}
