@@ -9,6 +9,7 @@ class tuere
 public:
     animation *t;
     bool offen;
+    float posX, posY;
 
     tuere(void);
     //~tuere(void);

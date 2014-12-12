@@ -236,6 +236,24 @@ int main(void)
                 int tuereNummer = demoLevel.checkTuere(spielerEcken);
                 if(tuereNummer != -1 && demoLevel.tueren[tuereNummer]->t->istBeendet())
                 {
+                    // Türe als Mauer hinzufügen
+                    if(demoLevel.tueren[tuereNummer]->offen)
+                    {
+                        cout << "Türe geschlossen -> offen\n";
+                        cout << "x: " << demoLevel.tueren[tuereNummer]->posX << "  y: " << demoLevel.tueren[tuereNummer]->posY;
+
+                        // Der Punkt U ist das Rotationszentrum der Türe
+                        float Ux = demoLevel.tueren[tuereNummer]->posX;
+                        float Uy = demoLevel.tueren[tuereNummer]->posY + 200;
+
+                        // Der 1. Türenpunkt nach der Rotation (T1')
+                        float T1x = Ux - 14;
+                        float T1y = Uy - 200 - 200;
+
+                        demoLevel.mauern.push_back(sf::FloatRect(T1x, T1y, 14, 200));
+                    }
+
+                    // Animation abspielen
                     demoLevel.tueren[tuereNummer]->t->setRichtung(demoLevel.tueren[tuereNummer]->offen);
                     demoLevel.tueren[tuereNummer]->t->start();
                     demoLevel.tueren[tuereNummer]->offen = !demoLevel.tueren[tuereNummer]->offen;

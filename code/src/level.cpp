@@ -50,6 +50,7 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
     }
 
 
+
     // Anzahl Türen einlesen
     levelDatei >> N;
     for(unsigned int i=0; i<N; i++)
@@ -63,6 +64,8 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
         tueren[i]->t->sprite.setOrigin(0, 200);
         tueren[i]->t->sprite.setRotation(r);
         tueren[i]->t->Id = i;
+        tueren[i]->posX = x;
+        tueren[i]->posY = y;
         tueren[i]->t->setOnAnimationEnde(&setzeMauer);
 
         renderList.push_back(&tueren[i]->t->sprite);
@@ -221,7 +224,7 @@ void level::loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergru
 void setzeMauer(int Id)
 {
     // Hier Mauer in globallvl::mauern einfügen
-
+    //globallvl::mauern->remove(mauer())
     cout << "Animationsende" << endl;
     return;
 }
