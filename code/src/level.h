@@ -7,6 +7,7 @@
 
 #include "animation.h"
 #include "tuere.h"
+#include "schatz.h"
 
 using namespace std;
 
@@ -18,15 +19,16 @@ class level
 public:
     void loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<animation *>& animationList);
     bool checkCollision(sf::FloatRect& spielerPosition);
-    bool checkCollisionSchaetze(sf::FloatRect& spielerPosition);
+    //bool checkCollisionSchaetze(sf::FloatRect& spielerPosition);
     void loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergrund, list<sf::Drawable *>& renderList, list<animation *>& animationList);
     int checkTuere(sf::FloatRect& spielerPosition);
+    int checkCollisionSchaetze(sf::FloatRect& spielerPosition);
 
     list<sf::FloatRect> mauern;
-    list<sf::FloatRect> schaetzePositionen;
+    //list<sf::FloatRect> schaetzePositionen;
     vector<animation *> pfeile;
     vector<tuere *> tueren;
-    vector<animation *> schaetze;
+    vector<schatz *> schaetze;
 
     sf::Vector2f spielerPosition;
     bool collisionsActivated;

@@ -89,6 +89,7 @@
 		<Unit filename="main.h" />
 		<Unit filename="notification.cpp" />
 		<Unit filename="notification.h" />
+		<Unit filename="schatz.h" />
 		<Unit filename="screen.cpp" />
 		<Unit filename="screen.h" />
 		<Unit filename="tuere.cpp" />
