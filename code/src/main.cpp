@@ -36,7 +36,7 @@ int main(void)
 
 
 
-    // Fenster und Grafik
+    // Fenster- und Grafikeinstellungen
 
     sf::VideoMode aufloesung = sf::VideoMode::getDesktopMode();
 
@@ -52,11 +52,95 @@ int main(void)
     fenster.setFramerateLimit(50);
     fenster.setVerticalSyncEnabled(true);
 
+    // Menu view
+    sf::View menu(sf::FloatRect(0,0, aufloesung.width, aufloesung.height));
+
+    menu.setViewport(sf::FloatRect(0,0, 1, 1));
+    fenster.setView(menu);
+
+    // Schriftart laden!
+    standardSchriftart.loadFromFile("resources/DejaVuSans.ttf");
+
+
+    // Menu
+    sf::Texture robberLogoTexture;
+    robberLogoTexture.loadFromFile("resources/robber.png");
+    sf::Sprite robberLogo(robberLogoTexture);
+
+    sf::Texture spielStartenTexture;
+    spielStartenTexture.loadFromFile("resources/spielStarten.png");
+    sf::Sprite spielStarten(spielStartenTexture);
+    spielStarten.setPosition(50, 350);
+    sf::FloatRect spielStartenRect(50, 350, 349, 75);
+
+    sf::Texture spielBeendenTexture;
+    spielBeendenTexture.loadFromFile("resources/spielBeenden.png");
+    sf::Sprite spielBeenden(spielBeendenTexture);
+    spielBeenden.setPosition(50, 475);
+    sf::FloatRect spielBeendenRect(50, 475, 384, 75);
+
+    sf::Texture sfmlTexture;
+    sfmlTexture.loadFromFile("resources/sfml.png");
+    sf::Sprite sfml(sfmlTexture);
+    sfml.setScale(0.5, 0.5);
+    sfml.setPosition(aufloesung.width-400*0.5, aufloesung.height-140*0.5);
+
+    sf::Text info("Robber (C) 2014", standardSchriftart);
+    info.setPosition(10, aufloesung.height-25);
+    info.setCharacterSize(16);
+    info.setColor(sf::Color(100, 100, 100));
+
+    bool startGame = false;
+    while(!startGame)
+    {
+        // Beenden?
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+        {
+            fenster.close();
+            return 0;
+        }
+
+        // Klicks verarbeiten!
+        sf::Event klick;
+        while(fenster.pollEvent(klick))
+        {
+            if(klick.type == sf::Event::MouseButtonReleased && klick.mouseButton.button == sf::Mouse::Left)
+            {
+                sf::Vector2f mausPosition(klick.mouseButton.x, klick.mouseButton.y);
+
+                if(spielStartenRect.contains(mausPosition))
+                {
+                    startGame = true;
+                }
+                else if(spielBeendenRect.contains(mausPosition))
+                {
+                    fenster.close();
+                    return 0;
+                }
+            }
+        }
+
+
+        // Fenster neu zeichnen
+        fenster.clear();
+
+        fenster.draw(robberLogo);
+        fenster.draw(spielStarten);
+        fenster.draw(spielBeenden);
+        fenster.draw(sfml);
+        fenster.draw(info);
+        fenster.display();
+    }
+
+
+
+
+    // Das Spiel starten!
+
     sf::View ansicht(sf::FloatRect(0,0, aufloesung.width, aufloesung.height));
 
     ansicht.setViewport(sf::FloatRect(0,0, 1, 1));
     fenster.setView(ansicht);
-
 
     // AnimationList vorbereiten
     list<animation *> animationList;
@@ -74,10 +158,6 @@ int main(void)
     // Level hier anpassen
     demoLevel.name = "test"; // Todo: Konstruktor erstellen!
     demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
-
-
-    // Schriftart laden!
-    standardSchriftart.loadFromFile("resources/DejaVuSans.ttf");
 
     // Version im Spiel anzeigen!
     benachrichtigung version(updateVerfuegbarText.str(), 25, 25, 20);
