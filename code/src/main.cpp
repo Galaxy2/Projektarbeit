@@ -210,10 +210,11 @@ int main(void)
                         if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
                         {
 
-                            if(demoLevel.checkCollisionSchaetze(spielerEcken))
+                            int schaetzeNummer = demoLevel.checkCollisionSchaetze(spielerEcken);
+                            if(schaetzeNummer != -1 && demoLevel.schaetze[schaetzeNummer]->s->istBeendet())
 
                                 {
-                                renderList.remove(&demoLevel.schaetze[0]->sprite);
+                                renderList.remove(&demoLevel.schaetze[schaetzeNummer]->s->sprite);
                                 }
 
                         }
@@ -235,7 +236,7 @@ int main(void)
             }
 
 
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::C))
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
             {
                 int tuereNummer = demoLevel.checkCollisionTuere(spielerEcken);
 
