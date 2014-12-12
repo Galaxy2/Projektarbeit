@@ -70,7 +70,14 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
         tueren[i]->posY = y;
         tueren[i]->t->setOnAnimationEnde(&setzeMauer);
 
-        mauern.push_back(sf::FloatRect(x, y+179-200, 200, 14));
+        if(r == 0)
+            mauern.push_back(sf::FloatRect(x, y+179-200, 200, 14));
+
+       /* else if(r == 90)
+            mauern.push_back(sf::FloatRect(x, y-179, 14, 200));
+        else if(r == 180)
+            mauern.push_back(sf::FloatRect(---))
+        */
 
         renderList.push_back(&tueren[i]->t->sprite);
         animationList.push_back(tueren[i]->t);
