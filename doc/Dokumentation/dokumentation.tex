@@ -189,6 +189,19 @@ Während der Entwicklung haben wir unser Projekt regelmässig von Coverity über
 \includegraphics[scale=0.4]{img/coverity.png}
 \caption{Coverity hat 3 Fehler gefunden und markiert die fehlerhafte Stelle im Code}
 \end{figure}
+
+\subsection{Valgrind}
+\textbf{Valgrind} ist ein freies Programm zur dynamischen Fehleranalyse in Programmen. Besonders nutzten wir die Fähigkeit,
+unser Spiel innerhalb des Memcheck-Moduls laufen zu lassen, um ein Feedback über den Speicherverbrauch zu erhalten. So entdeckten
+wir, dass viele Klassen, die schnell erstellt wurden, zwar Speicher anfordern, diesen aber nie mehr freigeben. Das führte schlussendlich
+zu einem Speicherleck von knapp 20MB, das schliesslich behoben werden konnte.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.8]{img/valgrind2.png}
+\caption{Valgrinds Memcheck}
+\end{figure}
+
 \clearpage
 \listoffigures
 \end{document}
