@@ -137,6 +137,71 @@ neu geladen. So entsteht das Gefühl einer Bewegung, bzw. hier Anpassung der Far
 $animationAusfuehren()$, die überprüft, ob bereits genug Zeit vergangen ist, das neue Bild anzuzeigen und dies gegebenenfalls
 übernimmt.
 
-\newpage
+
+\subsection{Türen}
+Das mühsamste beim Implementieren der Türen waren die dynamischen Mauern. Zwar kann die Mauer Liste mit den
+STL-Funktionen $push_back()$ und $remove()$ einfach hinzugefügt, bzw. entfernt werden, jedoch muss die Mauer
+immer entsprechend umgerechnet werden. Dies ist besonders bei den 4 verschiedenen möglichen Rotationen etwas mühsam.
+
+
+\subsection{Das Hauptmenü}
+Das Hauptmenü wurde bewusst relativ simpel gehalten und konnte dadurch sehr schnell erstellt werden. Mit GIMP wurden
+einige mehr oder weniger gut aussehende Grafiken erzeugt, die als Buttons verwendet werden konnten. 
+\begin{figure}
+\centering
+\includegraphics[scale=0.3]{img/hauptmenu.png}
+\caption{Das Hauptmenü}
+\end{figure}
+
+
+\section{Entwicklungswerkzeuge}
+\subsection{Code::Blocks}
+Code::Blocks ist eine frei verfügbare Entwicklungsumgebung (IDE\footnote{Integrated Development Environment}) die Programmierung in C/C++ und D.
+Neben der Syntaxhervorhebung und der intelligente Autovervollständigung bietet Code::Blocks bequeme Einstellungen um SFML-Projekte auf allen Plattformen
+einfach zu kompilieren. Code::Blocks setzt dabei auf eine Art \textbf{make} wie es schon aus Unixzeiten bekannt ist. Kompiliert wird nur das, was sich
+seit dem letzten Durchgang geändert hat. Code::Blocks nutzt \textbf{g++}, den GNU C++ Compiler, um die einzelnen Dateien in Objektcode umzuwandeln und diesen
+anschliessen in eine ausführbare Datei zu linken.
+
+\subsection{git / GitHub}
+\textbf{git} ist eine sogenannte verteilte Versionskontrolle (DVCS\footnote{Distributed Version Control System}). Ein solches Werkzeug übernimmt
+den Entwicklern einige Arbeit, wenn es darum geht, parallel an Software zu schreiben. Zudem zeichnet es alle Änderungen am Code auf und man kann diese
+einsehen, um zum Beispiel Fehler zu finden, sie erst seit kurzem vorhanden sind, oder gewisse Änderungen rückgängig zu machen, ohne dass man
+manuell die Dateien zerpflücken muss. git überzeugte uns durch seine Einfachheit, seine Effizienz und seine Möglichkeiten. \textbf{GitHub} ist ein
+Onlineportal, das das Hosting von Projekten, die mit git verwaltet werden, kostenlos übernimmt. Das Projekt erhält eine eigene Übersichtsseite,
+die ebenfalls zur Entwicklung genutzt werden kann, und auf der Interessierte den Code und die Änderungen einsehen können. Wir haben GitHub nicht nur
+als Hoster genutzt, sondern ebenfalls, um unsere Termine und Fristen mit dem Projektkalender festzulegen.
+\begin{figure}
+\centering
+\includegraphics[scale=1]{img/branches.png}
+\caption{Verschiedene Entwicklungszweige zur parallelen Entwicklung auf GitHub}
+\end{figure}
+
+
+\subsection{Coverity Scan}
+\textbf{Coverity Scan} ist der Name eines Produktes der gleichnamigen amerikanischen Firma. 2006 erhielt diese Firma vom US-Verteidigungsministerium
+einen finanziellen Zuschuss, um es für OpenSource-Projekte kostenlos möglich zu machen, ihren Code auf Sicherheitslücken und Programmierfehler untersuchen
+zu lassen. Dabei funktioniert Coverity keines Wegs wie ein normaler Compiler (erkennt also keine syntaktischen Fehler wie das Fehlen eines Semikolons),
+sondern es versucht den Code zu verstehen und mögliche semantische Fehler zu finden. So werden Entwickler hingewiesen, dass zum Beispiel eine Funktion
+unter gewissen Bedingungen nie terminiert und so das Programm blockiert. Auch findet Coverity schnell Speicherlecks und Speicherzugriffsfehler.
+Während der Entwicklung haben wir unser Projekt regelmässig von Coverity überprüfen lassen.
+\begin{figure}
+\centering
+\includegraphics[scale=0.4]{img/coverity.png}
+\caption{Coverity hat 3 Fehler gefunden und markiert die fehlerhafte Stelle im Code}
+\end{figure}
+
+\subsection{Valgrind}
+\textbf{Valgrind} ist ein freies Programm zur dynamischen Fehleranalyse in Programmen. Besonders nutzten wir die Fähigkeit,
+unser Spiel innerhalb des Memcheck-Moduls laufen zu lassen, um ein Feedback über den Speicherverbrauch zu erhalten. So entdeckten
+wir, dass viele Klassen, die schnell erstellt wurden, zwar Speicher anfordern, diesen aber nie mehr freigeben. Das führte schlussendlich
+zu einem Speicherleck von knapp 20MB, das schliesslich behoben werden konnte.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.8]{img/valgrind2.png}
+\caption{Valgrinds Memcheck}
+\end{figure}
+
+\clearpage
 \listoffigures
 \end{document}

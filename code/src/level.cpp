@@ -70,7 +70,14 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
         tueren[i]->posY = y;
         tueren[i]->t->setOnAnimationEnde(&setzeMauer);
 
-        mauern.push_back(sf::FloatRect(x, y+179-200, 200, 14));
+        if(r == 0)
+            mauern.push_back(sf::FloatRect(x, y+179-200, 200, 14));
+
+       /* else if(r == 90)
+            mauern.push_back(sf::FloatRect(x, y-179, 14, 200));
+        else if(r == 180)
+            mauern.push_back(sf::FloatRect(---))
+        */
 
         renderList.push_back(&tueren[i]->t->sprite);
         animationList.push_back(tueren[i]->t);
@@ -84,19 +91,15 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
     {
         levelDatei >> xs >> ys >> rs;
 
-        schaetze.push_back(new animation("resources/schatz", 1, true, false, true, 0.05, xs, ys));
-        schaetze[i]->zeigeSchritt(0);
-        schaetze[i]->sprite.setOrigin(100,25);
-        schaetze[i]->sprite.setScale(1.0f/3, 1.0f/3);
-        schaetze[i]->sprite.setRotation(rs);
+        schaetze.push_back(new schatz);
+        schaetze[i]->s = new animation("resources/schatz", 1, false, false, true, 0.05, xs, ys);
+        schaetze[i]->s->zeigeSchritt(0);
+        schaetze[i]->s->sprite.setOrigin(0,0);
+        schaetze[i]->s->sprite.setRotation(rs);
+        schaetze[i]->s->Id = i;
 
-        renderList.push_back(&schaetze[i]->sprite);
-        animationList.push_back(schaetze[i]);
-
-        sf::Vector2f koordinatenOben(xs, ys);
-        sf::Vector2f koordinatenUnten(xs+314, ys+213);
-
-        schaetzePositionen.push_back(sf::FloatRect(koordinatenOben.x-20, koordinatenOben.y-20,koordinatenUnten.x+20, koordinatenUnten.y+20));
+        renderList.push_back(&schaetze[i]->s->sprite);
+        animationList.push_back(schaetze[i]->s);
     }
 
 
@@ -174,17 +177,21 @@ bool level::checkCollision(sf::FloatRect& spielerPosition)
 }
 
 //checkSchaetze
-bool level::checkCollisionSchaetze(sf::FloatRect& spielerPosition)
+
+int level::checkCollisionSchaetze(sf::FloatRect& spielerPosition)
 {
-    for(sf::FloatRect schatz : schaetzePositionen)
+    int i = 0;
+    for(schatz* S : schaetze)
     {
-        if(schatz.intersects(spielerPosition))
+        if(S->s->sprite.getGlobalBounds().intersects(spielerPosition))
         {
-            return true;
+            return i;
         }
+
+    i++;
     }
 
-    return false;
+    return -1;
 }
 
 
@@ -234,6 +241,25 @@ void level::loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergru
     renderList.push_front(hintergrund);
 }
 
+
+level::~level(void)
+{
+    for(auto x : tueren)
+    {
+        delete x;
+    }
+
+    for(auto x : pfeile)
+    {
+        delete x;
+    }
+
+    for(auto x : schaetze)
+    {
+        delete x;
+    }
+
+}
 
 void setzeMauer(int Id)
 {

@@ -12,7 +12,7 @@ public:
     float posX, posY;
 
     tuere(void);
-    //~tuere(void);
+    ~tuere(void);
 };
 
 
