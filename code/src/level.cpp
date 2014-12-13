@@ -27,7 +27,7 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
 {
     fstream levelDatei(pfad.c_str(), fstream::in);
 
-
+    levelDatei >> deckeName;
     // Spieler Spawn Position lesen!
     levelDatei >> spielerPosition.x >> spielerPosition.y;
 
@@ -45,6 +45,7 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
         pfeile[i]->p->zeigeSchritt(0);
         pfeile[i]->p->sprite.setOrigin(100, 50);
         pfeile[i]->p->sprite.setRotation(r);
+        pfeile[i]->p->Id = i;
 
         renderList.push_back(&pfeile[i]->p->sprite);
         animationList.push_back(pfeile[i]->p);
@@ -124,16 +125,19 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
     levelDatei.close();
 }
 
-bool level::checkCollisionPfeile(sf::FloatRect& spielerPosition)
+int level::checkCollisionPfeile(sf::FloatRect& spielerPosition)
 {
+    int k = 0;
     for(pfeil* P : pfeile)
     {
         if(P->p->sprite.getGlobalBounds().intersects(spielerPosition))
         {
-            return true;
+            return k;
         }
+
+        k++;
     }
-    return false;
+    return -1;
 }
 
 int level::checkCollisionTuere(sf::FloatRect& spielerPosition)
