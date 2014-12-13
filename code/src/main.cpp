@@ -36,7 +36,7 @@ int main(void)
 
 
 
-    // Fenster und Grafik
+    // Fenster- und Grafikeinstellungen
 
     sf::VideoMode aufloesung = sf::VideoMode::getDesktopMode();
 
@@ -52,11 +52,129 @@ int main(void)
     fenster.setFramerateLimit(50);
     fenster.setVerticalSyncEnabled(true);
 
+    hauptmenu:
+
+    // Menü view
+    sf::View menu(sf::FloatRect(0,0, aufloesung.width, aufloesung.height));
+
+    menu.setViewport(sf::FloatRect(0,0, 1, 1));
+    fenster.setView(menu);
+
+    // Schriftart laden!
+    standardSchriftart.loadFromFile("resources/DejaVuSans.ttf");
+
+
+    // Menüelemente
+    sf::Texture robberLogoTexture;
+    robberLogoTexture.loadFromFile("resources/robber.png");
+    sf::Sprite robberLogo(robberLogoTexture);
+
+    sf::Texture spielStartenTexture;
+    spielStartenTexture.loadFromFile("resources/spielStarten.png");
+    sf::Sprite spielStarten(spielStartenTexture);
+    spielStarten.setPosition(50, 350);
+
+    sf::Texture spielBeendenTexture;
+    spielBeendenTexture.loadFromFile("resources/spielBeenden.png");
+    sf::Sprite spielBeenden(spielBeendenTexture);
+    spielBeenden.setPosition(50, 475);
+
+    sf::Texture sfmlTexture;
+    sfmlTexture.loadFromFile("resources/sfml.png");
+    sf::Sprite sfml(sfmlTexture);
+    sfml.setScale(0.5, 0.5);
+    sfml.setPosition(aufloesung.width-400*0.5, aufloesung.height-140*0.5);
+
+    sf::Text statusBar("", standardSchriftart);
+    statusBar.setPosition(10, aufloesung.height-50);
+    statusBar.setCharacterSize(16);
+    statusBar.setColor(sf::Color(100, 100, 100));
+    sf::Clock statusBarClock;
+
+    sf::Text info(updateVerfuegbarText.str(), standardSchriftart);
+    info.setPosition(10, aufloesung.height-25);
+    info.setCharacterSize(16);
+    info.setColor(sf::Color(100, 100, 100));
+
+
+    // Menüschleife
+    bool startGame = false;
+    while(!startGame)
+    {
+        // Beenden?
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+        {
+            fenster.close();
+            return 0;
+        }
+
+        // Klicks verarbeiten!
+        sf::Event klick;
+        while(fenster.pollEvent(klick))
+        {
+            if(klick.type == sf::Event::MouseMoved)
+            {
+                sf::Vector2f mausPosition(klick.mouseMove.x, klick.mouseMove.y);
+
+                if(spielStarten.getGlobalBounds().contains(mausPosition))
+                {
+                    statusBar.setString("Das Spiel starten!");
+                    statusBarClock.restart();
+                }
+                else if(spielBeenden.getGlobalBounds().contains(mausPosition))
+                {
+                    statusBar.setString("Das Spiel beenden! :-(");
+                    statusBarClock.restart();
+                }
+                else if(sfml.getGlobalBounds().contains(mausPosition))
+                {
+                    statusBar.setString("Dieses Spiel wurde in C++ mit der \"Simple and Fast Multimedia Library\" erstellt!");
+                    statusBarClock.restart();
+                }
+            }
+
+            if(klick.type == sf::Event::MouseButtonReleased && klick.mouseButton.button == sf::Mouse::Left)
+            {
+                sf::Vector2f mausPosition(klick.mouseButton.x, klick.mouseButton.y);
+
+                if(spielStarten.getGlobalBounds().contains(mausPosition))
+                {
+                    startGame = true;
+                }
+                else if(spielBeenden.getGlobalBounds().contains(mausPosition))
+                {
+                    fenster.close();
+                    return 0;
+                }
+            }
+        }
+
+        // StatusBar nach 2 Sekunden wieder leeren! :)
+        if(statusBarClock.getElapsedTime().asSeconds() > 2)
+            statusBar.setString("");
+
+
+        // Fenster neu zeichnen
+        fenster.clear();
+
+        fenster.draw(robberLogo);
+        fenster.draw(spielStarten);
+        fenster.draw(spielBeenden);
+        fenster.draw(sfml);
+        fenster.draw(info);
+        fenster.draw(statusBar);
+        fenster.display();
+    }
+
+
+
+
+    // Das Spiel starten!
+
     sf::View ansicht(sf::FloatRect(0,0, aufloesung.width, aufloesung.height));
 
     ansicht.setViewport(sf::FloatRect(0,0, 1, 1));
     fenster.setView(ansicht);
-
 
     // AnimationList vorbereiten
     list<animation *> animationList;
@@ -74,10 +192,6 @@ int main(void)
     // Level hier anpassen
     demoLevel.name = "test"; // Todo: Konstruktor erstellen!
     demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
-
-
-    // Schriftart laden!
-    standardSchriftart.loadFromFile("resources/DejaVuSans.ttf");
 
     // Version im Spiel anzeigen!
     benachrichtigung version(updateVerfuegbarText.str(), 25, 25, 20);
@@ -243,6 +357,9 @@ int main(void)
                     ansicht.zoom(zoom);
                 }
             }
+
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::F12))
+                goto hauptmenu;
 
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
             {
