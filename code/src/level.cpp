@@ -242,6 +242,25 @@ void level::loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergru
 }
 
 
+level::~level(void)
+{
+    for(auto x : tueren)
+    {
+        delete x;
+    }
+
+    for(auto x : pfeile)
+    {
+        delete x;
+    }
+
+    for(auto x : schaetze)
+    {
+        delete x;
+    }
+
+}
+
 void setzeMauer(int Id)
 {
     // Hier Mauer in globallvl::mauern einfügen

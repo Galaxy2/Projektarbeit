@@ -8,6 +8,8 @@ class pfeil
 {
 public:
     animation *p;
+
+    ~pfeil(void);
 };
 
 #endif // __PFEIL_H__

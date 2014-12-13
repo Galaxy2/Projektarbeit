@@ -39,6 +39,9 @@ public:
     sf::Vector2f spielerPosition;
     bool collisionsActivated;
     string name;
+
+    // Destruktor
+    ~level(void);
 };
 
 
