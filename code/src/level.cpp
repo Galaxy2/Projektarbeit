@@ -36,12 +36,21 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
     // Anzahl Pfeile einlesen
     levelDatei >> N;
     unsigned int x, y, r, nX, nY;
+    int Wert;
+    levelDatei >> Wert;
     for(unsigned int i=0; i<N; i++)
     {
         levelDatei >> x >> y >> r >> nX >> nY;
 
         pfeile.push_back(new pfeil);
-        pfeile[i]->p = (new animation("resources/pfeil", 8, true, true, true, 0.05, x, y));
+        if(Wert == 1) // überprüfen ob man im Haus ist oder nicht (1 = aussen)
+        {
+            pfeile[i]->p = (new animation("resources/pfeilRot", 8, true, true, true, 0.05, x, y)); //rote pfeile werden geladen
+        }
+        else
+        {
+            pfeile[i]->p = (new animation("resources/pfeil", 8, true, true, true, 0.05, x, y));
+        }
         pfeile[i]->p->zeigeSchritt(0);
         pfeile[i]->p->sprite.setOrigin(100, 50);
         pfeile[i]->p->sprite.setRotation(r);
