@@ -323,20 +323,24 @@ int main(void)
 
             else
 
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+                if(demoLevel.checkCollisionPfeile(spielerEcken) != -1)
                 {
-                    int schaetzeNummer = demoLevel.checkCollisionSchaetze(spielerEcken);
-                    if(schaetzeNummer != -1 && demoLevel.schaetze[schaetzeNummer]->s->istBeendet())
+                    //int pfeilNummer = demoLevel.checkCollisionPfeile(spielerEcken)
+                    demoLevel.name = demoLevel.deckeName;
+                    cout << demoLevel.name ;
+                    demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
-                        {
-                        renderList.remove(&demoLevel.schaetze[schaetzeNummer]->s->sprite);
-                        }
+                    // Spieler an die Startposition im neuen Level positionieren
+                    spieler.setPosition(demoLevel.spielerPosition);
+
+                    // Den Spieler wieder anzeigen
+                    renderList.push_back(&spieler);
+
+                    renderList.push_back((sf::Drawable *)&version.text);
+                    renderList.push_back((sf::Drawable *)&debugMsg.text);
+                    renderList.push_back((sf::Drawable *)&debugMsg2.text);
+                    renderList.push_back((sf::Drawable *)&console::eingabeFeld);
                 }
-
-            if(demoLevel.checkCollisionPfeile(spielerEcken))
-            {
-
-            }
 
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num0))
             {
@@ -363,8 +367,13 @@ int main(void)
 
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
             {
-                int tuereNummer = demoLevel.checkCollisionTuere(spielerEcken);
+                int schaetzeNummer = demoLevel.checkCollisionSchaetze(spielerEcken);
+                if(schaetzeNummer != -1 && demoLevel.schaetze[schaetzeNummer]->s->istBeendet())
+                {
+                    renderList.remove(&demoLevel.schaetze[schaetzeNummer]->s->sprite);
+                }
 
+                int tuereNummer = demoLevel.checkCollisionTuere(spielerEcken);
                 if(tuereNummer != -1 && demoLevel.tueren[tuereNummer]->t->istBeendet())
                 {
                     // Geschlossen -> Offen
