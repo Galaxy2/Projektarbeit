@@ -325,13 +325,14 @@ int main(void)
 
                 if(demoLevel.checkCollisionPfeile(spielerEcken) != -1)
                 {
-                    //int pfeilNummer = demoLevel.checkCollisionPfeile(spielerEcken)
+                    int pfeilNummer = demoLevel.checkCollisionPfeile(spielerEcken);
+
                     demoLevel.name = demoLevel.deckeName;
                     cout << demoLevel.name ;
                     demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
                     // Spieler an die Startposition im neuen Level positionieren
-                    spieler.setPosition(demoLevel.spielerPosition);
+                    spieler.setPosition(demoLevel.pfeile[pfeilNummer]->nX, demoLevel.pfeile[pfeilNummer]->nY);
 
                     // Den Spieler wieder anzeigen
                     renderList.push_back(&spieler);
