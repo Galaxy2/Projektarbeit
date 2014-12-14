@@ -250,15 +250,13 @@ int main(void)
 
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
             {
-                    int schaetzeNummer = demoLevel.checkCollisionSchaetze(spielerEcken);
-                    if(schaetzeNummer != -1 && demoLevel.schaetze[schaetzeNummer]->s->istBeendet())
-
-                        {
-                            renderList.remove(&demoLevel.schaetze[schaetzeNummer]->s->sprite);
-                        }
+                int schaetzeNummer = demoLevel.checkCollisionSchaetze(spielerEcken);
+                if(schaetzeNummer != -1 && demoLevel.schaetze[schaetzeNummer]->s->istBeendet())
+                {
+                    renderList.remove(&demoLevel.schaetze[schaetzeNummer]->s->sprite);
+                }
 
                 int tuereNummer = demoLevel.checkCollisionTuere(spielerEcken);
-
                 if(tuereNummer != -1 && demoLevel.tueren[tuereNummer]->t->istBeendet())
                 {
                     // Geschlossen -> Offen
