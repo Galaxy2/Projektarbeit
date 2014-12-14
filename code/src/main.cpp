@@ -190,7 +190,7 @@ int main(void)
     level demoLevel;
 
     // Level hier anpassen
-    demoLevel.name = "test"; // Todo: Konstruktor erstellen!
+    demoLevel.name = "testDecke"; // Todo: Konstruktor erstellen!
     demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
     // Version im Spiel anzeigen!
@@ -321,27 +321,23 @@ int main(void)
 
                 }
 
-            else
 
-                if(demoLevel.checkCollisionPfeile(spielerEcken) != -1)
-                {
-                    int pfeilNummer = demoLevel.checkCollisionPfeile(spielerEcken);
+            if(demoLevel.checkCollisionPfeile(spielerEcken) != -1)
+            {
+                int pfeilNummer = demoLevel.checkCollisionPfeile(spielerEcken);
+                demoLevel.name = demoLevel.deckeName; //setze  neuen Namen
+                demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
-                    demoLevel.name = demoLevel.deckeName;
-                    cout << demoLevel.name ;
-                    demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+                // Spieler an die dem i-ten Pfeil zugehörigen Position im neuen Level positionieren
+                spieler.setPosition(demoLevel.pfeile[pfeilNummer]->nX, demoLevel.pfeile[pfeilNummer]->nY);
 
-                    // Spieler an die Startposition im neuen Level positionieren
-                    spieler.setPosition(demoLevel.pfeile[pfeilNummer]->nX, demoLevel.pfeile[pfeilNummer]->nY);
-
-                    // Den Spieler wieder anzeigen
-                    renderList.push_back(&spieler);
-
-                    renderList.push_back((sf::Drawable *)&version.text);
-                    renderList.push_back((sf::Drawable *)&debugMsg.text);
-                    renderList.push_back((sf::Drawable *)&debugMsg2.text);
-                    renderList.push_back((sf::Drawable *)&console::eingabeFeld);
-                }
+                // Den Spieler wieder anzeigen
+                renderList.push_back(&spieler);
+                renderList.push_back((sf::Drawable *)&version.text);
+                renderList.push_back((sf::Drawable *)&debugMsg.text);
+                renderList.push_back((sf::Drawable *)&debugMsg2.text);
+                renderList.push_back((sf::Drawable *)&console::eingabeFeld);
+            }
 
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num0))
             {
@@ -502,7 +498,6 @@ int main(void)
         sf::Vector2i versionPosition(25, 25);
         sf::Vector2i debugPosition(25, 50);
         sf::Vector2i debug2Position(25, 75);
-
         sf::Vector2i consolePosition(25, 100);
 
         version.text.setPosition(fenster.mapPixelToCoords(versionPosition));
