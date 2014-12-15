@@ -83,7 +83,7 @@ int main(void)
     sfmlTexture.loadFromFile("resources/sfml.png");
     sf::Sprite sfml(sfmlTexture);
     sfml.setScale(0.5, 0.5);
-    sfml.setPosition(aufloesung.width-400*0.5, aufloesung.height-140*0.5);
+    sfml.setPosition((aufloesung.width)*0.5, (aufloesung.height)*0.5);
 
     sf::Text statusBar("", standardSchriftart);
     statusBar.setPosition(10, aufloesung.height-50);
@@ -95,7 +95,6 @@ int main(void)
     info.setPosition(10, aufloesung.height-25);
     info.setCharacterSize(16);
     info.setColor(sf::Color(100, 100, 100));
-
 
     // Menüschleife
     bool startGame = false;
@@ -147,6 +146,29 @@ int main(void)
                     return 0;
                 }
             }
+
+        int zoomMenu = 0;
+        float zoom = 1.0f;
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num0))
+                {
+                    if(zoomMenu > -10)
+                    {
+                        zoom -= 0.05;
+                        zoomMenu--;
+                        menu.zoom(zoom);
+                        }
+                }
+
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num9))
+                {
+                    if(zoomMenu < 10)
+                    {
+                        zoom += 0.05;
+                        zoomMenu++;
+                        menu.zoom(zoom);
+                    }
+                }
         }
 
         // StatusBar nach 2 Sekunden wieder leeren! :)

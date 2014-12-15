@@ -1,0 +1,16 @@
+Was essentiel ist und umbedingt noch gemacht sein muss ist:
+
+Musik
+Laser
+Zeit/Timer
+Schatz behalten
+eine Game over oder Sieg benachrichtigung
+
+
+Zusätzlich be gegebener Zeit:
+Bewegter Gegner
+Lärm Pegel
+
+Dies muss jedoch wirklich erst an zweiter Stelle geschehen. Wichtig um unser Game ein Game nennen zu dörfen ist das
+erst genannte. Das Ziel sollte sein, dass wir ende Weihnachtsferien die essentielen Sachen geklärt haben.
+UND DIE DOKUMENTATION AUCH FERTIG IST!
