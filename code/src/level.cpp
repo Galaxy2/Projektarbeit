@@ -27,7 +27,11 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
 {
     fstream levelDatei(pfad.c_str(), fstream::in);
 
+    // abähngige Datei
     levelDatei >> deckeName;
+    int Wert; //Wert zum Angeben ob draussen( =1) oder drinnen( !=1)
+    levelDatei >> Wert;
+
     // Spieler Spawn Position lesen!
     levelDatei >> spielerPosition.x >> spielerPosition.y;
 
@@ -35,17 +39,26 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
 
     // Anzahl Pfeile einlesen
     levelDatei >> N;
-    unsigned int x, y, r;
+    unsigned int x, y, r, nX, nY;
     for(unsigned int i=0; i<N; i++)
     {
-        levelDatei >> x >> y >> r;
+        levelDatei >> x >> y >> r >> nX >> nY;
 
         pfeile.push_back(new pfeil);
-        pfeile[i]->p = (new animation("resources/pfeil", 8, true, true, true, 0.05, x, y));
+        if(Wert == 1) // überprüfen ob man im Haus ist oder nicht (1 = aussen)
+        {
+            pfeile[i]->p = (new animation("resources/pfeilRot", 8, true, true, true, 0.05, x, y)); //rote pfeile werden geladen
+        }
+        else
+        {
+            pfeile[i]->p = (new animation("resources/pfeil", 8, true, true, true, 0.05, x, y));
+        }
         pfeile[i]->p->zeigeSchritt(0);
         pfeile[i]->p->sprite.setOrigin(100, 50);
         pfeile[i]->p->sprite.setRotation(r);
         pfeile[i]->p->Id = i;
+        pfeile[i]->nX = nX;  //x-koordinate des Spielers im neuen Level
+        pfeile[i]->nY = nY;  //y-koordinate des Spielers im neuen Level
 
         renderList.push_back(&pfeile[i]->p->sprite);
         animationList.push_back(pfeile[i]->p);
@@ -87,16 +100,15 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
 
     // Anzahl Schätze einlesen
     levelDatei >> N;
-    unsigned int xs, ys, rs;
     for (unsigned int i=0; i<N; i++)
     {
-        levelDatei >> xs >> ys >> rs;
+        levelDatei >> x >> y >> r;
 
         schaetze.push_back(new schatz);
-        schaetze[i]->s = new animation("resources/schatz", 1, false, false, true, 0.05, xs, ys);
+        schaetze[i]->s = new animation("resources/schatz", 1, false, false, true, 0.05, x, y);
         schaetze[i]->s->zeigeSchritt(0);
         schaetze[i]->s->sprite.setOrigin(0,0);
-        schaetze[i]->s->sprite.setRotation(rs);
+        schaetze[i]->s->sprite.setRotation(r);
         schaetze[i]->s->Id = i;
 
         renderList.push_back(&schaetze[i]->s->sprite);
@@ -229,6 +241,7 @@ void level::loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergru
     }
 
     pfeile.clear();
+    tueren.clear();
     mauern.clear();
     schaetze.clear();
     renderList.clear();

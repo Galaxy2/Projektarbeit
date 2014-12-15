@@ -4,3 +4,5 @@ pfeil::~pfeil(void)
 {
     delete p;
 }
+
+
