@@ -348,10 +348,15 @@ int main(void)
             {
                 int pfeilNummer = demoLevel.checkCollisionPfeile(spielerEcken);
                 demoLevel.name = demoLevel.deckeName; //setze  neuen Namen
+
+                // Lese x/y Koordinaten heraus, bevor sie verworfen werden!
+                float spielerX = demoLevel.pfeile[pfeilNummer]->nX;
+                float spielerY = demoLevel.pfeile[pfeilNummer]->nY;
+
                 demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
                 // Spieler an die dem i-ten Pfeil zugehörigen Position im neuen Level positionieren
-                spieler.setPosition(demoLevel.pfeile[pfeilNummer]->nX, demoLevel.pfeile[pfeilNummer]->nY);
+                spieler.setPosition(spielerX, spielerY);
 
                 // Den Spieler wieder anzeigen
                 renderList.push_back(&spieler);
