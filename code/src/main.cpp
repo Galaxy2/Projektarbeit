@@ -41,153 +41,15 @@ int main(void)
     sf::VideoMode aufloesung = sf::VideoMode::getDesktopMode();
 
 
-
 #ifndef LINUX
     sf::RenderWindow fenster(aufloesung, "Robber", sf::Style::None);
 #else
-    sf::RenderWindow fenster(aufloesung, "Robber", sf::Style::Fullscreen);
+    sf::RenderWindow  fenster(aufloesung, "Robber", sf::Style::Fullscreen);
 #endif
 
     globalFenster = &fenster;
     fenster.setFramerateLimit(50);
     fenster.setVerticalSyncEnabled(true);
-
-    hauptmenu:
-
-    // Menü view
-    sf::View menu(sf::FloatRect(0,0, aufloesung.width, aufloesung.height));
-
-    menu.setViewport(sf::FloatRect(0,0, 1, 1));
-    fenster.setView(menu);
-
-    // Schriftart laden!
-    standardSchriftart.loadFromFile("resources/DejaVuSans.ttf");
-
-
-    // Menüelemente
-    sf::Texture robberLogoTexture;
-    robberLogoTexture.loadFromFile("resources/robber.png");
-    sf::Sprite robberLogo(robberLogoTexture);
-
-    sf::Texture spielStartenTexture;
-    spielStartenTexture.loadFromFile("resources/spielStarten.png");
-    sf::Sprite spielStarten(spielStartenTexture);
-    spielStarten.setPosition(50, 350);
-
-    sf::Texture spielBeendenTexture;
-    spielBeendenTexture.loadFromFile("resources/spielBeenden.png");
-    sf::Sprite spielBeenden(spielBeendenTexture);
-    spielBeenden.setPosition(50, 475);
-
-    sf::Texture sfmlTexture;
-    sfmlTexture.loadFromFile("resources/sfml.png");
-    sf::Sprite sfml(sfmlTexture);
-    sfml.setScale(0.5, 0.5);
-    sfml.setPosition((aufloesung.width)*0.5, (aufloesung.height)*0.5);
-
-    sf::Text statusBar("", standardSchriftart);
-    statusBar.setPosition(10, aufloesung.height-50);
-    statusBar.setCharacterSize(16);
-    statusBar.setColor(sf::Color(100, 100, 100));
-    sf::Clock statusBarClock;
-
-    sf::Text info(updateVerfuegbarText.str(), standardSchriftart);
-    info.setPosition(10, aufloesung.height-25);
-    info.setCharacterSize(16);
-    info.setColor(sf::Color(100, 100, 100));
-
-    // Menüschleife
-    bool startGame = false;
-    while(!startGame)
-    {
-        // Beenden?
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-        {
-            fenster.close();
-            return 0;
-        }
-
-        // Klicks verarbeiten!
-        sf::Event klick;
-        while(fenster.pollEvent(klick))
-        {
-            if(klick.type == sf::Event::MouseMoved)
-            {
-                sf::Vector2f mausPosition(klick.mouseMove.x, klick.mouseMove.y);
-
-                if(spielStarten.getGlobalBounds().contains(mausPosition))
-                {
-                    statusBar.setString("Das Spiel starten!");
-                    statusBarClock.restart();
-                }
-                else if(spielBeenden.getGlobalBounds().contains(mausPosition))
-                {
-                    statusBar.setString("Das Spiel beenden! :-(");
-                    statusBarClock.restart();
-                }
-                else if(sfml.getGlobalBounds().contains(mausPosition))
-                {
-                    statusBar.setString("Dieses Spiel wurde in C++ mit der \"Simple and Fast Multimedia Library\" erstellt!");
-                    statusBarClock.restart();
-                }
-            }
-
-            if(klick.type == sf::Event::MouseButtonReleased && klick.mouseButton.button == sf::Mouse::Left)
-            {
-                sf::Vector2f mausPosition(klick.mouseButton.x, klick.mouseButton.y);
-
-                if(spielStarten.getGlobalBounds().contains(mausPosition))
-                {
-                    startGame = true;
-                }
-                else if(spielBeenden.getGlobalBounds().contains(mausPosition))
-                {
-                    fenster.close();
-                    return 0;
-                }
-            }
-
-        int zoomMenu = 0;
-        float zoom = 1.0f;
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num0))
-                {
-                    if(zoomMenu > -10)
-                    {
-                        zoom -= 0.05;
-                        zoomMenu--;
-                        menu.zoom(zoom);
-                        }
-                }
-
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num9))
-                {
-                    if(zoomMenu < 10)
-                    {
-                        zoom += 0.05;
-                        zoomMenu++;
-                        menu.zoom(zoom);
-                    }
-                }
-        }
-
-        // StatusBar nach 2 Sekunden wieder leeren! :)
-        if(statusBarClock.getElapsedTime().asSeconds() > 2)
-            statusBar.setString("");
-
-
-        // Fenster neu zeichnen
-        fenster.clear();
-
-        fenster.draw(robberLogo);
-        fenster.draw(spielStarten);
-        fenster.draw(spielBeenden);
-        fenster.draw(sfml);
-        fenster.draw(info);
-        fenster.draw(statusBar);
-        fenster.display();
-    }
-
 
 
 
@@ -209,11 +71,11 @@ int main(void)
     sf::Sprite* hintergrund = 0x0;
 
     // Level laden!
-    level demoLevel;
+    level hauptmenu;
 
     // Level hier anpassen
-    demoLevel.name = "testDecke"; // Todo: Konstruktor erstellen!
-    demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+    hauptmenu.name = "hauptmenu"; // Todo: Konstruktor erstellen!
+    hauptmenu.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
     // Version im Spiel anzeigen!
     benachrichtigung version(updateVerfuegbarText.str(), 25, 25, 20);
@@ -232,7 +94,7 @@ int main(void)
     spieler.setTexture(spielerTexture);
     spieler.setScale(0.5, 0.5);
     spieler.setOrigin(sf::Vector2f(50, 50));
-    spieler.setPosition(demoLevel.spielerPosition);
+    spieler.setPosition(hauptmenu.spielerPosition);
 
     // Spieler immer anzeigen!
     renderList.push_back(&spieler);
@@ -276,7 +138,7 @@ int main(void)
             {
                 // Zuerst Kollision überprüfen!
                 spielerEcken.top -= 10;
-                if(demoLevel.checkCollision(spielerEcken))
+                if(hauptmenu.checkCollision(spielerEcken))
                 {
                     // Nicht bewegen!
                     spielerEcken.top += 10;
@@ -295,7 +157,7 @@ int main(void)
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
                 {
                     spielerEcken.left-=10;
-                    if(demoLevel.checkCollision(spielerEcken))
+                    if(hauptmenu.checkCollision(spielerEcken))
                     {
                         spielerEcken.left +=10;
                     }
@@ -312,7 +174,7 @@ int main(void)
                 {
                     // Zuerst Kollision überprüfen!
                     spielerEcken.top += 10;
-                    if(demoLevel.checkCollision(spielerEcken))
+                    if(hauptmenu.checkCollision(spielerEcken))
                     {
                         // Nicht bewegen!
                         spielerEcken.top -= 10;
@@ -331,7 +193,7 @@ int main(void)
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
                 {
                     spielerEcken.width +=10;
-                    if(demoLevel.checkCollision(spielerEcken))
+                    if(hauptmenu.checkCollision(spielerEcken))
                     {
                         spielerEcken.width -=10;
                     }
@@ -344,14 +206,14 @@ int main(void)
                 }
 
 
-            if(demoLevel.checkCollisionPfeile(spielerEcken) != -1)
+            if(hauptmenu.checkCollisionPfeile(spielerEcken) != -1)
             {
-                int pfeilNummer = demoLevel.checkCollisionPfeile(spielerEcken);
-                demoLevel.name = demoLevel.deckeName; //setze  neuen Namen
-                demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+                int pfeilNummer = hauptmenu.checkCollisionPfeile(spielerEcken);
+                hauptmenu.name = hauptmenu.deckeName; //setze  neuen Namen
+                hauptmenu.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
                 // Spieler an die dem i-ten Pfeil zugehörigen Position im neuen Level positionieren
-                spieler.setPosition(demoLevel.pfeile[pfeilNummer]->nX, demoLevel.pfeile[pfeilNummer]->nY);
+                spieler.setPosition(hauptmenu.pfeile[pfeilNummer]->nX, hauptmenu.pfeile[pfeilNummer]->nY);
 
                 // Den Spieler wieder anzeigen
                 renderList.push_back(&spieler);
@@ -381,40 +243,38 @@ int main(void)
                 }
             }
 
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::F12))
-                goto hauptmenu;
 
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
             {
-                int schaetzeNummer = demoLevel.checkCollisionSchaetze(spielerEcken);
-                if(schaetzeNummer != -1 && demoLevel.schaetze[schaetzeNummer]->s->istBeendet())
+                int schaetzeNummer = hauptmenu.checkCollisionSchaetze(spielerEcken);
+                if(schaetzeNummer != -1 && hauptmenu.schaetze[schaetzeNummer]->s->istBeendet())
                 {
-                    renderList.remove(&demoLevel.schaetze[schaetzeNummer]->s->sprite);
+                    renderList.remove(&hauptmenu.schaetze[schaetzeNummer]->s->sprite);
                 }
 
-                int tuereNummer = demoLevel.checkCollisionTuere(spielerEcken);
-                if(tuereNummer != -1 && demoLevel.tueren[tuereNummer]->t->istBeendet())
+                int tuereNummer = hauptmenu.checkCollisionTuere(spielerEcken);
+                if(tuereNummer != -1 && hauptmenu.tueren[tuereNummer]->t->istBeendet())
                 {
                     // Geschlossen -> Offen
-  /* ges -> off */  if(demoLevel.tueren[tuereNummer]->offen)
+  /* ges -> off */  if(hauptmenu.tueren[tuereNummer]->offen)
   /* ges -> off */  {
                         cout << "Türe geschlossen -> offen\n";
-                        cout << "x: " << demoLevel.tueren[tuereNummer]->posX << "  y: " << demoLevel.tueren[tuereNummer]->posY;
+                        cout << "x: " << hauptmenu.tueren[tuereNummer]->posX << "  y: " << hauptmenu.tueren[tuereNummer]->posY;
 
 
                         // Fall 1: Rotation der Türe: 0°
-                        if(demoLevel.tueren[tuereNummer]->t->sprite.getRotation() == 0)
+                        if(hauptmenu.tueren[tuereNummer]->t->sprite.getRotation() == 0)
                         {
                             // Der Punkt U ist das Rotationszentrum der Türe
-                            float Ux = demoLevel.tueren[tuereNummer]->posX;
-  /* ges -> off */          float Uy = demoLevel.tueren[tuereNummer]->posY;
+                            float Ux = hauptmenu.tueren[tuereNummer]->posX;
+  /* ges -> off */          float Uy = hauptmenu.tueren[tuereNummer]->posY;
 
                             // Der 1. Türenpunkt nach der Rotation (T1')
                             float T1x = Ux - 14;
                             float T1y = Uy - 200;
 
-                            demoLevel.mauern.remove(sf::FloatRect(demoLevel.tueren[tuereNummer]->posX, demoLevel.tueren[tuereNummer]->posY+179-200, 200, 14));
-                            demoLevel.mauern.push_back(sf::FloatRect(T1x, T1y, 14, 200));
+                            hauptmenu.mauern.remove(sf::FloatRect(hauptmenu.tueren[tuereNummer]->posX, hauptmenu.tueren[tuereNummer]->posY+179-200, 200, 14));
+                            hauptmenu.mauern.push_back(sf::FloatRect(T1x, T1y, 14, 200));
                         }
 
   /* ges -> off */  }
@@ -423,24 +283,24 @@ int main(void)
 
                     {
                         // Der Punkt U ist das Rotationszentrum der Türe
-                        float Ux = demoLevel.tueren[tuereNummer]->posX;
-  /* off -> ges */      float Uy = demoLevel.tueren[tuereNummer]->posY;
+                        float Ux = hauptmenu.tueren[tuereNummer]->posX;
+  /* off -> ges */      float Uy = hauptmenu.tueren[tuereNummer]->posY;
 
                         // Der 1. Türenpunkt nach der Rotation (T1')
                         float T1x = Ux - 14;
                         float T1y = Uy - 200;
 
   /* off -> ges */      cout << "Türe offen -> geschlossen\n";
-                        demoLevel.mauern.remove(sf::FloatRect(T1x, T1y, 14, 200));
-  /* off -> ges */      demoLevel.mauern.push_back(sf::FloatRect(Ux, Uy+179-200, 200, 14));
+                        hauptmenu.mauern.remove(sf::FloatRect(T1x, T1y, 14, 200));
+  /* off -> ges */      hauptmenu.mauern.push_back(sf::FloatRect(Ux, Uy+179-200, 200, 14));
                     }
 
 
 
                     // Animation abspielen
-                    demoLevel.tueren[tuereNummer]->t->setRichtung(demoLevel.tueren[tuereNummer]->offen);
-                    demoLevel.tueren[tuereNummer]->t->start();
-                    demoLevel.tueren[tuereNummer]->offen = !demoLevel.tueren[tuereNummer]->offen;
+                    hauptmenu.tueren[tuereNummer]->t->setRichtung(hauptmenu.tueren[tuereNummer]->offen);
+                    hauptmenu.tueren[tuereNummer]->t->start();
+                    hauptmenu.tueren[tuereNummer]->offen = !hauptmenu.tueren[tuereNummer]->offen;
                 }
 
             }
@@ -469,16 +329,16 @@ int main(void)
             }
             else if(befehl == "toggleWalls")
             {
-                demoLevel.collisionsActivated = (!demoLevel.collisionsActivated);
+                hauptmenu.collisionsActivated = (!hauptmenu.collisionsActivated);
             }
             else if(befehl.find("loadLevel ") == 0)
             {
-                demoLevel.name = befehl.substr(befehl.find("loadLevel ") + 10);
-                cerr << "Lade: '" << demoLevel.name << "'" << endl;
-                demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+                hauptmenu.name = befehl.substr(befehl.find("loadLevel ") + 10);
+                cerr << "Lade: '" << hauptmenu.name << "'" << endl;
+                hauptmenu.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
                 // Neue Spielerposition setzen!
-                spieler.setPosition(demoLevel.spielerPosition);
+                spieler.setPosition(hauptmenu.spielerPosition);
 
                 // Den Spieler wieder anzeigen
                 renderList.push_back(&spieler);
