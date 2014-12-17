@@ -39,10 +39,10 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
 
     // Anzahl Pfeile einlesen
     levelDatei >> N;
-    unsigned int x, y, r, nX, nY;
+    unsigned int x, y, r, nX, nY, k;
     for(unsigned int i=0; i<N; i++)
     {
-        levelDatei >> x >> y >> r >> nX >> nY;
+        levelDatei >> x >> y >> r >> nX >> nY >> k;
 
         pfeile.push_back(new pfeil);
         if(Wert == 1) // überprüfen ob man im Haus ist oder nicht (1 = aussen)
@@ -56,6 +56,7 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
         pfeile[i]->p->zeigeSchritt(0);
         pfeile[i]->p->sprite.setOrigin(100, 50);
         pfeile[i]->p->sprite.setRotation(r);
+        pfeile[i]->p->sprite.setScale(k);
         pfeile[i]->p->Id = i;
         pfeile[i]->nX = nX;  //x-koordinate des Spielers im neuen Level
         pfeile[i]->nY = nY;  //y-koordinate des Spielers im neuen Level
