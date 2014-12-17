@@ -39,7 +39,8 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
 
     // Anzahl Pfeile einlesen
     levelDatei >> N;
-    unsigned int x, y, r, nX, nY;
+    unsigned int x, y, nX, nY;
+    int r;
     for(unsigned int i=0; i<N; i++)
     {
         levelDatei >> x >> y >> r >> nX >> nY;
@@ -77,7 +78,7 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
         tueren[i]->t = new animation("resources/tuere", 5, false, false, true, 0.05, x, y);
         tueren[i]->offen = true;
         tueren[i]->t->zeigeSchritt(0);
-        tueren[i]->t->sprite.setOrigin(0, 200);
+        tueren[i]->t->sprite.setOrigin(14, 186);
         tueren[i]->t->sprite.setRotation(r);
         tueren[i]->t->Id = i;
         tueren[i]->posX = x;
@@ -85,13 +86,14 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
         tueren[i]->t->setOnAnimationEnde(&setzeMauer);
 
         if(r == 0)
-            mauern.push_back(sf::FloatRect(x, y+179-200, 200, 14));
+            mauern.push_back(sf::FloatRect(x-7, y-7, 193, 14));
+        else if(r == -90)
+            mauern.push_back(sf::FloatRect(x-7, y-186, 14, 193));
+        else if(r == -180)
+            mauern.push_back(sf::FloatRect(x-186, y-7, 193, 14));
+        else if(r == -270)
+            mauern.push_back(sf::FloatRect(x-7, y-7, 14, 193));
 
-       /* else if(r == 90)
-            mauern.push_back(sf::FloatRect(x, y-179, 14, 200));
-        else if(r == 180)
-            mauern.push_back(sf::FloatRect(---))
-        */
 
         renderList.push_back(&tueren[i]->t->sprite);
         animationList.push_back(tueren[i]->t);
@@ -157,6 +159,7 @@ int level::checkCollisionTuere(sf::FloatRect& spielerPosition)
     int k = 0;
     for(tuere* T : tueren)
     {
+        //T->t->sprite.getGlobalBounds().height += 20;
         if(T->t->sprite.getGlobalBounds().intersects(spielerPosition))
         {
             return k;

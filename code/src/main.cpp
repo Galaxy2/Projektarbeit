@@ -55,9 +55,9 @@ int main(void)
     hauptmenu:
 
     // Menü view
-    sf::View menu(sf::FloatRect(0,0, aufloesung.width, aufloesung.height));
+    sf::View menu(sf::FloatRect(0, 0, aufloesung.width, aufloesung.height));
 
-    menu.setViewport(sf::FloatRect(0,0, 1, 1));
+    menu.setViewport(sf::FloatRect(0, 0, 1, 1));
     fenster.setView(menu);
 
     // Schriftart laden!
@@ -395,47 +395,65 @@ int main(void)
                 int tuereNummer = demoLevel.checkCollisionTuere(spielerEcken);
                 if(tuereNummer != -1 && demoLevel.tueren[tuereNummer]->t->istBeendet())
                 {
-                    // Geschlossen -> Offen
-  /* ges -> off */  if(demoLevel.tueren[tuereNummer]->offen)
-  /* ges -> off */  {
-                        cout << "Türe geschlossen -> offen\n";
-                        cout << "x: " << demoLevel.tueren[tuereNummer]->posX << "  y: " << demoLevel.tueren[tuereNummer]->posY;
+                    float Ux = demoLevel.tueren[tuereNummer]->posX;
+                    float Uy = demoLevel.tueren[tuereNummer]->posY;
+                    cout << demoLevel.tueren[tuereNummer]->t->sprite.getRotation() << endl;
 
-
-                        // Fall 1: Rotation der Türe: 0°
-                        if(demoLevel.tueren[tuereNummer]->t->sprite.getRotation() == 0)
-                        {
-                            // Der Punkt U ist das Rotationszentrum der Türe
-                            float Ux = demoLevel.tueren[tuereNummer]->posX;
-  /* ges -> off */          float Uy = demoLevel.tueren[tuereNummer]->posY;
-
-                            // Der 1. Türenpunkt nach der Rotation (T1')
-                            float T1x = Ux - 14;
-                            float T1y = Uy - 200;
-
-                            demoLevel.mauern.remove(sf::FloatRect(demoLevel.tueren[tuereNummer]->posX, demoLevel.tueren[tuereNummer]->posY+179-200, 200, 14));
-                            demoLevel.mauern.push_back(sf::FloatRect(T1x, T1y, 14, 200));
-                        }
-
-  /* ges -> off */  }
-
-                    else
-
+                    // Fall 1: Rotation der Türe: 0°
+                    if(demoLevel.tueren[tuereNummer]->t->sprite.getRotation() == 0)
                     {
-                        // Der Punkt U ist das Rotationszentrum der Türe
-                        float Ux = demoLevel.tueren[tuereNummer]->posX;
-  /* off -> ges */      float Uy = demoLevel.tueren[tuereNummer]->posY;
-
-                        // Der 1. Türenpunkt nach der Rotation (T1')
-                        float T1x = Ux - 14;
-                        float T1y = Uy - 200;
-
-  /* off -> ges */      cout << "Türe offen -> geschlossen\n";
-                        demoLevel.mauern.remove(sf::FloatRect(T1x, T1y, 14, 200));
-  /* off -> ges */      demoLevel.mauern.push_back(sf::FloatRect(Ux, Uy+179-200, 200, 14));
+                        if(demoLevel.tueren[tuereNummer]->offen)//tuere geschlossen -> tuere offen
+                        {
+                            demoLevel.mauern.remove(sf::FloatRect(Ux-7, Uy-7, 193, 14));
+                            demoLevel.mauern.push_back(sf::FloatRect(Ux-7, Uy-186, 14, 193));
+                        }
+                        else //tuere offen -> türe geschlossen
+                        {
+                            demoLevel.mauern.remove(sf::FloatRect(Ux-7, Uy-186, 14, 193));
+                            demoLevel.mauern.push_back(sf::FloatRect(Ux-7, Uy-7, 193, 14));
+                        }
+                    }
+                    else if((demoLevel.tueren[tuereNummer]->t->sprite.getRotation())-360 == -90)
+                    {
+                        if(demoLevel.tueren[tuereNummer]->offen)//tuere geschlossen -> tuere offen
+                        {
+                            demoLevel.mauern.remove(sf::FloatRect(Ux-7, Uy-186, 14, 193));
+                            demoLevel.mauern.push_back(sf::FloatRect(Ux-186, Uy-7, 193, 14));
+                        }
+                        else //tuere offen -> türe geschlossen
+                        {
+                            demoLevel.mauern.remove(sf::FloatRect(Ux-186, Uy-7, 193, 14));
+                            demoLevel.mauern.push_back(sf::FloatRect(Ux-7, Uy-186, 14, 193));
+                        }
                     }
 
+                    else if(demoLevel.tueren[tuereNummer]->t->sprite.getRotation()-360 == -180)
+                    {
+                        if(demoLevel.tueren[tuereNummer]->offen)//tuere geschlossen -> tuere offen
+                        {
+                            demoLevel.mauern.remove(sf::FloatRect(Ux-186, Uy-7, 193, 14));
+                            demoLevel.mauern.push_back(sf::FloatRect(Ux-7, Uy-7, 14, 193));
+                        }
+                        else //tuere offen -> türe geschlossen
+                        {
+                            demoLevel.mauern.remove(sf::FloatRect(Ux-7, Uy-7, 14, 193));
+                            demoLevel.mauern.push_back(sf::FloatRect(Ux-186, Uy-7, 193, 14));
+                        }
+                    }
 
+                    else if(demoLevel.tueren[tuereNummer]->t->sprite.getRotation()-360 == -270)
+                    {
+                        if(demoLevel.tueren[tuereNummer]->offen)//tuere geschlossen -> tuere offen
+                        {
+                            demoLevel.mauern.remove(sf::FloatRect(Ux-7, Uy-7, 14, 193));
+                            demoLevel.mauern.push_back(sf::FloatRect(Ux-7, Uy-7, 193, 14));
+                        }
+                        else //tuere offen -> türe geschlossen
+                        {
+                            demoLevel.mauern.remove(sf::FloatRect(Ux-7, Uy-7, 193, 14));
+                            demoLevel.mauern.push_back(sf::FloatRect(Ux-7, Uy-7, 14, 193));
+                        }
+                    }
 
                     // Animation abspielen
                     demoLevel.tueren[tuereNummer]->t->setRichtung(demoLevel.tueren[tuereNummer]->offen);
