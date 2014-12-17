@@ -56,7 +56,6 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
         pfeile[i]->p->zeigeSchritt(0);
         pfeile[i]->p->sprite.setOrigin(100, 50);
         pfeile[i]->p->sprite.setRotation(r);
-        pfeile[i]->p->sprite.setScale(k);
         pfeile[i]->p->Id = i;
         pfeile[i]->nX = nX;  //x-koordinate des Spielers im neuen Level
         pfeile[i]->nY = nY;  //y-koordinate des Spielers im neuen Level
