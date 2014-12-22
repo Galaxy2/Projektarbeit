@@ -33,7 +33,7 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
     // Spieler Spawn Position lesen!
     levelDatei >> spielerPosition.x >> spielerPosition.y;
 
-    int Wert; //Wert zum Angeben ob draussen( =1) oder drinnen( !=1)
+    int Wert; //Wert zum Angeben ob draussen( =1) oder drinnen( !=1) oder Hauptmenu( =2)
     levelDatei >> Wert;
 
     unsigned int N;
@@ -164,7 +164,8 @@ int level::checkCollisionTuere(sf::FloatRect& spielerPosition)
     int k = 0;
     for(tuere* T : tueren)
     {
-        //T->t->sprite.getGlobalBounds().height += 20;
+        sf::FloatRect puffer;
+        puffer = T->t->sprite.getGlobalBounds();
         if(T->t->sprite.getGlobalBounds().intersects(spielerPosition))
         {
             return k;
