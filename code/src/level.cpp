@@ -166,7 +166,11 @@ int level::checkCollisionTuere(sf::FloatRect& spielerPosition)
     {
         sf::FloatRect puffer;
         puffer = T->t->sprite.getGlobalBounds();
-        if(T->t->sprite.getGlobalBounds().intersects(spielerPosition))
+        puffer.height += 20;
+        puffer.width += 20;
+        puffer.left -= 10;
+        puffer.top -= 10;
+        if(puffer.intersects(spielerPosition))
         {
             return k;
         }
