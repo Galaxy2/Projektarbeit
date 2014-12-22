@@ -71,11 +71,11 @@ int main(void)
     sf::Sprite* hintergrund = 0x0;
 
     // Level laden!
-    level hauptmenu;
+    level demoLevel;
 
     // Level hier anpassen
-    hauptmenu.name = "hauptmenu"; // Todo: Konstruktor erstellen!
-    hauptmenu.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+    demoLevel.name = "hauptmenu"; // Todo: Konstruktor erstellen!
+    demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
     // Version im Spiel anzeigen!
     benachrichtigung version(updateVerfuegbarText.str(), 25, 25, 20);
@@ -94,7 +94,7 @@ int main(void)
     spieler.setTexture(spielerTexture);
     spieler.setScale(0.5, 0.5);
     spieler.setOrigin(sf::Vector2f(50, 50));
-    spieler.setPosition(hauptmenu.spielerPosition);
+    spieler.setPosition(demoLevel.spielerPosition);
 
     // Spieler immer anzeigen!
     renderList.push_back(&spieler);
@@ -138,7 +138,7 @@ int main(void)
             {
                 // Zuerst Kollision überprüfen!
                 spielerEcken.top -= 10;
-                if(hauptmenu.checkCollision(spielerEcken))
+                if(demoLevel.checkCollision(spielerEcken))
                 {
                     // Nicht bewegen!
                     spielerEcken.top += 10;
@@ -157,7 +157,7 @@ int main(void)
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
                 {
                     spielerEcken.left-=10;
-                    if(hauptmenu.checkCollision(spielerEcken))
+                    if(demoLevel.checkCollision(spielerEcken))
                     {
                         spielerEcken.left +=10;
                     }
@@ -174,7 +174,7 @@ int main(void)
                 {
                     // Zuerst Kollision überprüfen!
                     spielerEcken.top += 10;
-                    if(hauptmenu.checkCollision(spielerEcken))
+                    if(demoLevel.checkCollision(spielerEcken))
                     {
                         // Nicht bewegen!
                         spielerEcken.top -= 10;
@@ -193,7 +193,7 @@ int main(void)
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
                 {
                     spielerEcken.width +=10;
-                    if(hauptmenu.checkCollision(spielerEcken))
+                    if(demoLevel.checkCollision(spielerEcken))
                     {
                         spielerEcken.width -=10;
                     }
@@ -206,14 +206,14 @@ int main(void)
                 }
 
 
-            if(hauptmenu.checkCollisionPfeile(spielerEcken) != -1)
+            if(demoLevel.checkCollisionPfeile(spielerEcken) != -1)
             {
-                int pfeilNummer = hauptmenu.checkCollisionPfeile(spielerEcken);
-                hauptmenu.name = hauptmenu.deckeName; //setze  neuen Namen
-                hauptmenu.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+                int pfeilNummer = demoLevel.checkCollisionPfeile(spielerEcken);
+                demoLevel.name = demoLevel.deckeName; //setze  neuen Namen
+                demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
                 // Spieler an die dem i-ten Pfeil zugehörigen Position im neuen Level positionieren
-                spieler.setPosition(hauptmenu.pfeile[pfeilNummer]->nX, hauptmenu.pfeile[pfeilNummer]->nY);
+                spieler.setPosition(demoLevel.pfeile[pfeilNummer]->nX, demoLevel.pfeile[pfeilNummer]->nY);
 
                 // Den Spieler wieder anzeigen
                 renderList.push_back(&spieler);
@@ -246,35 +246,35 @@ int main(void)
 
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
             {
-                int schaetzeNummer = hauptmenu.checkCollisionSchaetze(spielerEcken);
-                if(schaetzeNummer != -1 && hauptmenu.schaetze[schaetzeNummer]->s->istBeendet())
+                int schaetzeNummer = demoLevel.checkCollisionSchaetze(spielerEcken);
+                if(schaetzeNummer != -1 && demoLevel.schaetze[schaetzeNummer]->s->istBeendet())
                 {
-                    renderList.remove(&hauptmenu.schaetze[schaetzeNummer]->s->sprite);
+                    renderList.remove(&demoLevel.schaetze[schaetzeNummer]->s->sprite);
                 }
 
-                int tuereNummer = hauptmenu.checkCollisionTuere(spielerEcken);
-                if(tuereNummer != -1 && hauptmenu.tueren[tuereNummer]->t->istBeendet())
+                int tuereNummer = demoLevel.checkCollisionTuere(spielerEcken);
+                if(tuereNummer != -1 && demoLevel.tueren[tuereNummer]->t->istBeendet())
                 {
                     // Geschlossen -> Offen
-  /* ges -> off */  if(hauptmenu.tueren[tuereNummer]->offen)
+  /* ges -> off */  if(demoLevel.tueren[tuereNummer]->offen)
   /* ges -> off */  {
                         cout << "Türe geschlossen -> offen\n";
-                        cout << "x: " << hauptmenu.tueren[tuereNummer]->posX << "  y: " << hauptmenu.tueren[tuereNummer]->posY;
+                        cout << "x: " << demoLevel.tueren[tuereNummer]->posX << "  y: " << demoLevel.tueren[tuereNummer]->posY;
 
 
                         // Fall 1: Rotation der Türe: 0°
-                        if(hauptmenu.tueren[tuereNummer]->t->sprite.getRotation() == 0)
+                        if(demoLevel.tueren[tuereNummer]->t->sprite.getRotation() == 0)
                         {
                             // Der Punkt U ist das Rotationszentrum der Türe
-                            float Ux = hauptmenu.tueren[tuereNummer]->posX;
-  /* ges -> off */          float Uy = hauptmenu.tueren[tuereNummer]->posY;
+                            float Ux = demoLevel.tueren[tuereNummer]->posX;
+  /* ges -> off */          float Uy = demoLevel.tueren[tuereNummer]->posY;
 
                             // Der 1. Türenpunkt nach der Rotation (T1')
                             float T1x = Ux - 14;
                             float T1y = Uy - 200;
 
-                            hauptmenu.mauern.remove(sf::FloatRect(hauptmenu.tueren[tuereNummer]->posX, hauptmenu.tueren[tuereNummer]->posY+179-200, 200, 14));
-                            hauptmenu.mauern.push_back(sf::FloatRect(T1x, T1y, 14, 200));
+                            demoLevel.mauern.remove(sf::FloatRect(demoLevel.tueren[tuereNummer]->posX, demoLevel.tueren[tuereNummer]->posY+179-200, 200, 14));
+                            demoLevel.mauern.push_back(sf::FloatRect(T1x, T1y, 14, 200));
                         }
 
   /* ges -> off */  }
@@ -283,24 +283,24 @@ int main(void)
 
                     {
                         // Der Punkt U ist das Rotationszentrum der Türe
-                        float Ux = hauptmenu.tueren[tuereNummer]->posX;
-  /* off -> ges */      float Uy = hauptmenu.tueren[tuereNummer]->posY;
+                        float Ux = demoLevel.tueren[tuereNummer]->posX;
+  /* off -> ges */      float Uy = demoLevel.tueren[tuereNummer]->posY;
 
                         // Der 1. Türenpunkt nach der Rotation (T1')
                         float T1x = Ux - 14;
                         float T1y = Uy - 200;
 
   /* off -> ges */      cout << "Türe offen -> geschlossen\n";
-                        hauptmenu.mauern.remove(sf::FloatRect(T1x, T1y, 14, 200));
-  /* off -> ges */      hauptmenu.mauern.push_back(sf::FloatRect(Ux, Uy+179-200, 200, 14));
+                        demoLevel.mauern.remove(sf::FloatRect(T1x, T1y, 14, 200));
+  /* off -> ges */      demoLevel.mauern.push_back(sf::FloatRect(Ux, Uy+179-200, 200, 14));
                     }
 
 
 
                     // Animation abspielen
-                    hauptmenu.tueren[tuereNummer]->t->setRichtung(hauptmenu.tueren[tuereNummer]->offen);
-                    hauptmenu.tueren[tuereNummer]->t->start();
-                    hauptmenu.tueren[tuereNummer]->offen = !hauptmenu.tueren[tuereNummer]->offen;
+                    demoLevel.tueren[tuereNummer]->t->setRichtung(demoLevel.tueren[tuereNummer]->offen);
+                    demoLevel.tueren[tuereNummer]->t->start();
+                    demoLevel.tueren[tuereNummer]->offen = !demoLevel.tueren[tuereNummer]->offen;
                 }
 
             }
@@ -329,16 +329,16 @@ int main(void)
             }
             else if(befehl == "toggleWalls")
             {
-                hauptmenu.collisionsActivated = (!hauptmenu.collisionsActivated);
+                demoLevel.collisionsActivated = (!demoLevel.collisionsActivated);
             }
             else if(befehl.find("loadLevel ") == 0)
             {
-                hauptmenu.name = befehl.substr(befehl.find("loadLevel ") + 10);
-                cerr << "Lade: '" << hauptmenu.name << "'" << endl;
-                hauptmenu.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+                demoLevel.name = befehl.substr(befehl.find("loadLevel ") + 10);
+                cerr << "Lade: '" << demoLevel.name << "'" << endl;
+                demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
                 // Neue Spielerposition setzen!
-                spieler.setPosition(hauptmenu.spielerPosition);
+                spieler.setPosition(demoLevel.spielerPosition);
 
                 // Den Spieler wieder anzeigen
                 renderList.push_back(&spieler);
