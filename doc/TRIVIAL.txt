@@ -7,7 +7,7 @@ Schatz behalten
 eine Game over oder Sieg benachrichtigung
 
 
-Zusätzlich be gegebener Zeit:
+Zusätzlich bei gegebener Zeit:
 Bewegter Gegner
 Lärm Pegel
 

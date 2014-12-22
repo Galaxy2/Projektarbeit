@@ -29,11 +29,12 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
 
     // abähngige Datei
     levelDatei >> deckeName;
-    int Wert; //Wert zum Angeben ob draussen( =1) oder drinnen( !=1)
-    levelDatei >> Wert;
 
     // Spieler Spawn Position lesen!
     levelDatei >> spielerPosition.x >> spielerPosition.y;
+
+    int Wert; //Wert zum Angeben ob draussen( =1) oder drinnen( !=1)
+    levelDatei >> Wert;
 
     unsigned int N;
 
@@ -49,6 +50,10 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
         if(Wert == 1) // überprüfen ob man im Haus ist oder nicht (1 = aussen)
         {
             pfeile[i]->p = (new animation("resources/pfeilRot", 8, true, true, true, 0.05, x, y)); //rote pfeile werden geladen
+        }
+        if(Wert == 2)
+        {
+            pfeile[i]->p = (new animation("resources/spielStarten", 1, true, false, false, 0.05, x, y)); // SpielStarten
         }
         else
         {
