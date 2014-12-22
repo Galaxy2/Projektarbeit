@@ -116,7 +116,18 @@ int main(void)
         // Eingabeüberprüfung!
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
         {
-            fenster.close();
+            demoLevel.name = "hauptmenu";
+            demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+
+                // Spieler an die dem i-ten Pfeil zugehörigen Position im neuen Level positionieren
+                spieler.setPosition(200, 300);
+
+                // Den Spieler wieder anzeigen
+                renderList.push_back(&spieler);
+                renderList.push_back((sf::Drawable *)&version.text);
+                renderList.push_back((sf::Drawable *)&debugMsg.text);
+                renderList.push_back((sf::Drawable *)&debugMsg2.text);
+                renderList.push_back((sf::Drawable *)&console::eingabeFeld);
         }
 
         // Kollisionsdetektion
