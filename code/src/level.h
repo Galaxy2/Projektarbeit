@@ -25,6 +25,7 @@ public:
     void loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergrund, list<sf::Drawable *>& renderList, list<animation *>& animationList);
     int checkCollisionTuere(sf::FloatRect& spielerPosition);
     int checkCollisionSchaetze(sf::FloatRect& spielerPosition);
+    bool checkCollisionWert(sf::FloatRect& spielerPosition);
     int checkTuere(sf::FloatRect& spielerPosition);
 
     list<sf::FloatRect> mauern;

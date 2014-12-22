@@ -72,7 +72,6 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
     }
 
 
-
     // Anzahl Türen einlesen
     levelDatei >> N;
     for(unsigned int i=0; i<N; i++)
@@ -158,6 +157,7 @@ int level::checkCollisionPfeile(sf::FloatRect& spielerPosition)
     }
     return -1;
 }
+
 
 int level::checkCollisionTuere(sf::FloatRect& spielerPosition)
 {

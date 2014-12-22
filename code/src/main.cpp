@@ -204,6 +204,19 @@ int main(void)
                 }
 
 
+            if(demoLevel.name == "hauptmenu")
+            {
+                sf::FloatRect spielEnde;
+                spielEnde = sf::FloatRect(50, 400, 420, 460);
+
+                if(spielEnde.intersects(spielerEcken))
+                    {
+                       fenster.close();
+                    }
+            }
+
+
+
             if(demoLevel.checkCollisionPfeile(spielerEcken) != -1)
             {
                 int pfeilNummer = demoLevel.checkCollisionPfeile(spielerEcken);
