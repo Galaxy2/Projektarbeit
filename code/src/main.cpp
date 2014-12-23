@@ -289,12 +289,8 @@ int main(void)
 
                 cerr << "Teleport von: " << aktuellesLevel->name << " zu " << aktuellesLevel->deckeName << endl;
 
-                cerr << "azM: " << aktuellesLevel->mauern.size() << endl;
                 aktuellesLevel = levelLaden(aktuellesLevel->deckeName); //setze neuen Namen
-                cerr << "azM2: " << aktuellesLevel->mauern.size() << endl;
                 aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
-                cerr << "azM3: " << aktuellesLevel->mauern.size() << endl;
-
 
                 // Spieler an die dem i-ten Pfeil zugehörigen Position im neuen Level positionieren
                 spieler.setPosition(spielerX, spielerY);

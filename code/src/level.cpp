@@ -136,8 +136,7 @@ void level::loadFromFile(void)
 
     if(levelDatei.fail())
     {
-        cerr << "Fehler beim Laden der Leveldatei" << endl;
-        cerr << levelDateiName << endl;
+        cerr << "Fehler beim Laden der Leveldatei: '" << levelDateiName << "'" << endl;
     }
 
 
@@ -309,7 +308,7 @@ void level::loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergru
 // Leerer Konstruktor als Überladung
 level::level(void)
 {
-
+    return;
 }
 
 
@@ -341,7 +340,6 @@ level::~level(void)
 
 void setzeMauer(int Id)
 {
-    cout << "Animationsende" << endl;
     return;
 }
 
@@ -353,9 +351,6 @@ level *levelLaden(string n)
 
     if(suche == levelListe.end())
     {
-
-
-
         // Nicht gefunden -> Neu laden
         level *l = new level(n);
         l->name = n;
@@ -365,14 +360,12 @@ level *levelLaden(string n)
         levelListe[n] = l;
         cerr << "Neues Level erstellen: " << n << "   Neue Anzahl: " << levelListe.size() << endl;
 
-
         return l;
     }
     else
     {
-        cerr << "Level bereits erstellt: " << n << endl;
-
         // gefunden: -> altes zurückgeben
+        cerr << "Level bereits erstellt: " << n << endl;
         return levelListe[n];
     }
 }
