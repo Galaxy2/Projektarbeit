@@ -142,7 +142,7 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
         levelDatei >> x >> y >> r;
 
         lasers.push_back(new laser);
-        lasers[i]->l = new animation("resources/laser", 3, true, true, true, 0.05, x, y);
+        lasers[i]->l = new animation("resources/laser", 4, true, true, true, 0.05, x, y);
         lasers[i]->l->zeigeSchritt(0);
         lasers[i]->l->sprite.setOrigin(0, 0);
         lasers[i]->l->sprite.setRotation(r);
@@ -150,6 +150,10 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
         renderList.push_back(&lasers[i]->l->sprite);
         animationList.push_back(lasers[i]->l);
     }
+
+    int t;
+    levelDatei >> t;
+    Zeit = sf::seconds(t);
 
     if(levelDatei.fail())
         cerr << "Fehler beim Laden der Leveldatei" << endl;
