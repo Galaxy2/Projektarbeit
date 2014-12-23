@@ -141,77 +141,80 @@ int main(void)
         // Nur wenn Konsole nicht aktiviert!
         if(!console::activated)
         {
-
-            // Nur in eine Richtung auf einmal!
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+            if(demoLevel.name != "gameOver")
             {
-                // Zuerst Kollision überprüfen!
-                spielerEcken.top -= 10;
-                if(demoLevel.checkCollision(spielerEcken))
-                {
-                    // Nicht bewegen!
-                    spielerEcken.top += 10;
-                }
-                else
-                {
-                    // Bewegen!
-                    spieler.setRotation(0);
-                    spieler.move(0, -10);
-                }
 
-            }
-
-            else
-
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-                {
-                    spielerEcken.left-=10;
-                    if(demoLevel.checkCollision(spielerEcken))
-                    {
-                        spielerEcken.left +=10;
-                    }
-                    else
-                    {
-                        spieler.setRotation(270);
-                        spieler.move(-10, 0);
-                    }
-                }
-
-            else
-
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+                // Nur in eine Richtung auf einmal!
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
                 {
                     // Zuerst Kollision überprüfen!
-                    spielerEcken.top += 10;
+                    spielerEcken.top -= 10;
                     if(demoLevel.checkCollision(spielerEcken))
                     {
                         // Nicht bewegen!
-                        spielerEcken.top -= 10;
+                        spielerEcken.top += 10;
                     }
                     else
                     {
                         // Bewegen!
-                        spieler.setRotation(180);
-                        spieler.move(0, 10);
+                        spieler.setRotation(0);
+                        spieler.move(0, -10);
                     }
 
                 }
 
-            else
+                else
 
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-                {
-                    spielerEcken.width +=10;
-                    if(demoLevel.checkCollision(spielerEcken))
+                    if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
                     {
-                        spielerEcken.width -=10;
-                    }
-                    else
-                    {
-                        spieler.setRotation(90);
-                        spieler.move(10, 0);
+                        spielerEcken.left-=10;
+                        if(demoLevel.checkCollision(spielerEcken))
+                        {
+                            spielerEcken.left +=10;
+                        }
+                        else
+                        {
+                            spieler.setRotation(270);
+                            spieler.move(-10, 0);
+                        }
                     }
 
+                else
+
+                    if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+                    {
+                        // Zuerst Kollision überprüfen!
+                        spielerEcken.top += 10;
+                        if(demoLevel.checkCollision(spielerEcken))
+                        {
+                            // Nicht bewegen!
+                            spielerEcken.top -= 10;
+                        }
+                        else
+                        {
+                            // Bewegen!
+                            spieler.setRotation(180);
+                            spieler.move(0, 10);
+                        }
+
+                    }
+
+                else
+
+                    if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+                    {
+                        spielerEcken.width +=10;
+                        if(demoLevel.checkCollision(spielerEcken))
+                        {
+                            spielerEcken.width -=10;
+                        }
+                        else
+                        {
+                            spieler.setRotation(90);
+                            spieler.move(10, 0);
+                        }
+
+                    }
                 }
 
 
@@ -224,6 +227,19 @@ int main(void)
                     {
                        fenster.close();
                     }
+            }
+
+            if(demoLevel.checkCollisionLaser(spielerEcken) == true)
+            {
+                demoLevel.name = "gameOver";
+                demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+
+                ansicht.setCenter(fenster.mapPixelToCoords(sf::Vector2i(960, 540)));
+
+                renderList.push_back((sf::Drawable *)&version.text);
+                renderList.push_back((sf::Drawable *)&debugMsg.text);
+                renderList.push_back((sf::Drawable *)&debugMsg2.text);
+                renderList.push_back((sf::Drawable *)&console::eingabeFeld);
             }
 
 

@@ -68,7 +68,6 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
 
         renderList.push_back(&pfeile[i]->p->sprite);
         animationList.push_back(pfeile[i]->p);
-
     }
 
 
@@ -145,7 +144,7 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
         lasers.push_back(new laser);
         lasers[i]->l = new animation("resources/laser", 3, true, true, true, 0.05, x, y);
         lasers[i]->l->zeigeSchritt(0);
-        lasers[i]->l->sprite.setOrigin(0,0);
+        lasers[i]->l->sprite.setOrigin(0, 0);
         lasers[i]->l->sprite.setRotation(r);
 
         renderList.push_back(&lasers[i]->l->sprite);
