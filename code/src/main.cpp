@@ -16,6 +16,9 @@ benachrichtigung debugMsg2("Debug Mode", 25, 110, 20);
 
 sf::RenderWindow* globalFenster;
 
+//Musik
+sf::Music musik; // Zeile 233
+
 
 
 int main(void)
@@ -120,7 +123,7 @@ int main(void)
             demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
                 // Spieler an die dem i-ten Pfeil zugehörigen Position im neuen Level positionieren
-                spieler.setPosition(200, 300);
+                spieler.setPosition(200, 400);
 
                 // Den Spieler wieder anzeigen
                 renderList.push_back(&spieler);
@@ -225,6 +228,9 @@ int main(void)
                        fenster.close();
                     }
             }
+
+
+            hintergrundMusik();
 
 
 

@@ -95,6 +95,8 @@
 		<Unit filename="schatz.h" />
 		<Unit filename="screen.cpp" />
 		<Unit filename="screen.h" />
+		<Unit filename="sound.cpp" />
+		<Unit filename="sound.h" />
 		<Unit filename="tuere.cpp" />
 		<Unit filename="tuere.h" />
 		<Unit filename="updates.cpp" />
