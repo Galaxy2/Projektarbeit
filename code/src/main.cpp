@@ -17,7 +17,7 @@ benachrichtigung debugMsg2("Debug Mode", 25, 110, 20);
 sf::RenderWindow* globalFenster;
 
 //Musik
-sf::Music musik; // Zeile 233
+sf::Music musik; //sound.cpp // Zeile 117
 
 
 
@@ -113,13 +113,35 @@ int main(void)
     // Zoombegrenzung
     int zoomLevel = 0;
 
-    // Musik :)
-    hintergrundMusik();
-
+    // Musik
+    string vorherigesLevel = "hauptmenu";
+    hintergrundMusik("hauptmenu");
 
     // Solange das Fenster geöffnet ist
     while(fenster.isOpen())
     {
+          // Levelcheck
+        if(demoLevel.name != vorherigesLevel)
+        {
+            if(demoLevel.name == "hauptmenu")
+            {
+                hintergrundMusik("hauptmenu");
+            }
+
+            else if(demoLevel.name == "gameover")
+            {
+                hintergrundMusik("gameover");
+            }
+
+            else
+            {
+                hintergrundMusik("main");
+            }
+
+            vorherigesLevel = demoLevel.name;
+        }
+
+
         // Eingabeüberprüfung!
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
         {

@@ -3,11 +3,23 @@
 
 extern sf::Music musik;
 
-void hintergrundMusik(void)
+void hintergrundMusik(string name)
 {
-    if (!musik.openFromFile("resources/sound/gameover.ogg"))
+
+    string dateiName;
+    #ifndef LINUX
+        stringstream dateiNameStream;
+
+        dateiNameStream << "resources/sound/" << name << ".ogg";
+        dateiName = dateiNameStream.str();
+    #else
+        dateiName = "resources/sound/" + name + ".ogg";
+    #endif // LINUX
+
+
+    if (!musik.openFromFile(dateiName))
     {
-        std::cerr << "Fehler beim öffnen der hintergrundMusik";
+        std::cerr << "Fehler beim Öffnen der hintergrundMusik";
     }
 
     musik.play();
