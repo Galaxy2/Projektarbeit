@@ -131,7 +131,7 @@ int main(void)
                 hintergrundMusik("hauptmenu");
             }
 
-            else if(demoLevel.name == "gameover")
+            else if(demoLevel.name == "gameOver")
             {
                 hintergrundMusik("gameover");
             }

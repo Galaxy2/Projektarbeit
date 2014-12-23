@@ -22,6 +22,7 @@
 					<Add library="sfml-window-d" />
 					<Add library="sfml-system-d" />
 					<Add library="sfml-network-d" />
+					<Add library="sfml-audio-d" />
 					<Add library="mingw32" />
 					<Add library="user32" />
 					<Add library="gdi32" />
@@ -47,6 +48,7 @@
 					<Add library="sfml-window" />
 					<Add library="sfml-system" />
 					<Add library="sfml-network" />
+					<Add library="sfml-audio" />
 					<Add library="mingw32" />
 					<Add library="user32" />
 					<Add library="gdi32" />
