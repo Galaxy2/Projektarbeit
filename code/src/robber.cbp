@@ -22,6 +22,7 @@
 					<Add library="sfml-window-d" />
 					<Add library="sfml-system-d" />
 					<Add library="sfml-network-d" />
+					<Add library="sfml-audio-d" />
 					<Add library="mingw32" />
 					<Add library="user32" />
 					<Add library="gdi32" />
@@ -47,6 +48,7 @@
 					<Add library="sfml-window" />
 					<Add library="sfml-system" />
 					<Add library="sfml-network" />
+					<Add library="sfml-audio" />
 					<Add library="mingw32" />
 					<Add library="user32" />
 					<Add library="gdi32" />
@@ -72,6 +74,7 @@
 					<Add library="sfml-window" />
 					<Add library="sfml-system" />
 					<Add library="sfml-network" />
+					<Add library="sfml-audio" />
 				</Linker>
 			</Target>
 		</Build>
@@ -95,6 +98,8 @@
 		<Unit filename="schatz.h" />
 		<Unit filename="screen.cpp" />
 		<Unit filename="screen.h" />
+		<Unit filename="sound.cpp" />
+		<Unit filename="sound.h" />
 		<Unit filename="tuere.cpp" />
 		<Unit filename="tuere.h" />
 		<Unit filename="updates.cpp" />

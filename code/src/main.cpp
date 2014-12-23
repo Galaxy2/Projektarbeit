@@ -16,6 +16,9 @@ benachrichtigung debugMsg2("Debug Mode", 25, 110, 20);
 
 sf::RenderWindow* globalFenster;
 
+//Musik
+sf::Music musik; //sound.cpp // Zeile 117
+
 
 
 int main(void)
@@ -71,6 +74,9 @@ int main(void)
     // Level laden!
     level demoLevel;
 
+    // Schriftart laden!
+    standardSchriftart.loadFromFile("resources/DejaVuSans.ttf");
+
     // Level hier anpassen
     demoLevel.name = "hauptmenu"; // Todo: Konstruktor erstellen!
     demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
@@ -110,16 +116,42 @@ int main(void)
     // Zoombegrenzung
     int zoomLevel = 0;
 
+    // Musik
+    string vorherigesLevel = "hauptmenu";
+    hintergrundMusik("hauptmenu");
+
     // Solange das Fenster geöffnet ist
     while(fenster.isOpen())
     {
+          // Levelcheck
+        if(demoLevel.name != vorherigesLevel)
+        {
+            if(demoLevel.name == "hauptmenu")
+            {
+                hintergrundMusik("hauptmenu");
+            }
+
+            else if(demoLevel.name == "gameOver")
+            {
+                hintergrundMusik("gameover");
+            }
+
+            else
+            {
+                hintergrundMusik("main");
+            }
+
+            vorherigesLevel = demoLevel.name;
+        }
+
+
         // Eingabeüberprüfung!
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
         {
             demoLevel.name = "hauptmenu";
             demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
-                // Spieler an die dem i-ten Pfeil zugehörigen Position im neuen Level positionieren
+                // Spieler in die hauptmenu Level positionieren
                 spieler.setPosition(200, 300);
 
                 // Den Spieler wieder anzeigen
@@ -241,8 +273,6 @@ int main(void)
                 renderList.push_back((sf::Drawable *)&debugMsg2.text);
                 renderList.push_back((sf::Drawable *)&console::eingabeFeld);
             }
-
-
 
             if(demoLevel.checkCollisionPfeile(spielerEcken) != -1)
             {
