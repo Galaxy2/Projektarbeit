@@ -517,6 +517,12 @@ int main(void)
 
     }
 
+    // Levels wieder freigeben!
+    for(auto l: levelListe)
+    {
+        delete l.second;
+    }
+
     // Meamleak Fix!
     if(hintergrundTextur != 0x0 && hintergrund != 0x0)
     {
