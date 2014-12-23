@@ -6,12 +6,6 @@
 #include "notification.h"
 
 
-namespace globallvl
-{
-    list<sf::FloatRect> *mauern;
-}
-
-
 extern benachrichtigung debugMsg;
 
 
@@ -23,9 +17,10 @@ extern benachrichtigung debugMsg;
  * \return void
  *
  */
-void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<animation *>& animationList)
+void level::loadFromFile(void)
 {
-    fstream levelDatei(pfad.c_str(), fstream::in);
+    string levelDateiName = "levels/" + name + "/" + name + ".lvl";
+    fstream levelDatei(levelDateiName.c_str(), fstream::in);
 
     // abähngige Datei
     levelDatei >> deckeName;
@@ -66,8 +61,6 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
         pfeile[i]->nX = nX;  //x-koordinate des Spielers im neuen Level
         pfeile[i]->nY = nY;  //y-koordinate des Spielers im neuen Level
 
-        renderList.push_back(&pfeile[i]->p->sprite);
-        animationList.push_back(pfeile[i]->p);
     }
 
 
@@ -96,10 +89,6 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
             mauern.push_back(sf::FloatRect(x-186, y-7, 193, 14));
         else if(r == -270)
             mauern.push_back(sf::FloatRect(x-7, y-7, 14, 193));
-
-
-        renderList.push_back(&tueren[i]->t->sprite);
-        animationList.push_back(tueren[i]->t);
     }
 
 
@@ -115,9 +104,6 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
         schaetze[i]->s->sprite.setOrigin(0,0);
         schaetze[i]->s->sprite.setRotation(r);
         schaetze[i]->s->Id = i;
-
-        renderList.push_back(&schaetze[i]->s->sprite);
-        animationList.push_back(schaetze[i]->s);
     }
 
 
@@ -134,8 +120,6 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
         mauern.push_back(sf::FloatRect(koordinatenOben.x, koordinatenOben.y, koordinatenUnten.x-koordinatenOben.x, koordinatenUnten.y-koordinatenOben.y));
     }
 
-    globallvl::mauern = &mauern;
-
     levelDatei >> N;
     for(unsigned int i=0; i<N; i++)
     {
@@ -147,15 +131,20 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
         lasers[i]->l->sprite.setOrigin(0, 0);
         lasers[i]->l->sprite.setRotation(r);
 
-        renderList.push_back(&lasers[i]->l->sprite);
-        animationList.push_back(lasers[i]->l);
+
     }
 
     if(levelDatei.fail())
+    {
         cerr << "Fehler beim Laden der Leveldatei" << endl;
+        cerr << levelDateiName << endl;
+    }
+
 
     levelDatei.close();
 }
+
+
 
 int level::checkCollisionPfeile(sf::FloatRect& spielerPosition)
 {
@@ -273,29 +262,58 @@ void level::loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergru
 
 
     // Aktuelles Level leeren
-    for(auto p : pfeile)
-    {
-        delete p;
-    }
-
-    pfeile.clear();
-    tueren.clear();
-    mauern.clear();
-    schaetze.clear();
     renderList.clear();
     animationList.clear();
 
 
-    collisionsActivated = true;
+    // Alle Pfeile anzeigen
+    for(int i=0; i<pfeile.size(); i++)
+    {
+        renderList.push_back(&pfeile[i]->p->sprite);
+        animationList.push_back(pfeile[i]->p);
+    }
 
-    string levelDateiName = "levels/" + name + "/" + name + ".lvl";
-    this->loadFromFile(levelDateiName, renderList, animationList);
+    // Alle Türen anzeigen
+    for(int i=0; i<tueren.size(); i++)
+    {
+        renderList.push_back(&tueren[i]->t->sprite);
+        animationList.push_back(tueren[i]->t);
+    }
+
+    // Alle Schätze anzeigen
+    for(int i=0; i<schaetze.size(); i++)
+    {
+        renderList.push_back(&schaetze[i]->s->sprite);
+        animationList.push_back(schaetze[i]->s);
+    }
+
+    // Alle Laser anzeigen
+    for(int i=0; i<lasers.size(); i++)
+    {
+        renderList.push_back(&lasers[i]->l->sprite);
+        animationList.push_back(lasers[i]->l);
+    }
+
+    //cout << hintergrund << endl;
 
     // Hintergrundbild laden
     hintergrundLaden(name, hintergrund, hintergrundTextur);
+
     renderList.push_front(hintergrund);
 }
 
+
+// Leerer Konstruktor als Überladung
+level::level(void)
+{
+
+}
+
+
+level::level(string n)
+{
+    name = n;
+}
 
 level::~level(void)
 {
@@ -316,11 +334,39 @@ level::~level(void)
 
 }
 
+
+
 void setzeMauer(int Id)
 {
-    // Hier Mauer in globallvl::mauern einfügen
-    //globallvl::mauern->remove(mauer())
     cout << "Animationsende" << endl;
     return;
 }
 
+
+level *levelLaden(string n)
+{
+    // Level neu laden oder bereits gefunden?
+    unordered_map<string, level*>::const_iterator suche = levelListe.find(n);
+
+    if(suche == levelListe.end())
+    {
+        cerr << "Neues Level erstellen: " << n << "   Neue Anzahl: " << levelListe.size() << endl;
+
+
+        // Nicht gefunden -> Neu laden
+        level *l = new level(n);
+        l->name = n;
+        l->loadFromFile();
+
+        levelListe[n] = l;
+
+        return l;
+    }
+    else
+    {
+        cerr << "Level bereits erstellt: " << n << endl;
+
+        // gefunden: -> altes zurückgeben
+        return levelListe[n];
+    }
+}

@@ -2,6 +2,8 @@
 #include <sstream>
 #include <vector>
 #include <list>
+#include <unordered_map>
+
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
@@ -19,7 +21,9 @@ sf::RenderWindow* globalFenster;
 //Musik
 sf::Music musik; //sound.cpp // Zeile 117
 
-
+// Levelliste erstellen
+unordered_map<string, level*> levelListe;
+level *aktuellesLevel;
 
 int main(void)
 {
@@ -40,7 +44,6 @@ int main(void)
 
 
     // Fenster- und Grafikeinstellungen
-
     sf::VideoMode aufloesung = sf::VideoMode::getDesktopMode();
 
 
@@ -71,15 +74,13 @@ int main(void)
     sf::Texture* hintergrundTextur = 0x0;
     sf::Sprite* hintergrund = 0x0;
 
-    // Level laden!
-    level demoLevel;
-
     // Schriftart laden!
     standardSchriftart.loadFromFile("resources/DejaVuSans.ttf");
 
     // Level hier anpassen
-    demoLevel.name = "hauptmenu"; // Todo: Konstruktor erstellen!
-    demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+    string levelName = "hauptmenu";
+    aktuellesLevel = levelLaden("hauptmenu");
+    aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
     // Version im Spiel anzeigen!
     benachrichtigung version(updateVerfuegbarText.str(), 25, 25, 20);
@@ -98,7 +99,8 @@ int main(void)
     spieler.setTexture(spielerTexture);
     spieler.setScale(0.5, 0.5);
     spieler.setOrigin(sf::Vector2f(50, 50));
-    spieler.setPosition(demoLevel.spielerPosition);
+    //cerr << aktuellesLevel->spielerPosition.x << "|" << aktuellesLevel->spielerPosition.y << endl;
+    spieler.setPosition(aktuellesLevel->spielerPosition);
 
     // Spieler immer anzeigen!
     renderList.push_back(&spieler);
@@ -124,14 +126,14 @@ int main(void)
     while(fenster.isOpen())
     {
           // Levelcheck
-        if(demoLevel.name != vorherigesLevel)
+        if(levelName != vorherigesLevel)
         {
-            if(demoLevel.name == "hauptmenu")
+            if(levelName == "hauptmenu")
             {
                 hintergrundMusik("hauptmenu");
             }
 
-            else if(demoLevel.name == "gameOver")
+            else if(levelName == "gameOver")
             {
                 hintergrundMusik("gameover");
             }
@@ -141,15 +143,16 @@ int main(void)
                 hintergrundMusik("main");
             }
 
-            vorherigesLevel = demoLevel.name;
+            vorherigesLevel = levelName;
         }
 
 
         // Eingabeüberprüfung!
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
         {
-            demoLevel.name = "hauptmenu";
-            demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+            levelName = "hauptmenu";
+            aktuellesLevel = levelLaden("hauptmenu");
+            aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
                 // Spieler in die hauptmenu Level positionieren
                 spieler.setPosition(200, 400);
@@ -173,7 +176,7 @@ int main(void)
         // Nur wenn Konsole nicht aktiviert!
         if(!console::activated)
         {
-            if(demoLevel.name != "gameOver")
+            if(levelName != "gameOver")
             {
 
                 // Nur in eine Richtung auf einmal!
@@ -181,7 +184,7 @@ int main(void)
                 {
                     // Zuerst Kollision überprüfen!
                     spielerEcken.top -= 10;
-                    if(demoLevel.checkCollision(spielerEcken))
+                    if(aktuellesLevel->checkCollision(spielerEcken))
                     {
                         // Nicht bewegen!
                         spielerEcken.top += 10;
@@ -200,7 +203,7 @@ int main(void)
                     if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
                     {
                         spielerEcken.left-=10;
-                        if(demoLevel.checkCollision(spielerEcken))
+                        if(aktuellesLevel->checkCollision(spielerEcken))
                         {
                             spielerEcken.left +=10;
                         }
@@ -217,7 +220,7 @@ int main(void)
                     {
                         // Zuerst Kollision überprüfen!
                         spielerEcken.top += 10;
-                        if(demoLevel.checkCollision(spielerEcken))
+                        if(aktuellesLevel->checkCollision(spielerEcken))
                         {
                             // Nicht bewegen!
                             spielerEcken.top -= 10;
@@ -236,7 +239,7 @@ int main(void)
                     if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
                     {
                         spielerEcken.width +=10;
-                        if(demoLevel.checkCollision(spielerEcken))
+                        if(aktuellesLevel->checkCollision(spielerEcken))
                         {
                             spielerEcken.width -=10;
                         }
@@ -250,21 +253,21 @@ int main(void)
                 }
 
 
-            if(demoLevel.name == "hauptmenu")
+            if(levelName == "hauptmenu")
             {
                 sf::FloatRect spielEnde;
                 spielEnde = sf::FloatRect(50, 400, 420, 460);
 
                 if(spielEnde.intersects(spielerEcken))
-                    {
-                       fenster.close();
-                    }
+                {
+                    fenster.close();
+                }
             }
 
-            if(demoLevel.checkCollisionLaser(spielerEcken) == true)
+            if(aktuellesLevel->checkCollisionLaser(spielerEcken) == true)
             {
-                demoLevel.name = "gameOver";
-                demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+                aktuellesLevel = levelLaden("gameOver");
+                aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
                 ansicht.setCenter(fenster.mapPixelToCoords(sf::Vector2i(960, 540)));
 
@@ -274,16 +277,24 @@ int main(void)
                 renderList.push_back((sf::Drawable *)&console::eingabeFeld);
             }
 
-            if(demoLevel.checkCollisionPfeile(spielerEcken) != -1)
+            if(aktuellesLevel->checkCollisionPfeile(spielerEcken) != -1)
             {
-                int pfeilNummer = demoLevel.checkCollisionPfeile(spielerEcken);
-                demoLevel.name = demoLevel.deckeName; //setze  neuen Namen
+                int pfeilNummer = aktuellesLevel->checkCollisionPfeile(spielerEcken);
 
                 // Lese x/y Koordinaten heraus, bevor sie verworfen werden!
-                float spielerX = demoLevel.pfeile[pfeilNummer]->nX;
-                float spielerY = demoLevel.pfeile[pfeilNummer]->nY;
+                float spielerX = aktuellesLevel->pfeile[pfeilNummer]->nX;
+                float spielerY = aktuellesLevel->pfeile[pfeilNummer]->nY;
 
-                demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+                cerr << "azM: " << aktuellesLevel->mauern.size() << endl;
+                levelName = aktuellesLevel->deckeName;
+                aktuellesLevel = levelLaden(aktuellesLevel->deckeName); //setze neuen Namen
+
+                cerr << "nX: " << spielerX << "  nY: " << spielerY << endl;
+
+                cerr << "azM2: " << aktuellesLevel->mauern.size() << endl;
+                aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+                cerr << "azM3: " << aktuellesLevel->mauern.size() << endl;
+
 
                 // Spieler an die dem i-ten Pfeil zugehörigen Position im neuen Level positionieren
                 spieler.setPosition(spielerX, spielerY);
@@ -319,79 +330,79 @@ int main(void)
 
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
             {
-                int schaetzeNummer = demoLevel.checkCollisionSchaetze(spielerEcken);
-                if(schaetzeNummer != -1 && demoLevel.schaetze[schaetzeNummer]->s->istBeendet())
+                int schaetzeNummer = aktuellesLevel->checkCollisionSchaetze(spielerEcken);
+                if(schaetzeNummer != -1 && aktuellesLevel->schaetze[schaetzeNummer]->s->istBeendet())
                 {
-                    renderList.remove(&demoLevel.schaetze[schaetzeNummer]->s->sprite);
+                    renderList.remove(&aktuellesLevel->schaetze[schaetzeNummer]->s->sprite);
                 }
 
-                int tuereNummer = demoLevel.checkCollisionTuere(spielerEcken);
-                if(tuereNummer != -1 && demoLevel.tueren[tuereNummer]->t->istBeendet())
+                int tuereNummer = aktuellesLevel->checkCollisionTuere(spielerEcken);
+                if(tuereNummer != -1 && aktuellesLevel->tueren[tuereNummer]->t->istBeendet())
                 {
-                    float Ux = demoLevel.tueren[tuereNummer]->posX;
-                    float Uy = demoLevel.tueren[tuereNummer]->posY;
-                    cout << demoLevel.tueren[tuereNummer]->t->sprite.getRotation() << endl;
+                    float Ux = aktuellesLevel->tueren[tuereNummer]->posX;
+                    float Uy = aktuellesLevel->tueren[tuereNummer]->posY;
+                    cout << aktuellesLevel->tueren[tuereNummer]->t->sprite.getRotation() << endl;
 
                     // Fall 1: Rotation der Türe: 0°
-                    if(demoLevel.tueren[tuereNummer]->t->sprite.getRotation() == 0)
+                    if(aktuellesLevel->tueren[tuereNummer]->t->sprite.getRotation() == 0)
                     {
-                        if(demoLevel.tueren[tuereNummer]->offen)//tuere geschlossen -> tuere offen
+                        if(aktuellesLevel->tueren[tuereNummer]->offen)//tuere geschlossen -> tuere offen
                         {
-                            demoLevel.mauern.remove(sf::FloatRect(Ux-7, Uy-7, 193, 14));
-                            demoLevel.mauern.push_back(sf::FloatRect(Ux-7, Uy-186, 14, 193));
+                            aktuellesLevel->mauern.remove(sf::FloatRect(Ux-7, Uy-7, 193, 14));
+                            aktuellesLevel->mauern.push_back(sf::FloatRect(Ux-7, Uy-186, 14, 193));
                         }
                         else //tuere offen -> türe geschlossen
                         {
-                            demoLevel.mauern.remove(sf::FloatRect(Ux-7, Uy-186, 14, 193));
-                            demoLevel.mauern.push_back(sf::FloatRect(Ux-7, Uy-7, 193, 14));
+                            aktuellesLevel->mauern.remove(sf::FloatRect(Ux-7, Uy-186, 14, 193));
+                            aktuellesLevel->mauern.push_back(sf::FloatRect(Ux-7, Uy-7, 193, 14));
                         }
                     }
-                    else if((demoLevel.tueren[tuereNummer]->t->sprite.getRotation())-360 == -90)
+                    else if((aktuellesLevel->tueren[tuereNummer]->t->sprite.getRotation())-360 == -90)
                     {
-                        if(demoLevel.tueren[tuereNummer]->offen)//tuere geschlossen -> tuere offen
+                        if(aktuellesLevel->tueren[tuereNummer]->offen)//tuere geschlossen -> tuere offen
                         {
-                            demoLevel.mauern.remove(sf::FloatRect(Ux-7, Uy-186, 14, 193));
-                            demoLevel.mauern.push_back(sf::FloatRect(Ux-186, Uy-7, 193, 14));
+                            aktuellesLevel->mauern.remove(sf::FloatRect(Ux-7, Uy-186, 14, 193));
+                            aktuellesLevel->mauern.push_back(sf::FloatRect(Ux-186, Uy-7, 193, 14));
                         }
                         else //tuere offen -> türe geschlossen
                         {
-                            demoLevel.mauern.remove(sf::FloatRect(Ux-186, Uy-7, 193, 14));
-                            demoLevel.mauern.push_back(sf::FloatRect(Ux-7, Uy-186, 14, 193));
-                        }
-                    }
-
-                    else if(demoLevel.tueren[tuereNummer]->t->sprite.getRotation()-360 == -180)
-                    {
-                        if(demoLevel.tueren[tuereNummer]->offen)//tuere geschlossen -> tuere offen
-                        {
-                            demoLevel.mauern.remove(sf::FloatRect(Ux-186, Uy-7, 193, 14));
-                            demoLevel.mauern.push_back(sf::FloatRect(Ux-7, Uy-7, 14, 193));
-                        }
-                        else //tuere offen -> türe geschlossen
-                        {
-                            demoLevel.mauern.remove(sf::FloatRect(Ux-7, Uy-7, 14, 193));
-                            demoLevel.mauern.push_back(sf::FloatRect(Ux-186, Uy-7, 193, 14));
+                            aktuellesLevel->mauern.remove(sf::FloatRect(Ux-186, Uy-7, 193, 14));
+                            aktuellesLevel->mauern.push_back(sf::FloatRect(Ux-7, Uy-186, 14, 193));
                         }
                     }
 
-                    else if(demoLevel.tueren[tuereNummer]->t->sprite.getRotation()-360 == -270)
+                    else if(aktuellesLevel->tueren[tuereNummer]->t->sprite.getRotation()-360 == -180)
                     {
-                        if(demoLevel.tueren[tuereNummer]->offen)//tuere geschlossen -> tuere offen
+                        if(aktuellesLevel->tueren[tuereNummer]->offen)//tuere geschlossen -> tuere offen
                         {
-                            demoLevel.mauern.remove(sf::FloatRect(Ux-7, Uy-7, 14, 193));
-                            demoLevel.mauern.push_back(sf::FloatRect(Ux-7, Uy-7, 193, 14));
+                            aktuellesLevel->mauern.remove(sf::FloatRect(Ux-186, Uy-7, 193, 14));
+                            aktuellesLevel->mauern.push_back(sf::FloatRect(Ux-7, Uy-7, 14, 193));
                         }
                         else //tuere offen -> türe geschlossen
                         {
-                            demoLevel.mauern.remove(sf::FloatRect(Ux-7, Uy-7, 193, 14));
-                            demoLevel.mauern.push_back(sf::FloatRect(Ux-7, Uy-7, 14, 193));
+                            aktuellesLevel->mauern.remove(sf::FloatRect(Ux-7, Uy-7, 14, 193));
+                            aktuellesLevel->mauern.push_back(sf::FloatRect(Ux-186, Uy-7, 193, 14));
+                        }
+                    }
+
+                    else if(aktuellesLevel->tueren[tuereNummer]->t->sprite.getRotation()-360 == -270)
+                    {
+                        if(aktuellesLevel->tueren[tuereNummer]->offen)//tuere geschlossen -> tuere offen
+                        {
+                            aktuellesLevel->mauern.remove(sf::FloatRect(Ux-7, Uy-7, 14, 193));
+                            aktuellesLevel->mauern.push_back(sf::FloatRect(Ux-7, Uy-7, 193, 14));
+                        }
+                        else //tuere offen -> türe geschlossen
+                        {
+                            aktuellesLevel->mauern.remove(sf::FloatRect(Ux-7, Uy-7, 193, 14));
+                            aktuellesLevel->mauern.push_back(sf::FloatRect(Ux-7, Uy-7, 14, 193));
                         }
                     }
 
                     // Animation abspielen
-                    demoLevel.tueren[tuereNummer]->t->setRichtung(demoLevel.tueren[tuereNummer]->offen);
-                    demoLevel.tueren[tuereNummer]->t->start();
-                    demoLevel.tueren[tuereNummer]->offen = !demoLevel.tueren[tuereNummer]->offen;
+                    aktuellesLevel->tueren[tuereNummer]->t->setRichtung(aktuellesLevel->tueren[tuereNummer]->offen);
+                    aktuellesLevel->tueren[tuereNummer]->t->start();
+                    aktuellesLevel->tueren[tuereNummer]->offen = !aktuellesLevel->tueren[tuereNummer]->offen;
                 }
 
             }
@@ -420,16 +431,18 @@ int main(void)
             }
             else if(befehl == "toggleWalls")
             {
-                demoLevel.collisionsActivated = (!demoLevel.collisionsActivated);
+                aktuellesLevel->collisionsActivated = (!aktuellesLevel->collisionsActivated);
             }
             else if(befehl.find("loadLevel ") == 0)
             {
-                demoLevel.name = befehl.substr(befehl.find("loadLevel ") + 10);
-                cerr << "Lade: '" << demoLevel.name << "'" << endl;
-                demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+                levelName = befehl.substr(befehl.find("loadLevel ") + 10);
+                aktuellesLevel = levelLaden(levelName);
+
+                cerr << "Lade: '" << levelName << "'" << endl;
+                aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
                 // Neue Spielerposition setzen!
-                spieler.setPosition(demoLevel.spielerPosition);
+                spieler.setPosition(aktuellesLevel->spielerPosition);
 
                 // Den Spieler wieder anzeigen
                 renderList.push_back(&spieler);

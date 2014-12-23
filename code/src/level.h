@@ -3,6 +3,7 @@
 
 #include <list>
 #include <vector>
+#include <unordered_map>
 #include <SFML/Graphics.hpp>
 
 #include "animation.h"
@@ -15,15 +16,15 @@ using namespace std;
 
 extern sf::Vector2f koordinaten(int x, int y);
 
-
 class level
 {
 public:
-    void loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<animation *>& animationList);
+    void loadFromFile(void);
     bool checkCollision(sf::FloatRect& spielerPosition);
     // bool checkCollisionSchaetze(sf::FloatRect& spielerPosition);
     int checkCollisionPfeile(sf::FloatRect& spielerPosition);
     void loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergrund, list<sf::Drawable *>& renderList, list<animation *>& animationList);
+    level *levelLaden(string n);
     int checkCollisionTuere(sf::FloatRect& spielerPosition);
     int checkCollisionSchaetze(sf::FloatRect& spielerPosition);
     int checkTuere(sf::FloatRect& spielerPosition);
@@ -46,10 +47,15 @@ public:
     string name;
 
     // Destruktor
+    level(void);
+    level(string n);
     ~level(void);
 };
 
 
 extern void setzeMauer(int Id);
+extern level *levelLaden(string n);
+extern unordered_map<string, level*> levelListe;
+
 
 #endif // __LEVEL_H__
