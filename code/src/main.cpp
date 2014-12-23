@@ -19,6 +19,8 @@ sf::RenderWindow* globalFenster;
 //Musik
 sf::Music musik; //sound.cpp // Zeile 117
 
+game spiel;
+
 
 
 int main(void)
@@ -91,6 +93,13 @@ int main(void)
     // DebugMsg2 anzeigen!
     renderList.push_back((sf::Drawable *)&debugMsg2.text);
 
+    //Punkte
+    benachrichtigung anzahlPunkte("0 Punkte", 25, 125, 20);
+    if(demoLevel.name != "hauptmenu" && demoLevel.name != "gameOver")
+    {
+        renderList.push_back((sf::Drawable *)&anzahlPunkte.text);
+    }
+
 
     sf::Texture spielerTexture;
     sf::Sprite spieler;
@@ -115,6 +124,9 @@ int main(void)
 
     // Zoombegrenzung
     int zoomLevel = 0;
+
+    // Input delay
+    sf::Clock verzoegerung;
 
     // Musik
     string vorherigesLevel = "hauptmenu";
@@ -290,6 +302,7 @@ int main(void)
 
                 // Den Spieler wieder anzeigen
                 renderList.push_back(&spieler);
+                renderList.push_back((sf::Drawable *)&anzahlPunkte.text);
                 renderList.push_back((sf::Drawable *)&version.text);
                 renderList.push_back((sf::Drawable *)&debugMsg.text);
                 renderList.push_back((sf::Drawable *)&debugMsg2.text);
@@ -317,12 +330,15 @@ int main(void)
             }
 
 
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::E) && verzoegerung.getElapsedTime().asSeconds() > 0.2)
             {
                 int schaetzeNummer = demoLevel.checkCollisionSchaetze(spielerEcken);
                 if(schaetzeNummer != -1 && demoLevel.schaetze[schaetzeNummer]->s->istBeendet())
                 {
                     renderList.remove(&demoLevel.schaetze[schaetzeNummer]->s->sprite);
+                    spiel.punkteHinzufugen(10);
+                    std::cout << spiel.punkte << std::endl;
                 }
 
                 int tuereNummer = demoLevel.checkCollisionTuere(spielerEcken);
@@ -394,6 +410,7 @@ int main(void)
                     demoLevel.tueren[tuereNummer]->offen = !demoLevel.tueren[tuereNummer]->offen;
                 }
 
+                verzoegerung.restart();
             }
         }
 
@@ -472,11 +489,14 @@ int main(void)
         sf::Vector2i debugPosition(25, 50);
         sf::Vector2i debug2Position(25, 75);
         sf::Vector2i consolePosition(25, 100);
+        sf::Vector2i anzahlPunktePosition(25, 150);
+
 
         version.text.setPosition(fenster.mapPixelToCoords(versionPosition));
         debugMsg.text.setPosition(fenster.mapPixelToCoords(debugPosition));
         debugMsg2.text.setPosition(fenster.mapPixelToCoords(debug2Position));
         console::eingabeFeld.setPosition(fenster.mapPixelToCoords(consolePosition));
+        anzahlPunkte.text.setPosition(fenster.mapPixelToCoords(anzahlPunktePosition));
 
         // Animation Loop
         for(animation* a : animationList)
@@ -501,6 +521,11 @@ int main(void)
         debugMsgText << "Spielerposition: " << spieler.getPosition().x << ", " << spieler.getPosition().y;
 
         debugMsg.updateText(debugMsgText.str());
+
+        stringstream anzahlPunkteAnzeige;
+        anzahlPunkteAnzeige << "Punkte: " << spiel.punkte;
+
+        anzahlPunkte.updateText(anzahlPunkteAnzeige.str());
 
     }
 

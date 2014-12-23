@@ -11,6 +11,7 @@
 #include "console.h"
 #include "tuere.h"
 #include "sound.h"
+#include "game.h"
 
 
 #endif // __MAIN_H__
