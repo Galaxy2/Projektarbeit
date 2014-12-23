@@ -46,6 +46,8 @@ public:
     bool collisionsActivated;
     string name;
 
+    sf::Time Zeit;
+
     // Destruktor
     level(void);
     level(string n);

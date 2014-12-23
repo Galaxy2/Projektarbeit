@@ -25,6 +25,10 @@ sf::Music musik; //sound.cpp // Zeile 117
 unordered_map<string, level*> levelListe;
 level *aktuellesLevel;
 
+// Zeit
+sf::Clock Uhr;
+
+
 int main(void)
 {
     // Update Überprüfung
@@ -91,6 +95,11 @@ int main(void)
     // DebugMsg2 anzeigen!
     renderList.push_back((sf::Drawable *)&debugMsg2.text);
 
+    benachrichtigung zeit("Zeit", 25, 150, 20);
+    if(aktuellesLevel->name != "hauptmenu" && aktuellesLevel->name != "gameOver")
+    {
+        renderList.push_back((sf::Drawable *)&zeit.text);
+    }
 
     sf::Texture spielerTexture;
     sf::Sprite spieler;
@@ -270,12 +279,15 @@ int main(void)
                 hintergrund->setOrigin(0, 0);
                 spieler.setPosition(960, 540);
 
-
                 //ansicht.setCenter(fenster.mapPixelToCoords(sf::Vector2i(960, 540)));
 
+
+/* todo
                 renderList.push_back((sf::Drawable *)&version.text);
                 renderList.push_back((sf::Drawable *)&debugMsg.text);
                 renderList.push_back((sf::Drawable *)&debugMsg2.text);
+*/
+
                 renderList.push_back((sf::Drawable *)&console::eingabeFeld);
             }
 
@@ -297,10 +309,13 @@ int main(void)
 
                 // Den Spieler wieder anzeigen
                 renderList.push_back(&spieler);
+                renderList.push_back((sf::Drawable *)&zeit.text);
                 renderList.push_back((sf::Drawable *)&version.text);
                 renderList.push_back((sf::Drawable *)&debugMsg.text);
                 renderList.push_back((sf::Drawable *)&debugMsg2.text);
                 renderList.push_back((sf::Drawable *)&console::eingabeFeld);
+                Uhr.restart();
+
             }
 
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num0))
@@ -405,7 +420,6 @@ int main(void)
             }
         }
 
-
         if(!console::activated && sf::Keyboard::isKeyPressed(sf::Keyboard::RShift))
         {
             if(!console::activated)
@@ -482,11 +496,13 @@ int main(void)
         sf::Vector2i debugPosition(25, 50);
         sf::Vector2i debug2Position(25, 75);
         sf::Vector2i consolePosition(25, 100);
+        sf::Vector2i zeitPosition(25, 125);
 
         version.text.setPosition(fenster.mapPixelToCoords(versionPosition));
         debugMsg.text.setPosition(fenster.mapPixelToCoords(debugPosition));
         debugMsg2.text.setPosition(fenster.mapPixelToCoords(debug2Position));
         console::eingabeFeld.setPosition(fenster.mapPixelToCoords(consolePosition));
+        zeit.text.setPosition(fenster.mapPixelToCoords(zeitPosition));
 
         // Animation Loop
         for(animation* a : animationList)
@@ -511,6 +527,11 @@ int main(void)
         debugMsgText << "Spielerposition: " << spieler.getPosition().x << ", " << spieler.getPosition().y;
 
         debugMsg.updateText(debugMsgText.str());
+
+
+        stringstream zeitAnzeige;
+        zeitAnzeige << "Zeit: " << aktuellesLevel->Zeit.asSeconds() - Uhr.getElapsedTime().asSeconds();
+        zeit.updateText(zeitAnzeige.str());
 
     }
 
