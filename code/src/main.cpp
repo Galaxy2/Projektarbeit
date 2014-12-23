@@ -266,10 +266,17 @@ int main(void)
 
             if(aktuellesLevel->checkCollisionLaser(spielerEcken) == true)
             {
+<<<<<<< HEAD
                 aktuellesLevel = levelLaden("gameOver");
                 aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+=======
+                demoLevel.name = "gameOver";
+                demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+                hintergrund->setOrigin(0, 0);
+                spieler.setPosition(960, 540);
+>>>>>>> f2ba4927e85f59febe7be3397f20a772cc7b036c
 
-                ansicht.setCenter(fenster.mapPixelToCoords(sf::Vector2i(960, 540)));
+                //ansicht.setCenter(fenster.mapPixelToCoords(sf::Vector2i(960, 540)));
 
                 renderList.push_back((sf::Drawable *)&version.text);
                 renderList.push_back((sf::Drawable *)&debugMsg.text);
