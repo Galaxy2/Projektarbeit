@@ -5,15 +5,15 @@
 
 class game
 {
-    public:
-        //laerm
+public:
+    //laerm
 
-        int punkte;
-        void punkteHinzufuegen(int p);
+    int punkte;
+    void punkteHinzufuegen(int p);
 
-        std::string levelName;
+    std::string levelName;
 
-        game(void);
+    game(void);
 };
 
 

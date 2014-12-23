@@ -37,14 +37,14 @@ animation::animation(string n, int N, bool endlos, bool start, bool vorwaerts, f
     string dateiName;
     for(int i=0; i<N; i++)
     {
-        #ifndef LINUX
-            stringstream dateiNameStream;
-            dateiNameStream << n << "_" << i << ".png";
+#ifndef LINUX
+        stringstream dateiNameStream;
+        dateiNameStream << n << "_" << i << ".png";
 
-            dateiName = dateiNameStream.str();
-        #else
-            dateiName = n + "_" + to_string(i) + ".png";
-        #endif // LINUX
+        dateiName = dateiNameStream.str();
+#else
+        dateiName = n + "_" + to_string(i) + ".png";
+#endif // LINUX
 
         sf::Texture *textur = new sf::Texture;
         textur->loadFromFile(dateiName);

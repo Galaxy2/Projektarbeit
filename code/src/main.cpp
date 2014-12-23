@@ -146,7 +146,7 @@ int main(void)
     // Solange das Fenster geöffnet ist
     while(fenster.isOpen())
     {
-          // Levelcheck
+        // Levelcheck
         if(aktuellesLevel->name != vorherigesLevel)
         {
             if(aktuellesLevel->name == "hauptmenu")
@@ -175,15 +175,15 @@ int main(void)
             aktuellesLevel = levelLaden("hauptmenu");
             aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
-                // Spieler in die hauptmenu Level positionieren
-                spieler.setPosition(200, 400);
+            // Spieler in die hauptmenu Level positionieren
+            spieler.setPosition(200, 400);
 
-                // Den Spieler wieder anzeigen
-                renderList.push_back(&spieler);
-                renderList.push_back((sf::Drawable *)&version.text);
-                renderList.push_back((sf::Drawable *)&debugMsg.text);
-                renderList.push_back((sf::Drawable *)&debugMsg2.text);
-                renderList.push_back((sf::Drawable *)&console::eingabeFeld);
+            // Den Spieler wieder anzeigen
+            renderList.push_back(&spieler);
+            renderList.push_back((sf::Drawable *)&version.text);
+            renderList.push_back((sf::Drawable *)&debugMsg.text);
+            renderList.push_back((sf::Drawable *)&debugMsg2.text);
+            renderList.push_back((sf::Drawable *)&console::eingabeFeld);
         }
 
         // Kollisionsdetektion
@@ -235,43 +235,43 @@ int main(void)
                         }
                     }
 
-                else
+                    else
 
-                    if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-                    {
-                        // Zuerst Kollision überprüfen!
-                        spielerEcken.top += 10;
-                        if(aktuellesLevel->checkCollision(spielerEcken))
+                        if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
                         {
-                            // Nicht bewegen!
-                            spielerEcken.top -= 10;
+                            // Zuerst Kollision überprüfen!
+                            spielerEcken.top += 10;
+                            if(aktuellesLevel->checkCollision(spielerEcken))
+                            {
+                                // Nicht bewegen!
+                                spielerEcken.top -= 10;
+                            }
+                            else
+                            {
+                                // Bewegen!
+                                spieler.setRotation(180);
+                                spieler.move(0, 10);
+                            }
+
                         }
+
                         else
-                        {
-                            // Bewegen!
-                            spieler.setRotation(180);
-                            spieler.move(0, 10);
-                        }
 
-                    }
+                            if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+                            {
+                                spielerEcken.width +=10;
+                                if(aktuellesLevel->checkCollision(spielerEcken))
+                                {
+                                    spielerEcken.width -=10;
+                                }
+                                else
+                                {
+                                    spieler.setRotation(90);
+                                    spieler.move(10, 0);
+                                }
 
-                else
-
-                    if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-                    {
-                        spielerEcken.width +=10;
-                        if(aktuellesLevel->checkCollision(spielerEcken))
-                        {
-                            spielerEcken.width -=10;
-                        }
-                        else
-                        {
-                            spieler.setRotation(90);
-                            spieler.move(10, 0);
-                        }
-
-                    }
-                }
+                            }
+            }
 
 
             if(aktuellesLevel->name == "hauptmenu")

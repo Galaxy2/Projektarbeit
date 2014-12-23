@@ -234,7 +234,7 @@ int level::checkCollisionSchaetze(sf::FloatRect& spielerPosition)
             return i;
         }
 
-    i++;
+        i++;
     }
 
     return -1;
@@ -242,16 +242,16 @@ int level::checkCollisionSchaetze(sf::FloatRect& spielerPosition)
 
 
 
- /** \brief Lädt das ganze Level auf den Bildschirm zum Spielen
- * Das heisst alle Animationen, Mauern, etc. werden mitgeladen
- *
- * \param hintergrundTextur sf::Texture*& Zeiger zur Hintergrundtextur
- * \param hintergrund sf::Sprite*& Zeiger zum Hintergrundsprite
- * \param renderList list<sf::Drawable *>& Die Renderliste
- * \param animationList list<animation *>& Die Animationsliste
- * \return void
- *
- */
+/** \brief Lädt das ganze Level auf den Bildschirm zum Spielen
+* Das heisst alle Animationen, Mauern, etc. werden mitgeladen
+*
+* \param hintergrundTextur sf::Texture*& Zeiger zur Hintergrundtextur
+* \param hintergrund sf::Sprite*& Zeiger zum Hintergrundsprite
+* \param renderList list<sf::Drawable *>& Die Renderliste
+* \param animationList list<animation *>& Die Animationsliste
+* \return void
+*
+*/
 void level::loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergrund, list<sf::Drawable *>& renderList, list<animation *>& animationList)
 {
     if(hintergrundTextur != 0x0 && hintergrund != 0x0)

@@ -7,9 +7,9 @@
 
 namespace console
 {
-    extern sf::Text eingabeFeld;
-    extern std::stringstream eingabeText;
-    extern bool activated;
+extern sf::Text eingabeFeld;
+extern std::stringstream eingabeText;
+extern bool activated;
 }
 
 extern void showConsole(void);
