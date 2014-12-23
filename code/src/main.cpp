@@ -267,16 +267,9 @@ int main(void)
             {
                 aktuellesLevel = levelLaden("gameOver");
                 aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
-
-/*
-        \todo Dieser Code sollte hier eingefügt werden xP
-
-                demoLevel.name = "gameOver";
-                demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
                 hintergrund->setOrigin(0, 0);
                 spieler.setPosition(960, 540);
 
-*/
 
                 //ansicht.setCenter(fenster.mapPixelToCoords(sf::Vector2i(960, 540)));
 
