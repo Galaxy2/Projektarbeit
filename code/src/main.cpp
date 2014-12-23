@@ -16,6 +16,9 @@ benachrichtigung debugMsg2("Debug Mode", 25, 110, 20);
 
 sf::RenderWindow* globalFenster;
 
+//Musik
+sf::Music musik; //sound.cpp // Zeile 117
+
 
 
 int main(void)
@@ -113,9 +116,35 @@ int main(void)
     // Zoombegrenzung
     int zoomLevel = 0;
 
+    // Musik
+    string vorherigesLevel = "hauptmenu";
+    hintergrundMusik("hauptmenu");
+
     // Solange das Fenster geöffnet ist
     while(fenster.isOpen())
     {
+          // Levelcheck
+        if(demoLevel.name != vorherigesLevel)
+        {
+            if(demoLevel.name == "hauptmenu")
+            {
+                hintergrundMusik("hauptmenu");
+            }
+
+            else if(demoLevel.name == "gameover")
+            {
+                hintergrundMusik("gameover");
+            }
+
+            else
+            {
+                hintergrundMusik("main");
+            }
+
+            vorherigesLevel = demoLevel.name;
+        }
+
+
         // Eingabeüberprüfung!
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
         {
@@ -123,7 +152,7 @@ int main(void)
             demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
                 // Spieler an die dem i-ten Pfeil zugehörigen Position im neuen Level positionieren
-                spieler.setPosition(200, 300);
+                spieler.setPosition(200, 400);
 
                 // Den Spieler wieder anzeigen
                 renderList.push_back(&spieler);
@@ -228,8 +257,6 @@ int main(void)
                        fenster.close();
                     }
             }
-
-
 
             if(demoLevel.checkCollisionPfeile(spielerEcken) != -1)
             {
