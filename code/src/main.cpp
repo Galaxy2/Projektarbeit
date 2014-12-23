@@ -78,7 +78,6 @@ int main(void)
     standardSchriftart.loadFromFile("resources/DejaVuSans.ttf");
 
     // Level hier anpassen
-    string levelName = "hauptmenu";
     aktuellesLevel = levelLaden("hauptmenu");
     aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
@@ -126,14 +125,14 @@ int main(void)
     while(fenster.isOpen())
     {
           // Levelcheck
-        if(levelName != vorherigesLevel)
+        if(aktuellesLevel->name != vorherigesLevel)
         {
-            if(levelName == "hauptmenu")
+            if(aktuellesLevel->name == "hauptmenu")
             {
                 hintergrundMusik("hauptmenu");
             }
 
-            else if(levelName == "gameOver")
+            else if(aktuellesLevel->name == "gameOver")
             {
                 hintergrundMusik("gameover");
             }
@@ -143,14 +142,14 @@ int main(void)
                 hintergrundMusik("main");
             }
 
-            vorherigesLevel = levelName;
+            vorherigesLevel = aktuellesLevel->name;
         }
 
 
         // Eingabeüberprüfung!
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
         {
-            levelName = "hauptmenu";
+            aktuellesLevel->name = "hauptmenu";
             aktuellesLevel = levelLaden("hauptmenu");
             aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
@@ -176,7 +175,7 @@ int main(void)
         // Nur wenn Konsole nicht aktiviert!
         if(!console::activated)
         {
-            if(levelName != "gameOver")
+            if(aktuellesLevel->name != "gameOver")
             {
 
                 // Nur in eine Richtung auf einmal!
@@ -253,7 +252,7 @@ int main(void)
                 }
 
 
-            if(levelName == "hauptmenu")
+            if(aktuellesLevel->name == "hauptmenu")
             {
                 sf::FloatRect spielEnde;
                 spielEnde = sf::FloatRect(50, 400, 420, 460);
@@ -266,15 +265,18 @@ int main(void)
 
             if(aktuellesLevel->checkCollisionLaser(spielerEcken) == true)
             {
-<<<<<<< HEAD
                 aktuellesLevel = levelLaden("gameOver");
                 aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
-=======
+
+/*
+        \todo Dieser Code sollte hier eingefügt werden xP
+
                 demoLevel.name = "gameOver";
                 demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
                 hintergrund->setOrigin(0, 0);
                 spieler.setPosition(960, 540);
->>>>>>> f2ba4927e85f59febe7be3397f20a772cc7b036c
+
+*/
 
                 //ansicht.setCenter(fenster.mapPixelToCoords(sf::Vector2i(960, 540)));
 
@@ -292,12 +294,10 @@ int main(void)
                 float spielerX = aktuellesLevel->pfeile[pfeilNummer]->nX;
                 float spielerY = aktuellesLevel->pfeile[pfeilNummer]->nY;
 
+                cerr << "Teleport von: " << aktuellesLevel->name << " zu " << aktuellesLevel->deckeName << endl;
+
                 cerr << "azM: " << aktuellesLevel->mauern.size() << endl;
-                levelName = aktuellesLevel->deckeName;
                 aktuellesLevel = levelLaden(aktuellesLevel->deckeName); //setze neuen Namen
-
-                cerr << "nX: " << spielerX << "  nY: " << spielerY << endl;
-
                 cerr << "azM2: " << aktuellesLevel->mauern.size() << endl;
                 aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
                 cerr << "azM3: " << aktuellesLevel->mauern.size() << endl;
@@ -442,10 +442,10 @@ int main(void)
             }
             else if(befehl.find("loadLevel ") == 0)
             {
-                levelName = befehl.substr(befehl.find("loadLevel ") + 10);
-                aktuellesLevel = levelLaden(levelName);
+                aktuellesLevel->name = befehl.substr(befehl.find("loadLevel ") + 10);
+                aktuellesLevel = levelLaden(aktuellesLevel->name);
 
-                cerr << "Lade: '" << levelName << "'" << endl;
+                cerr << "Lade: '" << aktuellesLevel->name << "'" << endl;
                 aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
                 // Neue Spielerposition setzen!

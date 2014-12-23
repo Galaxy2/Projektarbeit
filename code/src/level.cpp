@@ -350,15 +350,18 @@ level *levelLaden(string n)
 
     if(suche == levelListe.end())
     {
-        cerr << "Neues Level erstellen: " << n << "   Neue Anzahl: " << levelListe.size() << endl;
+
 
 
         // Nicht gefunden -> Neu laden
         level *l = new level(n);
         l->name = n;
         l->loadFromFile();
+        l->collisionsActivated = true;
 
         levelListe[n] = l;
+        cerr << "Neues Level erstellen: " << n << "   Neue Anzahl: " << levelListe.size() << endl;
+
 
         return l;
     }
