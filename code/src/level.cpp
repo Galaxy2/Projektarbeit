@@ -137,6 +137,21 @@ void level::loadFromFile(string pfad, list<sf::Drawable *>& renderList, list<ani
 
     globallvl::mauern = &mauern;
 
+    levelDatei >> N;
+    for(unsigned int i=0; i<N; i++)
+    {
+        levelDatei >> x >> y >> r;
+
+        lasers.push_back(new laser);
+        lasers[i]->l = new animation("resources/laser", 3, true, true, true, 0.05, x, y);
+        lasers[i]->l->zeigeSchritt(0);
+        lasers[i]->l->sprite.setOrigin(0,0);
+        lasers[i]->l->sprite.setRotation(r);
+
+        renderList.push_back(&lasers[i]->l->sprite);
+        animationList.push_back(lasers[i]->l);
+    }
+
     if(levelDatei.fail())
         cerr << "Fehler beim Laden der Leveldatei" << endl;
 
@@ -158,6 +173,17 @@ int level::checkCollisionPfeile(sf::FloatRect& spielerPosition)
     return -1;
 }
 
+bool level::checkCollisionLaser(sf::FloatRect& spielerPosition)
+{
+    for(laser* L : lasers)
+    {
+        if(L->l->sprite.getGlobalBounds().intersects(spielerPosition))
+        {
+            return true;
+        }
+        return false;
+    }
+}
 
 int level::checkCollisionTuere(sf::FloatRect& spielerPosition)
 {

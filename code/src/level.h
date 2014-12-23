@@ -9,6 +9,7 @@
 #include "tuere.h"
 #include "pfeil.h"
 #include "schatz.h"
+#include "laser.h"
 
 using namespace std;
 
@@ -25,17 +26,19 @@ public:
     void loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergrund, list<sf::Drawable *>& renderList, list<animation *>& animationList);
     int checkCollisionTuere(sf::FloatRect& spielerPosition);
     int checkCollisionSchaetze(sf::FloatRect& spielerPosition);
-    bool checkCollisionWert(sf::FloatRect& spielerPosition);
     int checkTuere(sf::FloatRect& spielerPosition);
+    bool checkCollisionLaser(sf::FloatRect& spielerPosition);
 
     list<sf::FloatRect> mauern;
     list<sf::FloatRect> schaetzePositionen;
     list<sf::FloatRect> pfeilePositionen;
+    list<sf::FloatRect> lasersPositionen;
     // list<sf::FloatRect> schaetzePositionen;
 
     vector<pfeil *> pfeile;
     vector<tuere *> tueren;
     vector<schatz *> schaetze;
+    vector<laser *> lasers;
 
     sf::Vector2f spielerPosition;
     string deckeName;
