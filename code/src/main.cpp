@@ -27,6 +27,7 @@ level *aktuellesLevel;
 
 // Zeit
 sf::Clock Uhr;
+game spiel;
 
 
 int main(void)
@@ -95,11 +96,20 @@ int main(void)
     // DebugMsg2 anzeigen!
     renderList.push_back((sf::Drawable *)&debugMsg2.text);
 
+
     benachrichtigung zeit("Zeit", 25, 150, 20);
     if(aktuellesLevel->name != "hauptmenu" && aktuellesLevel->name != "gameOver")
     {
         renderList.push_back((sf::Drawable *)&zeit.text);
     }
+
+    //Punkte
+    benachrichtigung anzahlPunkte("0 Punkte", 25, 125, 20);
+    if(aktuellesLevel->name != "hauptmenu" && aktuellesLevel->name != "gameOver")
+    {
+        renderList.push_back((sf::Drawable *)&anzahlPunkte.text);
+    }
+
 
     sf::Texture spielerTexture;
     sf::Sprite spieler;
@@ -125,6 +135,9 @@ int main(void)
 
     // Zoombegrenzung
     int zoomLevel = 0;
+
+    // Input delay
+    sf::Clock verzoegerung;
 
     // Musik
     string vorherigesLevel = "hauptmenu";
@@ -280,14 +293,6 @@ int main(void)
                 spieler.setPosition(960, 540);
 
                 //ansicht.setCenter(fenster.mapPixelToCoords(sf::Vector2i(960, 540)));
-
-
-/* todo
-                renderList.push_back((sf::Drawable *)&version.text);
-                renderList.push_back((sf::Drawable *)&debugMsg.text);
-                renderList.push_back((sf::Drawable *)&debugMsg2.text);
-*/
-
                 renderList.push_back((sf::Drawable *)&console::eingabeFeld);
             }
 
@@ -310,6 +315,7 @@ int main(void)
                 // Den Spieler wieder anzeigen
                 renderList.push_back(&spieler);
                 renderList.push_back((sf::Drawable *)&zeit.text);
+                renderList.push_back((sf::Drawable *)&anzahlPunkte.text);
                 renderList.push_back((sf::Drawable *)&version.text);
                 renderList.push_back((sf::Drawable *)&debugMsg.text);
                 renderList.push_back((sf::Drawable *)&debugMsg2.text);
@@ -339,13 +345,15 @@ int main(void)
             }
 
 
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::E) && verzoegerung.getElapsedTime().asSeconds() > 0.2)
             {
                 int schaetzeNummer = aktuellesLevel->checkCollisionSchaetze(spielerEcken);
                 if(schaetzeNummer != -1 && aktuellesLevel->schaetze[schaetzeNummer]->s->istBeendet())
                 {
                     renderList.remove(&aktuellesLevel->schaetze[schaetzeNummer]->s->sprite);
                     aktuellesLevel->schaetze[schaetzeNummer]->eingesammelt = true;
+                    spiel.punkteHinzufuegen(10);
                 }
 
                 int tuereNummer = aktuellesLevel->checkCollisionTuere(spielerEcken);
@@ -417,6 +425,7 @@ int main(void)
                     aktuellesLevel->tueren[tuereNummer]->offen = !aktuellesLevel->tueren[tuereNummer]->offen;
                 }
 
+                verzoegerung.restart();
             }
         }
 
@@ -497,12 +506,15 @@ int main(void)
         sf::Vector2i debug2Position(25, 75);
         sf::Vector2i consolePosition(25, 100);
         sf::Vector2i zeitPosition(25, 125);
+        sf::Vector2i anzahlPunktePosition(25, 150);
 
         version.text.setPosition(fenster.mapPixelToCoords(versionPosition));
         debugMsg.text.setPosition(fenster.mapPixelToCoords(debugPosition));
         debugMsg2.text.setPosition(fenster.mapPixelToCoords(debug2Position));
         console::eingabeFeld.setPosition(fenster.mapPixelToCoords(consolePosition));
         zeit.text.setPosition(fenster.mapPixelToCoords(zeitPosition));
+        anzahlPunkte.text.setPosition(fenster.mapPixelToCoords(anzahlPunktePosition));
+
 
         // Animation Loop
         for(animation* a : animationList)
@@ -528,18 +540,26 @@ int main(void)
 
         debugMsg.updateText(debugMsgText.str());
 
+        // Punkte aktualisieren
+        stringstream anzahlPunkteAnzeige;
+        anzahlPunkteAnzeige << "Punkte: " << spiel.punkte;
 
+        anzahlPunkte.updateText(anzahlPunkteAnzeige.str());
+
+        // Zeit aktualisieren
         stringstream zeitAnzeige;
         zeitAnzeige << "Zeit: " << aktuellesLevel->Zeit.asSeconds() - Uhr.getElapsedTime().asSeconds();
         zeit.updateText(zeitAnzeige.str());
 
     }
 
+
     // Levels wieder freigeben!
     for(auto l: levelListe)
     {
         delete l.second;
     }
+
 
     // Meamleak Fix!
     if(hintergrundTextur != 0x0 && hintergrund != 0x0)

@@ -11,6 +11,7 @@
 #include "pfeil.h"
 #include "schatz.h"
 #include "laser.h"
+#include "game.h"
 
 using namespace std;
 
