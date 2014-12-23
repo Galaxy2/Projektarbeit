@@ -265,8 +265,10 @@ int main(void)
             {
                 demoLevel.name = "gameOver";
                 demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+                hintergrund->setOrigin(0, 0);
+                spieler.setPosition(960, 540);
 
-                ansicht.setCenter(fenster.mapPixelToCoords(sf::Vector2i(960, 540)));
+                //ansicht.setCenter(fenster.mapPixelToCoords(sf::Vector2i(960, 540)));
 
                 renderList.push_back((sf::Drawable *)&version.text);
                 renderList.push_back((sf::Drawable *)&debugMsg.text);
