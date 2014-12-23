@@ -113,6 +113,10 @@ int main(void)
     // Zoombegrenzung
     int zoomLevel = 0;
 
+    // Musik :)
+    hintergrundMusik();
+
+
     // Solange das Fenster geöffnet ist
     while(fenster.isOpen())
     {
@@ -228,11 +232,6 @@ int main(void)
                        fenster.close();
                     }
             }
-
-
-            hintergrundMusik();
-
-
 
             if(demoLevel.checkCollisionPfeile(spielerEcken) != -1)
             {

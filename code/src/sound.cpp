@@ -5,7 +5,7 @@ extern sf::Music musik;
 
 void hintergrundMusik(void)
 {
-    if (!musik.openFromFile("resources/sound/Gameover.ogg"))
+    if (!musik.openFromFile("resources/sound/gameover.ogg"))
     {
         std::cerr << "Fehler beim öffnen der hintergrundMusik";
     }
