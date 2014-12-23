@@ -151,7 +151,7 @@ int main(void)
             demoLevel.name = "hauptmenu";
             demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
-                // Spieler an die dem i-ten Pfeil zugehörigen Position im neuen Level positionieren
+                // Spieler in die hauptmenu Level positionieren
                 spieler.setPosition(200, 400);
 
                 // Den Spieler wieder anzeigen
