@@ -152,7 +152,7 @@ int main(void)
             demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
                 // Spieler in die hauptmenu Level positionieren
-                spieler.setPosition(200, 300);
+                spieler.setPosition(200, 400);
 
                 // Den Spieler wieder anzeigen
                 renderList.push_back(&spieler);
