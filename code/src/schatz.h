@@ -7,7 +7,9 @@ class schatz
 {
 public:
     animation *s;
+    bool eingesammelt;
 
+    schatz(void);
     ~schatz(void);
 };
 

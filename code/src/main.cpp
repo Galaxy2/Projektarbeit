@@ -334,6 +334,7 @@ int main(void)
                 if(schaetzeNummer != -1 && aktuellesLevel->schaetze[schaetzeNummer]->s->istBeendet())
                 {
                     renderList.remove(&aktuellesLevel->schaetze[schaetzeNummer]->s->sprite);
+                    aktuellesLevel->schaetze[schaetzeNummer]->eingesammelt = true;
                 }
 
                 int tuereNummer = aktuellesLevel->checkCollisionTuere(spielerEcken);

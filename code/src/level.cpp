@@ -283,8 +283,11 @@ void level::loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergru
     // Alle Schätze anzeigen
     for(int i=0; i<schaetze.size(); i++)
     {
-        renderList.push_back(&schaetze[i]->s->sprite);
-        animationList.push_back(schaetze[i]->s);
+        if(!schaetze[i]->eingesammelt)
+        {
+            renderList.push_back(&schaetze[i]->s->sprite);
+            animationList.push_back(schaetze[i]->s);
+        }
     }
 
     // Alle Laser anzeigen
