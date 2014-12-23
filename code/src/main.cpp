@@ -71,6 +71,9 @@ int main(void)
     // Level laden!
     level demoLevel;
 
+    // Schriftart laden!
+    standardSchriftart.loadFromFile("resources/DejaVuSans.ttf");
+
     // Level hier anpassen
     demoLevel.name = "hauptmenu"; // Todo: Konstruktor erstellen!
     demoLevel.loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
