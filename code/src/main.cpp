@@ -46,11 +46,11 @@ int main(void)
         cout << endl << "Das Spiel läuft in der aktuellsten Version!" << endl << endl;
     }
 
-
-
     // Fenster- und Grafikeinstellungen
     sf::VideoMode aufloesung = sf::VideoMode::getDesktopMode();
 
+    // Musik loopen!
+    musik.setLoop(true);
 
 #ifndef LINUX
     sf::RenderWindow fenster(aufloesung, "Robber", sf::Style::None);
@@ -349,7 +349,7 @@ int main(void)
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::E) && verzoegerung.getElapsedTime().asSeconds() > 0.2)
             {
                 int schaetzeNummer = aktuellesLevel->checkCollisionSchaetze(spielerEcken);
-                if(schaetzeNummer != -1 && aktuellesLevel->schaetze[schaetzeNummer]->s->istBeendet())
+                if(schaetzeNummer != -1 && aktuellesLevel->schaetze[schaetzeNummer]->s->istBeendet() && !aktuellesLevel->schaetze[schaetzeNummer]->eingesammelt)
                 {
                     renderList.remove(&aktuellesLevel->schaetze[schaetzeNummer]->s->sprite);
                     aktuellesLevel->schaetze[schaetzeNummer]->eingesammelt = true;
