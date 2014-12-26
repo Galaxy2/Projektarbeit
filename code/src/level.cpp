@@ -126,7 +126,7 @@ void level::loadFromFile(void)
         levelDatei >> x >> y >> r;
 
         lasers.push_back(new laser);
-        lasers[i]->l = new animation("resources/laser", 4, true, true, true, 0.05, x, y);
+        lasers[i]->l = new animation("resources/laser", 14, true, true, true, 0.1, x, y);
         lasers[i]->l->zeigeSchritt(0);
         lasers[i]->l->sprite.setOrigin(0, 0);
         lasers[i]->l->sprite.setRotation(r);
@@ -170,7 +170,10 @@ bool level::checkCollisionLaser(sf::FloatRect& spielerPosition)
     {
         if(L->l->sprite.getGlobalBounds().intersects(spielerPosition))
         {
-            return true;
+            if(L->l->schritt != 0 && L->l->schritt != 1 && L->l->schritt != 2 && L->l->schritt != 3 && L->l->schritt != 4 && L->l->schritt != 5)
+            {
+                return true;
+            }
         }
         return false;
     }

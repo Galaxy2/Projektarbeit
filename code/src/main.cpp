@@ -277,7 +277,7 @@ int main(void)
             if(aktuellesLevel->name == "hauptmenu")
             {
                 sf::FloatRect spielEnde;
-                spielEnde = sf::FloatRect(50, 400, 420, 460);
+                spielEnde = sf::FloatRect(50, 400, 370, 60);
 
                 if(spielEnde.intersects(spielerEcken))
                 {
