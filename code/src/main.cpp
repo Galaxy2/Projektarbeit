@@ -167,6 +167,8 @@ int main(void)
             vorherigesLevel = aktuellesLevel->name;
         }
 
+        int verbleibendeZeit = aktuellesLevel->Zeit.asSeconds() - Uhr.getElapsedTime().asSeconds();
+
 
         // Eingabeüberprüfung!
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
@@ -235,9 +237,7 @@ int main(void)
                         }
                     }
 
-                    else
-
-                        if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+                    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
                         {
                             // Zuerst Kollision überprüfen!
                             spielerEcken.top += 10;
@@ -271,6 +271,25 @@ int main(void)
                                 }
 
                             }
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num0))
+                {
+                    if(zoomLevel > -10)
+                    {
+                        zoom -= 0.05;
+                        zoomLevel--;
+                        ansicht.zoom(zoom);
+                    }
+                }
+
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num9))
+                {
+                    if(zoomLevel < 10)
+                    {
+                        zoom += 0.05;
+                        zoomLevel++;
+                        ansicht.zoom(zoom);
+                    }
+                }
             }
 
 
@@ -284,8 +303,7 @@ int main(void)
                     fenster.close();
                 }
             }
-
-            if(aktuellesLevel->checkCollisionLaser(spielerEcken) == true)
+            if(aktuellesLevel->checkCollisionLaser(spielerEcken) == true || verbleibendeZeit == 0)
             {
                 aktuellesLevel = levelLaden("gameOver");
                 aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
@@ -323,28 +341,6 @@ int main(void)
                 Uhr.restart();
 
             }
-
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num0))
-            {
-                if(zoomLevel > -10)
-                {
-                    zoom -= 0.05;
-                    zoomLevel--;
-                    ansicht.zoom(zoom);
-                }
-            }
-
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num9))
-            {
-                if(zoomLevel < 10)
-                {
-                    zoom += 0.05;
-                    zoomLevel++;
-                    ansicht.zoom(zoom);
-                }
-            }
-
-
 
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::E) && verzoegerung.getElapsedTime().asSeconds() > 0.2)
             {
@@ -548,7 +544,7 @@ int main(void)
 
         // Zeit aktualisieren
         stringstream zeitAnzeige;
-        zeitAnzeige << "Zeit: " << aktuellesLevel->Zeit.asSeconds() - Uhr.getElapsedTime().asSeconds();
+        zeitAnzeige << "Zeit: " << verbleibendeZeit << " s";
         zeit.updateText(zeitAnzeige.str());
 
     }
