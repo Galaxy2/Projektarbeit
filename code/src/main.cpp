@@ -167,9 +167,6 @@ int main(void)
             vorherigesLevel = aktuellesLevel->name;
         }
 
-        int verbleibendeZeit = aktuellesLevel->Zeit.asSeconds() - Uhr.getElapsedTime().asSeconds();
-
-
         // Eingabeüberprüfung!
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
         {
@@ -271,6 +268,10 @@ int main(void)
                                 }
 
                             }
+                if(aktuellesLevel->checkCollision(spielerEcken))
+                {
+                    spieler.move(0, 10);
+                }
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num0))
                 {
                     if(zoomLevel > -10)
@@ -302,16 +303,6 @@ int main(void)
                 {
                     fenster.close();
                 }
-            }
-            if(aktuellesLevel->checkCollisionLaser(spielerEcken) == true || verbleibendeZeit == 0)
-            {
-                aktuellesLevel = levelLaden("gameOver");
-                aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
-                hintergrund->setOrigin(0, 0);
-                spieler.setPosition(960, 540);
-
-                //ansicht.setCenter(fenster.mapPixelToCoords(sf::Vector2i(960, 540)));
-                renderList.push_back((sf::Drawable *)&console::eingabeFeld);
             }
 
             if(aktuellesLevel->checkCollisionPfeile(spielerEcken) != -1)
@@ -543,10 +534,31 @@ int main(void)
         anzahlPunkte.updateText(anzahlPunkteAnzeige.str());
 
         // Zeit aktualisieren
-        stringstream zeitAnzeige;
-        zeitAnzeige << "Zeit: " << verbleibendeZeit << " s";
-        zeit.updateText(zeitAnzeige.str());
+        int verbleibendeZeit;
+        if(aktuellesLevel->Zeit.asSeconds() != -1)
+        {
+            verbleibendeZeit = aktuellesLevel->Zeit.asSeconds() - Uhr.getElapsedTime().asSeconds();
 
+            if(aktuellesLevel->checkCollisionLaser(spielerEcken) == true || verbleibendeZeit == 0)
+            {
+                aktuellesLevel = levelLaden("gameOver");
+                aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+                hintergrund->setOrigin(0, 0);
+                spieler.setPosition(960, 540);
+
+                //ansicht.setCenter(fenster.mapPixelToCoords(sf::Vector2i(960, 540)));
+                renderList.push_back((sf::Drawable *)&console::eingabeFeld);
+            }
+
+            stringstream zeitAnzeige;
+            zeitAnzeige << "Zeit: " << verbleibendeZeit << " s";
+            zeit.updateText(zeitAnzeige.str());
+        }
+        else
+        {
+            renderList.remove((sf::Drawable *)&zeit.text);
+
+        }
     }
 
 
