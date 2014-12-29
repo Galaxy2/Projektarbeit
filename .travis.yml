@@ -1,6 +1,12 @@
 language: cpp
 compiler: g++
 
+notifications:
+  email:
+    - juppiey@gmail.com
+    - gabriel.gavrilas@gmail.com
+    - patrick.eigensatz@gmail.com
+
 install:
 - yes "" | sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 - sudo apt-get update
@@ -20,7 +26,7 @@ install:
 - sudo make -j9 install
 - cd ..
 - cd code/src/
-- "../../cbp2make-stl-rev147/bin/Release/cbp2make -in robber.cbp -out Makefile"
+- ../../cbp2make-stl-rev147/bin/Release/cbp2make -in robber.cbp -out Makefile
 
 script:
 - make -j9 linux
