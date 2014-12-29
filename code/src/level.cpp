@@ -25,6 +25,9 @@ void level::loadFromFile(void)
     // abähngige Datei
     levelDatei >> deckeName;
 
+    // Anzahl Mindestpunkte einlesen
+    levelDatei >> minPunkte;
+
     // Spieler Spawn Position lesen!
     levelDatei >> spielerPosition.x >> spielerPosition.y;
 
@@ -148,17 +151,6 @@ void level::loadFromFile(void)
 
 
     levelDatei.close();
-}
-
-
-bool level::checkSieg()
-{
-    if(spiel.punkte == Punkt)
-    {
-        return true;
-    }
-
-    return false;
 }
 
 

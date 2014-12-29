@@ -53,6 +53,9 @@ public:
 
     sf::Time Zeit;
 
+    // Anzahl Punkte um das Level "zu überleben"
+    int minPunkte;
+
     // Destruktor
     level(void);
     level(string n);

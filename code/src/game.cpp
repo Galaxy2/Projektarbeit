@@ -1,5 +1,15 @@
 #include "game.h"
+#include "level.h"
 
+extern level *aktuellesLevel;
+
+bool game::checkSieg(void)
+{
+    if(punkte >= aktuellesLevel->minPunkte)
+        return true;
+
+    return false;
+}
 
 game::game(void)
 {
