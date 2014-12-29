@@ -31,6 +31,9 @@ void level::loadFromFile(void)
     int Wert; //Wert zum Angeben ob draussen( =1) oder drinnen( !=1) oder Hauptmenu( =2)
     levelDatei >> Wert;
 
+    //Wert um anzugeben welche Punktezahl erreicht werden muss
+    levelDatei >> Punkt;
+
     unsigned int N;
 
     // Anzahl Pfeile einlesen
@@ -147,6 +150,16 @@ void level::loadFromFile(void)
     levelDatei.close();
 }
 
+
+bool level::checkSieg()
+{
+    if(spiel.punkte == Punkt)
+    {
+        return true;
+    }
+
+    return false;
+}
 
 
 int level::checkCollisionPfeile(sf::FloatRect& spielerPosition)

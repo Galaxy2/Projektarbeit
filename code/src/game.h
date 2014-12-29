@@ -15,6 +15,6 @@ public:
 
     game(void);
 };
-
+game spiel;
 
 #endif // __GAME_H__

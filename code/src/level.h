@@ -30,6 +30,10 @@ public:
     int checkCollisionSchaetze(sf::FloatRect& spielerPosition);
     int checkTuere(sf::FloatRect& spielerPosition);
     bool checkCollisionLaser(sf::FloatRect& spielerPosition);
+    bool checkSieg();
+
+
+    int Punkt;
 
     list<sf::FloatRect> mauern;
     list<sf::FloatRect> schaetzePositionen;

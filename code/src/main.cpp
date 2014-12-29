@@ -27,7 +27,7 @@ level *aktuellesLevel;
 
 // Zeit
 sf::Clock Uhr;
-game spiel;
+//game spiel;
 
 
 int main(void)
@@ -167,6 +167,22 @@ int main(void)
             vorherigesLevel = aktuellesLevel->name;
         }
 
+        if(level::checkSieg() == true)
+        {
+            aktuellesLevel->name = "hauptmenu";
+            aktuellesLevel = levelLaden("hauptmenu");
+            aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+
+            // Spieler in die hauptmenu Level positionieren
+            spieler.setPosition(200, 300);
+
+            // Den Spieler wieder anzeigen
+            renderList.push_back(&spieler);
+            renderList.push_back((sf::Drawable *)&version.text);
+            renderList.push_back((sf::Drawable *)&debugMsg.text);
+            renderList.push_back((sf::Drawable *)&debugMsg2.text);
+            renderList.push_back((sf::Drawable *)&console::eingabeFeld);
+        }
 
         // Eingabeüberprüfung!
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
@@ -176,7 +192,7 @@ int main(void)
             aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
             // Spieler in die hauptmenu Level positionieren
-            spieler.setPosition(200, 400);
+            spieler.setPosition(200, 300);
 
             // Den Spieler wieder anzeigen
             renderList.push_back(&spieler);
