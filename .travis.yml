@@ -3,7 +3,7 @@ compiler: clang
 
 install:
 - sudo apt-get update
-- yes | sudo apt-get install clang-3.4 libglew-dev
+- yes | sudo apt-get install clang-3.4 libglew-dev libopenal-dev  
 - wget -O- http://heanet.dl.sourceforge.net/project/cbp2make/cbp2make-stl-rev147.tar.gz | tar xzf -
 - cd cbp2make-stl-rev147/
 - make -j9 -f cbp2make.cbp.mak.unix release
