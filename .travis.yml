@@ -1,13 +1,13 @@
 language: cpp
-compiler: clang
+compiler: g++
 
 install:
-- echo "deb http://llvm.org/apt/precise/ llvm-toolchain-precise-3.5 main" | sudo tee -a /etc/apt/sources.list
-- cat /etc/apt/sources.list
-- wget -O - http://llvm.org/apt/llvm-snapshot.gpg.key | sudo apt-key add -
+- yes "" | sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 - sudo apt-get update
-- yes | sudo apt-get install clang-3.5 libglew-dev libopenal-dev libsndfile1-dev
-- clang++ --version
+- yes | sudo apt-get install g++-4.9 libglew-dev libopenal-dev libsndfile1-dev
+- g++ --version
+- sudo rm -rf /usr/bin/g++
+- sudo ln -s /usr/bin/g++-4.9 /usr/bin/g++
 - wget -O- http://heanet.dl.sourceforge.net/project/cbp2make/cbp2make-stl-rev147.tar.gz | tar xzf -
 - cd cbp2make-stl-rev147/
 - make -j9 -f cbp2make.cbp.mak.unix release
@@ -20,10 +20,7 @@ install:
 - cd ..
 - cd code/src/
 - ../../cbp2make-stl-rev147/bin/Release/cbp2make -in robber.cbp -out Makefile
-- sed -i 's/CC = gcc/CC = clang/g' Makefile
-- sed -i 's/CXX = g++/CXX = clang++/g' Makefile
-- sed -i 's/LD = g++/LD = clang++/g' Makefile
-- sed -i 's/CFLAGS = -Wall -g/CFLAGS = -Wall -g -std=c++11/g' Makefile
+
 
 
 script:
