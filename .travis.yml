@@ -8,7 +8,8 @@ install:
 - g++ --version
 - sudo rm -rf /usr/bin/g++
 - sudo ln -s /usr/bin/g++-4.9 /usr/bin/g++
-- wget -O- http://heanet.dl.sourceforge.net/project/cbp2make/cbp2make-stl-rev147.tar.gz | tar xzf -
+- wget -O- http://heanet.dl.sourceforge.net/project/cbp2make/cbp2make-stl-rev147.tar.gz
+  | tar xzf -
 - cd cbp2make-stl-rev147/
 - make -j9 -f cbp2make.cbp.mak.unix release
 - cd ..
@@ -19,9 +20,23 @@ install:
 - sudo make -j9 install
 - cd ..
 - cd code/src/
-- ../../cbp2make-stl-rev147/bin/Release/cbp2make -in robber.cbp -out Makefile
-
-
+- "../../cbp2make-stl-rev147/bin/Release/cbp2make -in robber.cbp -out Makefile"
 
 script:
 - make -j9 linux
+
+env:
+  global:
+    secure: "GJED162aK/ZZgOfsXRP686R9x3C6l9zqP084/EiHNg7fRukgr/nQ9jx9Min6O4qUmwhXxHNtzo0UgvgxvPj1oJfl4I0atiyRVTFg4PqrzfQce/LKvwvhwCndQ/U6+FqwSwSIuX3miELy1x3dLUgdZ1JCDkHYz7rfg7Pwups7iKA="
+
+addons:
+  coverity_scan:
+    project:
+      name: "Galaxy2/Projektarbeit"
+      description: "<Your project description here>"
+    notification_email:
+      - juppiey@gmail.com
+      - patrick.eigensatz@gmail.com
+      - gabriel.gavrilas@gmail.com
+    build_command: "make -j9 linux"
+    branch_pattern: coverity_scan
