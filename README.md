@@ -10,3 +10,6 @@ eines graphischen 2D-Spiels in C++ mit SFML.
 Unsere Dokumentation und die Disposition zur Arbeit befindet sich im `doc/` Verzeichnis.
 
 
+
+## Build Status:
+Travis CI: [![Build Status](https://travis-ci.org/Galaxy2/Projektarbeit.svg?branch=master)](https://travis-ci.org/Galaxy2/Projektarbeit)
