@@ -1,13 +1,19 @@
 language: cpp
-compiler: g++
+compiler: clang
+
 install:
+- sudo apt-get update
+- yes | sudo apt-get install clang-3.4 
 - wget -O- http://heanet.dl.sourceforge.net/project/cbp2make/cbp2make-stl-rev147.tar.gz | tar xzf -
 - cd cbp2make-stl-rev147/
-- sudo make -j9 -f cbp2make.cbp.mak.unix install
+- make -j9 -f cbp2make.cbp.mak.unix release
 - cd ..
-- sudo rm -rf cbp2make-stl-rev147/
 - sudo apt-get install libsfml-dev
-script:
 - cd code/src/
-- cbp2make -in robber.cbp -out Makefile
+- ../../cbp2make-stl-rev147/bin/Release/cbp2make -in robber.cbp -out Makefile
+- sed -i 's/CC = gcc/CC = clang/g' Makefile
+- sed -i 's/CXX = g++/CXX = clang++/g' Makefile
+- sed -i 's/LD = g++/LD = clang++/g' Makefile
+
+script:
 - make -j9 linux
