@@ -8,7 +8,12 @@ install:
 - cd cbp2make-stl-rev147/
 - make -j9 -f cbp2make.cbp.mak.unix release
 - cd ..
-- sudo apt-get install libsfml-dev
+- wget http://www.sfml-dev.org/files/SFML-2.1-sources.zip
+- unzip SFML-2.1-sources.zip
+- cd SFML-2.1/
+- cmake .
+- sudo make -j9 install
+- cd ..
 - cd code/src/
 - ../../cbp2make-stl-rev147/bin/Release/cbp2make -in robber.cbp -out Makefile
 - sed -i 's/CC = gcc/CC = clang/g' Makefile
