@@ -542,6 +542,7 @@ int main(void)
 
             if(aktuellesLevel->checkCollisionLaser(spielerEcken) == true || verbleibendeZeit == 0)
             {
+                spiel.punkte = 0;
                 aktuellesLevel = levelLaden("gameOver");
                 aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
                 hintergrund->setOrigin(0, 0);
@@ -563,6 +564,7 @@ int main(void)
 
         if(spiel.checkSieg())
         {
+            spiel.punkte = 0;
             aktuellesLevel = levelLaden("hauptmenu");
             aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
