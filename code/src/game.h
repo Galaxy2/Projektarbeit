@@ -14,7 +14,7 @@ public:
     std::string levelName;
 
     game(void);
+    bool checkSieg(void);
 };
-
 
 #endif // __GAME_H__

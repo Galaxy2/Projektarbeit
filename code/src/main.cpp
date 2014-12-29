@@ -25,7 +25,7 @@ sf::Music musik; //sound.cpp // Zeile 117
 unordered_map<string, level*> levelListe;
 level *aktuellesLevel;
 
-// Zeit
+// Zeit und Spiel
 sf::Clock Uhr;
 game spiel;
 
@@ -170,12 +170,13 @@ int main(void)
         // Eingabeüberprüfung!
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
         {
-            aktuellesLevel->name = "hauptmenu";
+            // \todo Nächstes Level Laden
+            spiel.punkte = 0;
             aktuellesLevel = levelLaden("hauptmenu");
             aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
             // Spieler in die hauptmenu Level positionieren
-            spieler.setPosition(200, 400);
+            spieler.setPosition(200, 300);
 
             // Den Spieler wieder anzeigen
             renderList.push_back(&spieler);
@@ -535,7 +536,7 @@ int main(void)
 
         // Zeit aktualisieren
         int verbleibendeZeit;
-        if(aktuellesLevel->Zeit.asSeconds() != -1)
+        if(aktuellesLevel->Zeit.asSeconds() != -1) // t
         {
             verbleibendeZeit = aktuellesLevel->Zeit.asSeconds() - Uhr.getElapsedTime().asSeconds();
 
@@ -559,7 +560,26 @@ int main(void)
             renderList.remove((sf::Drawable *)&zeit.text);
 
         }
+
+        if(spiel.checkSieg())
+        {
+            aktuellesLevel = levelLaden("hauptmenu");
+            aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+
+            // Spieler in die hauptmenu Level positionieren
+            spieler.setPosition(200, 300);
+
+            // Den Spieler wieder anzeigen
+            renderList.push_back(&spieler);
+            renderList.push_back((sf::Drawable *)&version.text);
+            renderList.push_back((sf::Drawable *)&debugMsg.text);
+            renderList.push_back((sf::Drawable *)&debugMsg2.text);
+            renderList.push_back((sf::Drawable *)&console::eingabeFeld);
+        }
     }
+
+
+    // Nach der Gameloop
 
 
     // Levels wieder freigeben!

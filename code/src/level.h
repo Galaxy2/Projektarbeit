@@ -30,6 +30,10 @@ public:
     int checkCollisionSchaetze(sf::FloatRect& spielerPosition);
     int checkTuere(sf::FloatRect& spielerPosition);
     bool checkCollisionLaser(sf::FloatRect& spielerPosition);
+    bool checkSieg();
+
+
+    int Punkt;
 
     list<sf::FloatRect> mauern;
     list<sf::FloatRect> schaetzePositionen;
@@ -48,6 +52,9 @@ public:
     string name;
 
     sf::Time Zeit;
+
+    // Anzahl Punkte um das Level "zu überleben"
+    int minPunkte;
 
     // Destruktor
     level(void);

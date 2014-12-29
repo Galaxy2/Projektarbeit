@@ -25,11 +25,17 @@ void level::loadFromFile(void)
     // abähngige Datei
     levelDatei >> deckeName;
 
+    // Anzahl Mindestpunkte einlesen
+    levelDatei >> minPunkte;
+
     // Spieler Spawn Position lesen!
     levelDatei >> spielerPosition.x >> spielerPosition.y;
 
     int Wert; //Wert zum Angeben ob draussen( =1) oder drinnen( !=1) oder Hauptmenu( =2)
     levelDatei >> Wert;
+
+    //Wert um anzugeben welche Punktezahl erreicht werden muss
+    levelDatei >> Punkt;
 
     unsigned int N;
 
@@ -146,7 +152,6 @@ void level::loadFromFile(void)
 
     levelDatei.close();
 }
-
 
 
 int level::checkCollisionPfeile(sf::FloatRect& spielerPosition)
