@@ -1,0 +1,13 @@
+language: cpp
+compiler: g++
+install:
+- wget -O- http://heanet.dl.sourceforge.net/project/cbp2make/cbp2make-stl-rev147.tar.gz | tar xzf -
+- cd cbp2make-stl-rev147/
+- sudo make -j9 -f cbp2make.cbp.mak.unix install
+- cd ..
+- sudo rm -rf cbp2make-stl-rev147/
+- sudo apt-get install libsfml-dev
+script:
+- cd code/src/
+- cbp2make -in robber.cbp -out Makefile
+- make -j9 linux
