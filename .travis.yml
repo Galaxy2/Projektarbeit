@@ -19,6 +19,8 @@ install:
 - sed -i 's/CC = gcc/CC = clang/g' Makefile
 - sed -i 's/CXX = g++/CXX = clang++/g' Makefile
 - sed -i 's/LD = g++/LD = clang++/g' Makefile
+- sed -i 's/CFLAGS = -Wall -g/CFLAGS = -Wall -g -std=c++11/g' Makefile
+
 
 script:
 - make -j9 linux
