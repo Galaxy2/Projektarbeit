@@ -46,13 +46,24 @@ Patrick Eigensatz, G3C
 
 \newpage
 
+Aufbau der Dokumentation:
+Aufgabenstellung 
+Motivation
+Ziele
+Begriffe erklären
+Vorgehen
+Archidektur/Aufbau
+Probleme + Lösungen
+beurteilung / Hauptziel erreicht
+mögliche Erweiterungen / Ausblick
+Lehren
+
 
 \section{Motivation}
 \subsection{Warum ein 2D-Spiel?}
-Als wir uns für ein Projektthema entscheiden mussten, haben
-wir uns die Entscheidung schwer gemacht. Aus 5 verschiedenen
+Als wir uns für ein Projektthema entscheiden mussten, fiel uns die Entscheidung schwer. Aus 5 verschiedenen
 Bereichen, für die wir uns alle sehr interessierten, entschieden wir uns für die
-eines Computerspieles.
+eines Computerspieles. Da ein 3D-Spiel viel zu aufwändig und unrealistisch in dieser Zeit geworden wäre,war schnell klar, dass es ein 2D-Spiel sein muss.
 
 \subsection{Warum C++ und SFML?}
 Um die Sache für uns attraktiv zu machen,
@@ -71,6 +82,7 @@ weniger Speicherzugriffsfehler und ein schnelleres programmieren. SFML
 gezeigten Beispielprogramme angeschaut haben.
 
 \section{Vorgehen}
+\subsection{Spielidee}
 Am Anfang stand ganz klar die Ideenfindung auf dem Programm. Es war uns wichtig,
 eine Spielidee zu finden, an der ein Spieler später auch Spass haben würde,
 und wir das Spiel je nach zeitlichen Kapazitäten auch etwas erweitern könnten.
@@ -86,19 +98,22 @@ Disposition vermerkt - intensiv mit der Programmiersprache C++ beschäftigt. Das
 in die Sprache war sehr zentral für das spätere Verständnis der SFML-Bibliothek, die uns
 unter Anderem das Anzeigen von Grafiken ermöglichte.
 
-\section{Entwicklungsphasen}
+Nicht einfach Lernprotokoll??????
+
+(\section{Entwicklungsphasen}
 \subsection{Das Planen}
 Als wir unsere Ideen gesammelt hatten, erstellten wir Listen und Vorschläge für Ideen, für
-eine ganzes Gameplay. Auch das Ausschmücken der Ideen kostete uns sehr viel Zeit.
-\subsection{Das Laden erster Grafiken}
+eine ganzes Gameplay. Auch das Ausschmücken der Ideen war nötig um sich klar zu werden wie das Game genau aussehen sollte. Es musste jedem klar sein was genau gemacht werden musste, so dass niemand Stundenin falsche Sachen investierte.
+\subsubsection{Das Laden erster Grafiken}
 Kaum konnten wir unsere Beispielprogramme auf unseren Computern ausführen, wuchs unsere Motivation
-ein 2D-Spiel zu schreiben, ins unermessliche an. Wir versuchten möglichst jeden Tag neue Aspekte
+ein 2D-Spiel zu schreiben ins unermessliche an. Wir versuchten möglichst jeden Tag neue Aspekte
 des Spiels auszuleuchten und uns zu überlegen, wie wir das ganze Spiel technisch implementieren.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.25]{img/grafiken.png}
 \caption{Ein Beispiellevel mit der Spielfigur}
 \end{figure}
+)
 
 \subsection{Kollisionsdetektion}
 Die Kollisionsdetektion war zu Beginn der Entwicklungen etwas fehleranfällig. So gab es vereinzelt
@@ -107,13 +122,17 @@ versteckte sich eine unsichtbare Mauer, das heisst, es wurde eine Kollision geme
 Spielerposition gar keine Mauer lag. Um das Problem zu Erforschen und schliesslich zu beheben, haben
 wir die Mauerabschnitte einzeln geladen und ein grünes Rechteck darübergezeichnet. So fiel uns auf, dass
 die Koordinaten der Mauer zwar richtig gelesen, aber falsch verarbeitet wurden. Die Koordinaten mussten
-von absoluten Bildschirmkoordinaten in Fenster/Spielkoordinaten umgerechnet werden.
+von absoluten Bildschirmkoordinaten in Fenster/Spielkoordinaten umgerechnet werden. Das konnte wir nach einigem ausprobieren beheben.
 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.3]{img/kollisionsdetektion.png}
 \caption{Debugging der Kollisionsdetektion}
 \end{figure}
+
+\subsection{Levelclass und Leveldatei}
+Unser Ziel war zuerst ein Probe Level zu haben, es dann aber einfach zu haben ein richtiges Level zu erstellen. Deshalb haben wir uns entschieden, dass wir zu jedem Level eine Leveldatei machen, in der alle variablen informationen enthalten sein müssen. So steht dort immer zuerst wie viele, dass es von diesem Obejekt hat und dann oft noch die genaue Position. SO stehen die Mauer oder auch die Pfeile dort vermerkt. Es steht auch zu welchem Level gejumpt werden soll wenn man auf einen Pfeil kommt.
+Dies wird in der Leveclass alles genau heraus gelesen. Das wichtige dabei ist, dass die Reihenfolge genau stimmt sonst gerät das ganze in ein irres Durcheinenader. Wir brauchen die Anzahl Elemente die es hat zuerst, um zu erkennen welche Information zu welchem Objekt gehört. Denn das programm liesst dort nur Zahlen heraus. Und mit Wörtern können wir ihm das nicht erklären, da er diese ja nicht verstehen kann. 
 
 \subsection{Animationen}
 Von Anfang an waren auch Animationen in unserem Spiel eingeplant. So sollen zum Beispiel ausserhalb eines Hauses
@@ -142,11 +161,11 @@ $animationAusfuehren()$, die überprüft, ob bereits genug Zeit vergangen ist, d
 Das mühsamste beim Implementieren der Türen waren die dynamischen Mauern. Zwar kann die Mauer Liste mit den
 STL-Funktionen $push_back()$ und $remove()$ einfach hinzugefügt, bzw. entfernt werden, jedoch muss die Mauer
 immer entsprechend umgerechnet werden. Dies ist besonders bei den 4 verschiedenen möglichen Rotationen etwas mühsam.
-
+Auch hier haben wir eine checkCollision überprüfung gemacht. So wird überprüft, o der Spieler in der Nähe der Türe ist. Wenn dies der Fall ist wird die Animation gestartet und im Spiel sieht man wie sich die Tür öffnet. Dann wird hier wieder mit den neuen Koordinaten eine „Mauer“ erstellt, die nicht passiert werden kann. Wir haben einen mindest Zeitabstand eingebaut, so dass sich die Tür erst wieder nach einer gewissen Zeit schliessen lässt. Sonst hätte man die Türe schneller öffnen  und schliessen können als das Spiel mithalten könnte und würde die Tür noch oft öffnen und schliessen.Wir haben die Türen noch etwas grösser gemacht bei der Collisions-Abfrage, so dass man die Türen schlussendlich immer von beiden Seiten öffnen und schliessen kann.
 
 \subsection{Das Hauptmenü}
 Das Hauptmenü wurde bewusst relativ simpel gehalten und konnte dadurch sehr schnell erstellt werden. Mit GIMP wurden
-einige mehr oder weniger gut aussehende Grafiken erzeugt, die als Buttons verwendet werden konnten. 
+einige mehr oder weniger gut aussehende Grafiken erzeugt, die als Buttons verwendet werden konnten. Doch da wir hier wieder auf ein Problem mit den Koordinaten stiessen entschieden wir uns unser Game nicht, wie viele andere aufzubauen. Nun ist man bereits im Hauptmenu die Spielfigur  und da hatten wir es leicht. Wir haben einfach das Spielstarten Bild als neuen Pfeil definiert falls eine 2 in der Leveldatei steht. So ist es, sobald man auf das Spielstarten fährt einn Teleporter zum ersten Level. Bei der Spielbeenden haben wir ein FloatRect erstellt und eine checkCollison gemacht und falls der Spieler nun auf Spielbeenden fährt beendet das Spiel. 
 \begin{figure}
 \centering
 \includegraphics[scale=0.3]{img/hauptmenu.png}
@@ -155,6 +174,8 @@ einige mehr oder weniger gut aussehende Grafiken erzeugt, die als Buttons verwen
 
 
 \section{Entwicklungswerkzeuge}
+\subsection{SFML}
+
 \subsection{Code::Blocks}
 Code::Blocks ist eine frei verfügbare Entwicklungsumgebung (IDE\footnote{Integrated Development Environment}) die Programmierung in C/C++ und D.
 Neben der Syntaxhervorhebung und der intelligente Autovervollständigung bietet Code::Blocks bequeme Einstellungen um SFML-Projekte auf allen Plattformen
@@ -194,7 +215,8 @@ Während der Entwicklung haben wir unser Projekt regelmässig von Coverity über
 \textbf{Valgrind} ist ein freies Programm zur dynamischen Fehleranalyse in Programmen. Besonders nutzten wir die Fähigkeit,
 unser Spiel innerhalb des Memcheck-Moduls laufen zu lassen, um ein Feedback über den Speicherverbrauch zu erhalten. So entdeckten
 wir, dass viele Klassen, die schnell erstellt wurden, zwar Speicher anfordern, diesen aber nie mehr freigeben. Das führte schlussendlich
-zu einem Speicherleck von knapp 20MB, das schliesslich behoben werden konnte.
+zu einem Speicherleck von knapp 20MB,
+ das schliesslich behoben werden konnte.
 
 \begin{figure}
 \centering
