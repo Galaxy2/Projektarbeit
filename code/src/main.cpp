@@ -123,6 +123,13 @@ int main(void)
     // Spieler immer anzeigen!
     renderList.push_back(&spieler);
 
+    sf::Texture dunkelTextur;
+    sf::Sprite dunkel;
+    dunkelTextur.loadFromFile("resources/Dunkel.png");
+    dunkel.setTexture(dunkelTextur);
+    dunkel.setOrigin(960, 540);
+    dunkel.setPosition(spieler.getPosition());
+
 
     debugMsg.updateText("Game running in Debug Mode!");
 
@@ -204,17 +211,17 @@ int main(void)
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
                 {
                     // Zuerst Kollision überprüfen!
-                    spielerEcken.top -= 10;
+                    spielerEcken.top -= 5;
                     if(aktuellesLevel->checkCollision(spielerEcken))
                     {
                         // Nicht bewegen!
-                        spielerEcken.top += 10;
+                        spielerEcken.top += 5;
                     }
                     else
                     {
                         // Bewegen!
                         spieler.setRotation(0);
-                        spieler.move(0, -10);
+                        spieler.move(0, -5);
                     }
 
                 }
@@ -223,32 +230,32 @@ int main(void)
 
                     if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
                     {
-                        spielerEcken.left-=10;
+                        spielerEcken.left-=5;
                         if(aktuellesLevel->checkCollision(spielerEcken))
                         {
-                            spielerEcken.left +=10;
+                            spielerEcken.left +=5;
                         }
                         else
                         {
                             spieler.setRotation(270);
-                            spieler.move(-10, 0);
+                            spieler.move(-5, 0);
                         }
                     }
 
                     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
                         {
                             // Zuerst Kollision überprüfen!
-                            spielerEcken.top += 10;
+                            spielerEcken.top += 5;
                             if(aktuellesLevel->checkCollision(spielerEcken))
                             {
                                 // Nicht bewegen!
-                                spielerEcken.top -= 10;
+                                spielerEcken.top -= 5;
                             }
                             else
                             {
                                 // Bewegen!
                                 spieler.setRotation(180);
-                                spieler.move(0, 10);
+                                spieler.move(0, 5);
                             }
 
                         }
@@ -257,22 +264,24 @@ int main(void)
 
                             if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
                             {
-                                spielerEcken.width +=10;
+                                spielerEcken.width +=5;
                                 if(aktuellesLevel->checkCollision(spielerEcken))
                                 {
-                                    spielerEcken.width -=10;
+                                    spielerEcken.width -=5;
                                 }
                                 else
                                 {
                                     spieler.setRotation(90);
-                                    spieler.move(10, 0);
+                                    spieler.move(5, 0);
                                 }
 
                             }
+
                 if(aktuellesLevel->checkCollision(spielerEcken))
                 {
-                    spieler.move(0, 10);
+                    spieler.move(5, 5);
                 }
+
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num0))
                 {
                     if(zoomLevel > -10)
@@ -292,7 +301,10 @@ int main(void)
                         ansicht.zoom(zoom);
                     }
                 }
+                dunkel.setPosition(spieler.getPosition());
             }
+
+
 
 
             if(aktuellesLevel->name == "hauptmenu")
@@ -323,6 +335,7 @@ int main(void)
                 spieler.setPosition(spielerX, spielerY);
 
                 // Den Spieler wieder anzeigen
+                renderList.push_back(&dunkel);
                 renderList.push_back(&spieler);
                 renderList.push_back((sf::Drawable *)&zeit.text);
                 renderList.push_back((sf::Drawable *)&anzahlPunkte.text);
@@ -453,6 +466,7 @@ int main(void)
                 spieler.setPosition(aktuellesLevel->spielerPosition);
 
                 // Den Spieler wieder anzeigen
+                renderList.push_back(&dunkel);
                 renderList.push_back(&spieler);
                 renderList.push_back((sf::Drawable *)&version.text);
                 renderList.push_back((sf::Drawable *)&debugMsg.text);
