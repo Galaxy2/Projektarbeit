@@ -1,5 +1,6 @@
 #include <iostream>
 #include <sstream>
+#include <stdlib.h> //rand()
 #include <vector>
 #include <list>
 #include <unordered_map>
@@ -149,6 +150,14 @@ int main(void)
     // Schallpegel! Zuerst 0
     float schallPegel = 0;
 
+    sf::Vector2i schallPosition(25, 25); // standardposition (ist nicht wichtig)
+    int sX =  fenster.mapPixelToCoords(schallPosition).x;
+    int sY =  fenster.mapPixelToCoords(schallPosition).y;
+    animation schallAnimation("resources/schall", 11, false, false, true, 1, sX, sY);//erschaffe Animation
+    schallAnimation.sprite.setOrigin(75,75);// Mitte des Bildes ist Zentrum
+    //animation wird hizugefügt. Muss nicht wiederholt werden.
+    animationList.push_back(&schallAnimation);
+
     // Zoombegrenzung
     int zoomLevel = 0;
 
@@ -215,26 +224,33 @@ int main(void)
         {
             if(aktuellesLevel->name != "gameOver")
             {
+                //rennen: doppelt so schnell, dafür aber laut
+                int s;
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
+                {
+                    s = 10;
+                    schallPegel += 0.05;// schallpegel wird höher beim rennen
+                }
+                else
+                {
+                    s = 5;
+                }
 
                 // Nur in eine Richtung auf einmal!
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
                 {
                     // Zuerst Kollision überprüfen!
-                    spielerEcken.top -= 5;
+                    spielerEcken.top -= s;
                     if(aktuellesLevel->checkCollision(spielerEcken))
                     {
                         // Nicht bewegen!
-                        spielerEcken.top += 5;
-                        if(verzoegerung.getElapsedTime().asSeconds() > 1)
-                        {
-                            schallPegel += 5;
-                        }
+                        spielerEcken.top += s;
                     }
                     else
                     {
                         // Bewegen!
                         spieler.setRotation(0);
-                        spieler.move(0, -5);
+                        spieler.move(0, -s);
                     }
 
                 }
@@ -243,40 +259,32 @@ int main(void)
 
                     if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
                     {
-                        spielerEcken.left-=5;
+                        spielerEcken.left-=s;
                         if(aktuellesLevel->checkCollision(spielerEcken))
                         {
-                            spielerEcken.left +=5;
-                            if(verzoegerung.getElapsedTime().asSeconds() > 1)
-                            {
-                                schallPegel += 5;
-                            }
+                            spielerEcken.left +=s;
                         }
                         else
                         {
                             spieler.setRotation(270);
-                            spieler.move(-5, 0);
+                            spieler.move(-s, 0);
                         }
                     }
 
                     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
                         {
                             // Zuerst Kollision überprüfen!
-                            spielerEcken.top += 5;
+                            spielerEcken.top += s;
                             if(aktuellesLevel->checkCollision(spielerEcken))
                             {
                                 // Nicht bewegen!
-                                spielerEcken.top -= 5;
-                                if(verzoegerung.getElapsedTime().asSeconds() > 1)
-                                {
-                                    schallPegel += 5;
-                                }
+                                spielerEcken.top -= s;
                             }
                             else
                             {
                                 // Bewegen!
                                 spieler.setRotation(180);
-                                spieler.move(0, 5);
+                                spieler.move(0, s);
                             }
 
                         }
@@ -285,19 +293,15 @@ int main(void)
 
                             if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
                             {
-                                spielerEcken.width +=5;
+                                spielerEcken.width +=s;
                                 if(aktuellesLevel->checkCollision(spielerEcken))
                                 {
-                                    spielerEcken.width -=5;
-                                    if(verzoegerung.getElapsedTime().asSeconds() > 10)
-                                    {
-                                        schallPegel += 5;
-                                    }
+                                    spielerEcken.width -=s;
                                 }
                                 else
                                 {
                                     spieler.setRotation(90);
-                                    spieler.move(5, 0);
+                                    spieler.move(s, 0);
                                 }
 
                             }
@@ -361,10 +365,13 @@ int main(void)
 
                 // Den Spieler wieder anzeigen
                 if(aktuellesLevel->dunkel)
+                {
                     renderList.push_back(&dunkel);
+                    renderList.push_back(&schallAnimation.sprite);
+                    schallPegel = 0; // zurücksetzen
+                }
 
                 renderList.push_back(&spieler);
-                renderList.push_back((sf::Drawable *)&schall.text);
                 renderList.push_back((sf::Drawable *)&zeit.text);
                 renderList.push_back((sf::Drawable *)&anzahlPunkte.text);
                 renderList.push_back((sf::Drawable *)&version.text);
@@ -388,7 +395,7 @@ int main(void)
                 int tuereNummer = aktuellesLevel->checkCollisionTuere(spielerEcken);
                 if(tuereNummer != -1 && aktuellesLevel->tueren[tuereNummer]->t->istBeendet())
                 {
-                    schallPegel += 10; //Wenn tuere aufgeht ist es laut
+                    schallPegel += 1; //Wenn tuere aufgeht ist es laut
 
                     float Ux = aktuellesLevel->tueren[tuereNummer]->posX;
                     float Uy = aktuellesLevel->tueren[tuereNummer]->posY;
@@ -497,7 +504,11 @@ int main(void)
 
                 // Den Spieler wieder anzeigen
                 if(aktuellesLevel->dunkel)
+                {
                     renderList.push_back(&dunkel);
+                    renderList.push_back(&schallAnimation.sprite);
+                    schallPegel = 0;
+                }
 
                 renderList.push_back(&spieler);
                 renderList.push_back((sf::Drawable *)&version.text);
@@ -530,6 +541,15 @@ int main(void)
                 }
         }
 
+        //weil es keinen animationsschritt über 10 gibt
+        if(schallPegel > 10)
+            schallPegel = 10;
+
+        //Rationale Zahlen -> Ganze Zahlen
+        int schallSchritt;
+        schallSchritt = schallPegel;
+        schallAnimation.zeigeSchritt(schallSchritt);
+
         // Ansicht anpassen!
         ansicht.setCenter(spieler.getPosition());
         fenster.setView(ansicht);
@@ -541,7 +561,6 @@ int main(void)
         sf::Vector2i consolePosition(25, 100);
         sf::Vector2i zeitPosition(25, 125);
         sf::Vector2i anzahlPunktePosition(25, 150);
-        sf::Vector2i schallPosition(25, 175);
 
         version.text.setPosition(fenster.mapPixelToCoords(versionPosition));
         debugMsg.text.setPosition(fenster.mapPixelToCoords(debugPosition));
@@ -549,8 +568,12 @@ int main(void)
         console::eingabeFeld.setPosition(fenster.mapPixelToCoords(consolePosition));
         zeit.text.setPosition(fenster.mapPixelToCoords(zeitPosition));
         anzahlPunkte.text.setPosition(fenster.mapPixelToCoords(anzahlPunktePosition));
-        schall.text.setPosition(fenster.mapPixelToCoords(schallPosition));
 
+        //position des Schallmeters auf dem Bildschirm
+        sf::Vector2i schallPosition(100, 600);
+        float sX =  fenster.mapPixelToCoords(schallPosition).x;
+        float sY =  fenster.mapPixelToCoords(schallPosition).y;
+        schallAnimation.sprite.setPosition(sX, sY);
 
         // Animation Loop
         for(animation* a : animationList)
@@ -582,16 +605,23 @@ int main(void)
         anzahlPunkteAnzeige << "Punkte: " << spiel.punkte;
         anzahlPunkte.updateText(anzahlPunkteAnzeige.str());
 
+        //Wenn der Pegel im roten Bereich ist, ist nicht sofort gameOver sondern erst nach einer Zufallszeit
+        int Zufall = rand() % 200;
+        if(schallPegel >= 7 && Zufall == 199)
+        {
+            spiel.punkte = 0;
+            aktuellesLevel = levelLaden("gameOver");
+            aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+            hintergrund->setOrigin(0, 0);
+            spieler.setPosition(960, 540);
 
-        stringstream schallText;
-        int schallAnzeige;
-        schallAnzeige = schallPegel;
-        schallText << "Schall: " << schallAnzeige;
-        schall.updateText(schallText.str());
+            renderList.push_back((sf::Drawable *)&console::eingabeFeld);
+        }
 
         if(schallPegel != 0)
         {
-            schallPegel -= 0.01;
+            //Pegel nimmt mit der Zeit wieder ab
+            schallPegel -= 0.005;
         }
 
 
