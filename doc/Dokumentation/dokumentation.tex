@@ -158,6 +158,7 @@ als Hoster genutzt, sondern ebenfalls, um unsere Termine und Fristen mit dem Pro
 \centering
 \includegraphics[scale=1]{img/branches.png}
 \caption{Verschiedene Entwicklungszweige zur parallelen Entwicklung auf GitHub}
+\label{fig:branches}
 \end{figure}
 
 
@@ -331,8 +332,23 @@ Konstruktor der Animationsklasse, in der Datei \textit{code/src/animation.cpp}.
 \caption{Erläuterung in einem Commit}
 \end{figure}
 
-\subsection{Merge Conflicts?}
+\subsection{Merge Conflicts}
+git, unsere Versionskontrolle, ermöglichte es uns, parallel, in sogenannten Branches zu entwickeln. (Siehe Abbildung \ref{fig:branches} auf Seite \pageref{fig:branches}). Wir entwickelten neue Funktionen oft parallel und "mergten" (engl. to merge = zusammenführen) sie in unseren master-Zweig.
+git nimmt alle Änderungen, die in beiden Zweigen seit dem letzten gemeinsamen Commit erstellt wurden, und erstellt daraus neue Dateien, die alle Änderungen,
+also die Änderungen von beiden Zweigen beeinhalten. Es kann sein, dass nun 2 Personen gleichzeitig an derselben Stelle im Code etwas geändert haben. Zum Beispiel
+hat der eine Entwickler eine Abfrage gelöscht, weil er sie nicht mehr brauchte, ein anderer Entwickler hat jedoch dieselbe Abfrage erweitert, da er sie benötigt.
+git kann nun nicht mehr automatisch entscheiden wie der Code zusammenzuführen ist, bzw. wie die Versionen kombiniert sein sollen. Daraus resultiert ein Merge
+Conflict. Git erstellt eine Datei, in der beide Versionen der Entwickler vorhanden sind und bittet den Entwickler, der den Code des anderen in seinen führen
+will, um Hilfe. Unsere Konflikte waren meistens schnell gelöst, da sie nur zwei bis drei Zeilen betrafen, zum Beispiel wurde bei beiden Entwicklern
+eine Variable unbenannt und man musste entscheiden, welche Version man wählt.\\
+\\
+Mühsam hingegen waren Konflikte, die mehrere Dateien betrafen, und in der 20 bis 30 Zeilen in einem Klammerwirrwar in Konflikt stehen. Da die Dateien und die Zeilen
+logisch voneinander abhängen, musste man sehr umsichtig sein, und brauchte entsprechend viel Zeit und Geduld einen solchen Konflikt zu lösen. Es gab zum Glück kein
+grosser Konflikt, der uns Probleme bereitete.
 \newpage
+
+\subsection{Am Anfang nicht parallel entwickelbar}
+Wir mussten uns immer treffen um den Core zu schreiben.
 \section{Das Spiel}
 \newpage
 \section{Diskussion / Reflexion}
