@@ -6,6 +6,7 @@
 \usepackage{amssymb}
 \usepackage{blindtext}
 \usepackage{graphicx}
+\usepackage{url}
 \usepackage[hidelinks]{hyperref}
 
 
@@ -302,7 +303,34 @@ Besonders beim Spiel auf Zeit entsteht so quasi ein zusätzlicher Druck.
 
 \section{Probleme und Lösungen}
 \subsection{Auflösungsproblem XY}
-\subsection{C++11 Problem XY}
+\subsection{Compilerprobleme}
+Nicht nur wir machten Fehler bei der Entwicklung, und die Fehler von anderen sind erfahrungsgemäss schwerer aufzuspüren.
+Einem eher speziellen Problem begegneten wir, als wir den Pfad für ein Animationsbild erstellen wollten.
+Die Zahl $i$, die bei zu zählen anfängt, zeigt, den wievielten Schritt der Animation gerade geladen werden soll, und $n$ steht für den Namen der Animation.
+Ein solcher Pfad lautet zum Beispiel für einen\\Pfeil im 4. Animationsschritt: \textit{resources/pfeil\_3.png}\\
+\\
+In C++11 sind die + Operatoren zum Verketten (Engl. concatenate) von Strings überladen. Damit man auch Zahlen so in Strings einsetzen
+kann gibt es seit C++11 die Funktion $to\_string()$, die überladen für sämtliche Zahldatentypen existiert und das Argument in einen String
+umwandelt. Der Code kompilierte auf Linux mit dem GNU C++ Compiler (G++) v4.9 ohne Probleme. Als Gabriel und Jan versuchten den Code auf ihrem Windowssystemen
+mit dem für Windows aktuellen MinGW G++ v4.7.1 zu kompilieren scheiterte dies. Spannende Recherchen ergaben, dass es sich um einen bei MinGW
+gemeldeten Bug\footnote{\url{https://gcc.gnu.org/bugzilla/show_bug.cgi?id=52015}} handelt, der ein Auffinden der Funktion in der unter Windows verwendeten
+Version unmöglich macht. Glaubt man den Kommentaren zum Bug, so findet der Präprozessor den Header zwar, liest ihn aber auf Grund eines Guardtokens nicht ein.
+Die Funktion ist folglich in der libstdc++ implementiert, wird aber in keinem Header deklariert.\\
+\\
+Ein Lösungsansatz wäre gewesen, die in C für diesen Zweck bestimmte Funktion \textit{sprintf()} zu nutzen, dies hätte jedoch einen C-String zur Folge gehabt.
+Da wir am Anfang C++ als Programmiersprache wählten um den C-Problemen wie Speicherverwaltung, C-Strings, etc. aus dem Weg zu gehen, entschieden wir uns, über
+Präprozessorflag (\textit{ifndef}) das \textit{LINUX}-Makro zu prüfen. Existiert dieses, so wird die to\_string()-Funktion, ansonsten ein stringstream, verwendet.
+Der Commit \textit{e419eef} behebt und dokumentiert genau dieses Problem. Um uns auch später, also während der Erstellung der Dokumentation, einen Überblick
+über die behandelten Probleme verschaffen zu können, haben wir diese in den Commits jeweils kurz erläutert. Das genannte Problem findet sich im
+Konstruktor der Animationsklasse, in der Datei \textit{code/src/animation.cpp}.
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.8]{img/e419eef.png}
+\caption{Erläuterung in einem Commit}
+\end{figure}
+
 \subsection{Merge Conflicts?}
 \newpage
 \section{Das Spiel}
