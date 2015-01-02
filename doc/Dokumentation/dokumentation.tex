@@ -318,8 +318,8 @@ Version unmöglich macht. Glaubt man den Kommentaren zum Bug, so findet der Prä
 Die Funktion ist folglich in der libstdc++ implementiert, wird aber in keinem Header deklariert.\\
 \\
 Ein Lösungsansatz wäre gewesen, die in C für diesen Zweck bestimmte Funktion \textit{sprintf()} zu nutzen, dies hätte jedoch einen C-String zur Folge gehabt.
-Da wir am Anfang C++ als Programmiersprache wählten um den C-Problemen wie Speicherverwaltung, C-Strings, etc. aus dem Weg zu gehen, entschieden wir uns, über
-Präprozessorflag (\textit{ifndef}) das \textit{LINUX}-Makro zu prüfen. Existiert dieses, so wird die to\_string()-Funktion, ansonsten ein stringstream, verwendet.
+Da wir am Anfang C++ als Programmiersprache wählten, um den C-Problemen wie Speicherverwaltung, C-Strings, etc. aus dem Weg zu gehen, entschieden wir uns, über
+Präprozessorflag (\textit{\#ifndef}) das \textit{LINUX}-Makro zu prüfen. Existiert dieses, so wird die to\_string()-Funktion, ansonsten ein stringstream, verwendet.
 Der Commit \textit{e419eef} behebt und dokumentiert genau dieses Problem. Um uns auch später, also während der Erstellung der Dokumentation, einen Überblick
 über die behandelten Probleme verschaffen zu können, haben wir diese in den Commits jeweils kurz erläutert. Das genannte Problem findet sich im
 Konstruktor der Animationsklasse, in der Datei \textit{code/src/animation.cpp}.
