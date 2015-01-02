@@ -31,7 +31,7 @@ public:
     int checkTuere(sf::FloatRect& spielerPosition);
     bool checkCollisionLaser(sf::FloatRect& spielerPosition);
     bool checkSieg();
-
+    void schallAnzeige(int i);
 
     int Punkt;
 
