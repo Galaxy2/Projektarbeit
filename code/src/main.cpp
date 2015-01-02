@@ -335,7 +335,9 @@ int main(void)
                 spieler.setPosition(spielerX, spielerY);
 
                 // Den Spieler wieder anzeigen
-                renderList.push_back(&dunkel);
+                if(aktuellesLevel->dunkel)
+                    renderList.push_back(&dunkel);
+
                 renderList.push_back(&spieler);
                 renderList.push_back((sf::Drawable *)&zeit.text);
                 renderList.push_back((sf::Drawable *)&anzahlPunkte.text);
@@ -466,7 +468,9 @@ int main(void)
                 spieler.setPosition(aktuellesLevel->spielerPosition);
 
                 // Den Spieler wieder anzeigen
-                renderList.push_back(&dunkel);
+                if(aktuellesLevel->dunkel)
+                    renderList.push_back(&dunkel);
+
                 renderList.push_back(&spieler);
                 renderList.push_back((sf::Drawable *)&version.text);
                 renderList.push_back((sf::Drawable *)&debugMsg.text);

@@ -50,6 +50,7 @@ public:
     string deckeName;
     bool collisionsActivated;
     string name;
+    bool dunkel;
 
     sf::Time Zeit;
 

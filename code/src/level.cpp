@@ -25,6 +25,15 @@ void level::loadFromFile(void)
     // abähngige Datei
     levelDatei >> deckeName;
 
+    // Einlesen ob dunkel (= 1) oder hell (= 0)
+    int dunkelInt;
+    levelDatei >> dunkelInt;
+
+    if(dunkelInt == 0)      // direkt als bool einlesen geht nicht?!
+        dunkel = false;
+    else
+        dunkel = true;
+
     // Anzahl Mindestpunkte einlesen
     levelDatei >> minPunkte;
 
