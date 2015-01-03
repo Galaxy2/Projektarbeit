@@ -368,7 +368,6 @@ int main(void)
                 // Spieler an die dem i-ten Pfeil zugehörigen Position im neuen Level positionieren
                 spieler.setPosition(spielerX, spielerY);
 
-                // Den Spieler wieder anzeigen
                 if(aktuellesLevel->dunkel)
                 {
                     renderList.push_back(&dunkel);
@@ -512,14 +511,17 @@ int main(void)
                 {
                     renderList.push_back(&dunkel);
                     renderList.push_back(&schallAnimation.sprite);
-                    schallPegel = 0;
+                    schallPegel = 0; // zurücksetzen
                 }
 
                 renderList.push_back(&spieler);
+                renderList.push_back((sf::Drawable *)&zeit.text);
+                renderList.push_back((sf::Drawable *)&anzahlPunkte.text);
                 renderList.push_back((sf::Drawable *)&version.text);
                 renderList.push_back((sf::Drawable *)&debugMsg.text);
                 renderList.push_back((sf::Drawable *)&debugMsg2.text);
                 renderList.push_back((sf::Drawable *)&console::eingabeFeld);
+                Uhr.restart();
             }
 
             hideConsole();

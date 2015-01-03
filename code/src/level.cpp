@@ -146,7 +146,6 @@ void level::loadFromFile(void)
         lasers[i]->l->sprite.setOrigin(0, 0);
         lasers[i]->l->sprite.setRotation(r);
 
-
     }
 
     int t;
@@ -189,8 +188,8 @@ bool level::checkCollisionLaser(sf::FloatRect& spielerPosition)
                 return true;
             }
         }
-        return false;
     }
+    return false;
 }
 
 int level::checkCollisionTuere(sf::FloatRect& spielerPosition)
