@@ -233,7 +233,8 @@ int main(void)
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
                 {
                     s = 10;
-                    schallPegel += 0.05;// schallpegel wird höher beim rennen
+                    if(aktuellesLevel->dunkel)
+                        schallPegel += 0.05;// schallpegel wird höher beim rennen
                 }
                 else
                 {
