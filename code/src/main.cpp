@@ -1,6 +1,7 @@
 #include <iostream>
 #include <sstream>
-#include <stdlib.h> //rand()
+#include <cstdlib> // rand()
+#include <ctime>   // time()
 #include <vector>
 #include <list>
 #include <unordered_map>
@@ -167,6 +168,9 @@ int main(void)
     // Musik
     string vorherigesLevel = "hauptmenu";
     hintergrundMusik("hauptmenu");
+
+    // rand initialisieren
+    srand(time(0x0));
 
     // Solange das Fenster geöffnet ist
     while(fenster.isOpen())
