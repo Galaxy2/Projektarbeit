@@ -614,15 +614,17 @@ int main(void)
         if(schallPegel >= 7 && Zufall == 199)
         {
             spiel.punkte = 0;
-            aktuellesLevel = levelLaden("gameOver");
+            cerr << "GAME OVER: GRUND 2" << endl;
+            aktuellesLevel = levelLaden("gameOver"); // Wegen dem geht man GameOver ohne dass etwas passiert ist
             aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
             hintergrund->setOrigin(0, 0);
             spieler.setPosition(960, 540);
+            schallPegel = 0;
 
             renderList.push_back((sf::Drawable *)&console::eingabeFeld);
         }
 
-        if(schallPegel != 0)
+        if(schallPegel > 0)
         {
             //Pegel nimmt mit der Zeit wieder ab
             schallPegel -= 0.005;
@@ -631,13 +633,15 @@ int main(void)
 
         // Zeit aktualisieren
         int verbleibendeZeit;
-        if(aktuellesLevel->Zeit.asSeconds() != -1) // t
+        if(aktuellesLevel->Zeit.asSeconds() > -1) // t
         {
             verbleibendeZeit = aktuellesLevel->Zeit.asSeconds() - Uhr.getElapsedTime().asSeconds();
 
             if(aktuellesLevel->checkCollisionLaser(spielerEcken) == true || verbleibendeZeit == 0)
             {
                 spiel.punkte = 0;
+                schallPegel = 0;
+                cerr << "GAME OVER: GRUND 1" << endl;
                 aktuellesLevel = levelLaden("gameOver");
                 aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
                 hintergrund->setOrigin(0, 0);
