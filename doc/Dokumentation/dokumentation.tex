@@ -212,18 +212,36 @@ Dieses erfüllte alle Vorgaben:
 Die Idee fanden wir alle interessant, es war mit unseren Mitteln und unserem Wissen realisierbar und man kann es gut erweitern.
 
 \subsubsection{Das Planen}
-
-
-Parallel dazu, haben wir uns - wie in der
+Parallel zur Ideenfindung haben wir uns - wie in der
 Disposition vermerkt - intensiv mit der Programmiersprache C++ beschäftigt. Das Einarbeiten
 in die Sprache war sehr zentral für das spätere Verständnis der SFML-Bibliothek, die uns
 unter Anderem das Anzeigen von Grafiken ermöglichte.
+\\
+Bevor wir nun jedoch mit dem Programmieren anfangen konnten, mussten wir die Idee ausarbeiten.
+Sicher war zuerst nur, dass es ein zweidimensionales Spiel sein wird und das Thema Einbrechen werden soll.
+Darum begannen wir das Spiel zu porträtieren. 
+Das leeren eines Hauses sollte das Ziel sein, wobei wir damals noch 3 verschiedene Spielmodi geplant hatten:
+\begin{enumerate}
+\item Einen bestimmten Gegenstand klauen
+\item In einer bestimmten Zeit, so viel wie möglich stehlen
+\item Einen möglichst hohen Wert der gestohlenen Waren erreichen
+\end{enumerate}
+Bei den Grafiken einigten wir uns auf Einfachheit, denn es ist kein zentraler Punkt unseres Spieles.
+Bereits in diesem Stadium besprachen wir auch mögliche Probleme beim Programmieren und dem Aufbau des Programms.
+Dabei wurden die Grundsteine für wichtige Elemente unseres Programms gelegt: Kollisionsdetektion, Teleportieren, Schätze oder auch die Loops, auf denen unser Spiel basiert. 
+Durch diese vorhergehende Fehlersuche hatten wir bereits Lösungen zu einigen Problemen, auf die wir treffen würden.
+Der nächste Punkt war das Umsetzen unseres gesammelten Wissens und damit das Erstellen des Programms.
 
+\newpage
 \subsection{Das Programmieren}
 \subsubsection{Das Laden erster Grafiken}
-Kaum konnten wir unsere Beispielprogramme auf unseren Computern ausführen, wuchs unsere Motivation
-ein 2D-Spiel zu schreiben ins unermessliche an. Wir versuchten möglichst jeden Tag neue Aspekte
-des Spiels auszuleuchten und uns zu überlegen, wie wir das ganze Spiel technisch implementieren.
+Unsere erste Version des Spieles war bloss ein Fenster mit der Hintergrundgrafik.
+Zu allen Dingen haben wir zuerst Demografiken gebraucht.
+Obwohl dieser Schritt einfach erscheint kam dabei eines unserer grössten Probleme in der Entwicklung des Spieles zum Vorschein.
+Die Schwierigkeit war es, dass diese erste Version bei allen gleich aussieht, unabhängig von Auflösung, Marke oder Betriebssystem.
+Weiteres zu diesem Problem gibt es im Kapitel: 5.1 Auflösungsprobleme XY
+
+
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.25]{img/grafiken.png}
@@ -252,7 +270,7 @@ von absoluten Bildschirmkoordinaten in Fenster/Spielkoordinaten umgerechnet werd
 
 \subsubsection{Levelclass und Leveldatei}
 Unser Ziel war zuerst ein Probe Level zu haben, es dann aber einfach zu haben ein richtiges Level zu erstellen. Deshalb haben wir uns entschieden, dass wir zu jedem Level eine Leveldatei machen, in der alle variablen informationen enthalten sein müssen. So steht dort immer zuerst wie viele, dass es von diesem Obejekt hat und dann oft noch die genaue Position. SO stehen die Mauer oder auch die Pfeile dort vermerkt. Es steht auch zu welchem Level gejumpt werden soll wenn man auf einen Pfeil kommt.
-Dies wird in der Leveclass alles genau heraus gelesen. Das wichtige dabei ist, dass die Reihenfolge genau stimmt sonst gerät das ganze in ein irres Durcheinenader. Wir brauchen die Anzahl Elemente die es hat zuerst, um zu erkennen welche Information zu welchem Objekt gehört. Denn das programm liesst dort nur Zahlen heraus. Und mit Wörtern können wir ihm das nicht erklären, da er diese ja nicht verstehen kann. 
+Dies wird in der Leveclass alles genau heraus gelesen. Das wichtige dabei ist, dass die Reihenfolge genau stimmt sonst gerät das ganze in ein irres Durcheinenader. Wir brauchen die Anzahl Elemente die es hat zuerst, um zu erkennen welche Information zu welchem Objekt gehört. Denn das Programm liesst dort nur Zahlen heraus. Und mit Wörtern können wir ihm das nicht erklären, da er diese ja nicht verstehen kann. 
 
 \subsubsection{Animationen}
 Von Anfang an waren auch Animationen in unserem Spiel eingeplant. So sollen zum Beispiel ausserhalb eines Hauses
@@ -308,6 +326,11 @@ Besonders beim Spiel auf Zeit entsteht so quasi ein zusätzlicher Druck.
 
 \section{Probleme und Lösungen}
 \subsection{Auflösungsproblem XY}
+Beim Auflösungsproblem handelt es sich um ein Problem mit dem Umgang mit SFML.
+Das Problem besteht darin, dass jede Ansicht bei jeder Auflösung, jeder Gerätemarke und bei beiden Betriebssystemen gleich aussehen soll.
+Wir hofften, dass SFML diese Arbeit übernehmen würde, doch bereits bei den ersten Grafiken mussten wir einsehen, dass wir alles selber regeln müssten.
+Um das Problem zu lokalisieren benutzten wir die $zoom()$ funktion, mit der man die ganze Ansicht über einen Wert anpassen kann.
+Diesen Wert nannten wir $factor$.
 \subsection{Compilerprobleme}
 Nicht nur wir machten Fehler bei der Entwicklung, und die Fehler von anderen sind erfahrungsgemäss schwerer aufzuspüren.
 Einem eher speziellen Problem begegneten wir, als wir den Pfad für ein Animationsbild erstellen wollten.
@@ -320,7 +343,7 @@ umwandelt. Der Code kompilierte auf Linux mit dem GNU C++ Compiler (G++) v4.9 oh
 mit dem für Windows aktuellen MinGW G++ v4.7.1 zu kompilieren scheiterte dies. Spannende Recherchen ergaben, dass es sich um einen bei MinGW
 gemeldeten Bug\footnote{\url{https://gcc.gnu.org/bugzilla/show_bug.cgi?id=52015}} handelt, der ein Auffinden der Funktion in der unter Windows verwendeten
 Version unmöglich macht. Glaubt man den Kommentaren zum Bug, so findet der Präprozessor den Header zwar, liest ihn aber auf Grund eines Guardtokens nicht ein.
-Die Funktion ist folglich in der libstdc++ implementiert, wird aber in keinem Header deklariert.\\
+Die Funktion ist folglich in der libstdc++ implementiert, wird aber in keinem Header deklariert.\\ %nur leicht unklar für unwissende...
 \\
 Ein Lösungsansatz wäre gewesen, die in C für diesen Zweck bestimmte Funktion \textit{sprintf()} zu nutzen, dies hätte jedoch einen C-String zur Folge gehabt.
 Da wir am Anfang C++ als Programmiersprache wählten, um den C-Problemen wie Speicherverwaltung, C-Strings, etc. aus dem Weg zu gehen, entschieden wir uns, über
@@ -353,6 +376,8 @@ grosser Konflikt, der uns Probleme bereitete.
 
 \subsection{Am Anfang nicht parallel entwickelbar}
 Wir mussten uns immer treffen um den Core zu schreiben.
+\subsection{Mathematik}
+Aufwand zum berechnen/ Logik
 \section{Das Spiel}
 \newpage
 \section{Diskussion / Reflexion}
