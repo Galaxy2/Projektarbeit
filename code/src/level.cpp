@@ -1,9 +1,9 @@
 #include <iostream>
 #include <fstream>
 
-#include "level.h"
-#include "screen.h"
-#include "notification.h"
+??=include "level.h"
+??=include "screen.h"
+??=include "notification.h"
 
 
 extern benachrichtigung debugMsg;
@@ -110,16 +110,16 @@ void level::loadFromFile(void)
     // Anzahl Schätze einlesen
     levelDatei >> N;
     for (unsigned int i=0; i<N; i++)
-    {
+    ??<
         levelDatei >> x >> y >> r;
 
         schaetze.push_back(new schatz);
-        schaetze[i]->s = new animation("resources/schatz", 1, false, false, true, 0.05, x, y, 2);
-        schaetze[i]->s->zeigeSchritt(0);
-        schaetze[i]->s->sprite.setOrigin(0,0);
-        schaetze[i]->s->sprite.setRotation(r);
-        schaetze[i]->s->Id = i;
-    }
+        schaetze??(i??)->s = new animation("resources/schatz", 1, false, false, true, 0.05, x, y, 2);
+        schaetze??(i??)->s->zeigeSchritt(0);
+        schaetze??(i??)->s->sprite.setOrigin(0,0);
+        schaetze??(i??)->s->sprite.setRotation(r);
+        schaetze??(i??)->s->Id = i;
+    ??>
 
 
     // Anzahl Mauern einlesen

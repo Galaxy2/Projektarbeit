@@ -640,7 +640,7 @@ int main(void)
         {
             verbleibendeZeit = aktuellesLevel->Zeit.asSeconds() - Uhr.getElapsedTime().asSeconds();
 
-            if(aktuellesLevel->checkCollisionLaser(spielerEcken) == true || verbleibendeZeit == 0)
+            if(aktuellesLevel->checkCollisionLaser(spielerEcken) == true ??!??! verbleibendeZeit == 0)
             {
                 spiel.punkte = 0;
                 schallPegel = 0;
