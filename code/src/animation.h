@@ -13,6 +13,7 @@ class animation
 public:
     int anzahlSchritte;
     int schritt;
+    int moeglichkeit;
 
     string name;
     std::vector<sf::Texture*> texturen;
@@ -39,7 +40,7 @@ public:
     bool istBeendet(void);
     void setOnAnimationEnde(void (*callback)(int));
 
-    animation(string n, int N, bool endlos, bool start, bool vorwaerts, float dT, int x, int y);
+    animation(string n, int N, bool endlos, bool start, bool vorwaerts, float dT, int x, int y, int moeglichkeiten=1);
     ~animation(void);
 };
 

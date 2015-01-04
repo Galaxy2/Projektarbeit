@@ -1,5 +1,7 @@
 #include "animation.h"
+
 #include <cstdio>
+#include <cstdlib>
 
 #ifndef LINUX
 #include <sstream>
@@ -15,7 +17,7 @@ void defaultCB(int x)
 }
 
 
-animation::animation(string n, int N, bool endlos, bool start, bool vorwaerts, float dT, int x, int y)
+animation::animation(string n, int N, bool endlos, bool start, bool vorwaerts, float dT, int x, int y, int moeglichkeiten)
 {
     name = n;
     anzahlSchritte = N;
@@ -24,6 +26,8 @@ animation::animation(string n, int N, bool endlos, bool start, bool vorwaerts, f
     sprite.setPosition(x, y);
     aktiv = start;
     richtung = vorwaerts;
+
+    moeglichkeit = rand() % moeglichkeiten;
 
     if(vorwaerts)
     {
@@ -39,11 +43,11 @@ animation::animation(string n, int N, bool endlos, bool start, bool vorwaerts, f
     {
 #ifndef LINUX
         stringstream dateiNameStream;
-        dateiNameStream << n << "_" << i << ".png";
+        dateiNameStream << n << "_" << moeglichkeit << "_" << i << ".png";
 
         dateiName = dateiNameStream.str();
 #else
-        dateiName = n + "_" + to_string(i) + ".png";
+        dateiName = n + "_" + to_string(moeglichkeit) + "_" + to_string(i) + ".png";
 #endif // LINUX
 
         sf::Texture *textur = new sf::Texture;
