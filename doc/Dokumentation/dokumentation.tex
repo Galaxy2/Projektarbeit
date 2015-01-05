@@ -374,9 +374,19 @@ logisch voneinander abhängen, musste man sehr umsichtig sein, und brauchte ents
 grosser Konflikt, der uns Probleme bereitete.
 \newpage
 
-\subsection{Am Anfang nicht parallel entwickelbar}
-Wir mussten uns immer treffen um den Core zu schreiben.
-
+\subsection{Paralleles Entwickeln des Kerns}
+Obwohl wir bereits am Anfang parallel mit git entwickeln konnten, war es sehr schwierig, da noch gar kein Code vorhanden war,
+und es zuerst galt, eine Basis zu entwickeln, auf der dann alle Programmieren konnten. Wir versuchten von Anfang an so zu programmieren,
+dass wir später keine grossen Änderungen vornehmen mussten, um das Spiel um Laserschranken oder auch Musik zu erweitern.
+\\
+\\
+Das gelang uns sehr gut, einzig die Levelklasse brauchte eine Restrukturierung, da die \textit{loadFromFile()}-Methode eine Leveldatei nicht nur mehr auslas,
+sondern die Objekte auch gleich zeichnete. Da wir die Level aber speichern und nicht immer mehr komplett neu laden wollten, brauchten wir eine
+Funktion, die es uns ermöglichte nur die Objekte in die Levelklasse zu laden und eine Funktion, die nur dazu da war, die gespeicherten Objekte zu zeichnen. So konnten wir Veränderungen an den Objekten in der Levelklasse abspeichern.
+\\
+\\
+Ansonsten mussten wir am ganzen Kern nichts mehr ändern. Der grosse Vorteil, der sich dadurch ergab, war, dass jeder seine 
+Funktionen kannte, und zum Beispiel problemlos Objekte erstellen konnte und diese auch auf Kollisionen mit dem Spieler überprüfen konnte.
 
 \subsection{Mathematik}
 Aufwand zum berechnen/ Logik
