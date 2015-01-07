@@ -148,7 +148,7 @@ Für OSS-Entwickler kostenlose Plattform: Führt eine tiefgreifende statische Qu
 \subsection{Code::Blocks}
 Code::Blocks ist eine frei verfügbare Entwicklungsumgebung (IDE\footnote{Integrated Development Environment}) die Programmierung in C/C++ und D.
 Neben der Syntaxhervorhebung und der intelligente Autovervollständigung bietet Code::Blocks bequeme Einstellungen um SFML-Projekte auf allen Plattformen
-einfach zu kompilieren. Code::Blocks setzt dabei auf eine Art \textbf{make} wie es schon aus Unixzeiten bekannt ist. Kompiliert wird nur das, was sich
+einfach zu kompilieren. Code::Blocks setzt dabei auf eine Art \textbf{make}, wie es schon aus Unixzeiten bekannt ist. Kompiliert wird nur das, was sich
 seit dem letzten Durchgang geändert hat. Code::Blocks nutzt \textbf{g++}, den GNU C++ Compiler, um die einzelnen Dateien in Objektcode umzuwandeln und diesen
 anschliessen in eine ausführbare Datei zu linken.
 
@@ -322,11 +322,6 @@ Auch hier haben wir eine checkCollision überprüfung gemacht. So wird überprü
 Das Hauptmenü wurde bewusst relativ simpel gehalten und konnte dadurch sehr schnell erstellt werden. Mit GIMP wurden
 einige mehr oder weniger gut aussehende Grafiken erzeugt, die als Buttons verwendet werden konnten. Doch da wir hier wieder auf ein Problem mit den Koordinaten stiessen entschieden wir uns unser Game nicht, wie viele andere aufzubauen. Nun ist man bereits im Hauptmenu die Spielfigur  und da hatten wir es leicht. Wir haben einfach das Spielstarten Bild als neuen Pfeil definiert falls eine 2 in der Leveldatei steht. So ist es, sobald man auf das Spielstarten fährt einn Teleporter zum ersten Level. Bei der Spielbeenden haben wir ein FloatRect erstellt und eine checkCollison gemacht und falls der Spieler nun auf Spielbeenden fährt beendet das Spiel. 
 
-\begin{figure}
-\centering
-\includegraphics[scale=0.3]{img/hauptmenu.png}
-\caption{Das Hauptmenü}
-\end{figure}
 
 \subsubsection{Dunkle Level}
 Mit einem halbtransparenten Overlay können wir das Level, bzw. das Haus abdunkeln, und nur in einem Bereich um uns
