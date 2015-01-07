@@ -116,6 +116,7 @@ für eigene Projekte und unsere Maturaarbeit helfen.
 Das Spiel muss/soll unter eine OpenSource Lizenz gestellt werden.
 \end{itemize}
 
+
 \newpage
 \section{Begriffe}
 \subparagraph{Game}
@@ -222,7 +223,7 @@ Dadurch und durch weitere Diskussion kamen wir auf die Idee eines Eibrecherspiel
 Dieses erfüllte alle Vorgaben:
 Die Idee fanden wir alle interessant, es war mit unseren Mitteln und unserem Wissen realisierbar und man kann es gut erweitern.
 
-\subsubsection{Das Planen}
+\subsubsection{Vorbereitung und Planung}
 Parallel zur Ideenfindung haben wir uns - wie in der
 Disposition vermerkt - intensiv mit der Programmiersprache C++ beschäftigt. Das Einarbeiten
 in die Sprache war sehr zentral für das spätere Verständnis der SFML-Bibliothek, die uns
@@ -240,8 +241,11 @@ Das leeren eines Hauses sollte das Ziel sein, wobei wir damals noch 3 verschiede
 Bei den Grafiken einigten wir uns auf Einfachheit, denn es ist kein zentraler Punkt unseres Spieles.
 Bereits in diesem Stadium besprachen wir auch mögliche Probleme beim Programmieren und dem Aufbau des Programms.
 Dabei wurden die Grundsteine für wichtige Elemente unseres Programms gelegt: Kollisionsdetektion, Teleportieren, Schätze oder auch die Loops, auf denen unser Spiel basiert. 
-Durch diese vorhergehende Fehlersuche hatten wir bereits Lösungen zu einigen Problemen, auf die wir treffen würden.
+Durch diese vorhergehende Fehlersuche hatten wir bereits Lösungen zu einigen Problemen, auf die wir treffen würden. Diese konnten wir dann bequem umgehen oder mussten feststellen, dass einige Problem komplexer sind als wir damals noch dachten.
 Der nächste Punkt war das Umsetzen unseres gesammelten Wissens und damit das Erstellen des Programms.
+
+\subsubsection{Umsetzung}
+Wir hben uns immer wieder stich Tage festgelegt, so dass wir immer gewisse Ziele erreichen mussten. So konnten wir unsere Planung grob einhalten. Jeder hat immer wieder gewusst was man als nächstes machen muss. Falls jemand mal ein Problem hatte. Hat es eine kleine Problemlösungsrunde gegeben, bei der jeder versucht hat nur das Problem zu lösen und so konnte speditiv weiter gearbeitet werden. So sind wir Schritt für Schritt vorwärts gekommen. Es hat auch immer wieder Verbesserungen oder Abänderungen gegeben am alten Code. So dass der Code jetzt möglichst einfach und optimal ist. 
 
 \newpage
 \subsection{Das Programmieren}
@@ -321,6 +325,15 @@ $animationAusfuehren()$, die überprüft, ob bereits genug Zeit vergangen ist, d
 übernimmt.
 
 
+\subsubsection{Pfeile}
+Zuerst haben wir geplant die Pfeile nur als Anzeiger zu nutzen, wo dass Eingänge sind. Doch dann hatten wir die Idee, dass man sie auch gleich als Teleporter benutzen könnte. SO standen wir vor einem viel schwereren Herausforderung. Wir haben dies dann so gelöst, dass wenn man auf den Pfeil kommt wir aus der Lveldatei gelesen, welches Level geladen wrden soll. Bei der Anzahl Pfeile steht dann wie viele Pfeile es hat. Zuerst wo sie sind und mit welcher Rotation. Dann hat es noch 2 Zahlen, diese geben die neue Starposition der Figur im neuen Level an. Dies könnte man dann auch benutzen und ausbauen, so dass wir Häuser mit mehreren Etagen bilden könnten. WIr haben noch Rote Pfeile gezeichnet um Ausgänge aus dem Haus zu kenzeichnen. Durch eine weitere Zahl in der Leveldatei werden entweder die roten oder die gelben Pfeile geladen.
+
+\subsubsection{Console}
+Wir haben eine Console eingebaut, die sich mit der rechten Shift-Taste öffnen lässt. In dieser kann man verschiedene kleine Hilfen aktivieren. Wie zum Beispiel, dass man durch Mauern und Türen gehen kann. Man kann aber auch das Level direkt wechseln.
+
+\subsubsection{Bewegung der Figur}
+ Man kann die Figur mit... to be continued
+
 \subsubsection{Türen}
 Das mühsamste beim Implementieren der Türen waren die dynamischen Mauern. Zwar kann die Mauer Liste mit den
 STL-Funktionen $push\_back()$ und $remove()$ einfach hinzugefügt, bzw. entfernt werden, jedoch muss die Mauer
@@ -338,6 +351,12 @@ Mit einem halbtransparenten Overlay können wir das Level, bzw. das Haus abdunke
 sichtbar machen. In der Leveldatei wird eingetragen, ob ein Level dunkel, oder hell ist. Dementsprechend wird dann das
 Overlay geladen oder nicht. Das führt zu spannenderen Spielen, weil man Gefahren und die Schätze relativ spät sehen kann.
 Besonders beim Spiel auf Zeit entsteht so quasi ein zusätzlicher Druck.
+
+\subsubsection{Musik}
+Wir haben einen Kolleg angefragt, ob es ihm etwas ausmachen würde, Musik für uner Game zu machen. Er war damit einverstanden und hat uns Musik komponiert. So dass unser Game jetzt auch Hintergrundmusik laden kann. Er hat 3 verschiedene Stücke komponiert. Eines für das Hauptmenü, eines für die Leveln und das Letzte für das Game Over. Nun wir haben das so gelöst, dass wir den Namen der Leveldatei überprüfen und dass es dann je nach Name eine andere Musik lädt und abspielt. Dies hat praktisch auf anhieb funktioniert.
+
+\subsubsection{Schallpegel}
+... to be continued
 
 \begin{figure}[h]
 \centering
@@ -382,6 +401,14 @@ Konstruktor der Animationsklasse, in der Datei \textit{code/src/animation.cpp}.
 \includegraphics[scale=0.8]{img/e419eef.png}
 \caption{Erläuterung in einem Commit}
 \end{figure}
+
+\subsection{Fehler in der Leveldatei}
+Die Leveldatei war von Anfang an sehr Fehler anfällig. Da die Reihenfolge der Zahlen  genau stimmen muss. Da kann leicht ein Fehler unterlaufen. Die sind aber dann klar ersichtlich, da das ganze Bild ganz anders aus sieht als man erwartet hat. Man muss einfach die Leveldatei noch einemal überprüfen. Die Leveldatei ist auch ständig gewachsen, so dass man leicht einmal etwas vergessen konnte. Blöd ist einfach dass man sich keine Hinweise ins Dokument schreiben darf, weil sonst das ganze durcheinander kommt.
+
+Bild
+
+\subsection{Fehler beim Laser}
+WIr haben ein weiteres testlevel erstellt und dieses mal sollte es mehrere Laser haben. Doch dies wollte nicht funktionieren, es funktionierte genau ein Laser. Die anderen waren zwar gezeichnet aber die Checkcollision-Funktion wollte nicht gehen. Da haben wir das ganze mehrere male durchgelesen. Bis jemandem aufgefallen ist, dass es immer nur der erste Laser ist, der funktionierte. Da fiel es uns dann auch wie Schuppen von den Augen, die eine Klammer war zu früh geschlossen worden. Danach lief es einwandfrei.
 
 \subsection{Merge Conflicts}
 git, unsere Versionskontrolle, ermöglichte es uns, parallel, in sogenannten Branches zu entwickeln. (Siehe Abbildung \ref{fig:branches} auf Seite \pageref{fig:branches}). Wir entwickelten neue Funktionen oft parallel und "mergten" (engl. to merge = zusammenführen) sie in unseren master-Zweig.
