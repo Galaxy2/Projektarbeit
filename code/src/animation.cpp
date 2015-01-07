@@ -26,6 +26,7 @@ animation::animation(string n, int N, bool endlos, bool start, bool vorwaerts, f
     sprite.setPosition(x, y);
     aktiv = start;
     richtung = vorwaerts;
+    Id = 0;
 
     moeglichkeit = rand() % moeglichkeiten;
 
