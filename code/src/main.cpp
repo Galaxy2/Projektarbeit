@@ -233,8 +233,6 @@ int main(void)
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
                 {
                     s = 10;
-                    if(aktuellesLevel->dunkel)
-                        schallPegel += 0.05;// schallpegel wird höher beim rennen
                 }
                 else
                 {
@@ -246,6 +244,10 @@ int main(void)
                 {
                     // Zuerst Kollision überprüfen!
                     spielerEcken.top -= s;
+
+                    if(s == 10 && aktuellesLevel->dunkel)
+                        schallPegel += 0.05;// schallpegel wird höher beim rennen
+
                     if(aktuellesLevel->checkCollision(spielerEcken))
                     {
                         // Nicht bewegen!
@@ -265,6 +267,10 @@ int main(void)
                     if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
                     {
                         spielerEcken.left-=s;
+
+                        if(s == 10 && aktuellesLevel->dunkel)
+                        schallPegel += 0.05;// schallpegel wird höher beim rennen
+
                         if(aktuellesLevel->checkCollision(spielerEcken))
                         {
                             spielerEcken.left +=s;
@@ -280,6 +286,10 @@ int main(void)
                         {
                             // Zuerst Kollision überprüfen!
                             spielerEcken.top += s;
+
+                            if(s == 10 && aktuellesLevel->dunkel)
+                            schallPegel += 0.05;// schallpegel wird höher beim rennen
+
                             if(aktuellesLevel->checkCollision(spielerEcken))
                             {
                                 // Nicht bewegen!
@@ -299,6 +309,10 @@ int main(void)
                             if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
                             {
                                 spielerEcken.width +=s;
+
+                                if(s == 10 && aktuellesLevel->dunkel)
+                                schallPegel += 0.05;// schallpegel wird höher beim rennen
+
                                 if(aktuellesLevel->checkCollision(spielerEcken))
                                 {
                                     spielerEcken.width -=s;
@@ -522,6 +536,7 @@ int main(void)
                 renderList.push_back((sf::Drawable *)&debugMsg2.text);
                 renderList.push_back((sf::Drawable *)&console::eingabeFeld);
                 Uhr.restart();
+                schallPegel = 0;
             }
 
             hideConsole();
