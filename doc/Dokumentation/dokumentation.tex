@@ -7,6 +7,7 @@
 \usepackage{blindtext}
 \usepackage{graphicx}
 \usepackage{url}
+\usepackage{listings}
 \usepackage[hidelinks]{hyperref}
 
 
@@ -152,7 +153,7 @@ einfach zu kompilieren. Code::Blocks setzt dabei auf eine Art \textbf{make}, wie
 seit dem letzten Durchgang geändert hat. Code::Blocks nutzt \textbf{g++}, den GNU C++ Compiler, um die einzelnen Dateien in Objektcode umzuwandeln und diesen
 anschliessen in eine ausführbare Datei zu linken.
 
-\subsection{git / GitHub}
+\subsection{git und GitHub}
 \textbf{git} ist eine sogenannte verteilte Versionskontrolle (DVCS\footnote{Distributed Version Control System}). Ein solches Werkzeug übernimmt
 den Entwicklern einige Arbeit, wenn es darum geht, parallel an Software zu schreiben. Zudem zeichnet es alle Änderungen am Code auf und man kann diese
 einsehen, um zum Beispiel Fehler zu finden, sie erst seit kurzem vorhanden sind, oder gewisse Änderungen rückgängig zu machen, ohne dass man
@@ -196,6 +197,8 @@ zu einem Speicherleck von knapp 20MB,
 
 
 \subsection{GIMP}
+
+\subsection{GDB - Der GNU Debugger}
 
 \newpage
 \section{Vorgehen}
@@ -288,13 +291,20 @@ das ganze in ein irres Durcheinenader. Wir brauchen die Anzahl Elemente die es h
 zu welchem Objekt gehört. Denn das Programm liesst dort nur Zahlen heraus. Und mit Wörtern können wir ihm das nicht erklären, 
 da er diese ja nicht verstehen kann.
 
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.45]{img/level_uml.png}
+\caption{UML der Levelklasse}
+\end{figure}
+
+
 \subsubsection{Animationen}
 Von Anfang an waren auch Animationen in unserem Spiel eingeplant. So sollen zum Beispiel ausserhalb eines Hauses
 Türen durch grün blinkende/aufleuchtende Pfeile markiert werden. Für solche Animationen wurde eigens eine Klasse
 implementiert.
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.3]{img/animation_uml.png}
+	\includegraphics[scale=0.6]{img/animation_uml.png}
 	\caption{UML: Animationsklasse}
 \end{figure}
 Um Animationen später oft und möglichst einfach verwenden zu können, besitzt die Klasse einen einfachen Konstruktor,
@@ -419,7 +429,8 @@ blieb, haben wir aber sehr intensiv genutzt. Die Kreise in Abbildung \ref{fig:pu
 
 \section{Das Spiel}
 \subsection{Das Spielprinzip}
-Das Spielprinzip ist einfach: Als Einbrecher versucht man in ein Haus einzubrechen
+Das Spielprinzip ist einfach: Als Einbrecher versucht man in ein Haus einzubrechen, und dabei keinen Lärm zu verursachen, Laserschranken auszuweichen
+und dies je nach Spielmodus möglichst schnell, oder sehr ausgiebig.
 
 \subsection{Spielmodi}
 Wir haben unsere Level verschieden erstellt:
@@ -434,6 +445,7 @@ Wir haben unsere Level verschieden erstellt:
 
 \newpage
 \section{mögliche Erweiterungen / Ausblick}
+
 
 
 \clearpage
