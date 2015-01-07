@@ -47,30 +47,33 @@ Patrick Eigensatz, G3C
 \newpage
 
 \section{Aufgabenstellung} 
-Unsere Aufgabe war eine Projektarbeit zu gestalten. Dazu hatten wir ein Semester Zeit. Man solle ein Thema
-wählen, dass auch  interessant ist. Zu dem eigen ausgewählten Thema muss man etwas erarbeiten und dies dann in einem Lernprotokoll festhalten.
-Dazu muss man eine schriftliche Arbeit abgeben und eine Präsentation gemacht werden. Diese Arbeit sollte uns auf die Maturarbeit
+Unsere Aufgabe ist eine Projektarbeit zu gestalten. Dazu hatten wir ein Semester Zeit. Man wählte ein Thema, dass einem intressiert. 
+Zu dem eigen ausgewählten Thema muss man etwas erarbeiten. Den Lernfortschritt muss man in einem Lernprotokoll festhalten.
+Dazu muss man eine Schriftlichearbeit abgeben und eine Präsentation machen. Diese Arbeit soll uns auf die Maturarbeit
 vorbereiten.
 
+
 \subsection{Motivation}
-In unserer Generation verbringen viele, vor allem männliche Kinder, Jugendliche und Erwachsene,
+In unserer Generation verbringen viele Kinder, Jugendliche und Erwachsene
 ihre Zeit mit dem Spielen von Computer- und Konsolenspielen.
 Berühmte Vertreter sind Call of Duty, Grand Theft Auto und Minecraft.
 Doch die meisten Nutzer dieser Programme haben nie die Prozesse hinter diesen verstanden.
-Sei das wegen der bereits weit fortgeschrittenen Komplexität einiger Spiele 
-oder bei einfachen Spielen einfach die fehlende Motivation, sich damit zu befassen.
-Viele wollen nur wissen wie man ein Spiel spielt und nicht wie man es spielbar macht.
+Sei das wegen der bereits weit fortgeschrittenen Komplexität einiger Spiele
+oder bei einfachen Spielen einfach die fehlende Motivation, sich damit zu befassen.\\
+\\
+Viele wollen nur wissen wie man ein Spiel spielt und nicht wie man es spielbar macht. Viele wissen nicht einmal wie schwer es ist schon ein
+kleines Spiel zu machen.
 Da wir selber auch zu dieser Generation gehören, 
-haben wir alle Erfahrungen mit verschiedensten "Games".
+machen wir alle immer wieder Erfahrungen mit den verschiedensten "Games" bzw. Spielen.
 Doch wir wollten nicht blos Spiele spielen, 
 sondern wir wollten selber ein Spiel entwickeln.
 Dazu kam noch unsere Begeisterung für den Prozess des Programmierens.
 Jeder von uns hatte bereits mehr oder weniger Erfahrungen auf diesem Gebiet gesammelt 
 und wir waren und sind alle immer noch bereit mehr zu lernen.
 
-\subsection{Vorgaben}
+\subsection{Persönliche Vorgaben}
 
-Vor dem eigentlichen Projekt setzten wir einige Vorgaben.
+Vor dem eigentlichen Projekt setzten wir uns selber einige Vorgaben.
 \\
 Uns war klar, dass ein Spiel auf dreidimensionaler Basis in der uns zu Verfügung stehenden Zeit nicht realisierbar war.
 Dazu brachte die von uns gewählte Programmiersprache einige Hilfen mit sich, die wir bei der Entwicklung eines 2D-Spiels gut gebrauchen konnten.
@@ -98,7 +101,7 @@ Ziel unseres Projektes ist ein 2D-Einbrecherspiel zu entwickeln. Der Spieler sol
 Unser persönliches Ziel ist es, durch dieses Projekt, die Anwendung der Techniken der
 Programmiersprache C++ zu lernen und zu vertiefen. Dies wollen wir durch
 das Prinzip Learning-by-Doing erreichen. Jeder in der Gruppe soll am Ende
-mittelgrosse C++-Programme selber programmieren können.
+C++-Programme selber programmieren können.
 \item
 Wir setzen uns zum Ziel,
 die Konzepte hinter Frameworks (namentlich SFML) zu verstehen und die
@@ -114,6 +117,9 @@ Das Spiel muss/soll unter eine OpenSource Lizenz gestellt werden.
 
 \newpage
 \section{Begriffe}
+\subparagraph{Game}
+In dieser Dokumentation werden wir öffter auch den englischen und weit verbreitete Begriff "Game" an der Stelle von "Spiel" gebrauchen.
+
 \subparagraph{Multimedia Framework:}
 Eine Bibliothek mit Funktionen, die sich in C++-Programme einbinden lassen. Damit kann man verschiedene Aufgaben plattformübergreifend bewältigen und muss nicht alle Details selber programmieren.
 
@@ -189,6 +195,8 @@ zu einem Speicherleck von knapp 20MB,
 \end{figure}
 
 
+\subsection{GIMP}
+
 \newpage
 \section{Vorgehen}
 \subsection{Vorbereitung}
@@ -254,7 +262,9 @@ Versionsdatei von GitHub geladen, wenige Bytes, überprüfen und entsprechende M
 Wird noch ausgedeutscht.
 
 \subsubsection{Kollisionsdetektion}
-Die Kollisionsdetektion war zu Beginn der Entwicklungen etwas fehleranfällig. So gab es vereinzelt
+Wir haben uns entschieden die Mauern von Anfang an auf den Hintergrund zu zeichnen. Dann machen wir ein FloatRect, ein Quadrat,
+über jede gezeichnete Mauer. Die Kollisionsdetektion ist da um zu erkennen ob der Spieler in eine Mauer läuft.
+Diese war zu Beginn der Entwicklungen etwas fehleranfällig. So gab es vereinzelt
 Schlupflöcher ganz geringer Breite, sodass man durch die Mauer wandern konnte. Neben der Mauer hingegen,
 versteckte sich eine unsichtbare Mauer, das heisst, es wurde eine Kollision gemeldet, obwohl an der
 Spielerposition gar keine Mauer lag. Um das Problem zu Erforschen und schliesslich zu beheben, haben
@@ -269,8 +279,14 @@ von absoluten Bildschirmkoordinaten in Fenster/Spielkoordinaten umgerechnet werd
 \end{figure}
 
 \subsubsection{Levelclass und Leveldatei}
-Unser Ziel war zuerst ein Probe Level zu haben, es dann aber einfach zu haben ein richtiges Level zu erstellen. Deshalb haben wir uns entschieden, dass wir zu jedem Level eine Leveldatei machen, in der alle variablen informationen enthalten sein müssen. So steht dort immer zuerst wie viele, dass es von diesem Obejekt hat und dann oft noch die genaue Position. SO stehen die Mauer oder auch die Pfeile dort vermerkt. Es steht auch zu welchem Level gejumpt werden soll wenn man auf einen Pfeil kommt.
-Dies wird in der Leveclass alles genau heraus gelesen. Das wichtige dabei ist, dass die Reihenfolge genau stimmt sonst gerät das ganze in ein irres Durcheinenader. Wir brauchen die Anzahl Elemente die es hat zuerst, um zu erkennen welche Information zu welchem Objekt gehört. Denn das Programm liesst dort nur Zahlen heraus. Und mit Wörtern können wir ihm das nicht erklären, da er diese ja nicht verstehen kann. 
+Unser Ziel war zuerst ein Probe Level zu haben, es dann aber einfach zu haben ein richtiges Level zu erstellen. Deshalb haben wir uns entschieden, dass wir zu jedem Level eine Leveldatei machen, in der alle variablen informationen 
+enthalten sein müssen. So steht dort immer zuerst wie viele, dass es von diesem Obejekt hat und dann oft noch die genaue 
+Position. SO stehen die Mauer oder auch die Pfeile dort vermerkt. Es steht auch zu welchem Level gejumpt werden soll wenn 
+man auf einen Pfeil kommt.
+Dies wird in der Leveclass alles genau heraus gelesen. Das wichtige dabei ist, dass die Reihenfolge genau stimmt sonst gerät 
+das ganze in ein irres Durcheinenader. Wir brauchen die Anzahl Elemente die es hat zuerst, um zu erkennen welche Information 
+zu welchem Objekt gehört. Denn das Programm liesst dort nur Zahlen heraus. Und mit Wörtern können wir ihm das nicht erklären, 
+da er diese ja nicht verstehen kann.
 
 \subsubsection{Animationen}
 Von Anfang an waren auch Animationen in unserem Spiel eingeplant. So sollen zum Beispiel ausserhalb eines Hauses
@@ -301,9 +317,11 @@ STL-Funktionen $push\_back()$ und $remove()$ einfach hinzugefügt, bzw. entfernt
 immer entsprechend umgerechnet werden. Dies ist besonders bei den 4 verschiedenen möglichen Rotationen etwas mühsam.
 Auch hier haben wir eine checkCollision überprüfung gemacht. So wird überprüft, o der Spieler in der Nähe der Türe ist. Wenn dies der Fall ist wird die Animation gestartet und im Spiel sieht man wie sich die Tür öffnet. Dann wird hier wieder mit den neuen Koordinaten eine „Mauer“ erstellt, die nicht passiert werden kann. Wir haben einen mindest Zeitabstand eingebaut, so dass sich die Tür erst wieder nach einer gewissen Zeit schliessen lässt. Sonst hätte man die Türe schneller öffnen  und schliessen können als das Spiel mithalten könnte und würde die Tür noch oft öffnen und schliessen.Wir haben die Türen noch etwas grösser gemacht bei der Collisions-Abfrage, so dass man die Türen schlussendlich immer von beiden Seiten öffnen und schliessen kann.
 
+
 \subsubsection{Das Hauptmenü}
 Das Hauptmenü wurde bewusst relativ simpel gehalten und konnte dadurch sehr schnell erstellt werden. Mit GIMP wurden
 einige mehr oder weniger gut aussehende Grafiken erzeugt, die als Buttons verwendet werden konnten. Doch da wir hier wieder auf ein Problem mit den Koordinaten stiessen entschieden wir uns unser Game nicht, wie viele andere aufzubauen. Nun ist man bereits im Hauptmenu die Spielfigur  und da hatten wir es leicht. Wir haben einfach das Spielstarten Bild als neuen Pfeil definiert falls eine 2 in der Leveldatei steht. So ist es, sobald man auf das Spielstarten fährt einn Teleporter zum ersten Level. Bei der Spielbeenden haben wir ein FloatRect erstellt und eine checkCollison gemacht und falls der Spieler nun auf Spielbeenden fährt beendet das Spiel. 
+
 \begin{figure}
 \centering
 \includegraphics[scale=0.3]{img/hauptmenu.png}
@@ -404,11 +422,23 @@ blieb, haben wir aber sehr intensiv genutzt. Die Kreise in Abbildung \ref{fig:pu
 \end{figure}
 
 \section{Das Spiel}
+\subsection{Das Spielprinzip}
+Das Spielprinzip ist einfach: Als Einbrecher versucht man in ein Haus einzubrechen
+
+\subsection{Spielmodi}
+Wir haben unsere Level verschieden erstellt:
+\begin{itemize}
+\item Zeitdruck: Die Zeit wurde bewusst sehr knapp gewählt, und man musste die Schätze finden, bevor diese ablief.
+\item Suche: Die Schätze waren im ganzen Haus versteckt und gut mit Laserschranken gesichert.
+\item Schatz: Es gab nur einen einzigen, im dunklen gut versteckten Schatz.
+\end{itemize}
+
 \newpage
 \section{Diskussion / Reflexion}
 
 \newpage
 \section{mögliche Erweiterungen / Ausblick}
+
 
 \clearpage
 \listoffigures
