@@ -17,6 +17,8 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 
+\newcommand{\q}[1]{``#1''}
+
 \begin{document}
 \begin{titlepage}
 \begin{center}
@@ -65,7 +67,7 @@ oder bei einfachen Spielen einfach die fehlende Motivation, sich damit zu befass
 Viele wollen nur wissen wie man ein Spiel spielt und nicht wie man es spielbar macht. Viele wissen nicht einmal wie schwer es ist schon ein
 kleines Spiel zu machen.
 Da wir selber auch zu dieser Generation gehören, 
-machen wir alle immer wieder Erfahrungen mit den verschiedensten "Games" bzw. Spielen.
+machen wir alle immer wieder Erfahrungen mit den verschiedensten Games bzw. Spielen.
 Doch wir wollten nicht blos Spiele spielen, 
 sondern wir wollten selber ein Spiel entwickeln.
 Dazu kam noch unsere Begeisterung für den Prozess des Programmierens.
@@ -120,7 +122,7 @@ Das Spiel muss/soll unter eine OpenSource Lizenz gestellt werden.
 \newpage
 \section{Begriffe}
 \subparagraph{Game}
-In dieser Dokumentation werden wir öffter auch den englischen und weit verbreitete Begriff "Game" an der Stelle von "Spiel" gebrauchen.
+In dieser Dokumentation werden wir öfters auch den englischen und weit verbreitete Begriff \q{Game} an der Stelle von \q{Spiel} gebrauchen.
 
 \subparagraph{Multimedia Framework:}
 Eine Bibliothek mit Funktionen, die sich in C++-Programme einbinden lassen. Damit kann man verschiedene Aufgaben plattformübergreifend bewältigen und muss nicht alle Details selber programmieren.
@@ -145,7 +147,17 @@ Für OSS-Entwickler kostenlose Plattform zur Qualitätssicherung: Kompiliert das
 Für OSS-Entwickler kostenlose Plattform: Führt eine tiefgreifende statische Quellcodeanalyse durch, und hilft so Programmierfehler zu vermeiden und zu finden.
 
 \section{Entwicklungswerkzeuge}
-\subsection{SFML}
+\subsection{Simple and Fast Multimedia Library}
+\textbf{SFML}, kurz für \q{Simple and Fast Multimedia Library}, ist ein Multimediaframework, das wir hier quasi als
+\q{Entwicklungswerkzeug} definieren, obwohl es eben ein Framework ist, das wir in unserem Programm verwendeten. SFML
+liefert viele Klassen, die in verschiedenen Modulen (\textit{Sound}, \textit{Graphics}, \textit{Network}, ...) inkludiert
+und ins Programm gelinkt werden können. Diese Module sind bewusst plattformübergreifend entwickelt worden, so dass wir uns
+nicht um eine Portierung des Spiels kümmern mussten.
+\\
+\\
+SFML war quasi die Schnittstelle zwischen unserem Modell des Spiels im Arbeitsspeichers, und dem Benutzer des Spiels. Ein Beispiel:
+Wir wussten, wo sich der Spieler auf der Ebene befindet, und wir konnten mit SFML eine Bilddatei als Textur laden, und diese
+an der Position des Spielers aufzeichnen lassen. Über SFML konnten wir auch die Tastatur einlesen sowie Musik abspielen.
 
 \subsection{Code::Blocks}
 Code::Blocks ist eine frei verfügbare Entwicklungsumgebung (IDE\footnote{Integrated Development Environment}) die Programmierung in C/C++ und D.
@@ -399,7 +411,6 @@ Der Commit \textit{e419eef} behebt und dokumentiert genau dieses Problem. Um uns
 über die behandelten Probleme verschaffen zu können, haben wir diese in den Commits jeweils kurz erläutert. Das genannte Problem findet sich im
 Konstruktor der Animationsklasse, in der Datei \textit{code/src/animation.cpp}.
 
-
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.8]{img/e419eef.png}
@@ -413,6 +424,9 @@ Bild
 
 \subsection{Fehler beim Laser}
 WIr haben ein weiteres testlevel erstellt und dieses mal sollte es mehrere Laser haben. Doch dies wollte nicht funktionieren, es funktionierte genau ein Laser. Die anderen waren zwar gezeichnet aber die Checkcollision-Funktion wollte nicht gehen. Da haben wir das ganze mehrere male durchgelesen. Bis jemandem aufgefallen ist, dass es immer nur der erste Laser ist, der funktionierte. Da fiel es uns dann auch wie Schuppen von den Augen, die eine Klammer war zu früh geschlossen worden. Danach lief es einwandfrei.
+
+\subsection{Doppelter Tastendruck}
+SFML gab an, dass eine Taste doppelt gedrückt wurde, obwohl sie nur einmal gedrückt wurde. Massnahme: Zeitliche Aussortierung
 
 \subsection{Merge Conflicts}
 git, unsere Versionskontrolle, ermöglichte es uns, parallel, in sogenannten Branches zu entwickeln. (Siehe Abbildung \ref{fig:branches} auf Seite \pageref{fig:branches}). Wir entwickelten neue Funktionen oft parallel und "mergten" (engl. to merge = zusammenführen) sie in unseren master-Zweig.
