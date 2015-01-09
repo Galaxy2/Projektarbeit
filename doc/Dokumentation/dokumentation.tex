@@ -7,12 +7,14 @@
 \usepackage{blindtext}
 \usepackage{graphicx}
 \usepackage{url}
+\usepackage[style=alphabetic-verb]{biblatex}
 \usepackage{listings}
 \usepackage[hidelinks]{hyperref}
 
 
 \usepackage[left=2.5cm,right=1.5cm,top=2cm,bottom=2.8cm]{geometry}
 
+\bibliography{bibliografie}
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -42,7 +44,7 @@ Patrick Eigensatz, G3C
 
 \setcounter{page}{1}
 \section*{Vorwort}
-
+Siehe auch in \cite{grundkurscpp}
 
 \newpage
 
@@ -496,4 +498,10 @@ Wir haben unsere Level verschieden erstellt:
 
 \clearpage
 \listoffigures
+
+\clearpage
+
+\pagenumbering{Alph}
+\printbibliography
+
 \end{document}
