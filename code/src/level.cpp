@@ -3,33 +3,29 @@
 
 ??=include "level.h"
 ??=include "screen.h"
-??=include "notification.h"
+%:include "notification.h"
 
 
 extern benachrichtigung debugMsg;
 
 
-/** \brief Lädt das Level in den Speicher (Mauern, Animationen, ...)
- *
- * \param pfad string Pfad zur Leveldatei (levels/test/test.lvl)
- * \param renderList list<sf::Drawable *>& Die Renderliste
- * \param animationList list<animation *>& Die Animationsliste
- * \return void
- *
- */
 void level::loadFromFile(void)
 {
+    // Dateiname zusammensetzen
     string levelDateiName = "levels/" + name + "/" + name + ".lvl";
+
+    // Datei öffnen (Fail -> Exception)
     fstream levelDatei(levelDateiName.c_str(), fstream::in);
 
-    // abähngige Datei
+    // anhängige Datei
     levelDatei >> deckeName;
 
     // Einlesen ob dunkel (= 1) oder hell (= 0)
     int dunkelInt;
     levelDatei >> dunkelInt;
 
-    if(dunkelInt == 0)      // direkt als bool einlesen geht nicht?!
+    // direkt als bool einlesen funktioniet nicht?!
+    if(dunkelInt == 0)
         dunkel = false;
     else
         dunkel = true;
@@ -40,12 +36,14 @@ void level::loadFromFile(void)
     // Spieler Spawn Position lesen!
     levelDatei >> spielerPosition.x >> spielerPosition.y;
 
-    int Wert; //Wert zum Angeben ob draussen( =1) oder drinnen( !=1) oder Hauptmenu( =2)
+    //Wert zum Angeben ob draussen( =1) oder drinnen( !=1) oder Hauptmenu( =2)
+    int Wert;
     levelDatei >> Wert;
 
     //Wert um anzugeben welche Punktezahl erreicht werden muss
     levelDatei >> Punkt;
 
+    // Anzahl
     unsigned int N;
 
     // Anzahl Pfeile einlesen
@@ -54,21 +52,27 @@ void level::loadFromFile(void)
     int r;
     for(unsigned int i=0; i<N; i++)
     {
+        // Pfeilposition, Rotation, Teleportpunkt einlesen
         levelDatei >> x >> y >> r >> nX >> nY;
 
         pfeile.push_back(new pfeil);
         if(Wert == 1) // überprüfen ob man im Haus ist oder nicht (1 = aussen)
         {
+            // Neue Animation für roten Pfeil erstellen
             pfeile[i]->p = (new animation("resources/pfeilRot", 8, true, true, true, 0.05, x, y)); //rote pfeile werden geladen
         }
         if(Wert == 2)
         {
+            // Hauptmenüpfeil -> Andere Animation laden
             pfeile[i]->p = (new animation("resources/spielStarten", 1, true, false, false, 0.05, x, y)); // SpielStarten
         }
         else
         {
+            // Neue Animation für grünen Pfeil erstellen
             pfeile[i]->p = (new animation("resources/pfeil", 8, true, true, true, 0.05, x, y));
         }
+
+        // \todo In Konstruktor auslagern
         pfeile[i]->p->zeigeSchritt(0);
         pfeile[i]->p->sprite.setOrigin(100, 50);
         pfeile[i]->p->sprite.setRotation(r);
@@ -83,9 +87,14 @@ void level::loadFromFile(void)
     levelDatei >> N;
     for(unsigned int i=0; i<N; i++)
     {
+        // Tür Position einlesen
         levelDatei >> x >> y >> r;
 
+        // Neue Türe erstellen
         tueren.push_back(new tuere);
+
+        // \todo Outsource in den Konstruktor
+        // Neue Animation für die Türe erstellen
         tueren[i]->t = new animation("resources/tuere", 5, false, false, true, 0.05, x, y);
         tueren[i]->offen = true;
         tueren[i]->t->zeigeSchritt(0);
@@ -96,6 +105,7 @@ void level::loadFromFile(void)
         tueren[i]->posY = y;
         tueren[i]->t->setOnAnimationEnde(&setzeMauer);
 
+        // Mauern je nach Rotation einfügen
         if(r == 0)
             mauern.push_back(sf::FloatRect(x-7, y-7, 193, 14));
         else if(r == -90)
@@ -115,6 +125,8 @@ void level::loadFromFile(void)
 
         schaetze.push_back(new schatz);
         schaetze??(i??)->s = new animation("resources/schatz", 1, false, false, true, 0.05, x, y, 2);
+
+        // \todo Outsource
         schaetze??(i??)->s->zeigeSchritt(0);
         schaetze??(i??)->s->sprite.setOrigin(0,0);
         schaetze??(i??)->s->sprite.setRotation(r);
@@ -128,19 +140,25 @@ void level::loadFromFile(void)
     unsigned int x1, y1, x2, y2;
     for(unsigned int i=0; i<N; i++)
     {
+        // 2 Punkte pro Mauer einlesen
         levelDatei >> x1 >> y1 >> x2 >> y2;
+
         sf::Vector2f koordinatenOben(x1, y1);
         sf::Vector2f koordinatenUnten(x2, y2);
 
         mauern.push_back(sf::FloatRect(koordinatenOben.x, koordinatenOben.y, koordinatenUnten.x-koordinatenOben.x, koordinatenUnten.y-koordinatenOben.y));
     }
 
+    // Laser einlesen
     levelDatei >> N;
     for(unsigned int i=0; i<N; i++)
     {
+        // Position und Rotation einlesen
         levelDatei >> x >> y >> r;
 
         lasers.push_back(new laser);
+
+        // \todo Outsource
         lasers[i]->l = new animation("resources/laser", 14, true, true, true, 0.1, x, y);
         lasers[i]->l->zeigeSchritt(0);
         lasers[i]->l->sprite.setOrigin(0, 0);
@@ -148,81 +166,101 @@ void level::loadFromFile(void)
 
     }
 
+
+    // Verfügbare Zeit einlesen
     int t;
     levelDatei >> t;
     Zeit = sf::seconds(t);
 
+    // Bei einem Lesefehler
     if(levelDatei.fail())
     {
         cerr << "Fehler beim Laden der Leveldatei: '" << levelDateiName << "'" << endl;
     }
 
 
+    // Datei schliessen
     levelDatei.close();
 }
 
 
 int level::checkCollisionPfeile(sf::FloatRect& spielerPosition)
 {
+    // Kollision von Pfeilen überprüfen
+
     int k = 0;
     for(pfeil* P : pfeile)
     {
         if(P->p->sprite.getGlobalBounds().intersects(spielerPosition))
         {
+            // Welcher Pfeil?
             return k;
         }
 
         k++;
     }
+
+    // Keine Kollision
     return -1;
 }
 
+
 bool level::checkCollisionLaser(sf::FloatRect& spielerPosition)
 {
+    // Kollision von Lasern überprüfen
+
     for(laser* L : lasers)
     {
         if(L->l->sprite.getGlobalBounds().intersects(spielerPosition))
         {
-            if(L->l->schritt != 0 && L->l->schritt != 1 && L->l->schritt != 2 && L->l->schritt != 3 && L->l->schritt != 4 && L->l->schritt != 5)
+            if(L->l->schritt > 5)
             {
+                // Kollision entdeckt!
                 return true;
             }
         }
     }
+
+    // Keine Kollision
     return false;
 }
 
+
 int level::checkCollisionTuere(sf::FloatRect& spielerPosition)
 {
+    // Türen in der Nähe finden
+
     int k = 0;
     for(tuere* T : tueren)
     {
+        // Pufferbereich um die Türe erstellen
         sf::FloatRect puffer;
         puffer = T->t->sprite.getGlobalBounds();
+
         puffer.height += 20;
         puffer.width += 20;
         puffer.left -= 10;
         puffer.top -= 10;
+
         if(puffer.intersects(spielerPosition))
         {
+            // Welche Türe in der Nähe?
             return k;
         }
 
         k++;
     }
 
+    // Keine Türe in der Nähe
     return -1;
 }
 
-/** \brief Kollisionsdetektion
- *
- * \param spielerPosition sf::FloatRect& Ein Rechteck mit den Koordinaten des Spielers
- * \return bool
- *
- */
 
 bool level::checkCollision(sf::FloatRect& spielerPosition)
 {
+    // Kollision mit Mauern überprüfen
+
+    // toggleWalls-Cheat!
     if(!collisionsActivated)
         return false;
 
@@ -231,45 +269,42 @@ bool level::checkCollision(sf::FloatRect& spielerPosition)
     {
         if(mauer.intersects(spielerPosition))
         {
+            // Kollision entdeckt!
             return true;
         }
     }
 
+    // Keine Kollision
     return false;
 }
 
-//checkSchaetze
 
 int level::checkCollisionSchaetze(sf::FloatRect& spielerPosition)
 {
+    // Schätze in der Nähe finden
+
     int i = 0;
     for(schatz* S : schaetze)
     {
         if(S->s->sprite.getGlobalBounds().intersects(spielerPosition))
         {
+            // Welcher Schatz?
             return i;
         }
 
         i++;
     }
 
+    // Kein Schatz in der Nähe
     return -1;
 }
 
 
-
-/** \brief Lädt das ganze Level auf den Bildschirm zum Spielen
-* Das heisst alle Animationen, Mauern, etc. werden mitgeladen
-*
-* \param hintergrundTextur sf::Texture*& Zeiger zur Hintergrundtextur
-* \param hintergrund sf::Sprite*& Zeiger zum Hintergrundsprite
-* \param renderList list<sf::Drawable *>& Die Renderliste
-* \param animationList list<animation *>& Die Animationsliste
-* \return void
-*
-*/
 void level::loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergrund, list<sf::Drawable *>& renderList, list<animation *>& animationList)
 {
+    // Level in den Arbeitsspeicher laden!
+
+    // Eventuelle alte Hintergrundbilder freigeben!
     if(hintergrundTextur != 0x0 && hintergrund != 0x0)
     {
         delete hintergrundTextur;
@@ -316,29 +351,34 @@ void level::loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergru
         animationList.push_back(lasers[i]->l);
     }
 
-    //cout << hintergrund << endl;
-
-    // Hintergrundbild laden
+    // Hintergrundbild laden...
     hintergrundLaden(name, hintergrund, hintergrundTextur);
 
+    // ...und anzeigen
     renderList.push_front(hintergrund);
 }
 
 
-// Leerer Konstruktor als Überladung
+
 level::level(void)
 {
+    // Leerer Konstruktor als Überladung -> macht nichts
     return;
 }
 
 
 level::level(string n)
 {
+    // Konstruktor mit Levelnamen -> Setzt Levelnamen
     name = n;
 }
 
+
+
 level::~level(void)
 {
+    // Destruktor um Speicher freizugeben
+
     for(auto x : tueren)
     {
         delete x;
@@ -360,6 +400,7 @@ level::~level(void)
 
 void setzeMauer(int Id)
 {
+    // Leere Callbackfunktion
     return;
 }
 
@@ -375,6 +416,9 @@ level *levelLaden(string n)
         level *l = new level(n);
         l->name = n;
         l->loadFromFile();
+
+        // Kollisionen sind standardmässig aktiviert
+        // \todo Outsource
         l->collisionsActivated = true;
 
         levelListe[n] = l;

@@ -40,34 +40,52 @@ int main(void)
 
     if(newVersionAvailable())
     {
+        // Neue Version verfügbar!
         cout << endl << "! Es steht eine Aktualisierung des Spiels zum Herunterladen bereit !" << endl << endl;
         updateVerfuegbarText << " (Update verfuegbar: " << LATEST_VERSION << " )";
     }
     else
     {
+        // Keine neue Version verfügbar
         cout << endl << "Das Spiel läuft in der aktuellsten Version!" << endl << endl;
     }
+
 
     // Fenster- und Grafikeinstellungen
     sf::VideoMode aufloesung = sf::VideoMode::getDesktopMode();
 
+
     // Musik loopen!
     musik.setLoop(true);
 
+// Fenster erstellen
 #ifndef LINUX
+    // Nur Windows
+
     sf::RenderWindow fenster(aufloesung, "Robber", sf::Style::None);
+
 #else
+    // Nur Linux
+
     sf::RenderWindow  fenster(aufloesung, "Robber", sf::Style::Fullscreen);
+
 #endif
 
+    // Fensterreferenz erstellen!
     globalFenster = &fenster;
+
+    // Maximal 50 FPS
     fenster.setFramerateLimit(50);
+
+    // vsync!
     fenster.setVerticalSyncEnabled(true);
 
-    // Das Spiel starten!
 
+    // SFML View erstellen!
     sf::View ansicht(sf::FloatRect(0,0, aufloesung.width, aufloesung.height));
 
+
+    // Anzeigebereich festlegen
     ansicht.setViewport(sf::FloatRect(0,0, 1, 1));
     fenster.setView(ansicht);
 
@@ -81,10 +99,10 @@ int main(void)
     sf::Texture* hintergrundTextur = 0x0;
     sf::Sprite* hintergrund = 0x0;
 
-    // Schriftart laden!
+    // Globale Schriftart laden!
     standardSchriftart.loadFromFile("resources/DejaVuSans.ttf");
 
-    // Level hier anpassen
+    // Hauptmenü laden!
     aktuellesLevel = levelLaden("hauptmenu");
     aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
@@ -99,64 +117,96 @@ int main(void)
     renderList.push_back((sf::Drawable *)&debugMsg2.text);
 
 
+
+    // Benachrichtigung für Zeit erstellen
     benachrichtigung zeit("Zeit", 25, 150, 20);
+
+    // Zeit nur anzeigen, wenn man nicht im Hauptmenü und nicht "Game Over" ist
     if(aktuellesLevel->name != "hauptmenu" && aktuellesLevel->name != "gameOver")
     {
         renderList.push_back((sf::Drawable *)&zeit.text);
     }
 
-    //Punkte
+
+    // Benachrichtigung für Punkte erstellen
     benachrichtigung anzahlPunkte("0 Punkte", 25, 125, 20);
     if(aktuellesLevel->name != "hauptmenu" && aktuellesLevel->name != "gameOver")
     {
         renderList.push_back((sf::Drawable *)&anzahlPunkte.text);
     }
 
+
+    // Entwicklernachricht anzeigen
     debugMsg.updateText("Game running in Debug Mode!");
 
+
+    // Benachrichtigung für Lärm erstellen
     benachrichtigung schall("Lärm", 25, 175, 20);
     if(aktuellesLevel->name != "hauptmenu" && aktuellesLevel->name != "gameOver")
     {
         renderList.push_back((sf::Drawable *)&schall.text);
     }
 
-    // Konsole!
+
+    // Konsole erstellen!
     console::eingabeFeld.setFont(standardSchriftart);
     console::eingabeFeld.setColor(sf::Color::Red);
     console::eingabeFeld.setCharacterSize(20);
 
+    // Konsole anzeigen lassen!
     renderList.push_back((sf::Drawable *)&console::eingabeFeld);
 
 
+    // Spielertextur laden!
     sf::Texture spielerTexture;
     sf::Sprite spieler;
     spielerTexture.loadFromFile("resources/spieler.png");
+
+    // Spielertextur zuordnen
     spieler.setTexture(spielerTexture);
+
+    // Textur auf 1/4 Fläche verkleinern
     spieler.setScale(0.5, 0.5);
+
+    // Mitt des Spielers für sämtliche Rotationen (Rotation, Translation)
     spieler.setOrigin(sf::Vector2f(50, 50));
-    //cerr << aktuellesLevel->spielerPosition.x << "|" << aktuellesLevel->spielerPosition.y << endl;
+
+    // Spieler auf Startposition setzen
     spieler.setPosition(aktuellesLevel->spielerPosition);
 
     // Spieler immer anzeigen!
     renderList.push_back(&spieler);
 
-    //dunkles Fenster um den Spieler
+    // Dunkles Fenster um den Spieler (für dunkle Levels)
     sf::Texture dunkelTextur;
     sf::Sprite dunkel;
     dunkelTextur.loadFromFile("resources/Dunkel.png");
+
+    // Dunkeltextur zuordnen
     dunkel.setTexture(dunkelTextur);
-    dunkel.setOrigin(960, 540);//Zentrum der Dunkelheit ist auf dem Spieler
+
+    // Zentrum der Dunkelheit ist auf dem Spieler
+    dunkel.setOrigin(960, 540);
+
+    // Dunkelheit mitverschieben
     dunkel.setPosition(spieler.getPosition());
 
-    // Schallpegel! Zuerst 0
+
+    // Schallpegel: Am Anfang = 0
     float schallPegel = 0;
 
-    sf::Vector2i schallPosition(25, 25); // standardposition (ist nicht wichtig)
+    // Standardposition (ist nicht wichtig)
+    sf::Vector2i schallPosition(25, 25);
     int sX =  fenster.mapPixelToCoords(schallPosition).x;
     int sY =  fenster.mapPixelToCoords(schallPosition).y;
-    animation schallAnimation("resources/schall", 11, false, false, true, 1, sX, sY);//erschaffe Animation
-    schallAnimation.sprite.setOrigin(75,75);// Mitte des Bildes ist Zentrum
-    //animation wird hizugefügt. Muss nicht wiederholt werden.
+
+    // Animation für Schallmesser erstellen
+    animation schallAnimation("resources/schall", 11, false, false, true, 1, sX, sY);
+
+    // Mitte des Bildes ist Zentrum
+    schallAnimation.sprite.setOrigin(75,75);
+
+    // Animation wird hizugefügt: Muss nicht wiederholt werden.
     animationList.push_back(&schallAnimation);
 
     // Zoombegrenzung
@@ -169,15 +219,16 @@ int main(void)
     string vorherigesLevel = "hauptmenu";
     hintergrundMusik("hauptmenu");
 
-    // rand initialisieren
+    // rand initialisieren (Zufallsseed aus der Zeit lesen)
     srand(time(0x0));
 
-    // Solange das Fenster geöffnet ist
+    // Solange das Fenster geöffnet ist:
     while(fenster.isOpen())
     {
-        // Levelcheck
+        // Hat sich das Level geändert?
         if(aktuellesLevel->name != vorherigesLevel)
         {
+            // Je nach Level entsprechende Musik abspielen
             if(aktuellesLevel->name == "hauptmenu")
             {
                 hintergrundMusik("hauptmenu");
@@ -190,19 +241,24 @@ int main(void)
 
             else
             {
+                // Wenn weder Menü noch Gameover -> main Musik
                 hintergrundMusik("main");
             }
 
+            // Zum Überprüfen nächstes Mal
             vorherigesLevel = aktuellesLevel->name;
         }
+
 
         // Eingabeüberprüfung!
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
         {
-            // \todo Nächstes Level Laden
+            // Bei Escape Hauptmenü laden
+            // Punkte zurücksetzen
             spiel.punkte = 0;
             aktuellesLevel = levelLaden("hauptmenu");
             aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+
 
             // Spieler in die hauptmenu Level positionieren
             spieler.setPosition(200, 300);
@@ -240,6 +296,7 @@ int main(void)
                 }
 
                 // Nur in eine Richtung auf einmal!
+                // Nach vorne
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
                 {
                     // Zuerst Kollision überprüfen!
@@ -263,7 +320,7 @@ int main(void)
                 }
 
                 else
-
+                    // Nach links
                     if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
                     {
                         spielerEcken.left-=s;
@@ -281,7 +338,7 @@ int main(void)
                             spieler.move(-s, 0);
                         }
                     }
-
+                    // Nach hinten
                     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
                         {
                             // Zuerst Kollision überprüfen!
@@ -305,7 +362,7 @@ int main(void)
                         }
 
                         else
-
+                            // Nach rechts
                             if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
                             {
                                 spielerEcken.width +=s;
@@ -325,11 +382,15 @@ int main(void)
 
                             }
 
+
+                // Kollision überprüfen
                 if(aktuellesLevel->checkCollision(spielerEcken))
                 {
                     spieler.move(5, 5);
                 }
 
+
+                // Reinzoomen (Begrenzung beachten)
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num0))
                 {
                     if(zoomLevel > -10)
@@ -340,6 +401,8 @@ int main(void)
                     }
                 }
 
+
+                // Rauszoomen (Begrenzung beachten)
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num9))
                 {
                     if(zoomLevel < 10)
@@ -349,39 +412,50 @@ int main(void)
                         ansicht.zoom(zoom);
                     }
                 }
+
+
+
+                // Dunkles Overlay wandert mit dem Spieler mit
                 dunkel.setPosition(spieler.getPosition());
             }
 
 
 
-
+            // "Spiel beenden"-Feld möglich machen
             if(aktuellesLevel->name == "hauptmenu")
             {
                 sf::FloatRect spielEnde;
                 spielEnde = sf::FloatRect(50, 400, 370, 60);
 
+                // Beim Überschneiden -> Fenster schliessen, Schleife wird verlassen, Spiel beendet
                 if(spielEnde.intersects(spielerEcken))
                 {
                     fenster.close();
                 }
             }
 
-            if(aktuellesLevel->checkCollisionPfeile(spielerEcken) != -1)
-            {
-                int pfeilNummer = aktuellesLevel->checkCollisionPfeile(spielerEcken);
 
+
+            // Auf Pfeile achten: -> Wenn ja, wohin Teleportieren?
+            int pfeilNummer = aktuellesLevel->checkCollisionPfeile(spielerEcken);
+
+            // Wenn mit Pfeil geschnitten
+            if(pfeilNummer != -1)
+            {
                 // Lese x/y Koordinaten heraus, bevor sie verworfen werden!
                 float spielerX = aktuellesLevel->pfeile[pfeilNummer]->nX;
                 float spielerY = aktuellesLevel->pfeile[pfeilNummer]->nY;
 
-                cerr << "Teleport von: " << aktuellesLevel->name << " zu " << aktuellesLevel->deckeName << endl;
+                // Neues Level laden
+                aktuellesLevel = levelLaden(aktuellesLevel->deckeName); // ( deckeName wurde aus Leveldatei geladen )
 
-                aktuellesLevel = levelLaden(aktuellesLevel->deckeName); //setze neuen Namen
+                // Neues Level anzeigen
                 aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
                 // Spieler an die dem i-ten Pfeil zugehörigen Position im neuen Level positionieren
                 spieler.setPosition(spielerX, spielerY);
 
+                // Wenn das Level dunkel ist
                 if(aktuellesLevel->dunkel)
                 {
                     renderList.push_back(&dunkel);
@@ -389,6 +463,7 @@ int main(void)
                     schallPegel = 0; // zurücksetzen
                 }
 
+                // Spieler und Benachrichtigungen wieder anzeigen
                 renderList.push_back(&spieler);
                 renderList.push_back((sf::Drawable *)&zeit.text);
                 renderList.push_back((sf::Drawable *)&anzahlPunkte.text);
@@ -396,10 +471,13 @@ int main(void)
                 renderList.push_back((sf::Drawable *)&debugMsg.text);
                 renderList.push_back((sf::Drawable *)&debugMsg2.text);
                 renderList.push_back((sf::Drawable *)&console::eingabeFeld);
+
+                // Zeit für das Level zurücksetzen
                 Uhr.restart();
 
             }
 
+            // Schätze einsammeln
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::E) && verzoegerung.getElapsedTime().asSeconds() > 0.2)
             {
                 int schaetzeNummer = aktuellesLevel->checkCollisionSchaetze(spielerEcken);
@@ -410,14 +488,20 @@ int main(void)
                     spiel.punkteHinzufuegen(10);
                 }
 
+                // Türe in der Nähe finden!
                 int tuereNummer = aktuellesLevel->checkCollisionTuere(spielerEcken);
+
+                // Türe nur öffnen wenn die, die in der Nähe ist, nicht gerade am Öffnen ist
                 if(tuereNummer != -1 && aktuellesLevel->tueren[tuereNummer]->t->istBeendet())
                 {
-                    schallPegel += 1; //Wenn tuere aufgeht ist es laut
+                    // Wenn tuere aufgeht ist es laut
+                    schallPegel += 1;
 
                     float Ux = aktuellesLevel->tueren[tuereNummer]->posX;
                     float Uy = aktuellesLevel->tueren[tuereNummer]->posY;
-                    cout << aktuellesLevel->tueren[tuereNummer]->t->sprite.getRotation() << endl;
+
+
+                    // Neue Mauernkoordinaten berechnen!
 
                     // Fall 1: Rotation der Türe: 0°
                     if(aktuellesLevel->tueren[tuereNummer]->t->sprite.getRotation() == 0)
@@ -476,15 +560,18 @@ int main(void)
                     }
 
                     // Animation abspielen
+
                     aktuellesLevel->tueren[tuereNummer]->t->setRichtung(aktuellesLevel->tueren[tuereNummer]->offen);
                     aktuellesLevel->tueren[tuereNummer]->t->start();
                     aktuellesLevel->tueren[tuereNummer]->offen = !aktuellesLevel->tueren[tuereNummer]->offen;
                 }
 
+                // Zeit für Eingabeverzögerung zurücksetzen
                 verzoegerung.restart();
             }
         }
 
+        // Wenn die Konsole nocht nicht aktiviert ist -> Aktivieren wenn RShift gedrückt
         if(!console::activated && sf::Keyboard::isKeyPressed(sf::Keyboard::RShift))
         {
             if(!console::activated)
@@ -495,39 +582,51 @@ int main(void)
         }
 
 
+        // Wenn die Konsole aber aktiviert ist
         if(console::activated && sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
         {
             string befehl = console::eingabeText.str();
 
+            // Debug: Befehl in der Kommandozeile ausgeben
             cout << "Ausfuehren: '" << befehl << "'" << endl;
 
+            // Befehle auslesen
             if(befehl == "9990")
             {
+                // 9990 cheat
                 debugMsg2.updateText("----- LOL -----");
             }
             else if(befehl == "toggleWalls")
             {
+                // Wände umschalten
                 aktuellesLevel->collisionsActivated = (!aktuellesLevel->collisionsActivated);
             }
             else if(befehl.find("loadLevel ") == 0)
             {
+                // Levelname auslesen
                 aktuellesLevel->name = befehl.substr(befehl.find("loadLevel ") + 10);
+
+                // Neues Level laden
                 aktuellesLevel = levelLaden(aktuellesLevel->name);
 
+                // Debugnachricht anzeigen
                 cerr << "Lade: '" << aktuellesLevel->name << "'" << endl;
+
+                // Level anzeigen
                 aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
                 // Neue Spielerposition setzen!
                 spieler.setPosition(aktuellesLevel->spielerPosition);
 
-                // Den Spieler wieder anzeigen
+
+                // Wenn es dunkel ist -> Overlay anzeigen
                 if(aktuellesLevel->dunkel)
                 {
                     renderList.push_back(&dunkel);
                     renderList.push_back(&schallAnimation.sprite);
-                    schallPegel = 0; // zurücksetzen
                 }
 
+                // Spieler und Labels wieder anzeigen!
                 renderList.push_back(&spieler);
                 renderList.push_back((sf::Drawable *)&zeit.text);
                 renderList.push_back((sf::Drawable *)&anzahlPunkte.text);
@@ -535,20 +634,23 @@ int main(void)
                 renderList.push_back((sf::Drawable *)&debugMsg.text);
                 renderList.push_back((sf::Drawable *)&debugMsg2.text);
                 renderList.push_back((sf::Drawable *)&console::eingabeFeld);
+
+                // Uhr für Levelzeit neustarten
                 Uhr.restart();
                 schallPegel = 0;
             }
 
+            // Wenn "Enter" gedrückt und Befehl eingelesen -> Konsole zurücksetzen und verstecken
             hideConsole();
         }
 
 
-        // Ende der Eingabeüberprüfung
-        // Event Poll!
 
+        // Event Poll! (Fenster schliessen, etc.)
         sf::Event event;
         while(fenster.pollEvent(event))
         {
+            // Schliessen per "Kreuzchen" (x)
             if(event.type == sf::Event::Closed)
             {
                 fenster.close();
@@ -563,20 +665,18 @@ int main(void)
                 }
         }
 
-        //weil es keinen animationsschritt über 10 gibt
+        // Weil es keinen animationsschritt über 10 gibt -> Zurücksetzen
         if(schallPegel > 10)
             schallPegel = 10;
 
-        //Rationale Zahlen -> Ganze Zahlen
-        int schallSchritt;
-        schallSchritt = schallPegel;
-        schallAnimation.zeigeSchritt(schallSchritt);
+        // Mit static_cast<int>: float -> int
+        schallAnimation.zeigeSchritt(static_cast<int>(schallPegel));
 
-        // Ansicht anpassen!
+        // Ansicht anpassen! (Neu zentrieren)
         ansicht.setCenter(spieler.getPosition());
         fenster.setView(ansicht);
 
-        // Fixe Elemente neu setzen
+        // "Fixe" Benachrichtigungen neu setzen
         sf::Vector2i versionPosition(25, 25);
         sf::Vector2i debugPosition(25, 50);
         sf::Vector2i debug2Position(25, 75);
@@ -584,6 +684,7 @@ int main(void)
         sf::Vector2i zeitPosition(25, 125);
         sf::Vector2i anzahlPunktePosition(25, 150);
 
+        // Koordinatentransformation: Bildschirm -> Fenster
         version.text.setPosition(fenster.mapPixelToCoords(versionPosition));
         debugMsg.text.setPosition(fenster.mapPixelToCoords(debugPosition));
         debugMsg2.text.setPosition(fenster.mapPixelToCoords(debug2Position));
@@ -591,27 +692,35 @@ int main(void)
         zeit.text.setPosition(fenster.mapPixelToCoords(zeitPosition));
         anzahlPunkte.text.setPosition(fenster.mapPixelToCoords(anzahlPunktePosition));
 
-        //position des Schallmeters auf dem Bildschirm
+        // Position des Schallmessers auf dem Bildschirm
         sf::Vector2i schallPosition(100, 600);
+
+        // Koordinatentransformation: Bildschirm -> Fenster
         float sX =  fenster.mapPixelToCoords(schallPosition).x;
         float sY =  fenster.mapPixelToCoords(schallPosition).y;
+
+        // Schallmesser setzen
         schallAnimation.sprite.setPosition(sX, sY);
 
+
         // Animation Loop
+        // = Alle Animationen ausführen, sodass das nächste Bild geladen wird
         for(animation* a : animationList)
         {
             a->animationAusfuehren();
         }
 
 
-        // Render loop
+        // SFML: Fenster leeren!
         fenster.clear();
 
         for(auto object : renderList)
         {
+            // Jedes Objekt anzeigen
             fenster.draw(*object);
         }
 
+        // Fensterinhalt anzeigen
         fenster.display();
 
 
@@ -631,14 +740,25 @@ int main(void)
         int Zufall = rand() % 200;
         if(schallPegel >= 7 && Zufall == 199)
         {
+            // Punkte zurücksetzen
             spiel.punkte = 0;
+
             cerr << "GAME OVER: GRUND 2" << endl;
+
+            // Neues Level laden und anzeigen
             aktuellesLevel = levelLaden("gameOver"); // Wegen dem geht man GameOver ohne dass etwas passiert ist
             aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+
+            // Hintergrund neu positionieren
             hintergrund->setOrigin(0, 0);
+
+            // Spieler in Mitte setzen
             spieler.setPosition(960, 540);
+
+            // Schall zurücksetzen
             schallPegel = 0;
 
+            // Konsole wieder anzeigen, nachdem renderListe geleert wurde
             renderList.push_back((sf::Drawable *)&console::eingabeFeld);
         }
 

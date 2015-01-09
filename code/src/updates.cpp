@@ -10,10 +10,12 @@ std::string LATEST_VERSION;
 
 bool newVersionAvailable(void)
 {
+    // Öffne Http Handler
     sf::Http versionHttp("Galaxy2.github.io");
     sf::Http::Request versionRequest;
     versionRequest.setUri("Projektarbeit/version");
 
+    // Updates suchen, mit 1s Timeout
     sf::Http::Response versionResponse = versionHttp.sendRequest(versionRequest, sf::seconds(1));
 
     if(versionResponse.getStatus() == sf::Http::Response::ConnectionFailed || versionResponse.getBody() == "")
@@ -22,6 +24,7 @@ bool newVersionAvailable(void)
         return false;
     }
 
+    // Version auslesen und überprüfen
     LATEST_VERSION = versionResponse.getBody();
 
     std::cout << "Lokale Version:     " << ROBBER_VERSION << std::endl;
