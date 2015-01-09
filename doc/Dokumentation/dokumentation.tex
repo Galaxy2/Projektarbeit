@@ -7,6 +7,8 @@
 \usepackage{blindtext}
 \usepackage{graphicx}
 \usepackage{url}
+\usepackage[style=alphabetic-verb,backend=bibtex]{biblatex}
+\bibliography{bibliografie}
 \usepackage{listings}
 \usepackage[hidelinks]{hyperref}
 
@@ -42,14 +44,14 @@ Patrick Eigensatz, G3C
 
 \setcounter{page}{1}
 \section*{Vorwort}
-
+Siehe auch in \cite{grundkurscpp}
 
 \newpage
 
 \tableofcontents
 
 \newpage
-
+\part{Dokumentation}
 \section{Aufgabenstellung} 
 Unsere Aufgabe ist eine Projektarbeit zu gestalten. Dazu hatten wir ein Semester Zeit. Man wählte ein Thema, dass einem intressiert. 
 Zu dem eigen ausgewählten Thema muss man etwas erarbeiten. Den Lernfortschritt muss man in einem Lernprotokoll festhalten.
@@ -348,43 +350,47 @@ Zuerst haben wir geplant die Pfeile nur als Anzeiger zu nutzen, wo dass Eingäng
 \subsubsection{Console}
 Wir haben eine Console eingebaut, die sich mit der rechten Shift-Taste öffnen lässt. In dieser kann man verschiedene kleine Hilfen aktivieren. Wie zum Beispiel, dass man durch Mauern und Türen gehen kann. Man kann aber auch das Level direkt wechseln.
 
-\subsubsection{Bewegung der Figur}
- Man kann die Figur mit... to be continued
-
-\subsubsection{Türen}
-Das mühsamste beim Implementieren der Türen waren die dynamischen Mauern. Zwar kann die Mauer Liste mit den
-STL-Funktionen $push\_back()$ und $remove()$ einfach hinzugefügt, bzw. entfernt werden, jedoch muss die Mauer
-immer entsprechend umgerechnet werden. Dies ist besonders bei den 4 verschiedenen möglichen Rotationen etwas mühsam.
-Auch hier haben wir eine checkCollision überprüfung gemacht. So wird überprüft, o der Spieler in der Nähe der Türe ist. Wenn dies der Fall ist wird die Animation gestartet und im Spiel sieht man wie sich die Tür öffnet. Dann wird hier wieder mit den neuen Koordinaten eine „Mauer“ erstellt, die nicht passiert werden kann. Wir haben einen mindest Zeitabstand eingebaut, so dass sich die Tür erst wieder nach einer gewissen Zeit schliessen lässt. Sonst hätte man die Türe schneller öffnen  und schliessen können als das Spiel mithalten könnte und würde die Tür noch oft öffnen und schliessen.Wir haben die Türen noch etwas grösser gemacht bei der Collisions-Abfrage, so dass man die Türen schlussendlich immer von beiden Seiten öffnen und schliessen kann.
-
-
-\subsubsection{Das Hauptmenü}
-Das Hauptmenü wurde bewusst relativ simpel gehalten und konnte dadurch sehr schnell erstellt werden. Mit GIMP wurden
-einige mehr oder weniger gut aussehende Grafiken erzeugt, die als Buttons verwendet werden konnten. Doch da wir hier wieder auf ein Problem mit den Koordinaten stiessen entschieden wir uns unser Game nicht, wie viele andere aufzubauen. Nun ist man bereits im Hauptmenu die Spielfigur  und da hatten wir es leicht. Wir haben einfach das Spielstarten Bild als neuen Pfeil definiert falls eine 2 in der Leveldatei steht. So ist es, sobald man auf das Spielstarten fährt einn Teleporter zum ersten Level. Bei der Spielbeenden haben wir ein FloatRect erstellt und eine checkCollison gemacht und falls der Spieler nun auf Spielbeenden fährt beendet das Spiel. 
-
-
-\subsubsection{Dunkle Level}
-Mit einem halbtransparenten Overlay können wir das Level, bzw. das Haus abdunkeln, und nur in einem Bereich um uns
-sichtbar machen. In der Leveldatei wird eingetragen, ob ein Level dunkel, oder hell ist. Dementsprechend wird dann das
-Overlay geladen oder nicht. Das führt zu spannenderen Spielen, weil man Gefahren und die Schätze relativ spät sehen kann.
-Besonders beim Spiel auf Zeit entsteht so quasi ein zusätzlicher Druck.
-
-\subsubsection{Musik}
-Wir haben einen Kolleg angefragt, ob es ihm etwas ausmachen würde, Musik für uner Game zu machen. Er war damit einverstanden und hat uns Musik komponiert. So dass unser Game jetzt auch Hintergrundmusik laden kann. Er hat 3 verschiedene Stücke komponiert. Eines für das Hauptmenü, eines für die Leveln und das Letzte für das Game Over. Nun wir haben das so gelöst, dass wir den Namen der Leveldatei überprüfen und dass es dann je nach Name eine andere Musik lädt und abspielt. Dies hat praktisch auf anhieb funktioniert.
-
-\subsubsection{Schallpegel}
-... to be continued
-
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.5]{img/dunkel.png}
-\caption{Ein dunkles Level}
-\end{figure}
-\newpage
-
-
-\section{Probleme und Lösungen}
-\subsection{Auflösungsproblem XY}
+Man kann die Figur mit den Tasten W, A, S und D bewegen. Mit der Taste W geht die Figur nach oben, mit A nach links, mit S nach unten, mit D nach rechts. Hier können wir im SFMl auf eine einfache Form zurückgreifen. Diese erkennt, ob und welche Taste gedrückt wird. So konnten wir jeder Taste einen gewissen Befehl zuordenen und genau sagen was getan werden soll. Zum Beispiel bei der Taste W steht, dass sich die Figur um -5 bewegen soll. Dies bewirkt eine Bewegung nach oben. Da das Koordinatensystem bei jedem Laptop oben links mit 0/0 beginnt und dann nach unten negativ wird. Bei den anderen Tasten gibt es nur einen leicht anderen Befehl aus der SFML Klasse. 	+ Man kann die Figur mit... to be continued
+Bei diesen Tastenabfragen wird auch gleich überprüft, ob an in eine Mauer läuft, sollte dies nähmlich der fall sein darf sich die Figur ja nicht bewegen. Deshalb machen wir in diesem Fall das ganze wieder rückwärts. Wir haben auch einen Sprint eingebaut. Dazu muss man dir linke Shift Taste drücken und sich bewegen. Dann bewegt sich die Figur doppelt so schnell. Jedoch wird der Schalpegel erhöt (Verweis). Dies haben wir mit einer Variabel gemacht, so ändert sich die Variable je nach dem ob die Taste gedrückt wird oder nicht. 	
+Mit den Zahlentasten 9 und 0 kann herein und heraus zoomen. Da haben wir aber noert werden kann. Wir haben einen mindest Zeitabstand eingebaut, so dass sich die Tür erst wieder nach einer gewissen Zeit schliessen lässt. Sonst hätte man die Türe schneller öffnen und schliessen können als das Spiel mithalten könnte und würde die Tür noch oft öffnen und schliessen.Wir haben die Türen noch etwas grösser gemacht bei der Collisions-Abfrage, so dass man die Türen schlussendlich immer von beiden Seiten öffnen und schliessen kann. 	
+ 	
+ 	
+\subsubsection{Das Hauptmenü} 	
+Das Hauptmenü wurde bewusst relativ simpel gehalten und konnte dadurch sehr schnell erstellt werden. Mit GIMP wurden 	
+einige mehr oder weniger gut aussehende Grafiken erzeugt, die als Buttons verwendet werden konnten. Doch da wir hier wieder auf ein Problem mit den Koordinaten stiessen entschieden wir uns unser Game nicht, wie viele andere aufzubauen. Nun ist man bereits im Hauptmenu die Spielfigur und da hatten wir es leicht. Wir haben einfach das Spielstarten Bild als neuen Pfeil definiert falls eine 2 in der Leveldatei steht. So ist es, sobald man auf das Spielstarten fährt einn Teleporter zum ersten Level. Bei der Spielbeenden haben wir ein FloatRect erstellt und eine checkCollison gemacht und falls der Spieler nun auf Spielbeenden fährt beendet das Spiel. 	
+ 	
+ 	
+\subsubsection{Dunkle Level} 	
+Mit einem halbtransparenten Overlay können wir das Level, bzw. das Haus abdunkeln, und nur in einem Bereich um uns 	
+sichtbar machen. In der Leveldatei wird eingetragen, ob ein Level dunkel, oder hell ist. Dementsprechend wird dann das 	
+Overlay geladen oder nicht. Das führt zu spannenderen Spielen, weil man Gefahren und die Schätze relativ spät sehen kann. 	
+Besonders beim Spiel auf Zeit entsteht so quasi ein zusätzlicher Druck. 	
+ 	
+\subsubsection{Musik} 	
+Wir haben einen Kolleg angefragt, ob es ihm etwas ausmachen würde, Musik für uner Game zu machen. Er war damit einverstanden und hat uns Musik komponiert. So dass unser Game jetzt auch Hintergrundmusik laden kann. Er hat 3 verschiedene Stücke komponiert. Eines für das Hauptmenü, eines für die Leveln und das Letzte für das Game Over. Nun wir haben das so gelöst, dass wir den Namen der Leveldatei überprüfen und dass es dann je nach Name eine andere Musik lädt und abspielt. Dies hat praktisch auf anhieb funktioniert. 	
+	
+\subsubsection{Schallpegel} 	
+Wir haben nun auch einen Schallpegel eingeführt. So kann man nicht nur von den Lasern geschnappt werden. Sondern man kann auch zu viel Lärm machen und so geschnappt werden. Damit man sieht wie knapp es ist, hat es eine Anzeige links, bei der der Schallpegel steigt und sinkt. Wenn man im roten bereich angekommen ist, wird eine zufällige Zahlgewählt, bei der man zu laut ist. Diese Zahl liegt zwischen 1 und 200. So wollen wir dem ganzen ein bisschen mehr Spannnung verleihen. Man macht mehr lärm, wenn man rennt oder eine Tür öffnet. Nach gewisser Zeit senkt sich der Pegel jedoch wieder. Die Grafik haben wir mit einer Animation eingeführt. Sie wird nur bei den Dunkelleveln angezeigt, da man nur bei diesen leise sein muss.
+ 	
+\begin{figure}[h] 	
+\centering 	
+\includegraphics[scale=0.5]{img/dunkel.png} 	
+\caption{Ein dunkles Level} 	
+\end{figure} 	
+ 	
+\subsubsection{Punkte} 	
+Wir haben ein Punktesystem eingeführt. Jeder Schatz gibt einem 10 Punkte. In der Leveldatei wird angegeben, was die Punktzahl ist, die man erreichen muss. Sobald man diese Punktazhl durch sammeln der Schätze hat, gerät man automatisch ins Hauptmenu. Später wäre der Sinn, dass man dann ins nächste Level kommt. Die Punkte werden oben links auf dem Bildschirm dargestellt. 	
+ 	
+\subsubsection{Zeit} 	
+Wir haben auch eine Zeit eingebaut. So läuft die Zeit Obenlinks langsam herunter und falls man nicht durch das Level gekommen ist, Fällt man aus dem Spiel ins Gameover. Die zur verfügung stehenden Zeit wird in der Leveldatei geschrieben.	
+ 	
+ 	
+\section{Probleme und Lösungen} 	
+\subsection{Auflösungsproblem XY} 	
+\label{aufloesungsprobleme} 	
+Beim Auflösungsproblem handelt es sich um ein Problem mit dem Umgang mit SFML. 	
+Das Problem besteht darin, dass jede Ansicht bei jeder Auflösung, jeder Gerätemarke und bei beiden Betriebssystemen gleich aussehen ch gewisse Probleme (verweis) 	
+Die Taste E ist die Taste für alles was man bewegen kann. So wird dort überprüft, ob es eine Tür hat und falls ja, dann öffnet oder schliesset es diese. Dazu muss es aber auch die erstelten Mauern aus der RenderList löschen und eine neue Mauer hinein geben. und weil es so viele möglichkeiten gibt die Tür zu öffnen muss es jede abrufen könnnen, was einen erheblichen rechenaufwand dargestellt hat. Aber man kann mit E auch den Schatz aufnehmen.
 \label{aufloesungsprobleme}
 Beim Auflösungsproblem handelt es sich um ein Problem mit dem Umgang mit SFML.
 Das Problem besteht darin, dass jede Ansicht bei jeder Auflösung, jeder Gerätemarke und bei beiden Betriebssystemen gleich aussehen soll.
@@ -490,10 +496,54 @@ Wir haben unsere Level verschieden erstellt:
 \section{Diskussion / Reflexion}
 
 \newpage
-\section{mögliche Erweiterungen / Ausblick}
-
+\section{Mögliche Erweiterungen / Ausblick}
+Wir wissen wir sind immer noch einige Schritte von einem kompletten Game entfernt. Es fehlen schon alleine die verschiedenen Levels. Dazu kommt, dass wir auch noch Gegner einbauen möchten. So dass man Gegner hat die herumlaufen und einem entdecken können, das könnte zum Beispiel ein Hund sein. Wir möchten auch, dass der Schallpegel erhöht wird, im Falle von einer Kollision mit einer Mauer. 	
+\\ 	
+\\ 	
+Wir werden weiterhin an dieem Spiel weiter schreiben, da es uns doch sehr gefällt zu programmieren, aber auch weil uns der Ehrgeiz gefasst hat. Wir wollen ein richtiges Spiel zum laufen bekommen. Unsere Wunschvorstellung wäre, dass wir es dann einmal auf eine Online Gamerplatform stellen könnten. So dass es dann auch aktiv gespielt wird. 
 
 
 \clearpage
+\part{Anhang}
 \listoffigures
+
+\clearpage
+
+\addcontentsline{toc}{section}{Literatur}
+\printbibliography
+
+\clearpage
+
+\section*{Antiplagiatserklärung}
+Wir versichern hiermit, die vorliegende Arbeit, inklusive des entstandenen Spiels
+selber, ohne fremde Hilfe verfasst zu haben. Alle Quellen, die zur Erstellung
+der Arbeit verwendet wurden, wurden in der Literaturliste aufgeführt.
+\\\\\\
+\textbf{Aarau, der \today}\\
+
+% Hier kommen die Unterschriten hin
+\vspace{1 cm} 
+\begin{tabular}{p{5cm}p{.5cm}l}
+\dotfill \\ 
+\begin{center}
+Gabriel Gavrilas
+
+\end{center}\end{tabular}% 
+\hfill 
+\begin{tabular}{p{5cm}p{.5cm}l}
+\dotfill \\ 
+\begin{center}
+Jan Kunzmann
+
+\end{center}\end{tabular}% 
+\hfill 
+\begin{tabular}{p{5cm}p{.5cm}l}
+\dotfill \\ 
+\begin{center}
+Patrick Eigensatz
+\end{center}
+\end{tabular}% 
+  
+
+
 \end{document}
