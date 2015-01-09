@@ -7,14 +7,14 @@
 \usepackage{blindtext}
 \usepackage{graphicx}
 \usepackage{url}
-\usepackage[style=alphabetic-verb]{biblatex}
+\usepackage[style=alphabetic-verb,backend=bibtex]{biblatex}
+\bibliography{bibliografie}
 \usepackage{listings}
 \usepackage[hidelinks]{hyperref}
 
 
 \usepackage[left=2.5cm,right=1.5cm,top=2cm,bottom=2.8cm]{geometry}
 
-\bibliography{bibliografie}
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -501,7 +501,41 @@ Wir haben unsere Level verschieden erstellt:
 
 \clearpage
 
-\pagenumbering{Alph}
+\addcontentsline{toc}{section}{Literatur}
 \printbibliography
+
+\clearpage
+
+\section*{Antiplagiatserklärung}
+Wir versichern hiermit, die vorliegende Arbeit, inklusive des entstandenen Spiels
+selber, ohne fremde Hilfe verfasst zu haben. Alle Quellen, die zur Erstellung
+der Arbeit verwendet wurden, wurden in der Literaturliste aufgeführt.
+\\\\\\
+\textbf{Aarau, der \today}\\
+
+% Hier kommen die Unterschriten hin
+\vspace{1 cm} 
+\begin{tabular}{p{5cm}p{.5cm}l}
+\dotfill \\ 
+\begin{center}
+Gabriel Gavrilas
+
+\end{center}\end{tabular}% 
+\hfill 
+\begin{tabular}{p{5cm}p{.5cm}l}
+\dotfill \\ 
+\begin{center}
+Jan Kunzmann
+
+\end{center}\end{tabular}% 
+\hfill 
+\begin{tabular}{p{5cm}p{.5cm}l}
+\dotfill \\ 
+\begin{center}
+Patrick Eigensatz
+\end{center}
+\end{tabular}% 
+  
+
 
 \end{document}
