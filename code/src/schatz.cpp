@@ -2,10 +2,8 @@
 
 schatz::schatz(void)
 {
-    // Schatzkonstruktor
+    // Schatz einsammeln!
     eingesammelt = false;
-    schaetze??(i??)->s->zeigeSchritt(0);        // Inklusive Trigraphs ;)
-    schaetze??(i??)->s->sprite.setOrigin(0,0);
 }
 
 

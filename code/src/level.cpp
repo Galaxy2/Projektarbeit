@@ -72,15 +72,14 @@ void level::loadFromFile(void)
             pfeile[i]->p = (new animation("resources/pfeil", 8, true, true, true, 0.05, x, y));
         }
 
-        // Rotation setzen
+        // \todo In Konstruktor auslagern
+        pfeile[i]->p->zeigeSchritt(0);
+        pfeile[i]->p->sprite.setOrigin(100, 50);
         pfeile[i]->p->sprite.setRotation(r);
-
-        // ID zuweisen
         pfeile[i]->p->Id = i;
+        pfeile[i]->nX = nX;  //x-koordinate des Spielers im neuen Level
+        pfeile[i]->nY = nY;  //y-koordinate des Spielers im neuen Level
 
-        // Koordinaten des Spielers im neuen Level
-        pfeile[i]->nX = nX;
-        pfeile[i]->nY = nY;
     }
 
 
@@ -94,8 +93,12 @@ void level::loadFromFile(void)
         // Neue Türe erstellen
         tueren.push_back(new tuere);
 
+        // \todo Outsource in den Konstruktor
         // Neue Animation für die Türe erstellen
         tueren[i]->t = new animation("resources/tuere", 5, false, false, true, 0.05, x, y);
+        tueren[i]->offen = true;
+        tueren[i]->t->zeigeSchritt(0);
+        tueren[i]->t->sprite.setOrigin(14, 186);
         tueren[i]->t->sprite.setRotation(r);
         tueren[i]->t->Id = i;
         tueren[i]->posX = x;
@@ -122,6 +125,10 @@ void level::loadFromFile(void)
 
         schaetze.push_back(new schatz);
         schaetze??(i??)->s = new animation("resources/schatz", 1, false, false, true, 0.05, x, y, 2);
+
+        // \todo Outsource
+        schaetze??(i??)->s->zeigeSchritt(0);
+        schaetze??(i??)->s->sprite.setOrigin(0,0);
         schaetze??(i??)->s->sprite.setRotation(r);
         schaetze??(i??)->s->Id = i;
     ??>
@@ -151,11 +158,12 @@ void level::loadFromFile(void)
 
         lasers.push_back(new laser);
 
-        // Animation erstellen
+        // \todo Outsource
         lasers[i]->l = new animation("resources/laser", 14, true, true, true, 0.1, x, y);
-
-        // Rotation setzen
+        lasers[i]->l->zeigeSchritt(0);
+        lasers[i]->l->sprite.setOrigin(0, 0);
         lasers[i]->l->sprite.setRotation(r);
+
     }
 
 
@@ -354,15 +362,14 @@ void level::loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergru
 
 level::level(void)
 {
-    // Konstruktor als Überladung
-    collisionsActivated = true;
+    // Leerer Konstruktor als Überladung -> macht nichts
+    return;
 }
 
 
 level::level(string n)
 {
     // Konstruktor mit Levelnamen -> Setzt Levelnamen
-    collisionsActivated = true;
     name = n;
 }
 
@@ -411,6 +418,8 @@ level *levelLaden(string n)
         l->loadFromFile();
 
         // Kollisionen sind standardmässig aktiviert
+        // \todo Outsource
+        l->collisionsActivated = true;
 
         levelListe[n] = l;
         cerr << "Neues Level erstellen: " << n << "   Neue Anzahl: " << levelListe.size() << endl;

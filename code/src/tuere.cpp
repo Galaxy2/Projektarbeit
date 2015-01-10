@@ -2,12 +2,9 @@
 
 tuere::tuere(void)
 {
-    // Türen Konstruktor
-    offen = true;
-    t->zeigeSchritt(0);
-    t->sprite.setOrigin(14, 186);
+    // Türe öffnen
+    offen = false;
 }
-
 
 tuere::~tuere(void)
 {

@@ -10,7 +10,6 @@ public:
     animation *p;
     unsigned int nX, nY;
 
-    pfeil(void);
     ~pfeil(void);
 };
 
