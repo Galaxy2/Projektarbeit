@@ -88,6 +88,8 @@
 		<Unit filename="console.h" />
 		<Unit filename="game.cpp" />
 		<Unit filename="game.h" />
+		<Unit filename="laser.cpp" />
+		<Unit filename="laser.h" />
 		<Unit filename="level.cpp" />
 		<Unit filename="level.h" />
 		<Unit filename="main.cpp" />

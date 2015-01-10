@@ -8,6 +8,8 @@ class laser
 {
     public:
     animation* l;
+
+    laser(void);
     ~laser(void);
 };
 
