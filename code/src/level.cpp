@@ -56,11 +56,6 @@ void level::loadFromFile(void)
         levelDatei >> x >> y >> r >> nX >> nY;
 
         pfeile.push_back(new pfeil);
-        if(Wert == 1) // überprüfen ob man im Haus ist oder nicht (1 = aussen)
-        {
-            // Neue Animation für roten Pfeil erstellen
-            pfeile[i]->p = (new animation("resources/pfeilRot", 8, true, true, true, 0.05, x, y)); //rote pfeile werden geladen
-        }
         if(Wert == 2)
         {
             // Hauptmenüpfeil -> Andere Animation laden
@@ -80,6 +75,23 @@ void level::loadFromFile(void)
         pfeile[i]->nX = nX;  //x-koordinate des Spielers im neuen Level
         pfeile[i]->nY = nY;  //y-koordinate des Spielers im neuen Level
 
+    }
+
+    levelDatei >> N;
+    for(unsigned int i=0; i<N; i++)
+    {
+        levelDatei >> x >> y >> r >> nX >> nY;
+        rotPfeile.push_back(new rotPfeil);
+        if(rotPfeile[i]->frei == true)
+            rotPfeile[i]->rp = (new animation("resources/pfeilRot", 8, true, true, true, 0.05, x, y));
+        else
+            rotPfeile[i]->rp = (new animation("resources/pfeilRot", 1, true, true, true, 0.05, x, y));
+        rotPfeile[i]->rp->zeigeSchritt(0);
+        rotPfeile[i]->rp->sprite.setOrigin(100, 50);
+        rotPfeile[i]->rp->sprite.setRotation(r);
+        rotPfeile[i]->rp->Id = i;
+        rotPfeile[i]->nX = nX;  //x-koordinate des Spielers im neuen Level
+        rotPfeile[i]->nY = nY;  //y-koordinate des Spielers im neuen Level
     }
 
 
@@ -192,6 +204,26 @@ int level::checkCollisionPfeile(sf::FloatRect& spielerPosition)
     for(pfeil* P : pfeile)
     {
         if(P->p->sprite.getGlobalBounds().intersects(spielerPosition))
+        {
+            // Welcher Pfeil?
+            return k;
+        }
+
+        k++;
+    }
+
+    // Keine Kollision
+    return -1;
+}
+
+int level::checkCollisionRotPfeile(sf::FloatRect& spielerPosition)
+{
+    // Kollision von Pfeilen überprüfen
+
+    int k = 0;
+    for(rotPfeil* RP : rotPfeile)
+    {
+        if(RP->rp->sprite.getGlobalBounds().intersects(spielerPosition))
         {
             // Welcher Pfeil?
             return k;
@@ -325,6 +357,12 @@ void level::loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergru
     {
         renderList.push_back(&pfeile[i]->p->sprite);
         animationList.push_back(pfeile[i]->p);
+    }
+
+    for(int i=0; i<rotPfeile.size(); i++)
+    {
+        renderList.push_back(&rotPfeile[i]->rp->sprite);
+        animationList.push_back(rotPfeile[i]->rp);
     }
 
     // Alle Türen anzeigen

@@ -9,6 +9,7 @@
 #include "animation.h"
 #include "tuere.h"
 #include "pfeil.h"
+#include "rotPfeil.h"
 #include "schatz.h"
 #include "laser.h"
 #include "game.h"
@@ -24,6 +25,7 @@ public:
     bool checkCollision(sf::FloatRect& spielerPosition);
     // bool checkCollisionSchaetze(sf::FloatRect& spielerPosition);
     int checkCollisionPfeile(sf::FloatRect& spielerPosition);
+    int checkCollisionRotPfeile(sf::FloatRect& spielerPosition);
     void loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergrund, list<sf::Drawable *>& renderList, list<animation *>& animationList);
     level *levelLaden(string n);
     int checkCollisionTuere(sf::FloatRect& spielerPosition);
@@ -42,6 +44,7 @@ public:
     // list<sf::FloatRect> schaetzePositionen;
 
     vector<pfeil *> pfeile;
+    vector<rotPfeil *> rotPfeile;
     vector<tuere *> tueren;
     vector<schatz *> schaetze;
     vector<laser *> lasers;

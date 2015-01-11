@@ -477,6 +477,50 @@ int main(void)
 
             }
 
+            // Auf Pfeile achten: -> Wenn ja, wohin Teleportieren?
+            int rotPfeilNummer = aktuellesLevel->checkCollisionRotPfeile(spielerEcken);
+
+            // Wenn mit Pfeil geschnitten
+            if(rotPfeilNummer != -1)
+            {
+
+                if(spiel.checkSieg())
+                    aktuellesLevel->rotPfeile[rotPfeilNummer]->frei = true;
+                // Lese x/y Koordinaten heraujs, bevor sie verworfen werden!
+                float spielerX = aktuellesLevel->rotPfeile[rotPfeilNummer]->nX;
+                float spielerY = aktuellesLevel->rotPfeile[rotPfeilNummer]->nY;
+
+                // Neues Level laden
+                aktuellesLevel = levelLaden(aktuellesLevel->deckeName); // ( deckeName wurde aus Leveldatei geladen )
+
+                // Neues Level anzeigen
+                aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+
+                // Spieler an die dem i-ten Pfeil zugehörigen Position im neuen Level positionieren
+                spieler.setPosition(spielerX, spielerY);
+
+                // Wenn das Level dunkel ist
+                if(aktuellesLevel->dunkel)
+                {
+                    renderList.push_back(&dunkel);
+                    renderList.push_back(&schallAnimation.sprite);
+                    schallPegel = 0; // zurücksetzen
+                }
+
+                // Spieler und Benachrichtigungen wieder anzeigen
+                renderList.push_back(&spieler);
+                renderList.push_back((sf::Drawable *)&zeit.text);
+                renderList.push_back((sf::Drawable *)&anzahlPunkte.text);
+                renderList.push_back((sf::Drawable *)&version.text);
+                renderList.push_back((sf::Drawable *)&debugMsg.text);
+                renderList.push_back((sf::Drawable *)&debugMsg2.text);
+                renderList.push_back((sf::Drawable *)&console::eingabeFeld);
+
+                // Zeit für das Level zurücksetzen
+                Uhr.restart();
+
+            }
+
             // Schätze einsammeln
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::E) && verzoegerung.getElapsedTime().asSeconds() > 0.2)
             {
@@ -801,7 +845,11 @@ int main(void)
 
         if(spiel.checkSieg())
         {
-            spiel.punkte = 0;
+            anzahlPunkte.text.setColor(sf::Color::Green);
+            // Auf Pfeile achten: -> Wenn ja, wohin Teleportieren?
+            int rotPfeilNummer = aktuellesLevel->checkCollisionRotPfeile(spielerEcken);
+            cout << "fail" << endl;
+            /*spiel.punkte = 0;
             aktuellesLevel = levelLaden("hauptmenu");
             aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
@@ -813,7 +861,7 @@ int main(void)
             renderList.push_back((sf::Drawable *)&version.text);
             renderList.push_back((sf::Drawable *)&debugMsg.text);
             renderList.push_back((sf::Drawable *)&debugMsg2.text);
-            renderList.push_back((sf::Drawable *)&console::eingabeFeld);
+            renderList.push_back((sf::Drawable *)&console::eingabeFeld);*/
         }
     }
 
