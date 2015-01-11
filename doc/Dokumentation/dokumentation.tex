@@ -228,11 +228,11 @@ Am Anfang stand ganz klar die Ideenfindung auf dem Programm. Es war uns wichtig,
 eine Spielidee zu finden, an der ein Spieler später auch Spass haben würde,
 und wir das Spiel je nach zeitlichen Kapazitäten auch etwas erweitern könnten.
 Diese drei Fragen halfen uns:
-\begin{enumerate}
+\begin{itemize}
 \item Würdest du das Spiel spielen?
 \item Ist das Spiel technisch überhaupt realisierbar?
 \item Ist das Spiel erweiterbar?
-\end{enumerate}
+\end{itemize}
 Der Ideenfindungsprozess dauerte mehrere Wochen, es war nicht einfach, eine Idee
 zu finden, die uns alle begeistern würde. 
 Als wir genug Ideen hatten, fertigten wir eine Liste an. 
@@ -252,11 +252,11 @@ Bevor wir nun jedoch mit dem Programmieren anfangen konnten, mussten wir die Ide
 Sicher war zuerst nur, dass es ein zweidimensionales Spiel sein wird und das Thema Einbrechen werden soll.
 Darum begannen wir das Spiel zu porträtieren. 
 Das leeren eines Hauses sollte das Ziel sein, wobei wir damals noch 3 verschiedene Spielmodi geplant hatten:
-\begin{enumerate}
+\begin{itemize}
 \item Einen bestimmten Gegenstand klauen
 \item In einer bestimmten Zeit, so viel wie möglich stehlen
 \item Einen möglichst hohen Wert der gestohlenen Waren erreichen
-\end{enumerate}
+\end{itemize}
 Bei den Grafiken einigten wir uns auf Einfachheit, denn es ist kein zentraler Punkt unseres Spieles.
 Bereits in diesem Stadium besprachen wir auch mögliche Probleme beim Programmieren und dem Aufbau des Programms.
 Dabei wurden die Grundsteine für wichtige Elemente unseres Programms gelegt: Kollisionsdetektion, Teleportieren, Schätze oder auch die Loops, auf denen unser Spiel basiert. 
@@ -264,7 +264,7 @@ Durch diese vorhergehende Fehlersuche hatten wir bereits Lösungen zu einigen Pr
 Der nächste Punkt war das Umsetzen unseres gesammelten Wissens und damit das Erstellen des Programms.
 
 \subsubsection{Umsetzung}
-Wir hben uns immer wieder stich Tage festgelegt, so dass wir immer gewisse Ziele erreichen mussten. So konnten wir unsere Planung grob einhalten. Jeder hat immer wieder gewusst was man als nächstes machen muss. Falls jemand mal ein Problem hatte. Hat es eine kleine Problemlösungsrunde gegeben, bei der jeder versucht hat nur das Problem zu lösen und so konnte speditiv weiter gearbeitet werden. So sind wir Schritt für Schritt vorwärts gekommen. Es hat auch immer wieder Verbesserungen oder Abänderungen gegeben am alten Code. So dass der Code jetzt möglichst einfach und optimal ist. 
+Wir haben uns immer wieder Stichtage festgelegt, so dass wir immer gewisse Ziele erreichen mussten. So konnten wir unsere Planung grob einhalten. Jeder hat immer wieder gewusst was man als nächstes machen muss. Falls jemand mal ein Problem hatte. Hat es eine kleine Problemlösungsrunde gegeben, bei der jeder versucht hat nur das Problem zu lösen und so konnte speditiv weiter gearbeitet werden. So sind wir Schritt für Schritt vorwärts gekommen. Es hat auch immer wieder Verbesserungen oder Abänderungen gegeben am alten Code. So dass der Code jetzt möglichst einfach und optimal ist. 
 
 \newpage
 \subsection{Das Programmieren}
@@ -370,7 +370,7 @@ Besonders beim Spiel auf Zeit entsteht so quasi ein zusätzlicher Druck.
 Wir haben einen Kolleg angefragt, ob es ihm etwas ausmachen würde, Musik für uner Game zu machen. Er war damit einverstanden und hat uns Musik komponiert. So dass unser Game jetzt auch Hintergrundmusik laden kann. Er hat 3 verschiedene Stücke komponiert. Eines für das Hauptmenü, eines für die Leveln und das Letzte für das Game Over. Nun wir haben das so gelöst, dass wir den Namen der Leveldatei überprüfen und dass es dann je nach Name eine andere Musik lädt und abspielt. Dies hat praktisch auf anhieb funktioniert. 	
 	
 \subsubsection{Schallpegel} 	
-Wir haben nun auch einen Schallpegel eingeführt. So kann man nicht nur von den Lasern geschnappt werden. Sondern man kann auch zu viel Lärm machen und so geschnappt werden. Damit man sieht wie knapp es ist, hat es eine Anzeige links, bei der der Schallpegel steigt und sinkt. Wenn man im roten bereich angekommen ist, wird eine zufällige Zahlgewählt, bei der man zu laut ist. Diese Zahl liegt zwischen 1 und 200. So wollen wir dem ganzen ein bisschen mehr Spannnung verleihen. Man macht mehr lärm, wenn man rennt oder eine Tür öffnet. Nach gewisser Zeit senkt sich der Pegel jedoch wieder. Die Grafik haben wir mit einer Animation eingeführt. Sie wird nur bei den Dunkelleveln angezeigt, da man nur bei diesen leise sein muss.
+Wir haben auch einen Schallpegel eingeführt. So kann man nicht nur von den Lasern geschnappt werden. Sondern man kann auch zu viel Lärm machen und so geschnappt werden. Damit man sieht wie knapp es ist, hat es eine Anzeige links, bei der der Schallpegel steigt und sinkt. Wenn man im roten bereich angekommen ist, wird eine zufällige Zahlgewählt, bei der man zu laut ist. Diese Zahl liegt zwischen 1 und 200. So wollen wir dem ganzen ein bisschen mehr Spannnung verleihen. Man macht mehr lärm, wenn man rennt oder eine Tür öffnet. Nach gewisser Zeit senkt sich der Pegel jedoch wieder. Die Grafik haben wir mit einer Animation eingeführt. Sie wird nur bei den Dunkelleveln angezeigt, da man nur bei diesen leise sein muss.
  	
 \begin{figure}[h] 	
 \centering 	
@@ -395,8 +395,45 @@ Die Taste E ist die Taste für alles was man bewegen kann. So wird dort überpr�
 Beim Auflösungsproblem handelt es sich um ein Problem mit dem Umgang mit SFML.
 Das Problem besteht darin, dass jede Ansicht bei jeder Auflösung, jeder Gerätemarke und bei beiden Betriebssystemen gleich aussehen soll.
 Wir hofften, dass SFML diese Arbeit übernehmen würde, doch bereits bei den ersten Grafiken mussten wir einsehen, dass wir alles selber regeln müssten.
-Um das Problem zu lokalisieren benutzten wir die $zoom()$ funktion, mit der man die ganze Ansicht über einen Wert anpassen kann.
-Diesen Wert nannten wir $factor$.
+Um das Problem zu lokalisieren benutzten wir die $zoom()$-funktion, mit der man die ganze Ansicht über einen Wert anpassen kann.
+Diesen Wert nannten wir factor.
+Diesen factor bestimmten wir durch den Quotienten aus Auflösung und Ansichtsgrösse.
+\begin{quote}
+Eine View ist eine Klasse der SFML Bibliothek.
+Man kann es sich als eine 2D-Kamera vorstellen, die definiert, welche Region des Bildes angezeigt wird.
+Wir haben die View für unser Spiel Ansicht genannt.
+\end{quote}
+Wir erhofften uns ,durch annähern der richtigen Grösse des factors, eine Gesätzmässigkeit zu finden.
+Schnell wurde uns jedoch bewusst, dass diese Lösung längerfristig nicht haltbar war,
+denn dies führte auch dazu, dass zum Beispiel die Mauern umgerechnet werden mussten.
+Nicht nur war der Aufwand zu gross, sondern brachte es auch weitere Probleme mit sich.
+Beim Einführen der Mauern waren sie nicht, wie zuvor beim Hintergrundbild, 
+bei allen gleich, sondern an unterschiedlichen Orten.
+Durch weitere Tests konnten wir den factor so verändern, dass auch dies nicht mehr vorkam.
+Doch weitere Versuche zeigten, dass die Mauern im allgemeinen nicht richtig verrechnet wurden.
+Schlussendlich mussten wir feststellen, dass das Problem so nicht zu lösen war.
+\\
+Das Problem war die Handhabung von drei verschiedenen Koordinatensystemen.
+SFML regelt seine Grafiken mit zwei Koordinatensystemen.
+Das erste hatte das Zentrum im linken oberen Ecken des Bildschirms und gibt jedem Pixel des Bildschirms eine Koordinate. 
+Die Ansicht ist an dieses System gebunden.
+Das zweite System hat seinen Zentrum im virtuellen oberen Ecken der Grafiken. 
+Von dort werden die Positionen der Grafiken innerhalb des Fensters bestimmt. 
+Dieses System ist frei von der Ansicht, diese kann sich frei über dieses System bewegen.
+Über vordefinierte Funktionen der SFML Bibliothek konnten wir diese ineinander umrechnen.
+Wir selber haben durch den factor ein eigenes, neues System erstellt.
+Viel Zeit ging verloren, beim verstehen der Zusammenhänge dieser Systeme, vor allem unseres Eigenen.
+\\
+Durch das verankern der Ansicht auf den Spieler, konnten wir die Arbeit mit dem factor umgehen und ihn wieder herausstreichen.
+Diese Variante gefiel uns auch besser, denn wir gingen nie von immer gleich grossen Levels aus, was beim factor ein grosses Problem gewesen wäre.
+\\
+Wie bereits erwähnt regelt SFML das Anzeigen mit zwei Koordinatensystemen.
+Dies ist die einzige Fehlerquelle die noch besteht.
+Hier gibt es einen Fehler einerseits bei der Bestimmung der Auflösung des Bildschirms und andererseits in der Umsetzung im Spiel.
+Dadurch kam und kommt es auf wenigen Bildschirmen mit hoher Auflösung zu Anzeigefehler.
+Dafür haben wir auf die zoom()-Funktion zurückgegriffen, doch dieses mal ist der Wert während dem Spiel manipulierbar und hat eine Beschränkung.
+Wir können Fehler bei dieser Funktion nicht ausschliessen, doch haben wir uns entschlossen diese nicht mehr zu verändern.
+
 \subsection{Compilerprobleme}
 Nicht nur wir machten Fehler bei der Entwicklung, und die Fehler von anderen sind erfahrungsgemäss schwerer aufzuspüren.
 Einem eher speziellen Problem begegneten wir, als wir den Pfad für ein Animationsbild erstellen wollten.
