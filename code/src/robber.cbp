@@ -96,6 +96,8 @@
 		<Unit filename="notification.h" />
 		<Unit filename="pfeil.cpp" />
 		<Unit filename="pfeil.h" />
+		<Unit filename="rotPfeil.cpp" />
+		<Unit filename="rotPfeil.h" />
 		<Unit filename="schatz.cpp" />
 		<Unit filename="schatz.h" />
 		<Unit filename="screen.cpp" />
