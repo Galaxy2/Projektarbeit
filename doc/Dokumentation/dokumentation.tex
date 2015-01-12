@@ -384,7 +384,34 @@ Wir haben ein Punktesystem eingeführt. Jeder Schatz gibt einem 10 Punkte. In de
 \subsubsection{Zeit} 	
 Wir haben auch eine Zeit eingebaut. So läuft die Zeit Obenlinks langsam herunter und falls man nicht durch das Level gekommen ist, Fällt man aus dem Spiel ins Gameover. Die zur verfügung stehenden Zeit wird in der Leveldatei geschrieben.	
  	
- 	
+
+\subsection{Spielarchitektur}
+Als wir die Grundlagen von C++ zusammen erarbeitet hatten, mussten wir natürlich vorausplanen, wie wir das Spiel programmieren würden.
+Wir kannten zwar Verzweigungen, Schleifen und Funktionen, aber wie können wir damit ein Spiel entwickeln? Im Kopf hatten wir folgende Struktur,
+die wir mit der Zeit auch implementiert hatten:\\
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.3]{img/gameloops.png}
+\caption{Die Spielarchitektur}
+\end{figure}
+
+\subsubsection{EndGame}
+\begin{itemize}
+\item ESC gedrückt?
+\item Gameover?
+\item Alle Schätze eingesammelt?
+\end{itemize}
+
+\subsubsection{InputLoop}
+Eingaben lesen
+
+\subsubsection{AnimationLoop}
+Alle Animationen ausführen
+
+\subsubsection{RenderLoop}
+Alles auf den Bildschirm zeichnen
+
+
 \section{Probleme und Lösungen} 	
 \subsection{Auflösungsproblem XY} 	
 \label{aufloesungsprobleme} 	
@@ -551,6 +578,7 @@ Wir werden weiterhin an dieem Spiel weiter schreiben, da es uns doch sehr gefäl
 
 \clearpage
 
+\addcontentsline{toc}{section}{Antiplagiatserklärung}
 \section*{Antiplagiatserklärung}
 Wir versichern hiermit, die vorliegende Arbeit, inklusive des entstandenen Spiels
 selber, ohne fremde Hilfe verfasst zu haben. Alle Quellen, die zur Erstellung
