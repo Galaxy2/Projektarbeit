@@ -385,7 +385,59 @@ Wir haben ein Punktesystem eingeführt. Jeder Schatz gibt einem 10 Punkte. In de
 \subsubsection{Zeit} 	
 Wir haben auch eine Zeit eingebaut. So läuft die Zeit Obenlinks langsam herunter und falls man nicht durch das Level gekommen ist, Fällt man aus dem Spiel ins Gameover. Die zur verfügung stehenden Zeit wird in der Leveldatei geschrieben.	
  	
- 	
+
+\subsection{Wahl der Spielarchitektur}
+Als wir die Grundlagen von C++ zusammen erarbeitet hatten, mussten wir natürlich vorausplanen, wie wir das Spiel programmieren würden.
+Wir kannten zwar Verzweigungen, Schleifen und Funktionen, aber wie können wir damit ein Spiel entwickeln? Auf Seite 106 in \cite{sfml_gamedev} 
+wird eine parallele Spielarchitektur erwähnt. Wir fanden die dort beschriebene Spielarchitektur aber unnötig komplizierter und erarbeiteten uns
+dann eine andere Struktur. Daraus resultierte die Struktur in Abbildung \ref{fig:seriell}.
+die wir mit der Zeit auch implementiert hatten.\\
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.3]{img/gameloops.png}
+\caption{Unsere serielle Spielarchitektur}
+\label{fig:seriell}
+\end{figure}
+
+\subsubsection{Serielle Architektur}
+Die serielle Architektur unterteilt sich in vier Teile, die immer vollständig und immer hintereinander ablaufen. Die Funktionsweise
+und die Aufgaben der Teile werden hier kurz erläutert:\\
+\\
+\textbf{EndGame?}
+Diese Abfrage überprüfte nur, ob das Spiel beendet werden muss, sei es aufgrund eines Fehlers im Spiel
+oder weil der Benutzer das Fenster schliessen wollte.\\
+\\
+\textbf{InputLoop}
+Dieser Teil ist dafür zuständig, die Eingaben des Spielers zu einzulesen, und aufgrund von den Eingaben Aktionen auszulösen. Wenn zum Beispiel
+der Spieler bei einem Schatz in der Nähe steht, und die Taste $[E]$ drückt, werden dem Spieler 10 Punkte gutgeschrieben und der Schatz muss beim
+RenderLoop entfernt werden, damit er beim nächsten Durchgang verschwindet. Steht der Spieler bei einer Türe und drückt $[E]$, dann wird die Animation
+der Türe gestartet und die Mauer der Türe muss umplatziert werden. Wenn sich der Spieler in den Strahl einer Lichtschranke bewegt, wird das Level
+\q{Game Over} geladen.\\
+\\
+\textbf{AnimationLoop}
+Hier wird für jede Animation überprüft, ob sie überhaupt aktiv ist, und wenn ja, ob seit dem letzten Durchgang bereits die für jede Animation
+eigene Zeit $\Delta t$ verstrichen ist, damit dem Sprite die nächste Textur zugeordnet werden kann.\\
+\\
+\textbf{RenderLoop}
+Die einzelnen Sprites werden in das SFML Fenster gezeichnet, und SFML wird angewiesen das Fenster neu auf den Bildschirm zu \q{zeichnen}.
+
+\subsubsection{Parallele Architektur}
+SFML unterstüzt mit der \textit{Thread}-Klasse eine plattformübergreifende Implementierung
+von Systemthreads. Wenn ein Thread erstellt wird, springt das Programm an diesem Punkt
+in eine Funktion und führt diese parallel zum Rest des Programmes aus. Der grosse Vorteil,
+der sich dadurch ergibt, ist sicher die Performance, also die Ausführgeschwindigkeit. Die
+parallele Architektur würde sich demnach in drei bis vier Teile aufgabeln, je nachdem, ob man die AnimationLoop
+und die RenderLoop in jeweils einzelne Threads nimmt oder nicht. Da wir
+nicht wussten, dass SFML so effizient arbeiten würde, und unser Spiel auch ohne parallelen Code
+ohne Ruckler spielbar wäre, hatten wir unsere Spielarchitektur ursprünglich so geplant:
+\\
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.3]{img/threads.png}
+\caption{Die parallele Spielarchitektur}
+\end{figure}
+
+
 \section{Probleme und Lösungen} 	
 \subsection{Auflösungsproblem XY} 	
 \label{aufloesungsprobleme} 	
@@ -553,6 +605,7 @@ Wir werden weiterhin an dieem Spiel weiter schreiben, da es uns doch sehr gefäl
 
 \clearpage
 
+\addcontentsline{toc}{section}{Antiplagiatserklärung}
 \section*{Antiplagiatserklärung}
 Wir versichern hiermit, die vorliegende Arbeit, inklusive des entstandenen Spiels
 selber, ohne fremde Hilfe verfasst zu haben. Alle Quellen, die zur Erstellung
