@@ -58,7 +58,6 @@ Zu dem eigen ausgewählten Thema muss man etwas erarbeiten. Den Lernfortschritt 
 Dazu muss man eine Schriftlichearbeit abgeben und eine Präsentation machen. Diese Arbeit soll uns auf die Maturarbeit
 vorbereiten.
 
-
 \subsection{Motivation}
 In unserer Generation verbringen viele Kinder, Jugendliche und Erwachsene
 ihre Zeit mit dem Spielen von Computer- und Konsolenspielen.
@@ -97,7 +96,8 @@ Klassen eigene Konstruktoren, bzw. Destruktoren, was das Initialisieren
 oder das freigeben von Speicher überflüssig macht. Davon erhofften wir uns
 weniger Speicherzugriffsfehler und ein schnelleres programmieren. SFML
 überzeugte uns schlussendlich, als wir die in der offiziellen Dokumentation
-gezeigten Beispielprogramme angeschaut haben.
+gezeigten Beispielprogramme angeschaut haben. Zusätzlich wollten wir am Ende dieser Arbeit etwas in den Händen
+haben.
 
 \subsection{Ziele}
 \begin{itemize}
@@ -217,7 +217,7 @@ zu einem Speicherleck von knapp 20MB,
 
 
 \subsection{GIMP}
-
+Ein Programm um Bilder zu bearbeiten oder auch selber Bilder zu erstellen. 
 \subsection{GDB - Der GNU Debugger}
 
 \newpage
@@ -350,6 +350,7 @@ Zuerst haben wir geplant die Pfeile nur als Anzeiger zu nutzen, wo dass Eingäng
 \subsubsection{Console}
 Wir haben eine Console eingebaut, die sich mit der rechten Shift-Taste öffnen lässt. In dieser kann man verschiedene kleine Hilfen aktivieren. Wie zum Beispiel, dass man durch Mauern und Türen gehen kann. Man kann aber auch das Level direkt wechseln.
 
+\subsubsection{Tastatur}
 Man kann die Figur mit den Tasten W, A, S und D bewegen. Mit der Taste W geht die Figur nach oben, mit A nach links, mit S nach unten, mit D nach rechts. Hier können wir im SFMl auf eine einfache Form zurückgreifen. Diese erkennt, ob und welche Taste gedrückt wird. So konnten wir jeder Taste einen gewissen Befehl zuordenen und genau sagen was getan werden soll. Zum Beispiel bei der Taste W steht, dass sich die Figur um -5 bewegen soll. Dies bewirkt eine Bewegung nach oben. Da das Koordinatensystem bei jedem Laptop oben links mit 0/0 beginnt und dann nach unten negativ wird. Bei den anderen Tasten gibt es nur einen leicht anderen Befehl aus der SFML Klasse. 	+ Man kann die Figur mit... to be continued
 Bei diesen Tastenabfragen wird auch gleich überprüft, ob an in eine Mauer läuft, sollte dies nähmlich der fall sein darf sich die Figur ja nicht bewegen. Deshalb machen wir in diesem Fall das ganze wieder rückwärts. Wir haben auch einen Sprint eingebaut. Dazu muss man dir linke Shift Taste drücken und sich bewegen. Dann bewegt sich die Figur doppelt so schnell. Jedoch wird der Schalpegel erhöt (Verweis). Dies haben wir mit einer Variabel gemacht, so ändert sich die Variable je nach dem ob die Taste gedrückt wird oder nicht. 	
 Mit den Zahlentasten 9 und 0 kann herein und heraus zoomen. Da haben wir aber noert werden kann. Wir haben einen mindest Zeitabstand eingebaut, so dass sich die Tür erst wieder nach einer gewissen Zeit schliessen lässt. Sonst hätte man die Türe schneller öffnen und schliessen können als das Spiel mithalten könnte und würde die Tür noch oft öffnen und schliessen.Wir haben die Türen noch etwas grösser gemacht bei der Collisions-Abfrage, so dass man die Türen schlussendlich immer von beiden Seiten öffnen und schliessen kann. 	
@@ -394,7 +395,7 @@ Die Taste E ist die Taste für alles was man bewegen kann. So wird dort überpr�
 \label{aufloesungsprobleme}
 Beim Auflösungsproblem handelt es sich um ein Problem mit dem Umgang mit SFML.
 Das Problem besteht darin, dass jede Ansicht bei jeder Auflösung, jeder Gerätemarke und bei beiden Betriebssystemen gleich aussehen soll.
-Wir hofften, dass SFML diese Arbeit übernehmen würde, doch bereits bei den ersten Grafiken mussten wir einsehen, dass wir alles selber regeln müssten.
+Wir hofften, dass SFML diese Arbeit übernehmen würde, doch bereits bei den ersten Grafiken mussten wir einsehen, dass wir alles selber regeln müssen.
 Um das Problem zu lokalisieren benutzten wir die $zoom()$-funktion, mit der man die ganze Ansicht über einen Wert anpassen kann.
 Diesen Wert nannten wir factor.
 Diesen factor bestimmten wir durch den Quotienten aus Auflösung und Ansichtsgrösse.
@@ -437,8 +438,8 @@ Wir können Fehler bei dieser Funktion nicht ausschliessen, doch haben wir uns e
 \subsection{Compilerprobleme}
 Nicht nur wir machten Fehler bei der Entwicklung, und die Fehler von anderen sind erfahrungsgemäss schwerer aufzuspüren.
 Einem eher speziellen Problem begegneten wir, als wir den Pfad für ein Animationsbild erstellen wollten.
-Die Zahl $i$, die bei zu zählen anfängt, zeigt, den wievielten Schritt der Animation gerade geladen werden soll, und $n$ steht für den Namen der Animation.
-Ein solcher Pfad lautet zum Beispiel für einen\\Pfeil im 4. Animationsschritt: \textit{resources/pfeil\_3.png}\\
+Die Zahl $i$, die bei 0 zu zählen anfängt, zeigt, den wievielten Schritt der Animation gerade geladen werden soll, und $n$ steht für den Namen der Animation.
+Ein solcher Pfad lautet zum Beispiel für einen\\Pfeil im 4. Animationsschritt: \textit{resources/pfeil\_3.png}\\ (Verweis)
 \\
 In C++11 sind die + Operatoren zum Verketten (Engl. concatenate) von Strings überladen. Damit man auch Zahlen so in Strings einsetzen
 kann gibt es seit C++11 die Funktion $to\_string()$, die überladen für sämtliche Zahldatentypen existiert und das Argument in einen String
@@ -531,6 +532,7 @@ Wir haben unsere Level verschieden erstellt:
 
 \newpage
 \section{Diskussion / Reflexion}
+
 
 \newpage
 \section{Mögliche Erweiterungen / Ausblick}
