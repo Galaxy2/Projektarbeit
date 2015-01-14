@@ -13,8 +13,8 @@
 \usepackage[hidelinks]{hyperref}
 
 
-\usepackage[left=2.5cm,right=1.5cm,top=2cm,bottom=2.8cm]{geometry}
-
+\usepackage[left=2.5cm,right=1.5cm,top=3cm,bottom=2.8cm]{geometry}
+\linespread{1.5}
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -39,6 +39,7 @@ Patrick Eigensatz, G3C
 
 \clearpage
 \newpage
+\pagestyle{empty}
 \mbox{ }
 \clearpage
 
@@ -57,7 +58,6 @@ Unsere Aufgabe ist eine Projektarbeit zu gestalten. Dazu hatten wir ein Semester
 Zu dem eigen ausgewählten Thema muss man etwas erarbeiten. Den Lernfortschritt muss man in einem Lernprotokoll festhalten.
 Dazu muss man eine Schriftlichearbeit abgeben und eine Präsentation machen. Diese Arbeit soll uns auf die Maturarbeit
 vorbereiten.
-
 
 \subsection{Motivation}
 In unserer Generation verbringen viele Kinder, Jugendliche und Erwachsene
@@ -97,7 +97,8 @@ Klassen eigene Konstruktoren, bzw. Destruktoren, was das Initialisieren
 oder das freigeben von Speicher überflüssig macht. Davon erhofften wir uns
 weniger Speicherzugriffsfehler und ein schnelleres programmieren. SFML
 überzeugte uns schlussendlich, als wir die in der offiziellen Dokumentation
-gezeigten Beispielprogramme angeschaut haben.
+gezeigten Beispielprogramme angeschaut haben. Zusätzlich wollten wir am Ende dieser Arbeit etwas in den Händen
+haben.
 
 \subsection{Ziele}
 \begin{itemize}
@@ -217,7 +218,7 @@ zu einem Speicherleck von knapp 20MB,
 
 
 \subsection{GIMP}
-
+Ein Programm um Bilder zu bearbeiten oder auch selber Bilder zu erstellen. 
 \subsection{GDB - Der GNU Debugger}
 
 \newpage
@@ -350,6 +351,7 @@ Zuerst haben wir geplant die Pfeile nur als Anzeiger zu nutzen, wo dass Eingäng
 \subsubsection{Console}
 Wir haben eine Console eingebaut, die sich mit der rechten Shift-Taste öffnen lässt. In dieser kann man verschiedene kleine Hilfen aktivieren. Wie zum Beispiel, dass man durch Mauern und Türen gehen kann. Man kann aber auch das Level direkt wechseln.
 
+\subsubsection{Tastatur}
 Man kann die Figur mit den Tasten W, A, S und D bewegen. Mit der Taste W geht die Figur nach oben, mit A nach links, mit S nach unten, mit D nach rechts. Hier können wir im SFMl auf eine einfache Form zurückgreifen. Diese erkennt, ob und welche Taste gedrückt wird. So konnten wir jeder Taste einen gewissen Befehl zuordenen und genau sagen was getan werden soll. Zum Beispiel bei der Taste W steht, dass sich die Figur um -5 bewegen soll. Dies bewirkt eine Bewegung nach oben. Da das Koordinatensystem bei jedem Laptop oben links mit 0/0 beginnt und dann nach unten negativ wird. Bei den anderen Tasten gibt es nur einen leicht anderen Befehl aus der SFML Klasse. 	+ Man kann die Figur mit... to be continued
 Bei diesen Tastenabfragen wird auch gleich überprüft, ob an in eine Mauer läuft, sollte dies nähmlich der fall sein darf sich die Figur ja nicht bewegen. Deshalb machen wir in diesem Fall das ganze wieder rückwärts. Wir haben auch einen Sprint eingebaut. Dazu muss man dir linke Shift Taste drücken und sich bewegen. Dann bewegt sich die Figur doppelt so schnell. Jedoch wird der Schalpegel erhöt (Verweis). Dies haben wir mit einer Variabel gemacht, so ändert sich die Variable je nach dem ob die Taste gedrückt wird oder nicht. 	
 Mit den Zahlentasten 9 und 0 kann herein und heraus zoomen. Da haben wir aber noert werden kann. Wir haben einen mindest Zeitabstand eingebaut, so dass sich die Tür erst wieder nach einer gewissen Zeit schliessen lässt. Sonst hätte man die Türe schneller öffnen und schliessen können als das Spiel mithalten könnte und würde die Tür noch oft öffnen und schliessen.Wir haben die Türen noch etwas grösser gemacht bei der Collisions-Abfrage, so dass man die Türen schlussendlich immer von beiden Seiten öffnen und schliessen kann. 	
@@ -384,7 +386,59 @@ Wir haben ein Punktesystem eingeführt. Jeder Schatz gibt einem 10 Punkte. In de
 \subsubsection{Zeit} 	
 Wir haben auch eine Zeit eingebaut. So läuft die Zeit Obenlinks langsam herunter und falls man nicht durch das Level gekommen ist, Fällt man aus dem Spiel ins Gameover. Die zur verfügung stehenden Zeit wird in der Leveldatei geschrieben.	
  	
- 	
+
+\subsection{Wahl der Spielarchitektur}
+Als wir die Grundlagen von C++ zusammen erarbeitet hatten, mussten wir natürlich vorausplanen, wie wir das Spiel programmieren würden.
+Wir kannten zwar Verzweigungen, Schleifen und Funktionen, aber wie können wir damit ein Spiel entwickeln? Auf Seite 106 in \cite{sfml_gamedev} 
+wird eine parallele Spielarchitektur erwähnt. Wir fanden die dort beschriebene Spielarchitektur aber unnötig komplizierter und erarbeiteten uns
+dann eine andere Struktur. Daraus resultierte die Struktur in Abbildung \ref{fig:seriell}.
+die wir mit der Zeit auch implementiert hatten.\\
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.3]{img/gameloops.png}
+\caption{Unsere serielle Spielarchitektur}
+\label{fig:seriell}
+\end{figure}
+
+\subsubsection{Serielle Architektur}
+Die serielle Architektur unterteilt sich in vier Teile, die immer vollständig und immer hintereinander ablaufen. Die Funktionsweise
+und die Aufgaben der Teile werden hier kurz erläutert:\\
+\\
+\textbf{EndGame?}
+Diese Abfrage überprüfte nur, ob das Spiel beendet werden muss, sei es aufgrund eines Fehlers im Spiel
+oder weil der Benutzer das Fenster schliessen wollte.\\
+\\
+\textbf{InputLoop}
+Dieser Teil ist dafür zuständig, die Eingaben des Spielers zu einzulesen, und aufgrund von den Eingaben Aktionen auszulösen. Wenn zum Beispiel
+der Spieler bei einem Schatz in der Nähe steht, und die Taste $[E]$ drückt, werden dem Spieler 10 Punkte gutgeschrieben und der Schatz muss beim
+RenderLoop entfernt werden, damit er beim nächsten Durchgang verschwindet. Steht der Spieler bei einer Türe und drückt $[E]$, dann wird die Animation
+der Türe gestartet und die Mauer der Türe muss umplatziert werden. Wenn sich der Spieler in den Strahl einer Lichtschranke bewegt, wird das Level
+\q{Game Over} geladen.\\
+\\
+\textbf{AnimationLoop}
+Hier wird für jede Animation überprüft, ob sie überhaupt aktiv ist, und wenn ja, ob seit dem letzten Durchgang bereits die für jede Animation
+eigene Zeit $\Delta t$ verstrichen ist, damit dem Sprite die nächste Textur zugeordnet werden kann.\\
+\\
+\textbf{RenderLoop}
+Die einzelnen Sprites werden in das SFML Fenster gezeichnet, und SFML wird angewiesen das Fenster neu auf den Bildschirm zu \q{zeichnen}.
+
+\subsubsection{Parallele Architektur}
+SFML unterstüzt mit der \textit{Thread}-Klasse eine plattformübergreifende Implementierung
+von Systemthreads. Wenn ein Thread erstellt wird, springt das Programm an diesem Punkt
+in eine Funktion und führt diese parallel zum Rest des Programmes aus. Der grosse Vorteil,
+der sich dadurch ergibt, ist sicher die Performance, also die Ausführgeschwindigkeit. Die
+parallele Architektur würde sich demnach in drei bis vier Teile aufgabeln, je nachdem, ob man die AnimationLoop
+und die RenderLoop in jeweils einzelne Threads nimmt oder nicht. Da wir
+nicht wussten, dass SFML so effizient arbeiten würde, und unser Spiel auch ohne parallelen Code
+ohne Ruckler spielbar wäre, hatten wir unsere Spielarchitektur ursprünglich so geplant:
+\\
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.3]{img/threads.png}
+\caption{Die parallele Spielarchitektur}
+\end{figure}
+
+
 \section{Probleme und Lösungen} 	
 \subsection{Auflösungsproblem XY} 	
 \label{aufloesungsprobleme} 	
@@ -394,7 +448,7 @@ Die Taste E ist die Taste für alles was man bewegen kann. So wird dort überpr�
 \label{aufloesungsprobleme}
 Beim Auflösungsproblem handelt es sich um ein Problem mit dem Umgang mit SFML.
 Das Problem besteht darin, dass jede Ansicht bei jeder Auflösung, jeder Gerätemarke und bei beiden Betriebssystemen gleich aussehen soll.
-Wir hofften, dass SFML diese Arbeit übernehmen würde, doch bereits bei den ersten Grafiken mussten wir einsehen, dass wir alles selber regeln müssten.
+Wir hofften, dass SFML diese Arbeit übernehmen würde, doch bereits bei den ersten Grafiken mussten wir einsehen, dass wir alles selber regeln müssen.
 Um das Problem zu lokalisieren benutzten wir die $zoom()$-funktion, mit der man die ganze Ansicht über einen Wert anpassen kann.
 Diesen Wert nannten wir factor.
 Diesen factor bestimmten wir durch den Quotienten aus Auflösung und Ansichtsgrösse.
@@ -437,8 +491,8 @@ Wir können Fehler bei dieser Funktion nicht ausschliessen, doch haben wir uns e
 \subsection{Compilerprobleme}
 Nicht nur wir machten Fehler bei der Entwicklung, und die Fehler von anderen sind erfahrungsgemäss schwerer aufzuspüren.
 Einem eher speziellen Problem begegneten wir, als wir den Pfad für ein Animationsbild erstellen wollten.
-Die Zahl $i$, die bei zu zählen anfängt, zeigt, den wievielten Schritt der Animation gerade geladen werden soll, und $n$ steht für den Namen der Animation.
-Ein solcher Pfad lautet zum Beispiel für einen\\Pfeil im 4. Animationsschritt: \textit{resources/pfeil\_3.png}\\
+Die Zahl $i$, die bei 0 zu zählen anfängt, zeigt, den wievielten Schritt der Animation gerade geladen werden soll, und $n$ steht für den Namen der Animation.
+Ein solcher Pfad lautet zum Beispiel für einen\\Pfeil im 4. Animationsschritt: \textit{resources/pfeil\_3.png}\\ (Verweis)
 \\
 In C++11 sind die + Operatoren zum Verketten (Engl. concatenate) von Strings überladen. Damit man auch Zahlen so in Strings einsetzen
 kann gibt es seit C++11 die Funktion $to\_string()$, die überladen für sämtliche Zahldatentypen existiert und das Argument in einen String
@@ -532,6 +586,7 @@ Wir haben unsere Level verschieden erstellt:
 \newpage
 \section{Diskussion / Reflexion}
 
+
 \newpage
 \section{Mögliche Erweiterungen / Ausblick}
 Wir wissen wir sind immer noch einige Schritte von einem kompletten Game entfernt. Es fehlen schon alleine die verschiedenen Levels. Dazu kommt, dass wir auch noch Gegner einbauen möchten. So dass man Gegner hat die herumlaufen und einem entdecken können, das könnte zum Beispiel ein Hund sein. Wir möchten auch, dass der Schallpegel erhöht wird, im Falle von einer Kollision mit einer Mauer. 	
@@ -551,6 +606,7 @@ Wir werden weiterhin an dieem Spiel weiter schreiben, da es uns doch sehr gefäl
 
 \clearpage
 
+\addcontentsline{toc}{section}{Antiplagiatserklärung}
 \section*{Antiplagiatserklärung}
 Wir versichern hiermit, die vorliegende Arbeit, inklusive des entstandenen Spiels
 selber, ohne fremde Hilfe verfasst zu haben. Alle Quellen, die zur Erstellung
