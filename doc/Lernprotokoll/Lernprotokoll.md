@@ -1,4 +1,4 @@
-# Lernprotokoll
+﻿# Lernprotokoll
 
 (Format: Datum)
 (Alle Commits: Eintrag Lernprotokoll)
@@ -95,4 +95,45 @@ Unsere nächsten Aufgaben werden ein GUI(Patrick), Möbel(Jan), Aussenbereich de
 
 Das von Gabriel geschilderte Problem, ist behoben. Wie in der eventgesteuerten Programmierung üblich brauchten wir ein Funktionscallback der Animationsklasse. Sprich eine festlegbare Funktion,  die aufgerufen wird, wenn die Animation zu Ende ist. Da erste Versuche mit modernem C++11 (d.h. der im `<functional>` Header definierten `std::function`) fehlschlugen, nehmen wir uns die guten, altbekannten C/C++ function pointer zu Hilfe. Wir definierten mit `void (*animationEnde)(int);` einen
 pointer auf eine Callbackfunktion. Der Wert dieses pointers kann über die (Animations-)Methode `setOnAnimationEnde` gesetzt werden.
-Nach kurzen Problemen aufgrund der Typisierung, d.h. weil wir unsere Callbackfunktion innerhalb einer Klasse definierten, funktionierte es am Schluss doch. Dazu mussten wir die Funktion global innerhalb der `level.cpp`-Datei definieren. 
+Nach kurzen Problemen aufgrund der Typisierung, d.h. weil wir unsere Callbackfunktion innerhalb einer Klasse definierten, funktionierte es am Schluss doch. Dazu mussten wir die Funktion global innerhalb der `level.cpp`-Datei definieren.
+
+### 12.12.14
+
+Die Türen sind noch deutlich ausgebessert worden. Dazu kommt, dass Jan mit den Möbel begonnen hat. Wir haben jetzt dedoch befunden, dass es am einfachsten sein wird, wenn wir die Möbel am Anfang gleich hinein zeichnen.
+Dort können wir sie dann als Mauern unpassierbar machen. Das Spiel zeigt nun auch die Version, auf der es läuft an. Doch hier ist uns ein kleiner Fehler aufgefallen bei den Schätzen ein zu grosses FloatRect
+somit kann man den Schatz auch auflesen, wenn man daneben steht. Wir haben inzwischen auch eine Zoomgrenze eingefügt. Dazu haben wir auch noch ein ganz simples Menu implementiert. Doch leider mussten wir feststellen, dass es
+nicht uf JAn's PC läuft. Nunn suchen wir nach eine Lösung.
+
+### 14.14.14
+Wir haben mit der Dokumentation begonnen. Inzwischen sind die Details zu den genauen Werkzeugen von unserem Game erklärt. Dazu machen wir uns Gedanken, um die Türen auf alle 4 verschiedenen Seiten öffnen zu können.
+Wir haben es nun auch soweit, dass wenn man auf die Pfeile kommt zu einem anderen Level wechseln kann. Wenn man jedoch noch E drückt, führt dies zu einem Absturz des Programms. Das ist uns noch ein bisschen unverständlich. 
+Da dies nun funktioniert haben wir das Level Decke hinzugefügt. Jetzt kannma vom Garten in das Haus hinein gehen. Damit man klar unterscheiden kann ob man im Haus drinen oder drausen ist, haben wir ROte Pfeile dazu genommen.
+Die Idee wäre die roten Pfeile im Haus drausen zu brauchen, um zu zeigen, wo es hinaus geht.
+
+### 17.12.14
+Nun haben wir mit den Lasern begonnen. Auch hier fügten wir eine Animation hinzu. Die gezeichneten Laser sind noch nicht sehr ausgereift, aber sie erfüllen ihren Zweck. Jetzt geht es noch um die Kollisionsabfrage und dem GameOver aufruf.
+Um das Problem mit dem Hauptmenü best möglich zu umgehen haben wir uns entschieden ein eigenes Hauptmenu Level zu erstellen. Damit haben wir nun begonnen. Doch es ist noch nicht ganz zu Ende. Parallel
+funktionierennun auch die Pfeile einwandfrei, so dass man auch genau dort startet, wo es angegeben ist.
+
+### 23.12.14
+Jetzt haben wir 2 Tage volles programmieren hinter uns. Wir haben grosse Fortschritte gemacht. Zum einen haben wir die Hauptmenü Leveldatei fertig gestellt. Das Spiel beginnen haben wir mit einem neuen Pfeil gelöst. 
+Beeendet wird das Spiel durch eine Check FloatRect abfrage. Zum anderen komt man mit ESC nur noch ins Hauptmenu zurück. Bei den Türen haben wir einen einen Pufferbereich hinzugefügt. Dank dem kann man nun die Türe von allen Seiten öffnen.
+Wir haben auch die Laser Checkcollision abfrage fertig gemacht. Auch dort haben wir ein GameOver Level erstellt. Das Problem hier war, dass man zuerst irgendwo im Level war, jeh nach dem wo man starb. Aber dies konnten wir im verlauf des Tages lösen. Wenn man also einen Laser berührt fällt man in das GameOver-Level.  Wir haben auch die Musik von unserem Freund eingefügt. Wir haben drei verschiedene
+Musikstücke. Diese werden je nach dem im Hauptmenü, im GamOver oder in einem normalen Level abgspielt. Dies macht das Spiel gleich deutlich intressanter. Natürlich muss man auch gewinnen können. Deshalb haben wir auch einen Punkte bereich eingegeben. Nun wird pro Schatz, den man sammelt
+10 Punkte dazu gerechnet. Um das Spiel noch zu erschweren, haben wir eine maximale Zeit erstellt. Diese wird so wie die Punkte oben links angezeigt.
+
+### 26.12.14
+Wenn man auf einen Schatz kam konnte man bis jetzt mehrere Punkte holen. Doch nun haben wir eine mindest Zeit eingebaut. So kann jeder Schatz auch nur einemal aufgelesen werden. Wir haben auch die Laser ersetzt durch ausgereifte Laser. Dei blinkend wirklich wie richtige Laser aussehen. 
+Man kann auch zwichen den einzelnen Lasern hindurch gelangen.
+
+### 03.01.15
+Wir haben es nun auch geschafft, dass es den alten Stand der Level speichert. So dass wenn man eine Türgeöffnet hat und zurückkommt immer noch offen ist. Es speichert eigentlichen den gesamten alten Stand. Leider lädt es noch nicht wieder neu, wenn man verliert oder neu beginnt.
+Nun haben wir es auch soweit, dass wir rennen können. Dazu haben wir eine neue Parabel eingefügt, die wenn man Shift drückt die geschwindigkeit verdoppelt. Wir haben auch eine Lärmpegel eingefügt. Dieser wird immer lauter, wenn man eine tür öffnet oder wenn man in eine Mauer läuft.
+Das Problem ist, dass es bei der Mauer immer noch mehr zunimmt. Deshalb haben wir das mit der Kollision in der Mauer wieder entfernt. Haben dafür dazu genommen, dass wenn man rennt, dass dann der Schallpegel auch steigt. Dies haben wir nach kurzem so geändert, dass es immer nur dann steigt, wenn
+man sich auch wirklich bewegt. Parallel dazu haben wir noch eine dunelDaetei erstellt.
+Diese bezweckt, dass wir nicht mehr das ganze Level sehen, da nur noch eine kleiner Ausschnitt gezeigt wird. Diese Datei wird der Figur hinzugefügt. So dass es sich immer mitbewegt. Wir finden das gibt dem ganzen einen ganz anderes Aussehen. Der Schallpegel wird links angezeigt. Auch der ist nur eine Animation. Wenn man im rotten Bereich angekommen ist, dann wird eine Zufallszahl bestummen,
+bei der das Spiel beendet.
+Wir haben einen zufalls Generator erzeugt. Dieser kann, wenn es mehrere Objekte gibt zum einfügen per Zufall auswählen, welches er nun einfügen will. Dadurch können wir ohne es manuel zu machen verschiedene Schätze einfügen.
+ 
+Wir haben uns hier entschieden mit dem Spiel soweit zufrieden zu sein und uns jetzt auf die stets fortgeführte Dokumentation zu konzentrieren.
+
