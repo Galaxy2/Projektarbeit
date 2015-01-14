@@ -39,13 +39,12 @@ Patrick Eigensatz, G3C
 
 \clearpage
 \newpage
-\pagestyle{empty}
 \mbox{ }
 \clearpage
 
 \setcounter{page}{1}
 \section*{Vorwort}
-Siehe auch in \cite{grundkurscpp}
+
 
 \newpage
 
@@ -68,7 +67,7 @@ Sei das wegen der bereits weit fortgeschrittenen Komplexität einiger Spiele
 oder bei einfachen Spielen einfach die fehlende Motivation, sich damit zu befassen.\\
 \\
 Viele wollen nur wissen wie man ein Spiel spielt und nicht wie man es spielbar macht. Viele wissen nicht einmal wie schwer es ist schon ein
-kleines Spiel zu machen.
+kleines Spiel zu machen. Nun mit dierer Arbeit zeigen wir, wie der Aufbau und die Umsetzung eines Games aussehen kann.
 Da wir selber auch zu dieser Generation gehören, 
 machen wir alle immer wieder Erfahrungen mit den verschiedensten Games bzw. Spielen.
 Doch wir wollten nicht blos Spiele spielen, 
@@ -76,6 +75,8 @@ sondern wir wollten selber ein Spiel entwickeln.
 Dazu kam noch unsere Begeisterung für den Prozess des Programmierens.
 Jeder von uns hatte bereits mehr oder weniger Erfahrungen auf diesem Gebiet gesammelt 
 und wir waren und sind alle immer noch bereit mehr zu lernen.
+Zusätzlich wollten wir am Ende dieser Arbeit etwas in den Händen
+haben.
 
 \subsection{Persönliche Vorgaben}
 
@@ -88,8 +89,7 @@ Um die Sache für uns attraktiv zu machen,
 wählten wir bewusst eine Programmiersprache, die noch nicht
 alle von uns beherrschten. Natürlich hätten wir genau so gut
 SDL oder direkt das darunterliegende OpenGL verwenden können. OpenGL
-schied aus, da der Aufwand bereits ein einfaches 2D-Spiel zu realisieren,
-schlichtweg nicht möglich gewesen wäre. SDL war unser Favorit, bis wir
+schied aus, da der Aufwand bereits ein einfaches 2D-Spiel zu realisieren, nicht möglich gewesen wäre. SDL war unser Favorit, bis wir
 SFML entdeckten. Ganz im Gegensatz zu SDL schien SFML für C++ ausgerichtet
 zu sein. So wurden Klassen anstatt Strukturen verwendet, was den (für den
 Anfang komplizierten) Umgang mit Zeigern reduzierte. Ausserdem besitzen die
@@ -97,8 +97,7 @@ Klassen eigene Konstruktoren, bzw. Destruktoren, was das Initialisieren
 oder das freigeben von Speicher überflüssig macht. Davon erhofften wir uns
 weniger Speicherzugriffsfehler und ein schnelleres programmieren. SFML
 überzeugte uns schlussendlich, als wir die in der offiziellen Dokumentation
-gezeigten Beispielprogramme angeschaut haben. Zusätzlich wollten wir am Ende dieser Arbeit etwas in den Händen
-haben.
+gezeigten Beispielprogramme angeschaut haben. 
 
 \subsection{Ziele}
 \begin{itemize}
@@ -239,7 +238,7 @@ zu finden, die uns alle begeistern würde.
 Als wir genug Ideen hatten, fertigten wir eine Liste an. 
 Wir setzten uns ein Zeitlimit von einer Woche, um zu jeder Idee jeweils einen Umsetzungsvorschlag zu erstellen. 
 Dadurch hatten wir zu jeder Idee 3 verschiedene Vorschläge.
-Dadurch und durch weitere Diskussion kamen wir auf die Idee eines Eibrecherspiels.
+Dadurch und durch weitere Diskussion kamen wir auf die Idee eines Einbrecherspiels.
 Dieses erfüllte alle Vorgaben:
 Die Idee fanden wir alle interessant, es war mit unseren Mitteln und unserem Wissen realisierbar und man kann es gut erweitern.
 
@@ -578,7 +577,7 @@ und dies je nach Spielmodus möglichst schnell, oder sehr ausgiebig.
 \subsection{Spielmodi}
 Wir haben unsere Level verschieden erstellt:
 \begin{itemize}
-\item Zeitdruck: Die Zeit wurde bewusst sehr knapp gewählt, und man musste die Schätze finden, bevor diese ablief.
+\item Zeitdruck: Die Zeit ist bewusst sehr knapp gewählt, und man muss die Schätze finden, bevor diese abläuft.
 \item Suche: Die Schätze waren im ganzen Haus versteckt und gut mit Laserschranken gesichert.
 \item Schatz: Es gab nur einen einzigen, im dunklen gut versteckten Schatz.
 \end{itemize}
