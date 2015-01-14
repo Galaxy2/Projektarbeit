@@ -208,13 +208,17 @@ zu einem Speicherleck von knapp 20MB,
 
 \begin{figure}
 \centering
-\includegraphics[scale=0.8]{img/valgrind2.png}
+\includegraphics[scale=0.5]{img/valgrind2.png}
 \caption{Valgrinds Memcheck}
 \end{figure}
 
 
 \section{GIMP}
-Ein Programm um Bilder zu bearbeiten oder auch selber Bilder zu erstellen. 
+GIMP ist ein Programm zum Darstellen und Bearbeiten von Bilddateien.
+Es stellt ähnliche Funktionen wie Photoshop zur Verfügung, ist jedoch kostenlos und frei.
+Wir nutzten GIMP zum erstellen der Animationen und Grafiken unseres Spieles.
+Dabei nutzten wir eine Grosszahl der uns bereitstehenden Funktionen.
+Alle Grafiken und Animationen unseres Spieles sind Eigenproduktion oder entstammen den GIMP-Standardgrafiken.
 \section{GDB - Der GNU Debugger}
 
 
@@ -235,7 +239,7 @@ zu finden, die uns alle begeistern würde.
 Als wir genug Ideen hatten, fertigten wir eine Liste an. 
 Wir setzten uns ein Zeitlimit von einer Woche, um zu jeder Idee jeweils einen Umsetzungsvorschlag zu erstellen. 
 Dadurch hatten wir zu jeder Idee 3 verschiedene Vorschläge.
-Dadurch und durch weitere Diskussion kamen wir auf die Idee eines Eibrecherspiels.
+Dadurch und durch weitere Diskussion kamen wir auf die Idee eines Einbrecherspiels.
 Dieses erfüllte alle Vorgaben:
 Die Idee fanden wir alle interessant, es war mit unseren Mitteln und unserem Wissen realisierbar und man kann es gut erweitern.
 
@@ -512,13 +516,19 @@ Konstruktor der Animationsklasse, in der Datei \textit{code/src/animation.cpp}.
 \end{figure}
 
 \section{Fehler in der Leveldatei}
-Die Leveldatei war von Anfang an sehr Fehler anfällig. Da die Reihenfolge der Zahlen  genau stimmen muss. Da kann leicht ein Fehler unterlaufen. Die sind aber dann klar ersichtlich, da das ganze Bild ganz anders aus sieht als man erwartet hat. Man muss einfach die Leveldatei noch einemal überprüfen. Die Leveldatei ist auch ständig gewachsen, so dass man leicht einmal etwas vergessen konnte. Blöd ist einfach dass man sich keine Hinweise ins Dokument schreiben darf, weil sonst das ganze durcheinander kommt.
+Jeder spielbare Level wird, wie bereits erläutert, aus einer Leveldatei geladen.
+Das erstellen einer solchen ist mit viel Aufwand verbunden, denn sie muss genau auf die Levelclass abgestimmt sein.
+Beim Erstellen, oder durch Vernachlässigung einiger Dateien nach dem Bearbeiten der Levelclass, kann es zu Fehlern kommen.
+Die meisten Grafikfehler gehen auf diese Art von Fehlern zurück.
+Dabei kann das Spiel die Datei zwar lesen, gibt aber einen Fehler aus: "Fehler beim Laden der Leveldatei: " und den entsprechenden Levelnamen.
 
-\section{Fehler beim Laser}
-WIr haben ein weiteres testlevel erstellt und dieses mal sollte es mehrere Laser haben. Doch dies wollte nicht funktionieren, es funktionierte genau ein Laser. Die anderen waren zwar gezeichnet aber die Checkcollision-Funktion wollte nicht gehen. Da haben wir das ganze mehrere male durchgelesen. Bis jemandem aufgefallen ist, dass es immer nur der erste Laser ist, der funktionierte. Da fiel es uns dann auch wie Schuppen von den Augen, die eine Klammer war zu früh geschlossen worden. Danach lief es einwandfrei.
 
 \section{Doppelter Tastendruck}
-SFML gab an, dass eine Taste doppelt gedrückt wurde, obwohl sie nur einmal gedrückt wurde. Massnahme: Zeitliche Aussortierung
+Bei der Implementierung der Schätze, stellten wir fest, dass SFML ein Problem mit der Anzahl Anschläge von Tasten hat.
+So kam es zu doppelten Punkten beim einsammeln von Schätzen.
+Auch bei den Türen traten gleiche Probleme auf, welche jedoch durch das Bestimmen der Animationslänge und des Animationsstartverbotes währenddessen aufgehoben wurden.
+Bei den Schätzen lösten wir es mit einer internen Uhr, deren einzige Funktion eine Verzögerung ist, so dass ein Schatz erst bei wirklichem erneuten Drücken der Taste aufgenommen wird.
+
 
 \section{Merge Conflicts}
 git, unsere Versionskontrolle, ermöglichte es uns, parallel, in sogenannten Branches zu entwickeln. (Siehe Abbildung \ref{fig:branches} auf Seite \pageref{fig:branches}). Wir entwickelten neue Funktionen oft parallel und "mergten" (engl. to merge = zusammenführen) sie in unseren master-Zweig.
@@ -549,7 +559,28 @@ Ansonsten mussten wir am ganzen Kern nichts mehr ändern. Der grosse Vorteil, de
 Funktionen kannte, und zum Beispiel problemlos Objekte erstellen konnte und diese auch auf Kollisionen mit dem Spieler überprüfen konnte.
 
 \section{Mathematik}
-Aufwand zum berechnen/ Logik
+Das Überthema unserer Projektunterricht-Kursgruppe ist Mathematik im Alltag.
+Passend dazu hatten wir uns mit vielen mathematischen und logischen Problemen beim Programmieren auseinanderzusetzen.
+Programmieren selber ist ein sehr Logik-gebundener Prozess.
+Einfache Beispiele sind logische Verknüpfungen oder Bedingungen.
+Doch meisten sind es komplexere Probleme wie zum Beispiel das Regeln von Unterordnungen oder das korrekte Aufrufen von definierten Variablen.
+Auch das Auflösungsproblem gehört zu dieser Art von Problemen.
+Ein weiteres Beispiel für logische Probleme sind die Türen.
+Uns war es wichtig, dass die Türen nach dem Aufmachen und Zumachen jeweils fest sind.
+Dazu mussten wir eine Funktion definieren, die am Ende der jeweiligen Animation aufgerufen wird und eine Mauer erstellt.
+Das Problem hierbei war das Regeln der verschieden Klassen.
+Durch Probieren und vielem Nachdenken kamen wir auf die Idee Funktionspointer zu gebrauchen. 
+(Das ganze Problem können sie im Lernprotokoll nachlesen, wo es ausführlich erklärt wird.)
+\\
+Zu den logischen Problemen kamen auch einfach arithmetische und geometrische Probleme.
+So hatten wir grosse Mühe beim berechnen der Mauerkoordinaten für die Türe bei jeder möglichen Rotation, wobei wir uns auf neunzig Grad Drehungen beschränkt haben.
+Zum Schluss gab es auch noch Fehler durch die Komplexität des Codes.
+Beim erstellen ein weiteres Testlevels, der mehrere Laser haben sollte kam es zu Fehlern.
+Es wurden zwar alle Laser angezeigt, doch nur ein Laser funktionierte.
+Sie waren zwar gezeichnet aber die Checkcollision-Funktion gab keine Kollision aus. 
+Nach mehrmaligem Lesen ist uns aufgefallen, dass es immer nur der erste Laser ist, der funktionierte. Da war uns klar, dass der return-Befehl innerhalb der verschachtelten Abfragen eine Abfrage zu früh ausgeführt wurde. Nach dem Korrigieren wurden alle Laser richtig eingelesen und verarbeitet.
+
+
 
 \section{Verfügbare Zeit}
 Am Anfang des Projektunterrichts dachten wir, wir hätten mehr Zeit für die eigentliche Entwicklung. Wir mussten schlussendlich aber auch
