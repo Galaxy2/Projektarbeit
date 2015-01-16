@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{scrartcl}
+ \documentclass[11pt,a4paper]{scrbook}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage{amsmath}
@@ -17,6 +17,7 @@
 \linespread{1.5}
 
 \usepackage{fancyhdr}
+\clearpage
 \pagestyle{fancy}
 
 \newcommand{\q}[1]{``#1''}
@@ -38,7 +39,9 @@ Patrick Eigensatz, G3C
 
 
 \clearpage
-\newpage
+
+\pagestyle{empty}
+
 \mbox{ }
 \clearpage
 
@@ -46,19 +49,16 @@ Patrick Eigensatz, G3C
 \section*{Vorwort}
 
 
-\newpage
-
 \tableofcontents
 
-\newpage
 \part{Dokumentation}
-\section{Aufgabenstellung} 
+\chapter{Aufgabenstellung} 
 Unsere Aufgabe ist eine Projektarbeit zu gestalten. Dazu hatten wir ein Semester Zeit. Man wählte ein Thema, dass einem intressiert. 
 Zu dem eigen ausgewählten Thema muss man etwas erarbeiten. Den Lernfortschritt muss man in einem Lernprotokoll festhalten.
 Dazu muss man eine Schriftlichearbeit abgeben und eine Präsentation machen. Diese Arbeit soll uns auf die Maturarbeit
 vorbereiten.
 
-\subsection{Motivation}
+\section{Motivation}
 In unserer Generation verbringen viele Kinder, Jugendliche und Erwachsene
 ihre Zeit mit dem Spielen von Computer- und Konsolenspielen.
 Berühmte Vertreter sind Call of Duty, Grand Theft Auto und Minecraft.
@@ -78,7 +78,7 @@ und wir waren und sind alle immer noch bereit mehr zu lernen.
 Zusätzlich wollten wir am Ende dieser Arbeit etwas in den Händen
 haben.
 
-\subsection{Persönliche Vorgaben}
+\section{Persönliche Vorgaben}
 
 Vor dem eigentlichen Projekt setzten wir uns selber einige Vorgaben.
 \\
@@ -99,7 +99,7 @@ weniger Speicherzugriffsfehler und ein schnelleres programmieren. SFML
 überzeugte uns schlussendlich, als wir die in der offiziellen Dokumentation
 gezeigten Beispielprogramme angeschaut haben. 
 
-\subsection{Ziele}
+\section{Ziele}
 \begin{itemize}
 \item 
 Ziel unseres Projektes ist ein 2D-Einbrecherspiel zu entwickeln. Der Spieler soll eine Figur spielen, die in Häuser einbrechen muss und dort unentdeckt Gegenstände entwenden soll.
@@ -122,9 +122,9 @@ Das Spiel muss/soll unter eine OpenSource Lizenz gestellt werden.
 \end{itemize}
 
 
-\newpage
-\section{Begriffe}
-\subparagraph{Game}
+
+\chapter{Begriffe}
+\subparagraph{Game:}
 In dieser Dokumentation werden wir öfters auch den englischen und weit verbreitete Begriff \q{Game} an der Stelle von \q{Spiel} gebrauchen.
 
 \subparagraph{Multimedia Framework:}
@@ -149,8 +149,8 @@ Für OSS-Entwickler kostenlose Plattform zur Qualitätssicherung: Kompiliert das
 \subparagraph{Coverity:}
 Für OSS-Entwickler kostenlose Plattform: Führt eine tiefgreifende statische Quellcodeanalyse durch, und hilft so Programmierfehler zu vermeiden und zu finden.
 
-\section{Entwicklungswerkzeuge}
-\subsection{Simple and Fast Multimedia Library}
+\chapter{Entwicklungswerkzeuge}
+\section{Simple and Fast Multimedia Library}
 \textbf{SFML}, kurz für \q{Simple and Fast Multimedia Library}, ist ein Multimediaframework, das wir hier quasi als
 \q{Entwicklungswerkzeug} definieren, obwohl es eben ein Framework ist, das wir in unserem Programm verwendeten. SFML
 liefert viele Klassen, die in verschiedenen Modulen (\textit{Sound}, \textit{Graphics}, \textit{Network}, ...) inkludiert
@@ -162,14 +162,14 @@ SFML war quasi die Schnittstelle zwischen unserem Modell des Spiels im Arbeitssp
 Wir wussten, wo sich der Spieler auf der Ebene befindet, und wir konnten mit SFML eine Bilddatei als Textur laden, und diese
 an der Position des Spielers aufzeichnen lassen. Über SFML konnten wir auch die Tastatur einlesen sowie Musik abspielen.
 
-\subsection{Code::Blocks}
+\section{Code::Blocks}
 Code::Blocks ist eine frei verfügbare Entwicklungsumgebung (IDE\footnote{Integrated Development Environment}) die Programmierung in C/C++ und D.
 Neben der Syntaxhervorhebung und der intelligente Autovervollständigung bietet Code::Blocks bequeme Einstellungen um SFML-Projekte auf allen Plattformen
 einfach zu kompilieren. Code::Blocks setzt dabei auf eine Art \textbf{make}, wie es schon aus Unixzeiten bekannt ist. Kompiliert wird nur das, was sich
 seit dem letzten Durchgang geändert hat. Code::Blocks nutzt \textbf{g++}, den GNU C++ Compiler, um die einzelnen Dateien in Objektcode umzuwandeln und diesen
 anschliessen in eine ausführbare Datei zu linken.
 
-\subsection{git und GitHub}
+\section{git und GitHub}
 \textbf{git} ist eine sogenannte verteilte Versionskontrolle (DVCS\footnote{Distributed Version Control System}). Ein solches Werkzeug übernimmt
 den Entwicklern einige Arbeit, wenn es darum geht, parallel an Software zu schreiben. Zudem zeichnet es alle Änderungen am Code auf und man kann diese
 einsehen, um zum Beispiel Fehler zu finden, sie erst seit kurzem vorhanden sind, oder gewisse Änderungen rückgängig zu machen, ohne dass man
@@ -189,7 +189,7 @@ als Hoster genutzt, sondern ebenfalls, um unsere Termine und Fristen mit dem Pro
 \end{figure}
 
 
-\subsection{Coverity Scan}
+\section{Coverity Scan}
 \textbf{Coverity Scan} ist der Name eines Produktes der gleichnamigen amerikanischen Firma. 2006 erhielt diese Firma vom US-Verteidigungsministerium
 einen finanziellen Zuschuss, um es für OpenSource-Projekte kostenlos möglich zu machen, ihren Code auf Sicherheitslücken und Programmierfehler untersuchen
 zu lassen. Dabei funktioniert Coverity keines Wegs wie ein normaler Compiler (erkennt also keine syntaktischen Fehler wie das Fehlen eines Semikolons),
@@ -202,7 +202,7 @@ Während der Entwicklung haben wir unser Projekt regelmässig von Coverity über
 \caption{Coverity hat 3 Fehler gefunden und markiert die fehlerhafte Stelle im Code}
 \end{figure}
 
-\subsection{Valgrind}
+\section{Valgrind}
 \textbf{Valgrind} ist ein freies Programm zur dynamischen Fehleranalyse in Programmen. Besonders nutzten wir die Fähigkeit,
 unser Spiel innerhalb des Memcheck-Moduls laufen zu lassen, um ein Feedback über den Speicherverbrauch zu erhalten. So entdeckten
 wir, dass viele Klassen, die schnell erstellt wurden, zwar Speicher anfordern, diesen aber nie mehr freigeben. Das führte schlussendlich
@@ -211,19 +211,23 @@ zu einem Speicherleck von knapp 20MB,
 
 \begin{figure}
 \centering
-\includegraphics[scale=0.8]{img/valgrind2.png}
+\includegraphics[scale=0.5]{img/valgrind2.png}
 \caption{Valgrinds Memcheck}
 \end{figure}
 
 
-\subsection{GIMP}
-Ein Programm um Bilder zu bearbeiten oder auch selber Bilder zu erstellen. 
-\subsection{GDB - Der GNU Debugger}
+\section{GIMP}
+GIMP ist ein Programm zum Darstellen und Bearbeiten von Bilddateien.
+Es stellt ähnliche Funktionen wie Photoshop zur Verfügung, ist jedoch kostenlos und frei.
+Wir nutzten GIMP zum erstellen der Animationen und Grafiken unseres Spieles.
+Dabei nutzten wir eine Grosszahl der uns bereitstehenden Funktionen.
+Alle Grafiken und Animationen unseres Spieles sind Eigenproduktion oder entstammen den GIMP-Standardgrafiken.
+\section{GDB - Der GNU Debugger}
 
-\newpage
-\section{Vorgehen}
-\subsection{Vorbereitung}
-\subsubsection{Spielidee}
+
+\chapter{Vorgehen}
+\section{Vorbereitung}
+\subsection{Spielidee}
 Am Anfang stand ganz klar die Ideenfindung auf dem Programm. Es war uns wichtig,
 eine Spielidee zu finden, an der ein Spieler später auch Spass haben würde,
 und wir das Spiel je nach zeitlichen Kapazitäten auch etwas erweitern könnten.
@@ -242,7 +246,7 @@ Dadurch und durch weitere Diskussion kamen wir auf die Idee eines Einbrecherspie
 Dieses erfüllte alle Vorgaben:
 Die Idee fanden wir alle interessant, es war mit unseren Mitteln und unserem Wissen realisierbar und man kann es gut erweitern.
 
-\subsubsection{Vorbereitung und Planung}
+\subsection{Vorbereitung und Planung}
 Parallel zur Ideenfindung haben wir uns - wie in der
 Disposition vermerkt - intensiv mit der Programmiersprache C++ beschäftigt. Das Einarbeiten
 in die Sprache war sehr zentral für das spätere Verständnis der SFML-Bibliothek, die uns
@@ -263,12 +267,12 @@ Dabei wurden die Grundsteine für wichtige Elemente unseres Programms gelegt: Ko
 Durch diese vorhergehende Fehlersuche hatten wir bereits Lösungen zu einigen Problemen, auf die wir treffen würden. Diese konnten wir dann bequem umgehen oder mussten feststellen, dass einige Problem komplexer sind als wir damals noch dachten.
 Der nächste Punkt war das Umsetzen unseres gesammelten Wissens und damit das Erstellen des Programms.
 
-\subsubsection{Umsetzung}
+\subsection{Umsetzung}
 Wir haben uns immer wieder Stichtage festgelegt, so dass wir immer gewisse Ziele erreichen mussten. So konnten wir unsere Planung grob einhalten. Jeder hat immer wieder gewusst was man als nächstes machen muss. Falls jemand mal ein Problem hatte. Hat es eine kleine Problemlösungsrunde gegeben, bei der jeder versucht hat nur das Problem zu lösen und so konnte speditiv weiter gearbeitet werden. So sind wir Schritt für Schritt vorwärts gekommen. Es hat auch immer wieder Verbesserungen oder Abänderungen gegeben am alten Code. So dass der Code jetzt möglichst einfach und optimal ist. 
 
 \newpage
-\subsection{Das Programmieren}
-\subsubsection{Das Laden erster Grafiken}
+\section{Das Programmieren}
+\subsection{Das Laden erster Grafiken}
 Unsere erste Version des Spieles war bloss ein Fenster mit der Hintergrundgrafik.
 Zu allen Dingen haben wir zuerst Demografiken gebraucht.
 Obwohl dieser Schritt einfach erscheint kam dabei eines unserer grössten Probleme in der Entwicklung des Spieles zum Vorschein.
@@ -283,11 +287,11 @@ Weiteres zu diesem Problem gibt es im Kapitel \ref{aufloesungsprobleme} auf Seit
 \end{figure}
 
 
-\subsubsection{Überprüfung auf Updates}
+\subsection{Überprüfung auf Updates}
 Versionsdatei von GitHub geladen, wenige Bytes, überprüfen und entsprechende Meldung im Spiel.
 Wird noch ausgedeutscht.
 
-\subsubsection{Kollisionsdetektion}
+\subsection{Kollisionsdetektion}
 Wir haben uns entschieden die Mauern von Anfang an auf den Hintergrund zu zeichnen. Dann machen wir ein FloatRect, ein Quadrat,
 über jede gezeichnete Mauer. Die Kollisionsdetektion ist da um zu erkennen ob der Spieler in eine Mauer läuft.
 Diese war zu Beginn der Entwicklungen etwas fehleranfällig. So gab es vereinzelt
@@ -304,7 +308,7 @@ von absoluten Bildschirmkoordinaten in Fenster/Spielkoordinaten umgerechnet werd
 \caption{Debugging der Kollisionsdetektion}
 \end{figure}
 
-\subsubsection{Levelclass und Leveldatei}
+\subsection{Levelclass und Leveldatei}
 Unser Ziel war zuerst ein Probe Level zu haben, es dann aber einfach zu haben ein richtiges Level zu erstellen. Deshalb haben wir uns entschieden, dass wir zu jedem Level eine Leveldatei machen, in der alle variablen informationen 
 enthalten sein müssen. So steht dort immer zuerst wie viele, dass es von diesem Obejekt hat und dann oft noch die genaue 
 Position. SO stehen die Mauer oder auch die Pfeile dort vermerkt. Es steht auch zu welchem Level gejumpt werden soll wenn 
@@ -321,7 +325,7 @@ da er diese ja nicht verstehen kann.
 \end{figure}
 
 
-\subsubsection{Animationen}
+\subsection{Animationen}
 Von Anfang an waren auch Animationen in unserem Spiel eingeplant. So sollen zum Beispiel ausserhalb eines Hauses
 Türen durch grün blinkende/aufleuchtende Pfeile markiert werden. Für solche Animationen wurde eigens eine Klasse
 implementiert.
@@ -344,33 +348,33 @@ $animationAusfuehren()$, die überprüft, ob bereits genug Zeit vergangen ist, d
 übernimmt.
 
 
-\subsubsection{Pfeile}
+\subsection{Pfeile}
 Zuerst haben wir geplant die Pfeile nur als Anzeiger zu nutzen, wo dass Eingänge sind. Doch dann hatten wir die Idee, dass man sie auch gleich als Teleporter benutzen könnte. SO standen wir vor einem viel schwereren Herausforderung. Wir haben dies dann so gelöst, dass wenn man auf den Pfeil kommt wir aus der Lveldatei gelesen, welches Level geladen wrden soll. Bei der Anzahl Pfeile steht dann wie viele Pfeile es hat. Zuerst wo sie sind und mit welcher Rotation. Dann hat es noch 2 Zahlen, diese geben die neue Starposition der Figur im neuen Level an. Dies könnte man dann auch benutzen und ausbauen, so dass wir Häuser mit mehreren Etagen bilden könnten. WIr haben noch Rote Pfeile gezeichnet um Ausgänge aus dem Haus zu kenzeichnen. Durch eine weitere Zahl in der Leveldatei werden entweder die roten oder die gelben Pfeile geladen.
 
-\subsubsection{Console}
+\subsection{Console}
 Wir haben eine Console eingebaut, die sich mit der rechten Shift-Taste öffnen lässt. In dieser kann man verschiedene kleine Hilfen aktivieren. Wie zum Beispiel, dass man durch Mauern und Türen gehen kann. Man kann aber auch das Level direkt wechseln.
 
-\subsubsection{Tastatur}
+\subsection{Tastatur}
 Man kann die Figur mit den Tasten W, A, S und D bewegen. Mit der Taste W geht die Figur nach oben, mit A nach links, mit S nach unten, mit D nach rechts. Hier können wir im SFMl auf eine einfache Form zurückgreifen. Diese erkennt, ob und welche Taste gedrückt wird. So konnten wir jeder Taste einen gewissen Befehl zuordenen und genau sagen was getan werden soll. Zum Beispiel bei der Taste W steht, dass sich die Figur um -5 bewegen soll. Dies bewirkt eine Bewegung nach oben. Da das Koordinatensystem bei jedem Laptop oben links mit 0/0 beginnt und dann nach unten negativ wird. Bei den anderen Tasten gibt es nur einen leicht anderen Befehl aus der SFML Klasse. 	+ Man kann die Figur mit... to be continued
 Bei diesen Tastenabfragen wird auch gleich überprüft, ob an in eine Mauer läuft, sollte dies nähmlich der fall sein darf sich die Figur ja nicht bewegen. Deshalb machen wir in diesem Fall das ganze wieder rückwärts. Wir haben auch einen Sprint eingebaut. Dazu muss man dir linke Shift Taste drücken und sich bewegen. Dann bewegt sich die Figur doppelt so schnell. Jedoch wird der Schalpegel erhöt (Verweis). Dies haben wir mit einer Variabel gemacht, so ändert sich die Variable je nach dem ob die Taste gedrückt wird oder nicht. 	
 Mit den Zahlentasten 9 und 0 kann herein und heraus zoomen. Da haben wir aber noert werden kann. Wir haben einen mindest Zeitabstand eingebaut, so dass sich die Tür erst wieder nach einer gewissen Zeit schliessen lässt. Sonst hätte man die Türe schneller öffnen und schliessen können als das Spiel mithalten könnte und würde die Tür noch oft öffnen und schliessen.Wir haben die Türen noch etwas grösser gemacht bei der Collisions-Abfrage, so dass man die Türen schlussendlich immer von beiden Seiten öffnen und schliessen kann. 	
  	
  	
-\subsubsection{Das Hauptmenü} 	
+\subsection{Das Hauptmenü} 	
 Das Hauptmenü wurde bewusst relativ simpel gehalten und konnte dadurch sehr schnell erstellt werden. Mit GIMP wurden 	
 einige mehr oder weniger gut aussehende Grafiken erzeugt, die als Buttons verwendet werden konnten. Doch da wir hier wieder auf ein Problem mit den Koordinaten stiessen entschieden wir uns unser Game nicht, wie viele andere aufzubauen. Nun ist man bereits im Hauptmenu die Spielfigur und da hatten wir es leicht. Wir haben einfach das Spielstarten Bild als neuen Pfeil definiert falls eine 2 in der Leveldatei steht. So ist es, sobald man auf das Spielstarten fährt einn Teleporter zum ersten Level. Bei der Spielbeenden haben wir ein FloatRect erstellt und eine checkCollison gemacht und falls der Spieler nun auf Spielbeenden fährt beendet das Spiel. 	
  	
  	
-\subsubsection{Dunkle Level} 	
+\subsection{Dunkle Level} 	
 Mit einem halbtransparenten Overlay können wir das Level, bzw. das Haus abdunkeln, und nur in einem Bereich um uns 	
 sichtbar machen. In der Leveldatei wird eingetragen, ob ein Level dunkel, oder hell ist. Dementsprechend wird dann das 	
 Overlay geladen oder nicht. Das führt zu spannenderen Spielen, weil man Gefahren und die Schätze relativ spät sehen kann. 	
 Besonders beim Spiel auf Zeit entsteht so quasi ein zusätzlicher Druck. 	
  	
-\subsubsection{Musik} 	
+\subsection{Musik} 	
 Wir haben einen Kolleg angefragt, ob es ihm etwas ausmachen würde, Musik für uner Game zu machen. Er war damit einverstanden und hat uns Musik komponiert. So dass unser Game jetzt auch Hintergrundmusik laden kann. Er hat 3 verschiedene Stücke komponiert. Eines für das Hauptmenü, eines für die Leveln und das Letzte für das Game Over. Nun wir haben das so gelöst, dass wir den Namen der Leveldatei überprüfen und dass es dann je nach Name eine andere Musik lädt und abspielt. Dies hat praktisch auf anhieb funktioniert. 	
 	
-\subsubsection{Schallpegel} 	
+\subsection{Schallpegel} 	
 Wir haben auch einen Schallpegel eingeführt. So kann man nicht nur von den Lasern geschnappt werden. Sondern man kann auch zu viel Lärm machen und so geschnappt werden. Damit man sieht wie knapp es ist, hat es eine Anzeige links, bei der der Schallpegel steigt und sinkt. Wenn man im roten bereich angekommen ist, wird eine zufällige Zahlgewählt, bei der man zu laut ist. Diese Zahl liegt zwischen 1 und 200. So wollen wir dem ganzen ein bisschen mehr Spannnung verleihen. Man macht mehr lärm, wenn man rennt oder eine Tür öffnet. Nach gewisser Zeit senkt sich der Pegel jedoch wieder. Die Grafik haben wir mit einer Animation eingeführt. Sie wird nur bei den Dunkelleveln angezeigt, da man nur bei diesen leise sein muss.
  	
 \begin{figure}[h] 	
@@ -379,14 +383,14 @@ Wir haben auch einen Schallpegel eingeführt. So kann man nicht nur von den Lase
 \caption{Ein dunkles Level} 	
 \end{figure} 	
  	
-\subsubsection{Punkte} 	
+\subsection{Punkte} 	
 Wir haben ein Punktesystem eingeführt. Jeder Schatz gibt einem 10 Punkte. In der Leveldatei wird angegeben, was die Punktzahl ist, die man erreichen muss. Sobald man diese Punktazhl durch sammeln der Schätze hat, gerät man automatisch ins Hauptmenu. Später wäre der Sinn, dass man dann ins nächste Level kommt. Die Punkte werden oben links auf dem Bildschirm dargestellt. 	
  	
-\subsubsection{Zeit} 	
+\subsection{Zeit} 	
 Wir haben auch eine Zeit eingebaut. So läuft die Zeit Obenlinks langsam herunter und falls man nicht durch das Level gekommen ist, Fällt man aus dem Spiel ins Gameover. Die zur verfügung stehenden Zeit wird in der Leveldatei geschrieben.	
  	
 
-\subsection{Wahl der Spielarchitektur}
+\section{Wahl der Spielarchitektur}
 Als wir die Grundlagen von C++ zusammen erarbeitet hatten, mussten wir natürlich vorausplanen, wie wir das Spiel programmieren würden.
 Wir kannten zwar Verzweigungen, Schleifen und Funktionen, aber wie können wir damit ein Spiel entwickeln? Auf Seite 106 in \cite{sfml_gamedev} 
 wird eine parallele Spielarchitektur erwähnt. Wir fanden die dort beschriebene Spielarchitektur aber unnötig komplizierter und erarbeiteten uns
@@ -399,7 +403,7 @@ die wir mit der Zeit auch implementiert hatten.\\
 \label{fig:seriell}
 \end{figure}
 
-\subsubsection{Serielle Architektur}
+\subsection{Serielle Architektur}
 Die serielle Architektur unterteilt sich in vier Teile, die immer vollständig und immer hintereinander ablaufen. Die Funktionsweise
 und die Aufgaben der Teile werden hier kurz erläutert:\\
 \\
@@ -421,7 +425,7 @@ eigene Zeit $\Delta t$ verstrichen ist, damit dem Sprite die nächste Textur zug
 \textbf{RenderLoop}
 Die einzelnen Sprites werden in das SFML Fenster gezeichnet, und SFML wird angewiesen das Fenster neu auf den Bildschirm zu \q{zeichnen}.
 
-\subsubsection{Parallele Architektur}
+\subsection{Parallele Architektur}
 SFML unterstüzt mit der \textit{Thread}-Klasse eine plattformübergreifende Implementierung
 von Systemthreads. Wenn ein Thread erstellt wird, springt das Programm an diesem Punkt
 in eine Funktion und führt diese parallel zum Rest des Programmes aus. Der grosse Vorteil,
@@ -438,8 +442,8 @@ ohne Ruckler spielbar wäre, hatten wir unsere Spielarchitektur ursprünglich so
 \end{figure}
 
 
-\section{Probleme und Lösungen} 	
-\subsection{Auflösungsproblem XY} 	
+\chapter{Probleme und Lösungen} 	
+\section{Auflösungsproblem XY} 	
 \label{aufloesungsprobleme} 	
 Beim Auflösungsproblem handelt es sich um ein Problem mit dem Umgang mit SFML. 	
 Das Problem besteht darin, dass jede Ansicht bei jeder Auflösung, jeder Gerätemarke und bei beiden Betriebssystemen gleich aussehen ch gewisse Probleme (verweis) 	
@@ -487,7 +491,7 @@ Dadurch kam und kommt es auf wenigen Bildschirmen mit hoher Auflösung zu Anzeig
 Dafür haben wir auf die zoom()-Funktion zurückgegriffen, doch dieses mal ist der Wert während dem Spiel manipulierbar und hat eine Beschränkung.
 Wir können Fehler bei dieser Funktion nicht ausschliessen, doch haben wir uns entschlossen diese nicht mehr zu verändern.
 
-\subsection{Compilerprobleme}
+\section{Compilerprobleme}
 Nicht nur wir machten Fehler bei der Entwicklung, und die Fehler von anderen sind erfahrungsgemäss schwerer aufzuspüren.
 Einem eher speziellen Problem begegneten wir, als wir den Pfad für ein Animationsbild erstellen wollten.
 Die Zahl $i$, die bei 0 zu zählen anfängt, zeigt, den wievielten Schritt der Animation gerade geladen werden soll, und $n$ steht für den Namen der Animation.
@@ -514,18 +518,22 @@ Konstruktor der Animationsklasse, in der Datei \textit{code/src/animation.cpp}.
 \caption{Erläuterung in einem Commit}
 \end{figure}
 
-\subsection{Fehler in der Leveldatei}
-Die Leveldatei war von Anfang an sehr Fehler anfällig. Da die Reihenfolge der Zahlen  genau stimmen muss. Da kann leicht ein Fehler unterlaufen. Die sind aber dann klar ersichtlich, da das ganze Bild ganz anders aus sieht als man erwartet hat. Man muss einfach die Leveldatei noch einemal überprüfen. Die Leveldatei ist auch ständig gewachsen, so dass man leicht einmal etwas vergessen konnte. Blöd ist einfach dass man sich keine Hinweise ins Dokument schreiben darf, weil sonst das ganze durcheinander kommt.
+\section{Fehler in der Leveldatei}
+Jeder spielbare Level wird, wie bereits erläutert, aus einer Leveldatei geladen.
+Das erstellen einer solchen ist mit viel Aufwand verbunden, denn sie muss genau auf die Levelclass abgestimmt sein.
+Beim Erstellen, oder durch Vernachlässigung einiger Dateien nach dem Bearbeiten der Levelclass, kann es zu Fehlern kommen.
+Die meisten Grafikfehler gehen auf diese Art von Fehlern zurück.
+Dabei kann das Spiel die Datei zwar lesen, gibt aber einen Fehler aus: "Fehler beim Laden der Leveldatei: " und den entsprechenden Levelnamen.
 
-Bild
 
-\subsection{Fehler beim Laser}
-WIr haben ein weiteres testlevel erstellt und dieses mal sollte es mehrere Laser haben. Doch dies wollte nicht funktionieren, es funktionierte genau ein Laser. Die anderen waren zwar gezeichnet aber die Checkcollision-Funktion wollte nicht gehen. Da haben wir das ganze mehrere male durchgelesen. Bis jemandem aufgefallen ist, dass es immer nur der erste Laser ist, der funktionierte. Da fiel es uns dann auch wie Schuppen von den Augen, die eine Klammer war zu früh geschlossen worden. Danach lief es einwandfrei.
+\section{Doppelter Tastendruck}
+Bei der Implementierung der Schätze, stellten wir fest, dass SFML ein Problem mit der Anzahl Anschläge von Tasten hat.
+So kam es zu doppelten Punkten beim einsammeln von Schätzen.
+Auch bei den Türen traten gleiche Probleme auf, welche jedoch durch das Bestimmen der Animationslänge und des Animationsstartverbotes währenddessen aufgehoben wurden.
+Bei den Schätzen lösten wir es mit einer internen Uhr, deren einzige Funktion eine Verzögerung ist, so dass ein Schatz erst bei wirklichem erneuten Drücken der Taste aufgenommen wird.
 
-\subsection{Doppelter Tastendruck}
-SFML gab an, dass eine Taste doppelt gedrückt wurde, obwohl sie nur einmal gedrückt wurde. Massnahme: Zeitliche Aussortierung
 
-\subsection{Merge Conflicts}
+\section{Merge Conflicts}
 git, unsere Versionskontrolle, ermöglichte es uns, parallel, in sogenannten Branches zu entwickeln. (Siehe Abbildung \ref{fig:branches} auf Seite \pageref{fig:branches}). Wir entwickelten neue Funktionen oft parallel und "mergten" (engl. to merge = zusammenführen) sie in unseren master-Zweig.
 git nimmt alle Änderungen, die in beiden Zweigen seit dem letzten gemeinsamen Commit erstellt wurden, und erstellt daraus neue Dateien, die alle Änderungen,
 also die Änderungen von beiden Zweigen beeinhalten. Es kann sein, dass nun 2 Personen gleichzeitig an derselben Stelle im Code etwas geändert haben. Zum Beispiel
@@ -538,9 +546,8 @@ eine Variable unbenannt und man musste entscheiden, welche Version man wählt.\\
 Mühsam hingegen waren Konflikte, die mehrere Dateien betrafen, und in der 20 bis 30 Zeilen in einem Klammerwirrwar in Konflikt stehen. Da die Dateien und die Zeilen
 logisch voneinander abhängen, musste man sehr umsichtig sein, und brauchte entsprechend viel Zeit und Geduld einen solchen Konflikt zu lösen. Es gab zum Glück kein
 grosser Konflikt, der uns Probleme bereitete.
-\newpage
 
-\subsection{Paralleles Entwickeln des Kerns}
+\section{Paralleles Entwickeln des Kerns}
 Obwohl wir bereits am Anfang parallel mit git entwickeln konnten, war es sehr schwierig, da noch gar kein Code vorhanden war,
 und es zuerst galt, eine Basis zu entwickeln, auf der dann alle Programmieren konnten. Wir versuchten von Anfang an so zu programmieren,
 dass wir später keine grossen Änderungen vornehmen mussten, um das Spiel um Laserschranken oder auch Musik zu erweitern.
@@ -554,10 +561,31 @@ Funktion, die es uns ermöglichte nur die Objekte in die Levelklasse zu laden un
 Ansonsten mussten wir am ganzen Kern nichts mehr ändern. Der grosse Vorteil, der sich dadurch ergab, war, dass jeder seine 
 Funktionen kannte, und zum Beispiel problemlos Objekte erstellen konnte und diese auch auf Kollisionen mit dem Spieler überprüfen konnte.
 
-\subsection{Mathematik}
-Aufwand zum berechnen/ Logik
+\section{Mathematik}
+Das Überthema unserer Projektunterricht-Kursgruppe ist Mathematik im Alltag.
+Passend dazu hatten wir uns mit vielen mathematischen und logischen Problemen beim Programmieren auseinanderzusetzen.
+Programmieren selber ist ein sehr Logik-gebundener Prozess.
+Einfache Beispiele sind logische Verknüpfungen oder Bedingungen.
+Doch meisten sind es komplexere Probleme wie zum Beispiel das Regeln von Unterordnungen oder das korrekte Aufrufen von definierten Variablen.
+Auch das Auflösungsproblem gehört zu dieser Art von Problemen.
+Ein weiteres Beispiel für logische Probleme sind die Türen.
+Uns war es wichtig, dass die Türen nach dem Aufmachen und Zumachen jeweils fest sind.
+Dazu mussten wir eine Funktion definieren, die am Ende der jeweiligen Animation aufgerufen wird und eine Mauer erstellt.
+Das Problem hierbei war das Regeln der verschieden Klassen.
+Durch Probieren und vielem Nachdenken kamen wir auf die Idee Funktionspointer zu gebrauchen. 
+(Das ganze Problem können sie im Lernprotokoll nachlesen, wo es ausführlich erklärt wird.)
+\\
+Zu den logischen Problemen kamen auch einfach arithmetische und geometrische Probleme.
+So hatten wir grosse Mühe beim berechnen der Mauerkoordinaten für die Türe bei jeder möglichen Rotation, wobei wir uns auf neunzig Grad Drehungen beschränkt haben.
+Zum Schluss gab es auch noch Fehler durch die Komplexität des Codes.
+Beim erstellen ein weiteres Testlevels, der mehrere Laser haben sollte kam es zu Fehlern.
+Es wurden zwar alle Laser angezeigt, doch nur ein Laser funktionierte.
+Sie waren zwar gezeichnet aber die Checkcollision-Funktion gab keine Kollision aus. 
+Nach mehrmaligem Lesen ist uns aufgefallen, dass es immer nur der erste Laser ist, der funktionierte. Da war uns klar, dass der return-Befehl innerhalb der verschachtelten Abfragen eine Abfrage zu früh ausgeführt wurde. Nach dem Korrigieren wurden alle Laser richtig eingelesen und verarbeitet.
 
-\subsection{Verfügbare Zeit}
+
+
+\section{Verfügbare Zeit}
 Am Anfang des Projektunterrichts dachten wir, wir hätten mehr Zeit für die eigentliche Entwicklung. Wir mussten schlussendlich aber auch
 sehr viel Zeit in die Disposition, den Projektvertrag und das Lernprotokoll stecken. Die Zeit, die uns für die Dokumentation und das Spiel
 blieb, haben wir aber sehr intensiv genutzt. Die Kreise in Abbildung \ref{fig:punchcard} zeigen additiv, wie viel und wann seit Projektbeginn programmiert wurde.
@@ -569,12 +597,12 @@ blieb, haben wir aber sehr intensiv genutzt. Die Kreise in Abbildung \ref{fig:pu
 \label{fig:punchcard}
 \end{figure}
 
-\section{Das Spiel}
-\subsection{Das Spielprinzip}
+\chapter{Das Spiel}
+\section{Spielprinzip}
 Das Spielprinzip ist einfach: Als Einbrecher versucht man in ein Haus einzubrechen, und dabei keinen Lärm zu verursachen, Laserschranken auszuweichen
 und dies je nach Spielmodus möglichst schnell, oder sehr ausgiebig.
 
-\subsection{Spielmodi}
+\section{Spielmodi}
 Wir haben unsere Level verschieden erstellt:
 \begin{itemize}
 \item Zeitdruck: Die Zeit ist bewusst sehr knapp gewählt, und man muss die Schätze finden, bevor diese abläuft.
@@ -582,12 +610,10 @@ Wir haben unsere Level verschieden erstellt:
 \item Schatz: Es gab nur einen einzigen, im dunklen gut versteckten Schatz.
 \end{itemize}
 
-\newpage
-\section{Diskussion / Reflexion}
+\chapter{Diskussion / Reflexion}
 
 
-\newpage
-\section{Mögliche Erweiterungen / Ausblick}
+\chapter{Mögliche Erweiterungen / Ausblick}
 Wir wissen wir sind immer noch einige Schritte von einem kompletten Game entfernt. Es fehlen schon alleine die verschiedenen Levels. Dazu kommt, dass wir auch noch Gegner einbauen möchten. So dass man Gegner hat die herumlaufen und einem entdecken können, das könnte zum Beispiel ein Hund sein. Wir möchten auch, dass der Schallpegel erhöht wird, im Falle von einer Kollision mit einer Mauer. 	
 \\ 	
 \\ 	
@@ -606,7 +632,7 @@ Wir werden weiterhin an dieem Spiel weiter schreiben, da es uns doch sehr gefäl
 \clearpage
 
 \addcontentsline{toc}{section}{Antiplagiatserklärung}
-\section*{Antiplagiatserklärung}
+\chapter*{Antiplagiatserklärung}
 Wir versichern hiermit, die vorliegende Arbeit, inklusive des entstandenen Spiels
 selber, ohne fremde Hilfe verfasst zu haben. Alle Quellen, die zur Erstellung
 der Arbeit verwendet wurden, wurden in der Literaturliste aufgeführt.
