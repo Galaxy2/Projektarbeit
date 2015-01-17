@@ -1,4 +1,4 @@
- \documentclass[11pt,a4paper]{scrbook}
+\documentclass[11pt,a4paper]{scrbook}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage{amsmath}
@@ -58,10 +58,9 @@ Patrick Eigensatz, G3C
 
 \part{Dokumentation}
 \chapter{Aufgabenstellung} 
-Unsere Aufgabe war eine Projektarbeit zu gestalten. Dazu hatten wir ein Semester Zeit. Man wählte ein Thema, dass einem intressiert. 
+Unsere Aufgabe war eine Projektarbeit zu gestalten. Dazu hatten wir ein Semester Zeit.
 Zu dem eigen ausgewählten Thema muss man etwas erarbeiten. Der Lernfortschritt wird in einem Lernprotokoll festgehalten.
-Dazu macht man eine Schriftlichearbeit und eine Präsentation. Diese Arbeit soll uns auf die Maturarbeit
-vorbereiten.
+Dazu macht man eine schriftliche Arbeit und eine Präsentation. Diese Arbeit soll uns auf die Maturarbeit vorbereiten.
 
 \section{Motivation}
 In unserer Generation verbringen viele Kinder, Jugendliche und Erwachsene
@@ -69,38 +68,37 @@ ihre Zeit mit dem Spielen von Computer- und Konsolenspielen.
 Berühmte Vertreter sind Call of Duty, Grand Theft Auto und Minecraft.
 Doch die meisten Nutzer dieser Programme haben nie die Prozesse hinter diesen Games verstanden.
 Sei das auf Grund der weit fortgeschrittenen Komplexität einiger Spiele
-oder bei simpleren Spielen fehlt einfach die Motivation, sich damit zu befassen.\\
+oder bei simpleren Spielen die fehlende Motivation, sich damit zu befassen.\\
 \\
-Viele wollen nur wissen, wie man ein Spiel spielt und nicht wie man es spielbar macht. Nur wenige wissen, wie schwer es ist bereits ein
-kleines Spiel zu machen. Nun mit dierer Arbeit zeigen wir, wie der Aufbau und die Umsetzung eines Games aussehen kann.
+Viele wollen nur wissen, wie man ein Spiel spielt und nicht wie man es spielbar macht. Nur wenige wissen, wie schwer es ist bereits ein kleines Spiel zu machen. 
 Da wir selber auch zu dieser Generation gehören, 
 machen wir alle immer wieder Erfahrungen mit den verschiedensten Games.
-Doch wir wollten nicht blos Spiele spielen, 
+Doch wir wollten nicht bloss Spiele spielen, 
 sondern wir wollten selber ein Spiel entwickeln.
-Dazu kam noch unsere Begeisterung für das Programmieren.
-Jeder von uns hatte bereits ein wenig Erfahrungen auf dem Gebiet von Programmieren gesammelt. Es hat jedoch noch keiner alleine
-ein ganzes Game gemacht. Wir waren und sind alle immer noch bereit mehr zu lernen.
+Hinzu kam auch unsere Begeisterung für das Programmieren.
+Jeder von uns hatte bereits ein wenig Erfahrung auf dem Gebiet des Programmierens gesammelt. 
+Es hat jedoch noch keiner alleine
+ein ganzes Game gemacht.
+Wir waren und sind alle immer noch bereit mehr zu lernen.
 Zusätzlich wollten wir am Ende dieser Arbeit etwas gemacht haben, das man dann auch brauchen kann.
 
 \section{Persönliche Vorgaben}
 
 Vor dem eigentlichen Projekt setzten wir uns selber einige Vorgaben.
-\\
 Uns war klar, dass ein Spiel auf dreidimensionaler Basis in der uns zu Verfügung stehenden Zeit nicht realisierbar war. Deshalb entschieden wir uns für ein 2D Spiel.
 Dazu brachte die von uns gewählte Programmiersprache einige Hilfen mit sich, die wir bei der Entwicklung eines 2D-Spiels gut gebrauchen konnten.
 \\
-Um die Sache für uns noch attraktiver zu machen,
-wählten wir bewusst eine Programmiersprache, die noch nicht
-alle von uns beherrschten. Natürlich hätten wir genau so gut
-SDL oder direkt das darunterliegende OpenGL verwenden können. OpenGL
-schied aus, da der Aufwand bereits ein einfaches 2D-Spiel zu realisieren, nicht möglich gewesen wäre. SDL war unser Favorit, bis wir
-SFML entdeckten. Ganz im Gegensatz zu SDL ist SFML für C++ ausgerichtet. So wurden Klassen anstatt Strukturen verwendet, was den (für den
-Anfang komplizierten) Umgang mit Zeigern reduzierte. Ausserdem besitzen die
-Klassen eigene Konstruktoren, bzw. Destruktoren, was das Initialisieren
-oder das freigeben von Speicher überflüssig macht. Davon erhofften wir uns
-weniger Speicherzugriffsfehler und ein schnelleres programmieren. SFML
-überzeugte uns schlussendlich, als wir die in der offiziellen Dokumentation
-gezeigten Beispielprogramme angeschaut haben. 
+Um die Sache für uns noch attraktiver zu machen, wählten wir bewusst eine Programmiersprache, die noch nicht alle von uns beherrschten. 
+Natürlich hätten wir genau so gut SDL oder direkt das darunterliegende OpenGL verwenden können. 
+OpenGL schied aus, da der Aufwand bereits ein einfaches 2D-Spiel zu realisieren zu gross gewesen wäre. 
+SDL war unser Favorit, bis wir SFML entdeckten. 
+Ganz im Gegensatz zu SDL ist SFML für C++ ausgerichtet. 
+So wurden Klassen anstatt Strukturen verwendet, was den (für den
+Anfang komplizierten) Umgang mit Zeigern reduzierte. 
+Ausserdem besitzen die Klassen eigene Konstruktoren, bzw. Destruktoren, was das Initialisieren
+oder das freigeben von Speicher überflüssig macht. 
+Davon erhofften wir uns weniger Speicherzugriffsfehler und ein schnelleres programmieren. 
+SFML überzeugte uns schlussendlich, als wir die in der offiziellen Dokumentation gezeigten Beispielprogramme angeschaut haben. 
 
 \section{Ziele}
 \begin{itemize}
@@ -144,7 +142,7 @@ Software, die unter einer OpenSource-Lizenz verfügbar ist.
 Ein Programm, das Veränderungen an Dateien aufzeichnet und speichert, sodass mehrere Entwickler den Code gleichzeitig ohne Redundanz verändern können.
 
 \subparagraph{GitHub:}
-Für OSS-Entwickler von OpenSource kostenlose Plattform, um die über das Versionskontrollsystem git aufgezeichneten Veränderungen übersichtlich zugänglich zu machen.
+Für OSS-Entwickler kostenlose Plattform, um die über das Versionskontrollsystem git aufgezeichneten Veränderungen übersichtlich zugänglich zu machen.
 
 \subparagraph{Travis CI:}
 Für OSS-Entwickler kostenlose Plattform zur Qualitätssicherung: Kompiliert das Projekt automatisch nach jeder Änderungen und führt Tests durch, um zu sicherzustellen, dass das Programm einwandfrei funktioniert.
@@ -154,36 +152,35 @@ Für OSS-Entwickler kostenlose Plattform: Führt eine tiefgreifende statische Qu
 
 \chapter{Entwicklungswerkzeuge}
 \section{Simple and Fast Multimedia Library}
-\textbf{SFML}, kurz für \q{Simple and Fast Multimedia Library}, ist ein Multimediaframework, das wir hier quasi als
-\q{Entwicklungswerkzeug} definieren, obwohl es eben ein Framework ist, das wir in unserem Programm verwendeten. SFML
-liefert viele Klassen, die in verschiedenen Modulen (\textit{Sound}, \textit{Graphics}, \textit{Network}, ...) inkludiert
-und ins Programm gelinkt werden können. Diese Module sind bewusst plattformübergreifend entwickelt worden, so dass wir uns
-nicht um eine Portierung des Spiels kümmern mussten.
+\textbf{SFML}, kurz für \q{Simple and Fast Multimedia Library}, ist ein Multimediaframework, das wir hier als
+\q{Entwicklungswerkzeug} definieren, obwohl es ein Framework ist, das wir in unserem Programm verwendeten. 
+SFML liefert viele Klassen, die in verschiedenen Modulen (\textit{Sound}, \textit{Graphics}, \textit{Network}, ...) inkludiert und ins Programm gelinkt werden können.
+Diese Module sind bewusst plattformübergreifend entwickelt worden, so dass wir uns nicht um eine Portierung des Spiels kümmern mussten.
 \\
 \\
-SFML war quasi die Schnittstelle zwischen unserem Modell des Spiels im Arbeitsspeichers, und dem Benutzer des Spiels. Ein Beispiel:
+SFML ist die Schnittstelle zwischen unserem Modell des Spiels im Arbeitsspeicher, und dem Benutzer des Spiels. Ein Beispiel:
 Wir wussten, wo sich der Spieler auf der Ebene befindet, und wir konnten mit SFML eine Bilddatei als Textur laden, und diese
 an der Position des Spielers aufzeichnen lassen. Über SFML konnten wir auch die Tastatur einlesen sowie Musik abspielen.
 
 \section{Code::Blocks}
-Code::Blocks ist eine frei verfügbare Entwicklungsumgebung (IDE\footnote{Integrated Development Environment}) die Programmierung in C/C++ und D.
-Neben der Syntaxhervorhebung und der intelligente Autovervollständigung bietet Code::Blocks bequeme Einstellungen um SFML-Projekte auf allen Plattformen
+Code::Blocks ist eine frei verfügbare Entwicklungsumgebung (IDE\footnote{Integrated Development Environment}) zur Programmierung in C/C++ und D.
+Neben der Syntaxhervorhebung und der intelligenten Autovervollständigung, bietet Code::Blocks bequeme Einstellungen um SFML-Projekte auf allen Plattformen
 einfach zu kompilieren. Code::Blocks setzt dabei auf eine Art \textbf{make}, wie es schon aus Unixzeiten bekannt ist. Kompiliert wird nur das, was sich
 seit dem letzten Durchgang geändert hat. Code::Blocks nutzt \textbf{g++}, den GNU C++ Compiler, um die einzelnen Dateien in Objektcode umzuwandeln und diesen
-anschliessen in eine ausführbare Datei zu linken.
+anschliessend in eine ausführbare Datei zu linken.
 
 \section{git und GitHub}
 \textbf{git} ist eine sogenannte verteilte Versionskontrolle (DVCS\footnote{Distributed Version Control System}). Ein solches Werkzeug übernimmt
 den Entwicklern einige Arbeit, wenn es darum geht, parallel an Software zu schreiben. Zudem zeichnet es alle Änderungen am Code auf und man kann diese
 einsehen, um zum Beispiel Fehler zu finden, sie erst seit kurzem vorhanden sind, oder gewisse Änderungen rückgängig zu machen, ohne dass man
-manuell die Dateien zerpflücken muss. git überzeugte uns durch seine Einfachheit, seine Effizienz und seine Möglichkeiten. git erwies sich
-als enorme Hilfe, sei es um Fehler zu finden oder einfach zum Programmieren.
+manuell die Dateien zerpflücken muss. git überzeugte uns durch seine Einfachheit, seine Effizienz und seine Möglichkeiten. 
+git erwies sich als enorme Hilfe, sei es um Fehler zu finden oder einfach zum synchronisieren des Codes.
 \\
 \\
 \textbf{GitHub} ist ein
 Onlineportal, das das Hosting von Projekten, die mit git verwaltet werden, kostenlos übernimmt. Das Projekt erhält eine eigene Übersichtsseite,
 die ebenfalls zur Entwicklung genutzt werden kann, und auf der Interessierte den Code und die Änderungen einsehen können. Wir haben GitHub nicht nur
-als Hoster genutzt, sondern ebenfalls, um unsere Termine und Fristen mit dem Projektkalender festzulegen.
+als Hoster genutzt, sondern ebenfalls um unsere Termine und Fristen mit dem Projektkalender festzulegen.
 \begin{figure}
 \centering
 \includegraphics[scale=1]{img/branches.png}
@@ -195,7 +192,7 @@ als Hoster genutzt, sondern ebenfalls, um unsere Termine und Fristen mit dem Pro
 \section{Coverity Scan}
 \textbf{Coverity Scan} ist der Name eines Produktes der gleichnamigen amerikanischen Firma. 2006 erhielt diese Firma vom US-Verteidigungsministerium
 einen finanziellen Zuschuss, um es für OpenSource-Projekte kostenlos möglich zu machen, ihren Code auf Sicherheitslücken und Programmierfehler untersuchen
-zu lassen. Dabei funktioniert Coverity keines Wegs wie ein normaler Compiler (erkennt also keine syntaktischen Fehler wie das Fehlen eines Semikolons),
+zu lassen. Dabei funktioniert Coverity keineswegs wie ein normaler Compiler (erkennt also keine syntaktischen Fehler wie das Fehlen eines Semikolons),
 sondern es versucht den Code zu verstehen und mögliche semantische Fehler zu finden. So werden Entwickler hingewiesen, dass zum Beispiel eine Funktion
 unter gewissen Bedingungen nie terminiert und so das Programm blockiert. Auch findet Coverity schnell Speicherlecks und Speicherzugriffsfehler.
 Während der Entwicklung haben wir unser Projekt regelmässig von Coverity überprüfen lassen.
@@ -275,22 +272,6 @@ Wir haben uns immer wieder Stichtage festgelegt, so dass wir immer gewisse Ziele
 
 \newpage
 \section{Einzelne Funktionen des Spiels}
-
-Das kommt nicht hier.. braucht es das??
-\subsection{Das Laden erster Grafiken}
-Unsere erste Version des Spieles war bloss ein Fenster mit der Hintergrundgrafik.
-Zu allen Dingen haben wir zuerst Demografiken gebraucht.
-Obwohl dieser Schritt einfach erscheint kam dabei eines unserer grössten Probleme in der Entwicklung des Spieles zum Vorschein.
-Die Schwierigkeit war es, dass diese erste Version bei allen gleich aussieht, unabhängig von Auflösung, Marke oder Betriebssystem.
-Weiteres zu diesem Problem gibt es im Kapitel \ref{aufloesungsprobleme} auf Seite \pageref{aufloesungsprobleme}.
-
-
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.25]{img/grafiken.png}
-\caption{Ein Beispiellevel mit der Spielfigur}
-\end{figure}
-
 
 \subsection{Überprüfung auf Updates}
 Wir haben es eingerichtet, dass eine Versionsdatei von GitHub geladen wird. Wenige Bytes überprüfen, ob eine aktuellere Version vorliegt und machen entsprechende Meldung im Spiel.
@@ -613,6 +594,22 @@ Wir haben unsere Level verschieden erstellt:
 \item Suche: Die Schätze waren im ganzen Haus versteckt und gut mit Laserschranken gesichert.
 \item Schatz: Es gab nur einen einzigen, im dunklen gut versteckten Schatz.
 \end{itemize}
+
+%gehört auch nicht hier hin! :/ 
+\subsection{Das Laden erster Grafiken}
+Unsere erste Version des Spieles war bloss ein Fenster mit der Hintergrundgrafik.
+Zu allen Dingen haben wir zuerst Demografiken gebraucht.
+Obwohl dieser Schritt einfach erscheint kam dabei eines unserer grössten Probleme in der Entwicklung des Spieles zum Vorschein.
+Die Schwierigkeit war es, dass diese erste Version bei allen gleich aussieht, unabhängig von Auflösung, Marke oder Betriebssystem.
+Weiteres zu diesem Problem gibt es im Kapitel \ref{aufloesungsprobleme} auf Seite \pageref{aufloesungsprobleme}.
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.25]{img/grafiken.png}
+\caption{Ein Beispiellevel mit der Spielfigur}
+\end{figure}
+
 
 \chapter{Diskussion / Reflexion}
 
