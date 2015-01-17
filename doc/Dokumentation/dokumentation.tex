@@ -258,6 +258,11 @@ Darum begannen wir das Spiel zu porträtieren.
 Das leeren eines Hauses sollte das Ziel sein, wobei wir damals noch 3 verschiedene Spielmodi geplant hatten:
 \begin{itemize}
 \item Einen bestimmten Gegenstand klauen
+\begin{itemize}
+\item Würdest du das Spiel spielen?
+\item Ist das Spiel technisch überhaupt realisierbar?
+\item Ist das Spiel erweiterbar?
+\end{itemize}
 \item In einer bestimmten Zeit, so viel wie möglich stehlen
 \item Einen möglichst hohen Wert der gestohlenen Waren erreichen
 \end{itemize}
@@ -274,7 +279,7 @@ Wir haben uns immer wieder Stichtage festgelegt, so dass wir immer gewisse Ziele
 \section{Einzelne Funktionen des Spiels}
 
 \subsection{Überprüfung auf Updates}
-Wir haben es eingerichtet, dass eine Versionsdatei von GitHub geladen wird. Wenige Bytes überprüfen, ob eine aktuellere Version vorliegt und machen entsprechende Meldung im Spiel.
+Wir haben es eingerichtet, dass eine Versionsdatei von GitHub geladen wird. Wenige Bytes überprüfen, ob eine aktuellere Version des Spiels vorliegt und machen entsprechende Meldung im Spiel.
 
 \subsection{Kollisionsdetektion}
 Wir haben uns entschieden die Mauern direkt auf den Hintergrund zu zeichnen. Dann machen wir ein FloatRect, ein virtuelles Quadrat,
@@ -285,7 +290,7 @@ versteckte sich eine unsichtbare Mauer. Das heisst, es wurde eine Kollision geme
 Spielerposition gar keine Mauer lag. Um das Problem zu Erforschen und schliesslich zu beheben, haben
 wir die Mauerabschnitte einzeln geladen und ein grünes Rechteck darübergezeichnet. So fiel uns auf, dass
 die Koordinaten der Mauer zwar richtig gelesen, aber falsch verarbeitet wurden. Die Koordinaten mussten
-von absoluten Bildschirmkoordinaten in Fenster/Spielkoordinaten umgerechnet werden. Diesen Fehler konnte wir nach einigem ausprobieren beheben.
+von absoluten Bildschirmkoordinaten in Fenster/Spielkoordinaten umgerechnet werden. Diesen Fehler konnte wir nach einigem ausprobieren und rechnen beheben.
 
 \begin{figure}[h]
 \centering
@@ -294,14 +299,14 @@ von absoluten Bildschirmkoordinaten in Fenster/Spielkoordinaten umgerechnet werd
 \end{figure}
 
 \subsection{Levelclass und Leveldatei}
-Unser Ziel war zuerst ein Probe Level zu haben, es dann aber einfach zu haben ein richtiges Level zu erstellen. Deshalb haben wir uns entschieden, dass wir zu jedem Level eine Leveldatei machen, in der alle variablen informationen 
+Unser Ziel war zuerst ein Probe-Level zu haben, es dann aber einfach zu haben ein richtiges Level zu erstellen. Deshalb haben wir uns entschieden, dass wir zu jedem Level eine Leveldatei machen, in der alle variablen informationen 
 enthalten sein müssen. So steht dort immer zuerst wie viele, dass es von diesem Obejekt hat und dann oft noch die genaue 
-Position. SO stehen die Mauer oder auch die Pfeile dort vermerkt. Es steht auch zu welchem Level gejumpt werden soll wenn 
+Position. So stehen die Mauer oder auch die Pfeile dort vermerkt. Es steht auch zu welchem Level gewechselt werden soll, wenn 
 man auf einen Pfeil kommt.
-Dies wird in der Leveclass alles genau heraus gelesen. Das wichtige dabei ist, dass die Reihenfolge genau stimmt sonst gerät 
-das ganze in ein irres Durcheinenader. Wir brauchen die Anzahl Elemente die es hat zuerst, um zu erkennen welche Information 
-zu welchem Objekt gehört. Denn das Programm liesst dort nur Zahlen heraus. Und mit Wörtern können wir ihm das nicht erklären, 
-da er diese ja nicht verstehen kann.
+Dies wird in der Leveclass alles genau heraus gelesen. Das wichtige dabei ist, dass die Reihenfolge genau stimmt. Sonst gerät 
+das Ganze in ein irres Durcheinenader. Zuerst brauchen wir die Anzahl Elemente, die es hat, um zu erkennen welche Information 
+zu welchem Objekt gehört. Denn das Programm liest dort nur Zahlen heraus. Mit Wörtern können wir ihm das nicht erklären, 
+da er diese nicht versteht.
 
 \begin{figure}[h]
 \centering
@@ -311,9 +316,10 @@ da er diese ja nicht verstehen kann.
 
 
 \subsection{Animationen}
-Von Anfang an waren auch Animationen in unserem Spiel eingeplant. So sollen zum Beispiel ausserhalb eines Hauses
-Türen durch grün blinkende/aufleuchtende Pfeile markiert werden. Für solche Animationen wurde eigens eine Klasse
+Von Anfang an waren Animationen in unserem Spiel eingeplant. So sollen zum Beispiel ausserhalb eines Hauses
+Türen durch grün blinkende, aufleuchtende Pfeile markiert werden. Für solche Animationen wurde eigens eine Klasse
 implementiert.
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.6]{img/animation_uml.png}
@@ -328,16 +334,17 @@ der die Bilder bereits lädt, die Position und die Zeitspanne $\Delta t$ zwische
 \end{figure}
 Innerhalb unserer $main()$-Funktion nützten wir eine $std::list<animation *>$ Liste aus der STL\footnote{Standard Template Library}.
 Bevor die Sprites in das Fenster gezeichnet werden, werden die Texturen der Sprites dem Animationszeitpunkt entsprechend
-neu geladen. So entsteht das Gefühl einer Bewegung, bzw. hier Anpassung der Farbe. Entscheidend ist dabei die Methode
-$animationAusfuehren()$, die überprüft, ob bereits genug Zeit vergangen ist, das neue Bild anzuzeigen und dies gegebenenfalls
-übernimmt.
+neu geladen. So entsteht das Gefühl einer Bewegung oder hier eine Anpassung der Farbe. Entscheidend ist dabei die Methode
+$animationAusfuehren()$, die überprüft, ob bereits genug Zeit vergangen ist, um das neue Bild anzuzeigen. Gegebenenfalls
+übernimmt sie diese Aufgabe, es anzuzeigen.
 
 
 \subsection{Pfeile}
-Zuerst haben wir geplant die Pfeile nur als Anzeiger zu nutzen, wo dass Eingänge sind. Doch dann hatten wir die Idee, dass man sie auch gleich als Teleporter benutzen könnte. SO standen wir vor einem viel schwereren Herausforderung. Wir haben dies dann so gelöst, dass wenn man auf den Pfeil kommt wir aus der Lveldatei gelesen, welches Level geladen wrden soll. Bei der Anzahl Pfeile steht dann wie viele Pfeile es hat. Zuerst wo sie sind und mit welcher Rotation. Dann hat es noch 2 Zahlen, diese geben die neue Starposition der Figur im neuen Level an. Dies könnte man dann auch benutzen und ausbauen, so dass wir Häuser mit mehreren Etagen bilden könnten. WIr haben noch Rote Pfeile gezeichnet um Ausgänge aus dem Haus zu kenzeichnen. Durch eine weitere Zahl in der Leveldatei werden entweder die roten oder die gelben Pfeile geladen.
+Zuerst haben wir geplant die Pfeile nur als Anzeiger zu nutzen, um Eingänge zu kennzeichnen. Doch dann hatten wir die Idee, dass man sie gleich als Teleporter benutzen könnte. So standen wir vor einer viel schwereren Herausforderung, als zuerst angenommen. Um das zu lösen, geben wir in der Leveldatei das zu ladende Level an. Stösst man auf einen Pfeil wird das herausgelesen und man wechselt das Level. Wir geben auch noch ganz normal die Anzahl Pfeile an. Darauf folgt ihr momentaner Standort mit welcher Rotation. Die zwei zusätzlichen Zahlen geben die neue Starposition der Figur im neuen Level an. Dies können wir später benutzen, um Häuser mit mehreren Etagen zu bilden. Die rote Pfeile kennzeichnen die Ausgänge des Hauses. Durch eine weitere Zahl in der Leveldatei wird angegeben, welche Pfeile geladen werden müssen.
+Konkret mussten wir diese Teleportfähigkeit einbauen, damit wir als Einbrecher von dem Garten ins Haus einbrechen können. Das bedeutet auch, dass wir pro Level am Ende zwei Leveldateien haben. Eine Leveldatei für das Innere des Hauses und eine für den Garten.
 
 \subsection{Console}
-Wir haben eine Console eingebaut, die sich mit der rechten Shift-Taste öffnen lässt. In dieser kann man verschiedene kleine Hilfen aktivieren. Wie zum Beispiel, dass man durch Mauern und Türen gehen kann. Man kann aber auch das Level direkt wechseln.
+Wir haben eine Console eingebaut, die sich mit der rechten Shift-Taste öffnen lässt. In dieser kann man verschiedene kleine Hilfen aktivieren. Wie zum Beispiel, dass man durch Mauern und Türen gehen kann. Man kann das Level direkt wechseln.
 
 \subsection{Tastatur}
 Man kann die Figur mit den Tasten W, A, S und D bewegen. Mit der Taste W geht die Figur nach oben, mit A nach links, mit S nach unten, mit D nach rechts. Hier können wir im SFMl auf eine einfache Form zurückgreifen. Diese erkennt, ob und welche Taste gedrückt wird. So konnten wir jeder Taste einen gewissen Befehl zuordenen und genau sagen was getan werden soll. Zum Beispiel bei der Taste W steht, dass sich die Figur um -5 bewegen soll. Dies bewirkt eine Bewegung nach oben. Da das Koordinatensystem bei jedem Laptop oben links mit 0/0 beginnt und dann nach unten negativ wird. Bei den anderen Tasten gibt es nur einen leicht anderen Befehl aus der SFML Klasse. 	+ Man kann die Figur mit... to be continued
