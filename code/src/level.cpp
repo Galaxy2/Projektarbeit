@@ -48,25 +48,26 @@ void level::loadFromFile(void)
 
     // Anzahl Pfeile einlesen
     levelDatei >> N;
-    unsigned int x, y, nX, nY;
+    unsigned int x, y, nX, nY, farbe;
     int r;
     for(unsigned int i=0; i<N; i++)
     {
-        // Pfeilposition, Rotation, Teleportpunkt einlesen
-        levelDatei >> x >> y >> r >> nX >> nY;
+        // Pfeilposition, Rotation, Teleportpunkt, Farbe einlesen
+        levelDatei >> x >> y >> r >> nX >> nY >> farbe;
 
         pfeile.push_back(new pfeil);
-        if(Wert == 1) // überprüfen ob man im Haus ist oder nicht (1 = aussen)
+        // 1 sagt, dass der Pfiel rot ist und somit tiefer ins haus hineinführt
+        if(farbe == 1)
         {
             // Neue Animation für roten Pfeil erstellen
             pfeile[i]->p = (new animation("resources/pfeilRot", 8, true, true, true, 0.05, x, y)); //rote pfeile werden geladen
         }
-        if(Wert == 2)
+        if(farbe == 2)
         {
             // Hauptmenüpfeil -> Andere Animation laden
             pfeile[i]->p = (new animation("resources/spielStarten", 1, true, false, false, 0.05, x, y)); // SpielStarten
         }
-        else
+        if(farbe == 0)
         {
             // Neue Animation für grünen Pfeil erstellen
             pfeile[i]->p = (new animation("resources/pfeil", 8, true, true, true, 0.05, x, y));
