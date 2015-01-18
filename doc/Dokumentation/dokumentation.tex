@@ -45,16 +45,22 @@ Patrick Eigensatz, G3C
 \clearpage
 \thispagestyle{empty}
 
-\mbox{ }
-\clearpage
 
-\setcounter{page}{1}
 \section*{Zusammenfassung}
 
+
+\thispagestyle{empty}
 \clearscrheadfoot
-\lohead[\pagemark]{\pagemark}
-\rehead[\pagemark]{\pagemark}
+\rofoot[\pagemark]{\pagemark}
+\lefoot[\pagemark]{\pagemark}
+\thispagestyle{empty}
+\pagenumbering{gobble}
 \tableofcontents
+
+\clearpage
+\pagenumbering{arabic}
+
+
 
 \part{Dokumentation}
 \chapter{Aufgabenstellung} 
@@ -273,7 +279,7 @@ Wir haben uns immer wieder Stichtage festgelegt, so dass wir immer gewisse Ziele
 \section{Einzelne Funktionen des Spiels}
 
 \subsection{Überprüfung auf Updates}
-Wir haben es eingerichtet, dass eine Versionsdatei von GitHub geladen wird. Wenige Bytes überprüfen, ob eine aktuellere Version vorliegt und machen entsprechende Meldung im Spiel.
+Wir haben es eingerichtet, dass eine Versionsdatei von GitHub geladen wird. Wenige Bytes überprüfen, ob eine aktuellere Version vorliegt und geben eine entsprechende Meldung im Spiel aus.
 
 \subsection{Kollisionsdetektion}
 Wir haben uns entschieden die Mauern direkt auf den Hintergrund zu zeichnen. Dann machen wir ein FloatRect, ein virtuelles Quadrat,
@@ -600,12 +606,10 @@ Unsere erste Version des Spieles war bloss ein Fenster mit der Hintergrundgrafik
 Zu allen Dingen haben wir zuerst Demografiken gebraucht.
 Obwohl dieser Schritt einfach erscheint kam dabei eines unserer grössten Probleme in der Entwicklung des Spieles zum Vorschein.
 Die Schwierigkeit war es, dass diese erste Version bei allen gleich aussieht, unabhängig von Auflösung, Marke oder Betriebssystem.
-Weiteres zu diesem Problem gibt es im Kapitel \ref{aufloesungsprobleme} auf Seite \pageref{aufloesungsprobleme}.
-
-
-\begin{figure}[h]
+Weiteres zu diesem Problem gibt es im Kapitel \ref{aufloesungsprobleme} auf Seite \pageref{aufloesungsprobleme}.\\
+\begin{figure}[h!]
 \centering
-\includegraphics[scale=0.25]{img/grafiken.png}
+\includegraphics[scale=0.12]{img/grafiken.png}
 \caption{Ein Beispiellevel mit der Spielfigur}
 \end{figure}
 
@@ -621,17 +625,18 @@ Wir werden weiterhin an dieem Spiel weiter schreiben, da es uns doch sehr gefäl
 
 
 \clearpage
+\pagenumbering{Roman}
 \part{Anhang}
 \listoffigures
 
 \clearpage
 
-\addcontentsline{toc}{section}{Literatur}
+\addcontentsline{toc}{chapter}{Literatur}
 \printbibliography
 
 \clearpage
 
-\addcontentsline{toc}{section}{Antiplagiatserklärung}
+\addcontentsline{toc}{chapter}{Antiplagiatserklärung}
 \chapter*{Antiplagiatserklärung}
 Wir versichern hiermit, die vorliegende Arbeit, inklusive des entstandenen Spiels
 selber, ohne fremde Hilfe verfasst zu haben. Alle Quellen, die zur Erstellung
@@ -661,7 +666,18 @@ Jan Kunzmann
 Patrick Eigensatz
 \end{center}
 \end{tabular}% 
-  
+\\
 
+
+\chapter*{Der Quellcode zum Spiel}
+\addcontentsline{toc}{chapter}{Der Quellcode zum Spiel}
+In unserer Arbeit ist ein ganzes Computerspiel entstanden. Vom Spiel ist der Quellcode natürlich die grösste Arbeit.
+Unser Spiel ist in 26 verschiedenen Dateien aufgeteilt. Es existieren Quellcodedateien (\textit{.cpp}) und auch Headerdateien (\textit{.h}).\\
+\\
+Zählt man nur unseren reinen Code, kommt man auf 1250 Zeilen. Dazu kommen noch 275
+Zeilen Kommentare ($\widehat{=}\,18\%$), sowie 475 leere Zeilen, die zur Strukturierung und Lesbarkeit des Codes beitragen.\\
+\\
+Den Quellcode ist auf den nächsten Seiten zu finden. Um Papier zu sparen wurden zwei Seiten pro Blatt
+gedruckt.
 
 \end{document}
