@@ -72,7 +72,7 @@ Danach haben wir nochmal die im Projektvertrag angegebenen Projektziele aufgelis
 
 \part{Dokumentation}
 \chapter{Aufgabenstellung}
-Wir erhielten die Aufgabe, eine Projektarbeit während der Dauer eines Semesters durchzuführen. Der Lernfortschritt wurde in einem Lernprotokoll laufend festgehalten.
+Wir haben die Aufgabe erhalten, während einem Semester eine Projektarbeit durchzuführen. Der Lernfortschritt wurde in einem Lernprotokoll laufend festgehalten.
 Zum Schluss erstellten wir eine schriftliche Arbeit und eine Präsentation. Diese Arbeit soll uns auf die Maturarbeit vorbereiten.
 
 \section{Motivation}
@@ -203,7 +203,7 @@ Git erwies sich als grosse Hilfe, sei es um Fehler zu finden oder einfach zum sy
 \\
 \\
 \textbf{GitHub} ist ein
-Onlineportal, das das Hosting, also das Speichern von Projekten, die mit git verwaltet werden, kostenlos übernimmt. Das Projekt erhält eine eigene Übersichtsseite,
+Onlineportal, das das Hosting, also das Speichern von Projekten, die mit git verwaltet werden, kostenlos übernimmt. Das Projekt erhält eine eigene Übersichtseite,
 die ebenfalls zur Entwicklung genutzt werden kann und auf der (fremde) Interessierte den Code und die Änderungen einsehen können. Wir haben GitHub nicht nur
 als Hoster genutzt, sondern ebenfalls um unsere Termine im Projektkalender nachzuführen.
 \begin{figure}
@@ -216,7 +216,7 @@ als Hoster genutzt, sondern ebenfalls um unsere Termine im Projektkalender nachz
 
 \section{Coverity Scan}
 \textbf{Coverity Scan} ist der Name eines Produktes der gleichnamigen amerikanischen Firma. 2006 erhielt diese Firma vom US-Verteidigungsministerium
-einen finanziellen Zuschuss, um es für OpenSource-Projekte kostenlos möglich zu machen, ihren Code auf Sicherheitslücken und Programmierfehler untersuchen
+einen finanziellen Zuschuss, um es für OpenSource-Projekte kostenlos möglich zu machen, ihren Code auf Sicherheitlücken und Programmierfehler untersuchen
 zu lassen. Dabei funktioniert Coverity keineswegs wie ein normaler Compiler (erkennt also keine syntaktischen Fehler wie das Fehlen eines Semikolons),
 sondern es versucht den Code zu verstehen und mögliche semantische Fehler zu finden. So werden Entwickler hingewiesen, dass zum Beispiel eine Funktion
 unter gewissen Bedingungen nie terminiert wird und so das Programm blockiert wird. Auch findet Coverity schnell Speicherlecks und Speicherzugriffsfehler.
@@ -241,7 +241,7 @@ Das führte schlussendlich zu einem Speicherleck von knapp 20MB. Dies konnte dan
 
 
 \section{GIMP}
-GIMP ist ein Programm zur Darstellung und Bearbeitung von Bilddateien.
+\textbf{GIMP} ist ein Programm zur Darstellung und Bearbeitung von Bilddateien.
 Es stellt ähnliche Funktionen wie Photoshop zur Verfügung, ist jedoch kostenlos und frei verfügbar.
 Wir nutzten GIMP zur Erstellung der Animationen und Grafiken unseres Spieles.
 Dabei nutzten wir eine Vielzahl der bereitstehenden Funktionen von GIMP.
@@ -264,14 +264,14 @@ Folgende drei Fragen halfen uns bei der Wahl der Idee:
 \end{itemize}
 Der Ideenfindungsprozess dauerte mehrere Wochen. Es war nicht einfach, eine Idee zu finden, die uns alle begeisterte.
 Als wir Ideen gesammelt hatten, stellten wir eine Liste mit allen Ideen zusammen.
-Wir setzten uns ein Frist von einer Woche, in der jeder von uns zu jeder Idee einen Umsetzungsvorschlag erstellte.
-Da wir drei Projektmitarbeitende waren, erhielten wir zu jeder Spielidee drei verschiedene Umsetzungsvorschläge.
+Wir setzten uns ein Frist von einer Woche, in der jeder von uns zu jeder Idee einen Umsetzungvorschlag erstellte.
+Da wir drei Projektmitarbeitende waren, erhielten wir zu jeder Spielidee drei verschiedene Umsetzungvorschläge.
 Nach längeren Diskussionen einigten wir uns schlussendlich auf die Idee des Einbrecherspiels:
 Die Idee fanden wir alle interessant. Sie schien mit unseren Mitteln, unserem Wissen und innerhalb der zur Verfügung stehenden Zeit realisierbar zu sein. Und sie bot die Möglichkeit für spätere Erweiterungen.
 
 \subsection{Vorbereitung und Planung}
 Parallel zur Ideenfindung beschäftigten wir uns - wie in der
-Disposition vermerkt - intensiv mit der Programmiersprache C++. Um C++ zu lernen verwendeten wir \cite{cpp_grundkurs}, um Sachen nachzuschlagen dienten uns aber auch \cite{cpp_referenz} und \cite{cpp_com}. Das Einarbeiten in die Sprache war zentral für die spätere Verwendung der SFML-Bibliothek. In die SFML Bibliothek arbeiteten wir uns mithilfe der offiziellen Tutorials \cite{sfml_tutorials} ebenfalls sehr praxisorientiert ein.\\
+Disposition vermerkt - intensiv mit der Programmiersprache C++. Um C++ zu lernen verwendeten wir \cite{cpp_grundkurs}, um Sachen nachzuschlagen dienten uns aber auch \cite{cpp_referenz} und \cite{cpp_com}.\footnote{Infos zu den genannten Büchern finden Sie im Literaturverzeichnis} Das Einarbeiten in die Sprache war zentral für die spätere Verwendung der SFML-Bibliothek. In die SFML Bibliothek arbeiteten wir uns mithilfe der offiziellen Tutorials \cite{sfml_tutorials} ebenfalls sehr praxisorientiert ein.\\
 \\
 Die Reportage vom Schweizer Fernsehen \cite{sf_gamedesign} zum Thema Game Design halfen uns überhaupt nicht, da sie lediglich zwei Gamedesigner porträtierten und sie über ihre Motivation und ihren Studiengang Auskunft gaben, wir folglich daraus nichts für unsere Arbeit gewinnen konnten.\\
 \\
@@ -285,26 +285,29 @@ Der Einbruch in ein Haus und die Entwendung der Schätze sollten die Aufgaben se
 \end{itemize}
 Wir entschieden uns für einfache Grafiken, um den Programmieraufwand gering zu halten. 
 Bereits in diesem Stadium besprachen wir auch mögliche Problemfelder, auf die wir im Laufe des Projektes stossen könnten.
-Beim skizzieren des Programms wurden die Grundsteine für wichtige Elemente unseres Programms gelegt: Kollisionsdetektion (siehe Kapitel \ref{aufloesungsprobleme}, Teleportieren (siehe Kapitel \ref{Pfeile}), Schätze (Kapitel \ref{Schaetze}) oder auch die Loops (Kapitel \ref{Loops}) auf denen unser Spiel basiert.
+Beim skizzieren des Programms wurden die Grundsteine für wichtige Elemente unseres Programms gelegt: Kollisiondetektion (siehe Kapitel \ref{aufloesungsprobleme}, Teleportieren (siehe Kapitel \ref{Pfeile}), Schätze (Kapitel \ref{Schaetze}) oder auch die Architektur (Kapitel \ref{Loops}) auf der unser Spiel basiert.\\
+\\
 Durch die vorbeugende Fehlerantizipation konnten wir gewisse Probleme umgehen. Bei anderen mussten wir aber feststellen, dass einige Probleme komplexer waren, als wir ursprünglich dachten.
 Der nächste Punkt war die Umsetzung des Konzeptes mit der Erstellung des Programms.
 
 \subsection{Umsetzung}
-Um die Planung während der Arbeit auch einzuhalten und voranzutreiben legten wir uns Stichtage fest, an denen wir gewisse Ziele erreicht haben wollten. Jeder wusste immer darüber Bescheid, welchen Stand das Projekt gerade hatte und was als nächstes zu tun war. Normalerweise arbeiteten wir parallel. Doch falls jemand auf Schwierigkeiten stiess, unterbrachen die anderen Projektmitarbeitenden ihre aktuellen Arbeiten und wir lösten das Problem gemeinsam.  
+Um die Planung während der Arbeit auch einzuhalten und voranzutreiben legten wir uns Stichtage fest, an denen wir gewisse Ziele erreicht haben wollten. Jeder wusste immer darüber Bescheid, welchen Stand das Projekt gerade hatte und was als nächstes zu tun war.\\
+\\
+Im Normalfall arbeiteten wir parallel, falls aber jemand auf Schwierigkeiten stiess, unterbrachen die anderen Projektmitarbeitenden ihre aktuellen Arbeiten und wir lösten das Problem gemeinsam.  
 \newpage
 \section{Einzelne Funktionen des Spiels}
 
 \subsection{Überprüfung auf Updates}
-Wir richteten eine Überprüfung auf Updates fürs Spiel ein. Beim Gamestart liest das Program eine Versionsdatei von GitHub. Wenige Bytes überprüfen, ob eine aktuellere Version des Spiels verfügbar ist. Dementsprechend erscheint eine Meldung im Spiel.
+Wir richteten auch eine Überprüfung auf Updates ein: Beim Start des Spiels lädt das Programm eine Versiondatei von GitHub herunter. Darin ist die Nummer der neusten Version des Spiels enthalten, mit der man dann überprüfen kann, ob eine aktuellere Version des Spiels verfügbar ist. Dementsprechend erscheint eine Meldung im Spiel.
 
-\subsection{Kollisionsdetektion}
-Die Mauern der Häuser wollten wir direkt auf den Hintergrund zeichnen. Zu jeder Mauer erstellten wir ein Rechteck (FloatRect) mit dessen Koordinaten. Mit der Kollisionsdetektion wird erkannt, ob die Koordinaten des Spielers in diesem Rechteck liegen.
+\subsection{Kollisiondetektion}
+Die Mauern der Häuser wollten wir direkt auf den Hintergrund zeichnen. Zu jeder Mauer erstellten wir ein Rechteck (FloatRect) mit dessen Koordinaten. Mit der Kollisiondetektion wird erkannt, ob die Koordinaten des Spielers in diesem Rechteck liegen.
 Die Kollisionsdetektion war zu Beginn der Entwicklungen fehleranfällig.
 Mehr zu diesen Fehlern wird im Kapitel \ref{mauern} auf der Seite \pageref{mauern} erläutert.
-Das Prinzip der Kollisionsdetektion der Mauern haben wir auf alle anderen Objekte wie Türen, Schätze und Laser übertragen.
-Oft war die Kollisionsdetektion bei diesen Objekten einfacher zu lösen, denn anstatt, der beim Erstellen des Levels abzumessenden Rechtecke, hatten wir bereits ein sogenanntes Sprite, welches die Lage und die Dimensionen des Objekts bestimmte.\\
+Das Prinzip der Kollisiondetektion der Mauern haben wir auf alle anderen Objekte wie Türen, Schätze und Laser übertragen.
+Oft war die Kollisiondetektion bei diesen Objekten einfacher zu lösen, denn anstatt, der beim Erstellen des Levels abzumessenden Rechtecke, hatten wir bereits ein sogenanntes Sprite, welches die Lage und die Dimensionen des Objekts bestimmte.\\
 \\
-Meistens übergaben wir durch die Kollisionsabfrage auch direkt einen Wert, welcher bei mehreren Objekten des gleichen Typs angab, welches Instanz des Objekts dieses Typs mit dem Spieler kollidiert.
+Meistens übergaben wir durch die Kollisionabfrage auch direkt einen Wert, welcher bei mehreren Objekten des gleichen Typs angab, welches Instanz des Objekts dieses Typs mit dem Spieler kollidiert.
 Dadurch konnten wir mehrere Türen, Schätze und Laser implementieren.
 
 \begin{figure}[h]
@@ -346,7 +349,7 @@ Die Funktion zum Laden einer Animation hat viele Argumente, die viele verschiede
     \caption{Die erste Animation im Spiel: Ein blinkender Einstiegspfeil}
 \end{figure}
 Innerhalb unserer $main()$-Funktion nützten wir eine $std::list<animation *>$ Liste aus der STL\footnote{Standard Template Library}.
-Bevor die Sprites in das Fenster gezeichnet werden, werden die Texturen der Sprites dem Animationszeitpunkt entsprechend
+Bevor die Sprites in das Fenster gezeichnet werden, werden die Texturen der Sprites dem Animationzeitpunkt entsprechend
 neu geladen. So entsteht das Gefühl einer Bewegung oder eine Anpassung der Farbe. Entscheidend ist dabei die Methode
 $animationAusfuehren()$, die überprüft, ob bereits genug Zeit vergangen ist, das neue Bild anzuzeigen und dies gegebenenfalls
 übernimmt.
@@ -384,28 +387,28 @@ Der Schallpegel wird auf Seite \pageref{Schall} erläutert.
 Mit den Zahlentasten \key{9} und \key{0} kann man zoomen, um den Bildausschnitt um den Spieler herum zu vergrössern.\\
 \\
 Die Taste \key{E} hat mehrere Funktionen: Man kann damit einen Schatz aufnehmen. 
-Durch eine Kollisionsabfrage wird überprüft, ob der Spieler auf einem Schatz steht. 
+Durch eine Kollisionabfrage wird überprüft, ob der Spieler auf einem Schatz steht. 
 Falls ja, verschwindet dieser vom Feld, indem er aus der $renderList$  wieder entfernt wird.\\
 \\
 Mit \key{E} lassen sich aber auch Türen öffnen. 
-Auch hier findet eine Kollisionsabfrage statt. 
+Auch hier findet eine Kollisionabfrage statt. 
 Eine neue Animation kann erst nach dem Ende der vorangegangenen Animation neu gestartet werden. 
 Sonst könnte man Türen schneller öffnen und schliessen, als es angezeigt würde. 
-Wir haben das Rechteck um die virtuellen Türen etwas grösser definiert als deren Bild darstellt, damit die Figur auf dem Objekt \q{Türe} steht und sie mit dem Modul Kollisionsabfrage öffnen und schliessen kann. Das Sprite wird für eine weitere Kollisionsabfrage gebraucht, um zu verhindern, dass der Spieler ungehindert durch die Türen gehen kann, ohne diese zu öffnen. 
+Wir haben das Rechteck um die virtuellen Türen etwas grösser definiert als deren Bild darstellt, damit die Figur auf dem Objekt \q{Türe} steht und sie mit dem Modul Kollisionabfrage öffnen und schliessen kann. Das Sprite wird für eine weitere Kollisionabfrage gebraucht, um zu verhindern, dass der Spieler ungehindert durch die Türen gehen kann, ohne diese zu öffnen. 
 Dieses Konzept ermöglicht es, dass sich die Türen schlussendlich immer von beiden Seiten öffnen und schliessen lassen.
 
 
 \subsection{Das Hauptmenü}     
 Das Hauptmenü wurde bewusst einfach gehalten. Mit GIMP wurden     
 einige Grafiken erzeugt, die als Schaltflächen verwendet werden.
-Zuerst versuchten wir, das Hauptmenu als festes Bild anzuzeigen. Doch wir stiessen dabei auf Auflösungsprobleme (Siehe Seite: \pageref{aufloesungsprobleme}).
+Zuerst versuchten wir, das Hauptmenü als festes Bild anzuzeigen. Doch wir stiessen dabei auf Auflösungprobleme (Siehe Seite: \pageref{aufloesungsprobleme}).
 Schlussendlich erstellten wir einen speziellen Hauptmenülevel.
 Man beginnt nun direkt mit dem Spieler.
 Dadurch setzen wir die Spielfigur als zentrales Element des Spieles auch im Hauptmenü ein.
 Wir definierten das Bild mit der Textur \q{Spiel starten} als neuen Pfeiltyp. 
 Zur Definition dieses Pfeils übergeben wir seiner Farbe die Zahl 2. 
 Sobald man auf das \q{Spiel starten} fährt, wird man in den Garten des ersten Hauses teleportiert. 
-Um das Spiel zu beenden, fährt man mit dem Spieler über das \q{Spiel beenden}. Mit der Kollisionsdetektion erkennt man diese Aktion und das Spiel wird beendet.
+Um das Spiel zu beenden, fährt man mit dem Spieler über das \q{Spiel beenden}. Mit der Kollisiondetektion erkennt man diese Aktion und das Spiel wird beendet.
 
 \subsection{Musik}     
 Alle Elemente unseres Spiels wollten wir in grösstmöglicher Eigenproduktion erstellen. Für die Musik baten wir unseren gemeinsamen Freund Mathias Rassasse, welcher die nötigen Mittel hat, unsere Musik zu komponieren und einzuspielen. Verdankenswerterweise folgte er unserem Wunsch und stellte uns die Musik mit unbeschränktem Nutzungsrecht zur Verfügung. 
@@ -466,7 +469,7 @@ Sobald sie jedoch wieder leuchtet, verliert man bei einer Kollision das Spiel.
 Die Idee der Laserschranken ist ein Alarmsystem, welches bei einer Unterbrechung des Lasers Alarm schlägt. In Verbindung mit zukünftigen Gegenspieler könnte die Alarmanlage den Schallpegel auf den höchsten Wert setzen und damit alle Gegenspieler aufwecken.
 
 \subsection{Zeit}
-\label{zeitlimite}
+\label{Zeitlimit}
 Zusätzlich zu den Lasern und zum Schallpegel führten wir die Zeit als erschwerdender Faktor ein. 
 So zählt eine Anzeige im Spielbildschirm oben links in Sekunden von einem vorgegebenen Startwert herunter. Falls man das Level nicht vor dem Enden der Zeit verlassen hat, verliert man das Spiel und geht GameOver. Die zur Verfügung stehende Zeit ist pro Level variabel wählbar. Deshalb wird sie in der Leveldatei angegeben.
     
@@ -519,13 +522,13 @@ ohne Ruckler spielbar wäre, hatten wir unsere Spielarchitektur ursprünglich nu
 
 
 \chapter{Herausforderungen und Lösungen}     
-\section{Auflösungsproblem XY}     
+\section{Auflösungsprobleme}     
 \label{aufloesungsprobleme}
 Schon früh im Projekt zeigte sich ein Problem beim Abspielen des Games mit verschiedenen Computern mit unterschiedlichen Bildschirmauflösungen. Es stellte sich heraus, dass es sich
 beim Auflösungsproblem um ein Problem beim Umgang mit SFML handelte.
 Die Herausforderung bestand darin, dass jede Ansicht des Games bei jeder Auflösung, jeder Gerätemarke und bei beiden Betriebssystemen gleich aussehen sollte.
 Wir hofften, dass SFML diese Arbeit übernehmen würde, doch bereits bei den ersten Grafiken stellten wir fest, dass wir die Anforderung selber regeln müssen.
-Um die Aufgabe zu lösen, benutzten wir die $zoom()$-funktion, mit der die Grösse der ganzen Ansicht über einen Wert angepasst werden kann.
+Um die Aufgabe zu lösen, benutzten wir die $zoom()$-Funktion, mit der die Grösse der ganzen Ansicht über einen Wert angepasst werden kann.
 Diesen Wert nannten wir factor.
 Diesen factor bestimmten wir durch den Quotienten aus Auflösung und Ansichtsgrösse.
 \begin{quote}
@@ -549,8 +552,7 @@ Auf diese Weise entdeckten wir, dass die Koordinaten der Mauer zwar richtig eing
 von absoluten Bildschirmkoordinaten in Fenster/Spielkoordinaten umgerechnet werden. 
 Durch weitere Tests konnten wir den factor so verändern, dass keine Fehler mehr auftraten. 
 Weitere Versuche zeigten leider, dass die Mauern im Allgemeinen aber immer noch nicht richtig verrechnet wurden.
-Schlussendlich mussten wir einsehen, dass das Problem mit dem gewählten Vorgehen nicht gelöst werden konnte.
-\\
+Schlussendlich mussten wir einsehen, dass das Problem mit dem gewählten Vorgehen nicht gelöst werden konnte.\\
 \\
 Das Problem war die Handhabung von drei verschiedenen Koordinatensystemen.
 SFML regelt seine Grafiken mit zwei Koordinatensystemen.
@@ -563,13 +565,14 @@ Dieses System ist frei von der Ansicht. Sie kann sich frei über dieses System b
 Wir selber erstellten mit dem factor ein eigenes, neues System.
 Wir brauchten viel Zeit zum Verstehen der Zusammenhänge dieser drei Koordinatensysteme.\\
 \\
+
 Durch das Verankern der Ansicht an den Spieler, konnten wir die Arbeit mit dem factor umgehen und ihn wieder herausstreichen.
 Diese Variante gefiel uns besser, denn wir gingen nie von immer gleich grossen Levels aus. 
 Das wäre beim factor ein weiteres grosses Problem geworden.
 \\
 Wie bereits erwähnt regelt SFML das Anzeigen mit zwei Koordinatensystemen. Wir entdeckten einerseits einen Fehler bei der Bestimmung der Auflösung des Bildschirms und andererseits in der Anpassung der Grafiken an die gemessene Auflösung im Spiel.
-Dadurch kam und kommt es auf wenigen Bildschirmen mit hoher Auflösung immer noch zu Anzeigefehler. Wir griffen auf die SFML \textit{zoom()}-Funktion zurück, um den Wert während des Spiels manipulierbar zu machen. So sieht man zwar am Anfang den Fehler, kann ihn aber durch zoomen mit den Tasten \key{0} und \key{9} irrelevant machen.\\
-\\
+Dadurch kam und kommt es auf wenigen Bildschirmen mit hoher Auflösung immer noch zu Anzeigefehler. Wir griffen auf die SFML \textit{zoom()}-Funktion zurück, um den Wert während des Spiels manipulierbar zu machen. So sieht man zwar am Anfang den Fehler, kann ihn aber durch zoomen mit den Tasten \key{0} und \key{9} irrelevant machen.
+
 Wir können weitere Fehler bei dieser Funktion nicht ausschliessen, doch haben wir uns entschlossen, dieses Thema aus Zeitgründen nicht weiter zu verfolgen. 
 
 \section{Compilerprobleme}
@@ -577,7 +580,7 @@ Nicht nur wir machten Fehler bei der Entwicklung, sondern offenbar auch die Entw
 \\
 Einem eher speziellen Problem begegneten wir, als wir den Pfad für ein Animationsbild erstellen wollten.
 Die Zahl $i$, die bei 0 zu zählen anfängt, zeigt, den wievielten Schritt der Animation gerade geladen werden soll, und $n$ steht für den Namen der Animation.
-Ein solcher Pfad lautet zum Beispiel für einen Pfeil im 4. Animationsschritt: \textit{resources/pfeil\_3.png}\\
+Ein solcher Pfad lautet zum Beispiel für einen\\Pfeil im 4. Animationsschritt: \textit{resources/pfeil\_3.png}\\
 \\
 In C++11 sind die + Operatoren zur Verkettung (Engl. concatenate) von Strings überladen. Damit man auch Zahlen in Strings einsetzen
 kann, gibt es seit C++11 die Funktion $to\_string()$, die überladen für sämtliche Zahldatentypen existiert und das Argument in einen String
@@ -748,6 +751,7 @@ Den Quellcode ist auf den nächsten Seiten zu finden. Um Papier zu sparen wurde 
 gedruckt.
 
 \end{document}
+
 
 
 
