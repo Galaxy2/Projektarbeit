@@ -14,7 +14,7 @@
 \usepackage{scrpage2}
 \usepackage{csquotes}
 
-\usepackage[left=2.5cm,right=1.5cm,top=3cm,bottom=2.8cm]{geometry}
+\usepackage[right=2.5cm,left=1.5cm,top=3cm,bottom=2.8cm]{geometry}
 \pagestyle{scrheadings}
 
 \renewcommand\chapterheadstartvskip{\addvspace{-4ex}}
@@ -69,28 +69,28 @@ Wir erhielten die Aufgabe, eine Projektarbeit während der Dauer eines Semesters
 Zum Schluss erstellten wir eine schriftliche Arbeit und eine Präsentation. Diese Arbeit soll uns auf die Maturarbeit vorbereiten.
 
 \section{Motivation}
-In unserer Generation verbringen viele Kinder, Jugendliche und Erwachsene
-ihre Zeit mit Computer- und Konsolenspielen.
+In unserer Generation verbringen viele Kinder, Jugendliche und Erwachsene ihre Zeit mit Computer- und Konsolenspielen.
 Berühmte Vertreter sind zum Beispiel Call of Duty, Grand Theft Auto und Minecraft.
 Doch die meisten Nutzer dieser Programme kennen die Prozesse und den Entwicklungsaufwand hinter diesen Games nicht.
 Sei das auf Grund der weit fortgeschrittenen Komplexität einiger Spiele
 oder bei simpleren Spielen die fehlende Motivation, sich damit zu befassen.\\
 \\
-Viele wollen nur wissen, wie man ein Spiel spielt und nicht wie man es entwickelt. Nur wenige wissen, wie schwer und aufwändig es ist, bereits ein kleines Spiel zu machen.
+Viele wollen nur wissen, wie man ein Spiel spielt und nicht, wie man es entwickelt. Nur wenige wissen, wie schwer und aufwändig es ist, bereits ein kleines Spiel herzustellen.
 Da wir selber auch zu dieser Generation gehören,
 gewinnen wir alle immer wieder Erfahrungen mit den verschiedensten Games.
 Doch wir wollten nicht bloss Spiele spielen,
 sondern wir wollten selber ein Spiel entwickeln.
 Hinzu kam auch unsere Begeisterung für das Programmieren.
-Jeder von uns hatte bereits ein wenig Erfahrung damit gesammelt.
-Es hat jedoch noch keiner alleine
-ein ganzes Game programmiert.
-Wir wollten und wollen stetig dazulernen.
-Zusätzlich wollten wir am Ende dieser Arbeit etwas gemacht haben, das man auch nutzen kann.
+Jeder von uns hatte bereits ein wenig Erfahrung darin gesammelt.
+Es hat jedoch noch niemand alleine
+ein ganzes Game programmiert und
+wir wollten und wollen stetig dazulernen.
+Zusätzlich wollten wir am Ende dieser Arbeit etwas gemacht haben, das man auch nutzen kann.\\
 \\
-Wir möchten hier auch gleich die Gelegenheit nutzen und unserem Freund Mathias Rassasse danken. Er war ursprünglich auch in unsere Gruppe dabei. Er verliess dann jedoch die Schule. Wir möchten ihm danken, weil er für uns extra die gesamte Musik von unserem Game komponierte und einspielte.
+Wir möchten hier auch gleich die Gelegenheit nutzen und unserem Freund Mathias Rassasse danken. Er war ursprünglich auch Teil unserer Gruppe, er musste dann jedoch die Schule verlassen. Wir möchten ihm danken, weil er für uns die gesamte Musik zu unserem Spiel komponierte und einspielte.\\
 \\
-Wir bedanken uns auch bei unserem Mentor, Herrn Sax. Er hat uns immer konstruktive Rückmeldungen und wertvolle Tipps gegeben.
+Ebenfalls bedanken möchten wir uns auch bei unserem Mentor, Herrn Sax. Er hat uns immer konstruktive Rückmeldungen und wertvolle Tipps geliefert, die uns weitergeholfen haben.
+
 
 \section{Persönliche Vorgaben}
 
@@ -106,7 +106,7 @@ Ganz im Gegensatz zu SDL ist SFML auf C++ ausgerichtet.
 So wurden Klassen anstatt Strukturen verwendet, was den (für den
 Anfang komplizierten) Umgang mit Zeigern reduzierte.
 Ausserdem besitzen die Klassen eigene Konstruktoren, bzw. Destruktoren, was das Initialisieren
-oder das freigeben von Speicher überflüssig macht.
+oder das Freigeben von Speicher überflüssig macht.
 Davon erhofften wir uns weniger Speicherzugriffsfehler und ein schnelleres Programmieren.
 SFML überzeugte uns schlussendlich, als wir die in der offiziellen Dokumentation gezeigten Beispielprogramme angeschaut hatten.
 
@@ -116,30 +116,29 @@ SFML überzeugte uns schlussendlich, als wir die in der offiziellen Dokumentatio
 Ziel unseres Projektes war es, ein 2D-Einbrecherspiel zu entwickeln. Der Spieler soll eine Figur spielen, die in Häuser einbrechen und dort unentdeckt Gegenstände entwenden soll.
 \item
 Ein persönliches Ziel war es, durch dieses Projekt die
-Programmiersprache C++ zu lernen und zu vertiefen. Dies wollen wir nach dem Prinzip Learning-by-Doing erreichen. Jeder in der Gruppe sollte am Ende
+Programmiersprache C++ zu lernen und zu vertiefen. Dies wollten wir nach dem Prinzip Learning-by-Doing erreichen. Jeder in der Gruppe sollte am Ende
 C++-Programme selber programmieren können.
 \item
 Wir wollten
 die Konzepte hinter Frameworks (namentlich SFML) verstehen und damit die
 programmiertechnischen Abläufe hinter dem Spiel definieren und
-umsetzen.
+umsetzen können.
 \item
 Wir beabsichtigten, unser Spiel komplett im Team zu entwickeln und
-mit dem Versionskontrollsystem git (Verweis) vertraut werden. Das soll uns später
-auf andere Projekte und unsere Maturarbeit vorbereiten.
+mit dem Versionskontrollsystem git vertraut werden. Das soll uns
+auf spätere Projekte und unsere Maturarbeit vorbereiten.
 \item
 Das Spiel muss/soll unter eine OpenSource Lizenz gestellt werden.
 \end{itemize}
 
 \chapter{Das Spiel}
 \section{Spielprinzip}
-Als Einbrecher versucht man, in ein Haus einzubrechen und dabei keinen Lärm zu verursachen, Laserschranken auszuweichen. Je nach Spielmodus hat man eine andere Aufgabe zu bewältigen.
+Als Einbrecher versucht man, in ein Haus einzubrechen und dabei keinen Lärm zu verursachen und Laserschranken auszuweichen. Je nach Spielmodus hat man eine andere Aufgabe zu bewältigen.
 
 \section{Spielmodi}
-Wir haben unterschiedliche Aufbauten der Levels vorgesehen:
+Wir haben unterschiedliche Spielmodi vorgesehen:
 \begin{itemize}
-\item Aufgabe: Alle versteckten Schätze zu finden und einzusammeln.
-\item Zeitdruck: Wir implementierten eine Zeitlimite (Siehe auch Abschnitt \ref{zeitlimite}), die zur  Aufgabenerfüllung nicht überschritten werden darf. Die Zeit ist bewusst sehr knapp gewählt, um den Spieler unter Druck zu setzen.
+\item Zeitdruck: Innerhalb einer kurzen Zeit so viele Schätze wie möglich sammeln.
 \item Sicherung: Die Schätze sind im ganzen Haus versteckt und gut mit Laserschranken gesichert.
 \item Schatz: Es gibt je nach Level nur einen einzigen, im dunklen gut versteckten Schatz oder mehrere einfacher zu findende Schätze.
 \end{itemize}
@@ -166,7 +165,7 @@ Ein Programm, das Veränderungen an Dateien aufzeichnet und speichert, sodass me
 Für OSS-Entwickler kostenlose Plattform, um die über das Versionskontrollsystem git aufgezeichneten Veränderungen übersichtlich zugänglich zu machen.
 
 \subparagraph{Travis CI:}
-Für OSS-Entwickler kostenlose Plattform zur Qualitätssicherung: Kompiliert das Projekt automatisch nach jeder Änderungen und führt Tests durch, um zu sicherzustellen, dass das Programm einwandfrei funktioniert.
+Für OSS-Entwickler kostenlose Plattform zur Qualitätssicherung: Kompiliert das Projekt automatisch nach jeder Änderungen und führt Tests durch um sicherzustellen, dass das Programm einwandfrei funktioniert.
 
 \subparagraph{Coverity:}
 Für OSS-Entwickler kostenlose Plattform: Führt eine tiefgreifende statische Quellcodeanalyse durch, und hilft so Programmierfehler zu vermeiden und zu finden.
@@ -176,7 +175,7 @@ Für OSS-Entwickler kostenlose Plattform: Führt eine tiefgreifende statische Qu
 \q{Simple and Fast Multimedia Library} (\textbf{SFML}) ist ein Multimediaframework, das wir hier als
 \q{Entwicklungswerkzeug} einsetzen.
 SFML liefert Klassen, die in verschiedenen Modulen (\textit{Sound}, \textit{Graphics}, \textit{Network}, ...) bereit stehen und aus dem Programm heraus aufgerufen oder im Programm verlinkt werden.
-Diese Module wurden plattformübergreifend entwickelt. Deshalb mussten wir uns nicht um die Portierung umseres Spiels auf verschiedene Plattformen kümmern.
+Diese Module wurden plattformübergreifend entwickelt. Deshalb mussten wir uns nicht um die Portierung unseres Spiels auf verschiedene Plattformen kümmern.
 \\
 \\
 SFML stellt die Schnittstelle zwischen unserem Spielmodell im Arbeitsspeicher und dem Benutzer des Spiels bereit. Das Spielmodell verfolgt zum Beispiel den Standort der Spielfigur und SFML zeichnet eine entsprechende Bilddatei als Textur an die richtige Stelle auf den Bildschirm. Über SFML wird die Tastatur eingelesen und Musik abgespielt.
@@ -186,19 +185,19 @@ Code::Blocks ist eine frei verfügbare Entwicklungsumgebung (IDE\footnote{Integr
 Neben der Syntaxhervorhebung und der intelligenten automatischen Code-Vervollständigung, bietet Code::Blocks bequeme Einstellungen um SFML-Projekte für mehrere Plattformen
 komfortabel zu kompilieren. Code::Blocks setzt dabei auf eine Art \textbf{make}, wie es schon aus Unixzeiten bekannt ist: Neu kompiliert werden nur diejenigen Programmteile, welche sich
 seit der letzten Kompilation geändert haben. Code::Blocks nutzt \textbf{g++}, den GNU C++ Compiler, um die einzelnen Dateien in Objektcode umzuwandeln und diese
-anschliessend in eine ausführbare Datei zusammenzuhängen (\q{linken}).
+anschliessend in einer ausführbaren Datei zusammenzuhängen (\q{linken}).
 
 \section{git und GitHub}
-\textbf{git} ist eine verteilte Dokumenten-Versionskontrolle (DVCS\footnote{Distributed Version Control System}). Ein solches Werkzeug hilft
-den Entwicklern parallel zu programmieren und dabei die Übersicht zu behalten. Es zeichnet alle Änderungen am Code auf.  Diese kann man einsehen und zurückverfolgen, um Fehler zu finden und zu korrigieren. Sie unterstützen auch die Wiederherstellung früherer Programmabschnitten, ohne dass man
+\textbf{git} ist eine verteilte Dokument-Versionskontrolle (DVCS\footnote{Distributed Version Control System}). Ein solches Werkzeug hilft
+den Entwicklern parallel zu programmieren und dabei die Übersicht zu behalten. Es zeichnet alle Änderungen am Code auf.  Diese kann man einsehen und zurückverfolgen, um Fehler zu finden und zu korrigieren. Es unterstützt auch die Wiederherstellung früherer Programmabschnitte, ohne dass man
 manuell die Dateien zerpflücken muss. 
-\textbf{Git} überzeugte uns durch seine Einfachheit, seine Effizienz und seine Möglichkeiten.
-\textbf{Git} erwies sich als grosse Hilfe, sei es um Fehler zu finden oder einfach zum synchronisieren des Codes.
+Git überzeugte uns durch seine Einfachheit, seine Effizienz und seine Möglichkeiten.
+Git erwies sich als grosse Hilfe, sei es um Fehler zu finden oder einfach zum synchronisieren des Codes.
 \\
 \\
 \textbf{GitHub} ist ein
-Onlineportal, das das Hosting, also das Speichern von Projekten, die mit \textbf{git} verwaltet werden, kostenlos übernimmt. Das Projekt erhält eine eigene Übersichtsseite,
-die ebenfalls zur Entwicklung genutzt werden kann und auf der (fremde) Interessierte den Code und die Änderungen einsehen können. Wir haben \textbf{GitHub} nicht nur
+Onlineportal, das das Hosting, also das Speichern von Projekten, die mit git verwaltet werden, kostenlos übernimmt. Das Projekt erhält eine eigene Übersichtsseite,
+die ebenfalls zur Entwicklung genutzt werden kann und auf der (fremde) Interessierte den Code und die Änderungen einsehen können. Wir haben GitHub nicht nur
 als Hoster genutzt, sondern ebenfalls um unsere Termine im Projektkalender nachzuführen.
 \begin{figure}
 \centering
@@ -225,12 +224,12 @@ Während der Entwicklung haben wir unser Projekt regelmässig von Coverity über
 \textbf{Valgrind} ist ein freies Programm zur dynamischen Fehleranalyse in Programmen. Besonders nutzten wir die Fähigkeit,
 unser Spiel innerhalb Valgrinds Memcheck Modul laufen zu lassen, um ein Feedback über den Speicherverbrauch zu erhalten. So entdeckten
 wir, dass viele Klassen, die schnell erstellt wurden, zwar Speicher anfordern, diesen aber nie mehr freigeben.
-Das führte schlussendlich zu einem Speicherleck von knapp 20MB. Dies konnte dank \textbf{Valgrind} rasch festgestellt und behoben werden konnte.
+Das führte schlussendlich zu einem Speicherleck von knapp 20MB. Dies konnte dank Valgrind rasch festgestellt und behoben werden konnte.
 
 \begin{figure}
 \centering
 \includegraphics[scale=0.5]{img/valgrind2.png}
-\caption{Valgrinds Memcheck}
+\caption{Valgrinds Memcheck Modul}
 \end{figure}
 
 
@@ -265,7 +264,9 @@ Die Idee fanden wir alle interessant. Sie schien mit unseren Mitteln, unserem Wi
 
 \subsection{Vorbereitung und Planung}
 Parallel zur Ideenfindung beschäftigten wir uns - wie in der
-Disposition vermerkt - intensiv mit der Programmiersprache C++. Das Einarbeiten in die Sprache war zentral für die spätere Verwendung der SFML-Bibliothek. In die SFML Bibliothek arbeiteten wir uns mithilfe der offiziellen Tutorials \cite{sfml_tutorials} ebenfalls sehr anwendungsorientiert ein.
+Disposition vermerkt - intensiv mit der Programmiersprache C++. Um C++ zu lernen verwendeten wir \cite{cpp_grundkurs}, um Sachen nachzuschlagen dienten uns aber auch \cite{cpp_referenz} und \cite{cpp_com}. Das Einarbeiten in die Sprache war zentral für die spätere Verwendung der SFML-Bibliothek. In die SFML Bibliothek arbeiteten wir uns mithilfe der offiziellen Tutorials \cite{sfml_tutorials} ebenfalls sehr praxisorientiert ein.\\
+\\
+Die Reportage vom Schweizer Fernsehen \cite{sf_gamedesign} zum Thema Game Design halfen uns überhaupt nicht, da sie lediglich zwei Gamedesigner porträtierten und sie über ihre Motivation und ihren Studiengang Auskunft gaben, wir folglich daraus nichts für unsere Arbeit gewinnen konnten.\\
 \\
 Bevor wir nun jedoch mit der Programmierung anfangen konnten, mussten wir die Idee zu einem realisierbaren Konzept ausarbeiten.
 Sicher war zuerst nur, dass es ein zweidimensionales Spiel sein würde und das Thema \q{Einbruch} werden sollte.
@@ -277,7 +278,7 @@ Der Einbruch in ein Haus und die Entwendung der Schätze sollten die Aufgaben se
 \end{itemize}
 Wir entschieden uns für einfache Grafiken, um den Programmieraufwand gering zu halten. 
 Bereits in diesem Stadium besprachen wir auch mögliche Problemfelder, auf die wir im Laufe des Projektes stossen könnten.
-Beim skizzieren des Programms wurden die Grundsteine für wichtige Elemente unseres Programms gelegt: Kollisionsdetektion (siehe Kapitel: \ref{aufloesungsprobleme}, Teleportieren (siehe Kapitel: \ref{pfeile}), Schätze (Kapitel: \ref{Schaetze}) oder auch die Loops (Kapitel: \ref{Loops}) auf denen unser Spiel basiert.
+Beim skizzieren des Programms wurden die Grundsteine für wichtige Elemente unseres Programms gelegt: Kollisionsdetektion (siehe Kapitel \ref{aufloesungsprobleme}, Teleportieren (siehe Kapitel \ref{Pfeile}), Schätze (Kapitel \ref{Schaetze}) oder auch die Loops (Kapitel \ref{Loops}) auf denen unser Spiel basiert.
 Durch die vorbeugende Fehlerantizipation konnten wir gewisse Probleme umgehen. Bei anderen mussten wir aber feststellen, dass einige Probleme komplexer waren, als wir ursprünglich dachten.
 Der nächste Punkt war die Umsetzung des Konzeptes mit der Erstellung des Programms.
 
@@ -366,9 +367,9 @@ wie zum Beispiel, dass man durch Mauern und Türen gehen kann (sogenannte Cheats
 Die Konsole diente uns als Hilfe beim Testen des Spieles und wurde nicht für den Gebrauch für Spieler optimiert.
 
 \subsection{Tastatur}
-Die Figur wird mit den Tasten \key{W}, \key{A}, \key{S} und \key{D} bewegt. Mit der Taste \key{W} geht die Figur nach oben, mit \key{A} nach links, mit \key{S} nach unten, mit \key{D} nach rechts. Hier können wir im SFML auf eine einfache Funktion zurückgreifen. Diese erkennt, ob und welche Taste gedrückt wird. Jeder Taste ordneten wir einen bestimmten Befehl zu, der genau festlegt, was getan werden soll. Zum Beispiel steht bei der Taste \key{W}, dass sich die Figur um -5 Pixel bewegen soll. Dies bewirkt eine Bewegung nach oben. Da das Koordinatensystem bei jedem Laptop oben links mit 0/0 beginnt und dann nach oben und links negativ wird.
-//
-Bei diesen Tastenabfragen wird auch gleich überprüft, ob man in eine Mauer läuft, sollte dies nämlich der Fall sein, darf sich die Figur nicht bewegen (Siehe Kollisionsdetektion (Referenz)). 
+Die Figur wird mit den Tasten \key{W}, \key{A}, \key{S} und \key{D} bewegt. Mit der Taste \key{W} geht die Figur nach oben, mit \key{A} nach links, mit \key{S} nach unten, mit \key{D} nach rechts. Hier können wir im SFML auf eine einfache Funktion zurückgreifen. Diese erkennt, ob und welche Taste gedrückt wird. Jeder Taste ordneten wir einen bestimmten Befehl zu, der genau festlegt, was getan werden soll. Zum Beispiel steht bei der Taste \key{W}, dass sich die Figur um -5 Pixel bewegen soll. Dies bewirkt eine Bewegung nach oben. Da das Koordinatensystem bei jedem Laptop oben links mit 0/0 beginnt und dann nach oben und links negativ wird.\\
+\\
+Bei diesen Tastenabfragen wird auch gleich überprüft, ob man in eine Mauer läuft, sollte dies nämlich der Fall sein, darf sich die Figur nicht bewegen. Mehr dazu im ). 
 Deshalb wird in diesem Fall der Schritt wieder rückgängig gemacht. 
 Im Spiel kann man rennen. 
 Dazu muss man die linke Shift Taste während der Bewegung gedrückt halten. Dann bewegt sich die Figur doppelt so schnell. Gleichzeitig wird der Schallpegel erhöht. 
@@ -383,7 +384,7 @@ Mit \key{E} lassen sich aber auch Türen öffnen.
 Auch hier findet eine Kollisionsabfrage statt. 
 Eine neue Animation kann erst nach dem Ende der vorangegangenen Animation neu gestartet werden. 
 Sonst könnte man Türen schneller öffnen und schliessen, als es angezeigt würde. 
-Wir haben das Rechteck um die virtuellen Türen etwas grösser definiert als deren Bild darstellt, damit die Figur auf dem Objekt \q{Türe} steht und sie mit dem Modul Kollisionsabfrage öffnen und schliessen kann. Das Sprit wird für eine weitere Kollisionsabfrage gebraucht, um zu verhindern, dass der Spieler ungehindert durch die Türen gehen kann, ohne diese zu öffnen. 
+Wir haben das Rechteck um die virtuellen Türen etwas grösser definiert als deren Bild darstellt, damit die Figur auf dem Objekt \q{Türe} steht und sie mit dem Modul Kollisionsabfrage öffnen und schliessen kann. Das Sprite wird für eine weitere Kollisionsabfrage gebraucht, um zu verhindern, dass der Spieler ungehindert durch die Türen gehen kann, ohne diese zu öffnen. 
 Dieses Konzept ermöglicht es, dass sich die Türen schlussendlich immer von beiden Seiten öffnen und schliessen lassen.
 
 
@@ -466,8 +467,7 @@ So zählt eine Anzeige im Spielbildschirm oben links in Sekunden von einem vorge
 \section{Wahl der Spielarchitektur}
 Als wir die Grundlagen von C++ zusammen erarbeitet hatten, planten wir das Vorgehen zur Programmierung des Spiels.
 Wir kannten zwar Verzweigungen, Schleifen und Funktionen, aber \q{wie können wir damit ein Spiel entwickeln?} Auf Seite 106 in \cite{sfml_gamedev}
-wird eine parallele Spielarchitektur erklärt. Wir fanden diese aber unnötig kompliziert. Deshalb erarbeiteten wir uns eine eigene andere Struktur. Daraus resultierte die Struktur in Abbildung \ref{fig:seriell}.
-Die ist die Struktur, die wir implementierten.\\
+wird eine parallele Spielarchitektur erklärt. Wir fanden diese aber unnötig kompliziert. Deshalb erarbeiteten wir uns eine eigene andere Struktur. Daraus resultierte die Struktur in Abbildung \ref{fig:seriell}.\\
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.3]{img/gameloops.png}
@@ -476,7 +476,7 @@ Die ist die Struktur, die wir implementierten.\\
 \end{figure}
 
 \subsection{Serielle Architektur}
-\label{loops}
+\label{Loops}
 Die serielle Architektur unterteilt sich in vier Teile, die immer vollständig und immer hintereinander ablaufen. Die Funktionsweise
 und die Aufgaben der Teile werden hier kurz erläutert:\\
 \\
@@ -485,11 +485,7 @@ Diese Abfrage überprüft nur, ob das Spiel beendet werden muss, sei es aufgrund
 oder weil der Benutzer das Fenster schliessen wollte.\\
 \\
 \textbf{InputLoop}
-Dieser Teil ist dafür zuständig, die Eingaben des Spielers einzulesen und aufgrund der Eingaben Aktionen auszulösen. 
-Wenn zum Beispiel der Spieler in der Nähe eines Schatzes steht, und die Taste \key{E} drückt, werden dem Spieler 10 Punkte gutgeschrieben und der Schatz muss aus der 
-RenderLoop entfernt werden, damit er beim nächsten Durchgang im InputLoop verschwindet. Steht der Spieler bei einer Türe und drückt \key{E}, wird die Animation
-der Türe gestartet und die Mauer der Türe muss umplatziert werden. Wenn sich der Spieler in den Strahl einer Laserschranke stellt, wird das Level
-\q{Game Over} geladen.\\
+Dieser Teil ist dafür zuständig, die Eingaben des Spielers einzulesen und aufgrund der Eingaben Aktionen auszulösen. Die Aktionen lösen Änderungen am Levelmodell im Speicher aus und wirken sich somit zum Beispiel auf die Position des Spielers, einer Türe oder auf die Punkte aus. 
 \\
 \textbf{AnimationLoop}
 In der AnimationLoop wird für jede Animation überprüft, ob sie aktiv ist, und wenn ja, ob seit dem letzten Durchgang bereits die für jede Animation
@@ -506,7 +502,7 @@ der sich dadurch ergibt, ist die Performancesteigerung, d.h. die Ausführungsges
 parallele Architektur würde sich demnach in drei bis vier Teile aufgabeln. Je nachdem, ob man die AnimationLoop
 und die RenderLoop in jeweils einzelne Threads nimmt oder nicht. Da wir zu Beginn
 nicht wussten, dass SFML so effizient arbeiten würde, und unser Spiel auch ohne parallelen Code
-ohne Ruckler spielbar wäre, hatten wir unsere Spielarchitektur ursprünglich nur seriell geplant:
+ohne Ruckler spielbar wäre, hatten wir unsere Spielarchitektur ursprünglich nur parallel geplant:
 \\
 \begin{figure}[h]
 \centering
@@ -558,15 +554,15 @@ Von dort werden die Positionen der Grafiken innerhalb des Fensters bestimmt.
 Dieses System ist frei von der Ansicht. Sie kann sich frei über dieses System bewegen.
 Über vordefinierte Funktionen der SFML Bibliothek rechneten wir die Koordinaten zwischen den Systemen ineinander um.
 Wir selber erstellten mit dem factor ein eigenes, neues System.
-Wir brauchten viel Zeit zum Verstehen der Zusammenhänge dieser drei Koordinatensysteme.
+Wir brauchten viel Zeit zum Verstehen der Zusammenhänge dieser drei Koordinatensysteme.\\
 \\
 Durch das Verankern der Ansicht an den Spieler, konnten wir die Arbeit mit dem factor umgehen und ihn wieder herausstreichen.
 Diese Variante gefiel uns besser, denn wir gingen nie von immer gleich grossen Levels aus. 
 Das wäre beim factor ein weiteres grosses Problem geworden.
 \\
 Wie bereits erwähnt regelt SFML das Anzeigen mit zwei Koordinatensystemen. Wir entdeckten einerseits einen Fehler bei der Bestimmung der Auflösung des Bildschirms und andererseits in der Anpassung der Grafiken an die gemessene Auflösung im Spiel.
-Dadurch kam und kommt es auf wenigen Bildschirmen mit hoher Auflösung immer noch zu Anzeigefehler. Wir griffen auf die SFML \textit{zoom()}-Funktion zurück, um den Wert während des Spiels manipulierbar zu machen. So sieht man zwar am Anfang den Fehler, kann ihn aber durch zoomen mit den Tasten \key{0} und \key{9} irrelevant machen.
-
+Dadurch kam und kommt es auf wenigen Bildschirmen mit hoher Auflösung immer noch zu Anzeigefehler. Wir griffen auf die SFML \textit{zoom()}-Funktion zurück, um den Wert während des Spiels manipulierbar zu machen. So sieht man zwar am Anfang den Fehler, kann ihn aber durch zoomen mit den Tasten \key{0} und \key{9} irrelevant machen.\\
+\\
 Wir können weitere Fehler bei dieser Funktion nicht ausschliessen, doch haben wir uns entschlossen, dieses Thema aus Zeitgründen nicht weiter zu verfolgen. 
 
 \section{Compilerprobleme}
@@ -574,7 +570,7 @@ Nicht nur wir machten Fehler bei der Entwicklung, sondern offenbar auch die Entw
 \\
 Einem eher speziellen Problem begegneten wir, als wir den Pfad für ein Animationsbild erstellen wollten.
 Die Zahl $i$, die bei 0 zu zählen anfängt, zeigt, den wievielten Schritt der Animation gerade geladen werden soll, und $n$ steht für den Namen der Animation.
-Ein solcher Pfad lautet zum Beispiel für einen\\Pfeil im 4. Animationsschritt: \textit{resources/pfeil\_3.png}\\ (Verweis)
+Ein solcher Pfad lautet zum Beispiel für einen Pfeil im 4. Animationsschritt: \textit{resources/pfeil\_3.png}\\
 \\
 In C++11 sind die + Operatoren zur Verkettung (Engl. concatenate) von Strings überladen. Damit man auch Zahlen in Strings einsetzen
 kann, gibt es seit C++11 die Funktion $to\_string()$, die überladen für sämtliche Zahldatentypen existiert und das Argument in einen String
@@ -745,6 +741,7 @@ Den Quellcode ist auf den nächsten Seiten zu finden. Um Papier zu sparen wurde 
 gedruckt.
 
 \end{document}
+
 
 
 
