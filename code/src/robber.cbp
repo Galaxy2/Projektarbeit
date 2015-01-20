@@ -96,6 +96,10 @@
 		<Unit filename="notification.h" />
 		<Unit filename="pfeil.cpp" />
 		<Unit filename="pfeil.h" />
+		<Unit filename="res.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
+		<Unit filename="resources/icon.ico" />
 		<Unit filename="schatz.cpp" />
 		<Unit filename="schatz.h" />
 		<Unit filename="screen.cpp" />
