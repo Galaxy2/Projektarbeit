@@ -186,7 +186,7 @@ int main(void)
     dunkel.setTexture(dunkelTextur);
 
     // Zentrum der Dunkelheit ist auf dem Spieler
-    dunkel.setOrigin(960, 540);
+    dunkel.setOrigin(960*2, 540*2);
 
     // Dunkelheit mitverschieben
     dunkel.setPosition(spieler.getPosition());
