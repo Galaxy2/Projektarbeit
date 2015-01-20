@@ -145,7 +145,7 @@ Wenn man auf einen Schatz kam, konnte man bis jetzt mehrere Punkte holen. Doch n
 
 ### 03.01.15
 Wir haben es nun auch geschafft, dass es den alten Stand der Level speichert. Wenn man eine Tür geöffnet hat und zurückkommt ist diese immer noch offen. Der gesamte Spielstand in jedem Level wird gespeicher. Leider kommt es noch zu Fehlern, dass es nicht alles wieder neu lädt, wenn man verliert oder neu beginnt.
-Nun haben wir auch Rennen ins Spiel eingeführt. Dazu haben wir eine neue Variable eingefügt, welche beim drücken der Shift-Taste die Geschwindigkeit verdoppelt. Wir haben auch einen Lärmpegel eingefügt. Dieser steig an, wenn man eine Tür öffnet oder wenn man in eine Mauer läuft.
+Nun haben wir auch eine Funktion zum Rennen ins Spiel eingeführt. Dazu haben wir eine neue Variable eingefügt, welche beim drücken der Shift-Taste die Geschwindigkeit verdoppelt. Wir haben auch einen Lärmpegel eingefügt. Dieser steig an, wenn man eine Tür öffnet oder wenn man in eine Mauer läuft.
 Das Problem ist, dass es bei der Kollision mit einer Mauer jede Bewegung in der Nähe der Mauer als Kollision angesehen wird und somit laut ist. Deshalb haben wir die Mauerkollisionen aus dem Lärm entfernt.
 Dafür steigt der Schallpegel, wenn man Shift drückt. Dies haben wir nach kurzem so geändert, dass es immer nur dann steigt, wenn man sich auch wirklich bewegt. 
 Parallel dazu haben wir noch eine dunkel Datei erstellt. Diese bezweckt, dass wir nicht mehr das ganze Level sehen. Es wird nur noch eine kleiner Ausschnitt gezeigt. Man kann es sich wie ein schwarzes Blatt vorstellen, mit einem Loch darin. Diese Datei wird der Figur hinzugefügt, sodass sich das Loch immer mitbewegt. Wir finden, das gibt dem ganzen einen ganz anderes Aussehen und eine grössere Spannung. 
