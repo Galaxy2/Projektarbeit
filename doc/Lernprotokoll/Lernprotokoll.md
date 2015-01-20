@@ -158,4 +158,4 @@ Wir haben einen weiteren Zufallsgenerator erzeugt. Dieser kann, wenn es mehrere 
 Dazu haben wir noch die Pfeile auf die von uns ursprünglich geplante Version gebracht.
 So führen die roten Pfeile nun tiefer ins Haus hinein und die grünen wieder hinaus.
 Dies wird durch ein neues Argument für die Pfeile in der Leveldatei erreicht.
-Momentan ist das Schreiben der Dokumentation im Zentrum unserer Anstrengugen. Darum haben wir beschlossen, das Spiel in diesem Zustand zu lassen.
+Momentan ist das Schreiben der Dokumentation im Zentrum unserer Anstrengugen. Darum haben wir beschlossen, das Spiel so zu belassen.
