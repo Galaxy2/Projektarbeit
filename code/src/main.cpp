@@ -806,7 +806,7 @@ int main(void)
             aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
             // Spieler in die hauptmenu Level positionieren
-            spieler.setPosition(200, 300);
+            spieler.setPosition(520, 375);
 
             // Den Spieler wieder anzeigen
             renderList.push_back(&spieler);
