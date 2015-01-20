@@ -261,7 +261,7 @@ int main(void)
 
 
             // Spieler in die hauptmenu Level positionieren
-            spieler.setPosition(200, 300);
+            spieler.setPosition(520, 375);
 
             // Den Spieler wieder anzeigen
             renderList.push_back(&spieler);
@@ -771,11 +771,11 @@ int main(void)
 
         // Zeit aktualisieren
         int verbleibendeZeit;
-        if(aktuellesLevel->Zeit.asSeconds() > -1) // t
+        if(aktuellesLevel->Zeit.asSeconds() >= 0.5) // t
         {
             verbleibendeZeit = aktuellesLevel->Zeit.asSeconds() - Uhr.getElapsedTime().asSeconds();
 
-            if(aktuellesLevel->checkCollisionLaser(spielerEcken) == true ??!??! verbleibendeZeit == 0)
+            if(aktuellesLevel->checkCollisionLaser(spielerEcken) == true ??!??! verbleibendeZeit < 0)
             {
                 spiel.punkte = 0;
                 schallPegel = 0;

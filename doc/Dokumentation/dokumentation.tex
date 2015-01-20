@@ -49,7 +49,7 @@ Patrick Eigensatz, G3C
 \clearpage\mbox{}\clearpage
 
 \section*{Zusammenfassung}
-Mit unserer Dokumentation wollen wir unsere Arbeitsweise, den zeitlichen Verlauf und die Funktionsweise unseres Projektes verdeutlichen.
+Mit unserer Dokumentation wollen wir unsere Arbeitsweise, den zeitlichen Verlauf der Entwicklung und die Funktionsweise unseres Projektes verdeutlichen.
 Unser Projekt bestand aus dem Entwickeln eines 2D-Spiels.
 Das Ziel des Spiels ist, als Einbrecher in ein Haus einzubrechen und dabei keinen Lärm zu verursachen und Laserschranken auszuweichen. Je nach Spielmodus hat man eine andere Aufgabe zu bewältigen.
 Wir haben drei unterschiedliche Spielmodi vorgesehen:
@@ -89,16 +89,16 @@ Zum Schluss erstellten wir eine schriftliche Arbeit und eine Präsentation. Dies
 
 \section{Motivation}
 In unserer Generation verbringen viele Kinder, Jugendliche und Erwachsene ihre Zeit mit Computer- und Konsolenspielen.
-Berühmte Vertreter sind zum Beispiel Call of Duty, Grand Theft Auto und Minecraft.
+Berühmte Vertreter von Spielen sind zum Beispiel Call of Duty, Grand Theft Auto und Minecraft.
 Doch die meisten Nutzer dieser Programme kennen die Prozesse und den Entwicklungsaufwand hinter diesen Games nicht.
 Sei das auf Grund der weit fortgeschrittenen Komplexität einiger Spiele
 oder bei simpleren Spielen die fehlende Motivation, sich damit zu befassen.\\
 \\
 Viele wollen nur wissen, wie man ein Spiel spielt und nicht, wie man es entwickelt. Nur wenige wissen, wie schwer und aufwändig es ist, bereits ein kleines Spiel herzustellen.
-Da wir selber auch zu dieser Generation gehören,
+Da wir selber auch zu dieser \q{Gamer Generation} gehören,
 gewinnen wir alle immer wieder Erfahrungen mit den verschiedensten Games.
 Doch wir wollten nicht bloss Spiele spielen,
-sondern wir wollten selber ein Spiel entwickeln.
+sondern wir wollten auch selber ein Spiel entwickeln.
 Hinzu kam auch unsere Begeisterung für das Programmieren.
 Jeder von uns hatte bereits ein wenig Erfahrung darin gesammelt.
 Es hat jedoch noch niemand alleine
@@ -115,12 +115,12 @@ Ebenfalls bedanken möchten wir uns auch bei unserem Mentor, Herrn Sax. Er hat u
 
 Vor dem eigentlichen Projekt setzten wir uns selber einige Vorgaben.
 Uns war klar, dass ein Spiel auf dreidimensionaler Basis in der uns zu Verfügung stehenden Zeit nicht realisierbar sein würde. Deshalb entschieden wir uns für ein 2D Spiel.
-Dazu brachte die von uns gewählte Programmiersprache einige Hilfen mit sich, die wir bei der Entwicklung eines 2D-Spiels gut gebrauchen konnten.
+Dazu brachte die von uns gewählte Programmiersprache einige Funktionalitäten mit sich, die wir bei der Entwicklung eines 2D-Spiels gut gebrauchen konnten.\\
 \\
 Um die Sache für uns noch attraktiver zu machen, wählten wir bewusst eine Programmiersprache, die noch nicht alle von uns beherrschten.
 Natürlich hätten wir genau so gut SDL oder direkt das darunterliegende OpenGL verwenden können.
 OpenGL schied aber aus, da der Aufwand bereits ein einfaches 2D-Spiel zu realisieren zu gross gewesen wäre.
-SDL war unser Favorit, bis wir SFML entdeckten.
+SDL war unser Favorit, bis wir per Zufall SFML entdeckten.
 Ganz im Gegensatz zu SDL ist SFML auf C++ ausgerichtet.
 So wurden Klassen anstatt Strukturen verwendet, was den (für den
 Anfang komplizierten) Umgang mit Zeigern reduzierte.
@@ -177,12 +177,17 @@ Für OSS-Entwickler kostenlose Plattform zur Qualitätssicherung: Kompiliert das
 \subparagraph{Coverity:}
 Für OSS-Entwickler kostenlose Plattform: Führt eine tiefgreifende statische Quellcodeanalyse durch, und hilft so Programmierfehler zu vermeiden und zu finden.
 
+\subparagraph{UML:}
+Englisch für Unified Modeling Language: Standardisierte Schemen zur Visualalisierung von Klassen. Dabei werden
+die Variablen einer Klasse zusammen mit den Methoden aufgelistet.
+
+
 \chapter{Entwicklungswerkzeuge}
 \section{Simple and Fast Multimedia Library}
 \q{Simple and Fast Multimedia Library} (\textbf{SFML}) ist ein Multimediaframework, das wir hier als
 \q{Entwicklungswerkzeug} einsetzen.
-SFML liefert Klassen, die in verschiedenen Modulen (\textit{Sound}, \textit{Graphics}, \textit{Network}, ...) bereit stehen und aus dem Programm heraus aufgerufen oder im Programm verlinkt werden.
-Diese Module wurden plattformübergreifend entwickelt. Deshalb mussten wir uns nicht um die Portierung unseres Spiels auf verschiedene Plattformen kümmern.
+SFML liefert Klassen, die in verschiedenen Modulen (\textit{Sound}, \textit{Graphics}, \textit{Network}, ...) bereitstehen und aus dem Programm aufgerufen oder im Programm verlinkt werden.
+Diese Module wurden plattformübergreifend entwickelt. Deshalb mussten wir uns nicht um die Portierung unseres Spiels auf die Zielplattformen kümmern.
 \\
 \\
 SFML stellt die Schnittstelle zwischen unserem Spielmodell im Arbeitsspeicher und dem Benutzer des Spiels bereit. Das Spielmodell verfolgt zum Beispiel den Standort der Spielfigur und SFML zeichnet eine entsprechende Bilddatei als Textur an die richtige Stelle auf den Bildschirm. Über SFML wird die Tastatur eingelesen und Musik abgespielt.
@@ -192,20 +197,19 @@ Code::Blocks ist eine frei verfügbare Entwicklungsumgebung (IDE\footnote{Integr
 Neben der Syntaxhervorhebung und der intelligenten automatischen Code-Vervollständigung, bietet Code::Blocks bequeme Einstellungen um SFML-Projekte für mehrere Plattformen
 komfortabel zu kompilieren. Code::Blocks setzt dabei auf eine Art \textbf{make}, wie es schon aus Unixzeiten bekannt ist: Neu kompiliert werden nur diejenigen Programmteile, welche sich
 seit der letzten Kompilation geändert haben. Code::Blocks nutzt \textbf{g++}, den GNU C++ Compiler, um die einzelnen Dateien in Objektcode umzuwandeln und diese
-anschliessend in einer ausführbaren Datei zusammenzuhängen (\q{linken}).
+anschliessend zu einer ausführbaren Datei zusammenzuhängen. (\q{linken})
 
 \section{git und GitHub}
-\textbf{git} ist eine verteilte Dokument-Versionskontrolle (DVCS\footnote{Distributed Version Control System}). Ein solches Werkzeug hilft
-den Entwicklern parallel zu programmieren und dabei die Übersicht zu behalten. Es zeichnet alle Änderungen am Code auf.  Diese kann man einsehen und zurückverfolgen, um Fehler zu finden und zu korrigieren. Es unterstützt auch die Wiederherstellung früherer Programmabschnitte, ohne dass man
+\textbf{git} ist eine verteilte Dokument-Versionskontrolle (DVCS\footnote{Distributed Version Control System}). Ein solches Werkzeug hilft Entwicklern parallel zu programmieren und dabei die Übersicht zu behalten. Es zeichnet sämtliche Änderungen am Code auf.  Diese kann jeder einsehen und zurückverfolgen, um Fehler zu finden und zu korrigieren. Es unterstützt auch die Wiederherstellung früherer Programmabschnitte, ohne dass man
 manuell die Dateien zerpflücken muss. 
 Git überzeugte uns durch seine Einfachheit, seine Effizienz und seine Möglichkeiten.
-Git erwies sich als grosse Hilfe, sei es um Fehler zu finden oder einfach zum synchronisieren des Codes.
+Git erwies sich als grosse Hilfe, sei es um Fehler zu finden oder einfach zum Austauschen des Quellcodes.
 \\
 \\
 \textbf{GitHub} ist ein
 Onlineportal, das das Hosting, also das Speichern von Projekten, die mit git verwaltet werden, kostenlos übernimmt. Das Projekt erhält eine eigene Übersichtseite,
 die ebenfalls zur Entwicklung genutzt werden kann und auf der (fremde) Interessierte den Code und die Änderungen einsehen können. Wir haben GitHub nicht nur
-als Hoster genutzt, sondern ebenfalls um unsere Termine im Projektkalender nachzuführen.
+als Hostingplattform genutzt, sondern ebenfalls um unsere Termine in einem Projektkalender nachzuführen und um Verbesserungsvorschläge zentral zu sammeln.
 \begin{figure}
 \centering
 \includegraphics[scale=1]{img/branches.png}
@@ -231,7 +235,7 @@ Während der Entwicklung haben wir unser Projekt regelmässig von Coverity über
 \textbf{Valgrind} ist ein freies Programm zur dynamischen Fehleranalyse in Programmen. Besonders nutzten wir die Fähigkeit,
 unser Spiel innerhalb Valgrinds Memcheck Modul laufen zu lassen, um ein Feedback über den Speicherverbrauch zu erhalten. So entdeckten
 wir, dass viele Klassen, die schnell erstellt wurden, zwar Speicher anfordern, diesen aber nie mehr freigeben.
-Das führte schlussendlich zu einem Speicherleck von knapp 20MB. Dies konnte dank Valgrind rasch festgestellt und behoben werden konnte.
+Das führte schlussendlich zu einem Speicherleck von knapp 20MB. Dies konnte dank Valgrind rasch festgestellt und behoben werden.
 
 \begin{figure}
 \centering
@@ -273,7 +277,7 @@ Die Idee fanden wir alle interessant. Sie schien mit unseren Mitteln, unserem Wi
 Parallel zur Ideenfindung beschäftigten wir uns - wie in der
 Disposition vermerkt - intensiv mit der Programmiersprache C++. Um C++ zu lernen verwendeten wir \cite{cpp_grundkurs}, um Sachen nachzuschlagen dienten uns aber auch \cite{cpp_referenz} und \cite{cpp_com}.\footnote{Infos zu den genannten Büchern finden Sie im Literaturverzeichnis} Das Einarbeiten in die Sprache war zentral für die spätere Verwendung der SFML-Bibliothek. In die SFML Bibliothek arbeiteten wir uns mithilfe der offiziellen Tutorials \cite{sfml_tutorials} ebenfalls sehr praxisorientiert ein.\\
 \\
-Die Reportage vom Schweizer Fernsehen \cite{sf_gamedesign} zum Thema Game Design halfen uns überhaupt nicht, da sie lediglich zwei Gamedesigner porträtierten und sie über ihre Motivation und ihren Studiengang Auskunft gaben, wir folglich daraus nichts für unsere Arbeit gewinnen konnten.\\
+Die Reportage vom Schweizer Fernsehen \cite{sf_gamedesign} zum Thema Game Design half uns überhaupt nicht, da sie lediglich zwei Gamedesigner porträtierten und sie über ihre Motivation und ihren Studiengang Auskunft gaben, wir folglich daraus nichts für unsere Arbeit gewinnen konnten.\\
 \\
 Bevor wir nun jedoch mit der Programmierung anfangen konnten, mussten wir die Idee zu einem realisierbaren Konzept ausarbeiten.
 Sicher war zuerst nur, dass es ein zweidimensionales Spiel sein würde und das Thema \q{Einbruch} werden sollte.
@@ -317,13 +321,13 @@ Dadurch konnten wir mehrere Türen, Schätze und Laser implementieren.
 \end{figure}
 
 \subsection{Levelclass und Leveldatei}
-Unser Absicht war es, zuerst ein Probe-Level zu erstellen. Daraus abgeleitet richtige Levels zu erstellen, schien uns das einfachste Vorgehen. 
-Deshalb erstellten wir von Anbeginn zu jedem Level eine Leveldatei, in der alle variablen Informationen enthalten waren. 
-Bei jedem Typ steht zuerst die Anzahl Objekte und zu jedem Objekt die genauen Koordinaten. 
+Unser Absicht war es, zuerst ein Demo Level zu erstellen. Daraus abgeleitet richtige Levels zu erstellen, schien uns das einfachste Vorgehen. 
+Deshalb erstellten wir von Anbeginn zu jedem Level eine Leveldatei, in der alle Informationen zu den Objekten im Level enthalten waren.\\
+\\
+Bei jedem Typ steht zuerst die Anzahl Objekte und zu jedem Objekt dann die genauen Koordinaten. 
 Bei den Pfeilen wird zusätzlich die Position angegeben, an die der Spieler im neuen Level teleportiert werden soll. 
-Zuerst definierten wir die Anzahl jedes Objektes, die es im entsprechenden Level hat und danach die benötigten Informationen zu den entsprechenden Objekten.
-Das Programm liest nur Zahlen heraus anstelle von Beschreibungen. 
-Den Mehraufwand, zum Einlesen von Wörtern aus der Leveldatei, sparten wir uns, um den Aufwand im Rahmen zu halten.
+Das Programm liest nur Zahlen anstelle von Textbeschreibungen heraus, um die Datei wie auch das Format simpel zu halten.
+
 
 \begin{figure}[h]
 \centering
@@ -341,8 +345,11 @@ Türen durch grün blinkende Pfeile markiert werden. Für solche Animationen wur
     \caption{UML der Animationsklasse}
 \end{figure}
 Um Animationen später oft und möglichst einfach verwenden zu können, besitzt die Klasse einen einfachen Konstruktor,
-der die Bilder lädt, sowie die Position und die Zeitspanne $\Delta t$ zwischen den einzelnen Bildern festlegt.
-Die Funktion zum Laden einer Animation hat viele Argumente, die viele verschiedene Animationen möglich macht. So gibt es neben der Zeitspanne auch die Option eine Animation endlos zu schalten oder diese rückwärts laufen zu lassen. Alle Objekte, ausserhalb den Mauern, bestehen aus einer Animation und optionalen Zusatzfunktionen.
+der die Bilder lädt, sowie die Position und die Zeitspanne $\Delta t$ zwischen den einzelnen Bildern festlegt.\\
+\\
+Die Funktion zum Laden einer Animation hat viele Argumente, die viele verschiedene Animationen möglich macht. So gibt es neben der Zeitspanne auch die Option eine Animation endlos zu schalten oder diese rückwärts laufen zu lassen.\\
+\\
+Alle Objekte, ausserhalb den Mauern, bestehen aus einer Animation und optionalen Zusatzfunktionen.
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.3]{img/animation_pfeil.png}
@@ -369,17 +376,17 @@ Unser Absicht ist es jedoch, beide Pfeile (rote und grüne) im gleichen Level la
 Darum gaben wir den Pfeilen eine weitere Variable mit, über die wir die Farbe jedes einzelnen Pfeils bestimmen können.
 Rote Pfeile führen tiefer in den Level und grüne Pfeile aus dem Level hinaus.
 
-\subsection{Console}
-Wir haben eine Console eingebaut, die sich mit der rechten Shift-Taste öffnen lässt. 
+\subsection{Konsole}
+Wir haben eine Konsole eingebaut, die sich mit der rechten Shift-Taste öffnen lässt. 
 In dieser kann man verschiedene kleine Hilfen aktivieren, 
-wie zum Beispiel, dass man durch Mauern und Türen gehen kann (sogenannte Cheats). 
+wie zum Beispiel, dass man durch Mauern und Türen gehen kann. (Auch \q{Cheats} genannt). 
 Über die Konsole kann man auch den Level direkt wechseln.
 Die Konsole diente uns als Hilfe beim Testen des Spieles und wurde nicht für den Gebrauch für Spieler optimiert.
 
 \subsection{Tastatur}
 Die Figur wird mit den Tasten \key{W}, \key{A}, \key{S} und \key{D} bewegt. Mit der Taste \key{W} geht die Figur nach oben, mit \key{A} nach links, mit \key{S} nach unten, mit \key{D} nach rechts. Hier können wir im SFML auf eine einfache Funktion zurückgreifen. Diese erkennt, ob und welche Taste gedrückt wird. Jeder Taste ordneten wir einen bestimmten Befehl zu, der genau festlegt, was getan werden soll. Zum Beispiel steht bei der Taste \key{W}, dass sich die Figur um -5 Pixel bewegen soll. Dies bewirkt eine Bewegung nach oben. Da das Koordinatensystem bei jedem Laptop oben links mit 0/0 beginnt und dann nach oben und links negativ wird.\\
 \\
-Bei diesen Tastenabfragen wird auch gleich überprüft, ob man in eine Mauer läuft, sollte dies nämlich der Fall sein, darf sich die Figur nicht bewegen. Mehr dazu im ). 
+Bei diesen Tastenabfragen wird auch gleich überprüft, ob man in eine Mauer läuft. Sollte dies nämlich der Fall sein, darf sich die Figur nicht bewegen.
 Deshalb wird in diesem Fall der Schritt wieder rückgängig gemacht. 
 Im Spiel kann man rennen. 
 Dazu muss man die linke Shift Taste während der Bewegung gedrückt halten. Dann bewegt sich die Figur doppelt so schnell. Gleichzeitig wird der Schallpegel erhöht. 
@@ -401,8 +408,8 @@ Dieses Konzept ermöglicht es, dass sich die Türen schlussendlich immer von bei
 \subsection{Das Hauptmenü}     
 Das Hauptmenü wurde bewusst einfach gehalten. Mit GIMP wurden     
 einige Grafiken erzeugt, die als Schaltflächen verwendet werden.
-Zuerst versuchten wir, das Hauptmenü als festes Bild anzuzeigen. Doch wir stiessen dabei auf Auflösungprobleme (Siehe Seite: \pageref{aufloesungsprobleme}).
-Schlussendlich erstellten wir einen speziellen Hauptmenülevel.
+Zuerst versuchten wir, das Hauptmenü als festes Bild anzuzeigen. Doch wir stiessen dabei auf Auflösungprobleme. (Siehe auch Seite: \pageref{aufloesungsprobleme})
+Schlussendlich erstellten wir ein spezielles Hauptmenülevel.
 Man beginnt nun direkt mit dem Spieler.
 Dadurch setzen wir die Spielfigur als zentrales Element des Spieles auch im Hauptmenü ein.
 Wir definierten das Bild mit der Textur \q{Spiel starten} als neuen Pfeiltyp. 
@@ -438,7 +445,7 @@ Dadurch wird jeweils eine bestimmte Zahl zum Schallpegel addiert.
 Laufend wird jedoch auch ein konstanter Wert wieder abgezogen, so sinkt der Schallpegel ständig.
 Links auf dem Bildschirm haben wir eine Anzeige erstellt, die den aktuellen Schallpegel anzeigt.
 Diese Anzeige ist eine Animation, welche für jeden Zehnerwert der Schallanzeige ein eigenes Bild hat.
-Sobald diese den roten Bereich erreicht, riskiert man wegen zu vielem Lärm das Spiel zu verlieren.
+Sobald diese den roten Bereich erreicht, riskiert man aufgrund des vielen Lärms das Spiel zu verlieren.
 Um dem Spieler im roten Bereich doch noch eine Chance zu geben, bauten wir eine Zufallszahl ein.
 Diese Zahl liegt zwischen 1 und 200. 
 Der Zufallswert wird bei jedem Durchgang des Codes neu berechnet.
@@ -460,18 +467,18 @@ In der momentanen Programm-Version dieser Funktion, gerät man direkt in das Hau
 Ihr eigentlicher Sinn wäre es aber (spätere Programmerweiterung, direkt den Weg in den nächste Level zu öffnen, sei das durch direkte Teleportation oder durch Freischalten eines Pfeils.    
 
 \subsection{Laser}
-Das Schwierigkeit, in einem dunklen Level zu rennen, ist neben der Zeit auch die Gefahr, mit einem Laser zu kollidieren.
+Die Schwierigkeit, in einem dunklen Level zu rennen, ist neben der zeitlichen Komponente auch die Gefahr, mit einem Laser zu kollidieren.
 Die Laser bilden Hindernisse auf dem Weg zu den Schätzen.
 Um die Laser in unserem zweidimensionalen Spiel passierbar zu machen, lassen wir sie pulsieren.
 Sobald die Animation keinen durchgehenden Laser anzeigt, ist die Laserschranke passierbar.
 Sobald sie jedoch wieder leuchtet, verliert man bei einer Kollision das Spiel.
 \\
-Die Idee der Laserschranken ist ein Alarmsystem, welches bei einer Unterbrechung des Lasers Alarm schlägt. In Verbindung mit zukünftigen Gegenspieler könnte die Alarmanlage den Schallpegel auf den höchsten Wert setzen und damit alle Gegenspieler aufwecken.
+Die Idee der Laserschranken ist ein Alarmsystem, welches bei einer Unterbrechung des Lasers Alarm schlägt. In Verbindung mit zukünftigen Gegenspielern könnte die Alarmanlage den Schallpegel auf den höchsten Wert setzen und damit alle Gegenspieler aufwecken.
 
 \subsection{Zeit}
 \label{Zeitlimit}
 Zusätzlich zu den Lasern und zum Schallpegel führten wir die Zeit als erschwerdender Faktor ein. 
-So zählt eine Anzeige im Spielbildschirm oben links in Sekunden von einem vorgegebenen Startwert herunter. Falls man das Level nicht vor dem Enden der Zeit verlassen hat, verliert man das Spiel und geht GameOver. Die zur Verfügung stehende Zeit ist pro Level variabel wählbar. Deshalb wird sie in der Leveldatei angegeben.
+So zählt eine Anzeige im Spielbildschirm oben links in Sekunden von einem vorgegebenen Startwert herunter. Falls man das Level nicht in der verfügbaren Zeit verlassen hat, verliert man das Spiel und geht GameOver. Die zur Verfügung stehende Zeit ist pro Level variabel wählbar. Deshalb wird sie in der Leveldatei angegeben.
     
 
 \section{Wahl der Spielarchitektur}
@@ -518,6 +525,7 @@ ohne Ruckler spielbar wäre, hatten wir unsere Spielarchitektur ursprünglich nu
 \centering
 \includegraphics[scale=0.3]{img/threads.png}
 \caption{Die parallele Spielarchitektur}
+\label{fig:parallel}
 \end{figure}
 
 
@@ -526,27 +534,29 @@ ohne Ruckler spielbar wäre, hatten wir unsere Spielarchitektur ursprünglich nu
 \label{aufloesungsprobleme}
 Schon früh im Projekt zeigte sich ein Problem beim Abspielen des Games mit verschiedenen Computern mit unterschiedlichen Bildschirmauflösungen. Es stellte sich heraus, dass es sich
 beim Auflösungsproblem um ein Problem beim Umgang mit SFML handelte.
-Die Herausforderung bestand darin, dass jede Ansicht des Games bei jeder Auflösung, jeder Gerätemarke und bei beiden Betriebssystemen gleich aussehen sollte.
-Wir hofften, dass SFML diese Arbeit übernehmen würde, doch bereits bei den ersten Grafiken stellten wir fest, dass wir die Anforderung selber regeln müssen.
+Die Herausforderung bestand darin, dass jede Ansicht des Games bei jeder Auflösung, jeder Gerätemarke und bei beiden Betriebssystemen gleich aussehen sollte.\\
+\\
+Wir hofften, dass SFML diese Arbeit übernehmen würde, doch bereits bei den ersten Grafiken stellten wir fest, dass wir diese Anforderung selber regeln müssen.
 Um die Aufgabe zu lösen, benutzten wir die $zoom()$-Funktion, mit der die Grösse der ganzen Ansicht über einen Wert angepasst werden kann.
 Diesen Wert nannten wir factor.
 Diesen factor bestimmten wir durch den Quotienten aus Auflösung und Ansichtsgrösse.
 \begin{quote}
 Eine View ist eine Klasse der SFML Bibliothek.
 Man kann es sich als eine 2D-Kamera vorstellen, die definiert, welche Region des Bildes angezeigt wird.
-Wir haben die View für unser Spiel Ansicht genannt.
+Wir haben die View in unserem Code $ansicht$ genannt.
 \end{quote}
-Wir erhofften uns, durch Einsetzen verschiedener Werte des factors, eine Gesätzmässigkeit zu finden.
+Wir erhofften uns, durch Einsetzen verschiedener Werte des factors, eine Gesetzesmässigkeit zu finden.
 Schnell wurde uns jedoch bewusst, dass diese Lösung längerfristig nicht haltbar war. 
 Denn dies führte auch dazu, dass zum Beispiel die Mauern umgerechnet werden mussten.
-Nicht nur war der geschätzte Aufwand sehr gross, sondern dieser Ansatz hätte weitere Probleme mit sich gebracht.
+Nicht nur war der geschätzte Aufwand sehr gross, sondern dieser Ansatz hätte weitere Probleme mit sich gebracht.\\
 \\
 \label{mauern}
 Bei den ersten Mauern waren die FloatRect der Mauern zu Beginn je nach Position auf dem Spielfeld unterschiedlich und falsch.
 Es gab vereinzelt Schlupflöcher von ganz geringer Breite, sodass man durch die Mauer hindurch konnte. 
 Neben der Mauer hingegen, versteckte sich eine unsichtbare Mauer. 
-Das heisst, es wurde eine Kollision mit einer Mauer gemeldet, obwohl an der Spielerposition gar keine Mauer eingezeichnet war. 
-Um das Problem zu erforschen und schliesslich zu beheben, ladeten
+Das heisst, es wurde eine Kollision mit einer Mauer gemeldet, obwohl an der Spielerposition gar keine Mauer eingezeichnet war.\\
+\\
+Um das Problem zu erforschen und schliesslich zu beheben, luden
 wir die Mauerabschnitte einzeln und zeichneten grüne Rechtecke darüber. 
 Auf diese Weise entdeckten wir, dass die Koordinaten der Mauer zwar richtig eingelesen, aber falsch verarbeitet wurden. Die Lösung war: Die Koordinaten mussten
 von absoluten Bildschirmkoordinaten in Fenster/Spielkoordinaten umgerechnet werden. 
@@ -556,16 +566,18 @@ Schlussendlich mussten wir einsehen, dass das Problem mit dem gewählten Vorgehe
 \\
 Das Problem war die Handhabung von drei verschiedenen Koordinatensystemen.
 SFML regelt seine Grafiken mit zwei Koordinatensystemen.
-Das erste hatte das Zentrum in der linken oberen Ecke des Bildschirms und gibt jedem Pixel des Bildschirms eine Koordinate.
+Das erste hatte seinen Ursprung in der linken oberen Ecke des Bildschirms und gibt jedem Pixel des Bildschirms eine Koordinate.
 Die Ansicht ist an dieses System gebunden.
-Das zweite System hat seinen Zentrum in der virtuellen oberen linken Ecken der Grafiken.
+Das zweite System hat seinen Ursprung in der virtuellen oberen linken Ecken des Fensters.
 Von dort werden die Positionen der Grafiken innerhalb des Fensters bestimmt.
-Dieses System ist frei von der Ansicht. Sie kann sich frei über dieses System bewegen.
+Dieses System ist unabhängig von der Ansicht und es kann sich frei über das andere System bewegen.
 Über vordefinierte Funktionen der SFML Bibliothek rechneten wir die Koordinaten zwischen den Systemen ineinander um.
-Wir selber erstellten mit dem factor ein eigenes, neues System.
-Wir brauchten viel Zeit zum Verstehen der Zusammenhänge dieser drei Koordinatensysteme.\\
 \\
-
+(Die Punkte kann man natürlich durch Addition der Ortsvektoren einfach ineinander umrechnen.)
+\\
+Wir selber erstellten mit dem factor ein eigenes, neues System.
+Wir brauchten sehr viel Zeit und auch Nerven zum Verstehen der Existenz und der Zusammenhänge dieser drei Koordinatensysteme.\\
+\\
 Durch das Verankern der Ansicht an den Spieler, konnten wir die Arbeit mit dem factor umgehen und ihn wieder herausstreichen.
 Diese Variante gefiel uns besser, denn wir gingen nie von immer gleich grossen Levels aus. 
 Das wäre beim factor ein weiteres grosses Problem geworden.
@@ -614,7 +626,7 @@ Dabei kann das Spiel die Datei zwar lesen, gibt aber einen Fehler aus: \q{Fehler
 Bei der Implementierung der Schätze, stellten wir fest, dass SFML ein Problem mit der Anzahl Anschläge von Tasten hat.
 So kam es zu doppelten Punkten beim einsammeln von Schätzen.
 Auch bei den Türen traten gleiche Probleme auf. Durch das Bestimmen der Animationslänge und des Animationsstartverbotes während der Animation konnte der Fehler bei den Türen aufgehoben wurden.
-Bei den Schätzen lösten wir es mit einer internen Uhr, deren einzige Funktion eine Verzögerung ist, so dass ein Schatz erst bei wirklich erneutem Drücken der Taste aufgenommen wird.
+Bei den Schätzen lösten wir das Problem mit einer internen Uhr, deren einzige Funktion eine Verzögerung ist, so dass ein Schatz erst bei wirklich erneutem Drücken der Taste aufgenommen wird.
 
 
 \section{Merge Conflicts}
@@ -627,7 +639,7 @@ Conflict. Git erstellt eine Datei, in der beide Versionen der Entwickler vorhand
 will, um Hilfe. Unsere Konflikte waren meistens schnell gelöst, da sie jeweils nur zwei bis drei Zeilen betrafen. Zum Beispiel wurde bei beiden Entwicklern
 eine Variable unbenannt und man musste entscheiden, welche Variabel man wählt.\\
 \\
-Mühsam hingegen waren Konflikte, die mehrere Dateien betrafen und in der 20 bis 30 Zeilen in einem Klammerwirrwar im Konflikt standen. Da die Dateien und die Zeilen
+Mühsam hingegen waren Konflikte, die mehrere Dateien betrafen und in der 20 bis 30 Zeilen (in einem Klammerwirrwar) im Konflikt standen. Da die Dateien und die Zeilen
 logisch voneinander abhängen, musste man sehr vorsichtig sein. Man brauchte entsprechend viel Zeit und Geduld einen solchen Konflikt zu lösen. Es gab zum Glück keinen
 grossen Konflikt, der uns grosse Probleme bereitete.
 
@@ -637,7 +649,7 @@ und es zuerst galt eine Basis zu entwickeln, auf der dann alle programmieren kon
 dass wir später keine grossen Änderungen vornehmen mussten, wenn das Spiel um verschiedene Funktionen wie Laserschranken oder auch Musik erweitert werden sollte.
 \\
 \\
-Das gelang uns generell sehr gut. Einzig die Levelklasse brauchten eine Restrukturierung, weil die \textit{loadFromFile()}-Methode eine Leveldatei nicht nur auslas,
+Das gelang uns generell sehr gut. Einzig die Levelklasse brauchte eine Restrukturierung, weil die \textit{loadFromFile()}-Methode eine Leveldatei nicht nur auslas,
 sondern die Objekte auch gleich zeichnete. Da wir die Level aber speichern und nicht immer komplett neu laden wollten, brauchten wir eine
 Funktion, die es uns ermöglichte, nur die Objekte in die Levelklasse zu laden und eine Funktion, die nur die gespeicherten Objekte zeichnete. So konnten wir Veränderungen an den Objekten in der Levelklasse abspeichern.
 \\
@@ -650,23 +662,24 @@ Das Überthema unserer Projektunterricht-Kursgruppe ist Mathematik im Alltag.
 Passend dazu hatten wir uns mit vielen mathematischen und logischen Problemen beim Programmieren auseinanderzusetzen.
 Programmieren selber ist ein sehr Logik-gebundener Prozess.
 Einfache Beispiele sind logische Verknüpfungen oder Bedingungen.
-Doch meisten sind es komplexere Probleme, wie zum Beispiel das Regeln von Unterordnungen oder das korrekte Aufrufen von definierten Variablen.
+Doch meistens sind es komplexere Probleme, wie zum Beispiel das Regeln von Unterordnungen oder das korrekte Aufrufen von definierten Variablen.
 Auch das Auflösungsproblem gehört zu dieser Art von Problemen.
 \\
 Ein weiteres Beispiel für logische Probleme sind die Türen.
 Uns war es wichtig, dass die Türen nach dem Aufmachen und Zumachen jeweils unpassierbar sind.
 Dazu mussten wir eine Funktion definieren, die am Ende der jeweiligen Animation aufgerufen wird und eine Mauer erstellt.
-Das Problem hierbei war das Regeln der verschieden Klassen.
+Das Problem hierbei war das Regeln der verschiedenen Klassen. Man musste natürlich immer den Überblick bewahren.
 Durch Probieren und vielem Nachdenken kamen wir auf die Idee Funktionspointer zu gebrauchen.
-(Die ausführliche Problemerläuterung kann im Lernprotokoll nachgelesen werden.)
+(Die ausführliche Problemerläuterung kann im Lernprotokoll nachgelesen werden.)\\
 \\
 Zu den logischen Problemen beim Programmieren kamen auch einfach arithmetische und geometrische Probleme.
-So hatten wir Mühe beim Berechnen der Mauerkoordinaten für die Türe bei jeder möglichen Rotation, wobei wir uns auf neunzig Grad Drehungen beschränkten.
+So hatten wir Mühe beim Berechnen der Mauerkoordinaten für die Türe bei jeder möglichen Rotation, wobei wir uns auf neunzig Grad Drehungen beschränkten.\\
+\\
 Zum Schluss gab es auch noch Fehler, die durch die Komplexität des Codes entstanden.
 Beim Erstellen eines weiteren Testlevels, der mehrere Laser haben sollte, kam es zu Fehlern.
 Es wurden zwar alle Laser angezeigt, doch nur ein Laser funktionierte.
 Sie wurden zwar gezeichnet, aber die Kollisionabfrage gab keine Kollision aus.
-Nach tiefschürfender Programmcodeanalyse fiel uns auf, dass immer nur der erste Laser funktionierte. Da wurde uns klar, dass der return-Befehl innerhalb der verschachtelten Abfragen eine Abfrage zu früh ausgeführt wurde. Nach dem Korrigieren wurden alle Laser richtig eingelesen und verarbeitet.
+Nach tiefschürfender Programmcodeanalyse fiel uns auf, dass immer nur der erste Laser funktionierte. Da wurde uns klar, dass der return-Befehl innerhalb der verschachtelten Abfragen eine Abfrage zu früh ausgeführt wurde. Nach der Korrektur wurden alle Laser richtig eingelesen und verarbeitet.
 
 
 
@@ -683,16 +696,23 @@ blieb, nutzten wir aber sehr intensiv. Die Kreise in Abbildung \ref{fig:punchcar
 \end{figure}
  
 \chapter{Diskussion}
-In der letzten Wochen vor der Abgabe der Arbeit waren wir sehr begeistert von unserem Spiel. Klar kennen wir die Schwächen und hätten gerne mehr Ideen verwirklicht und vor allem noch mehr Levels erstellt. Wir dürfen aber durchaus behaupten, dass wir in der verfügbaren Zeit, unser ambitioniertes Ziel erreichten und während dem Projekt nichts taten, was uns später blockierte oder unsere Ziele gar gefährdeten. Wir waren während der ganzen Arbeit immer sehr motiviert. Die Zusammenarbeit im Team machte uns sehr Spass und funktionierte jederzeit einwandfrei. 
+In der letzten Wochen vor der Abgabe der Arbeit waren wir sehr begeistert von unserem Spiel. Klar kennen wir die Schwächen und hätten gerne mehr Ideen verwirklicht und vor allem noch mehr Levels erstellt. Wir dürfen aber durchaus behaupten, dass wir in der verfügbaren Zeit, unser ambitioniertes Ziel erreichten und während dem Projekt nichts taten, was uns später blockierte oder unsere Ziele gar gefährdeten. Wir waren während der ganzen Arbeit immer sehr motiviert. Die Zusammenarbeit im Team machte uns sehr Spass und funktionierte jederzeit einwandfrei.\\
+\\
+Unser doch relativ einfaches Projekt zeigte aber sehr schön die Probleme wie Planung, Organisation und
+Zeitmanagement bei der Entwicklung eines Spiels auf. Jedem, der einmal versucht hat, selber ein Spiel
+zu entwickeln, ist sofort klar, warum Spieleentwickler oft eine Gruppe von Managern angestellt haben, die sich
+um die Organisation kümmern.
 
 
 \chapter{Mögliche Erweiterungen / Ausblick}
 Wir wissen, dass wir noch einige Schritte von einem kompletten Game entfernt sind. Es fehlen noch verschiedene Levels. Wir möchten auch noch Gegner einbauen, wie zum Beispiel herumlaufende Hunde, die den Einbrecher entdecken könnten. Wir möchten auch, dass der Schallpegel erhöht wird, im Falle von einer Kollision mit einer Mauer.     
 \\
-Es wäre auch möglich, dass man den Dieb noch auf der Flucht spielen muss. So dass, wenn der Schallpegel überschritten ist, man noch wenig Zeit hat, um vor der Polizei zu fliehen.
+Es wäre auch möglich, den Dieb noch auf der Flucht zu spielen, sodass, wenn der Schallpegel überschritten ist, man noch ein wenig Zeit hat, um vor der eintreffenden Polizei zu fliehen.
 \\      
 \\     
-Wir werden weiterhin an diesem Spiel schreiben, weil uns das Spiel und dessen Programmierung sehr gefällt, aber auch, weil uns der Ehrgeiz gefasst hat: Wir wollen ein richtiges Spiel zusammenstellen. Unsere Wunschvorstellung wäre, dass wir es dann einmal auf eine Online Spieleplattform stellen könnten, so dass es dann auch von anderen Leuten gespielt wird.
+Wir werden weiterhin an diesem Spiel schreiben, weil uns das Spiel und dessen Programmierung sehr gefällt, aber auch, weil uns der Ehrgeiz gepackt hat: Wir wollen ein richtiges Spiel zusammenstellen.\\
+\\
+Unsere Wunschvorstellung wäre, dass wir es dann einmal auf eine Online Spieleplattform stellen könnten, so dass es dann auch von anderen Leuten gespielt wird.
 
 
 \clearpage
@@ -711,8 +731,8 @@ Wir werden weiterhin an diesem Spiel schreiben, weil uns das Spiel und dessen Pr
 \addcontentsline{toc}{chapter}{Antiplagiatserklärung}
 \chapter*{Antiplagiatserklärung}
 Wir versichern hiermit, dass wir die vorliegende Arbeit, inklusive des entstandenen Spiels, sämtlichen Programmcodes und Dokumentationen
-selbständig und ohne fremde, undeklarierte Hilfe erstellten. Sämtliche Quellen, die zur Erstellung
-der Arbeit verwendet wurden, wurden in der Literaturliste aufgeführt.
+selbständig und ohne fremde, undeklarierte Hilfe erstellt haben. Sämtliche Quellen, die zur Erstellung
+der Arbeit verwendet wurden, sind in der Literaturliste aufgeführt.
 \\\\\\
 \textbf{Aarau, der \today}\\
 
@@ -748,8 +768,7 @@ Unser Spiel ist in 26 verschiedenen Dateien aufgeteilt. Es existieren Quellcoded
 Zählt man nur unseren reinen Code, kommt man auf 1250 Zeilen. Dazu kommen noch 275
 Zeilen Kommentare ($\widehat{=}\,18\%$), sowie 475 leere Zeilen, die zur Strukturierung und Lesbarkeit des Codes beitragen.\\
 \\
-Den Quellcode ist auf den nächsten Seiten zu finden. Um Papier zu sparen wurde der Code auf zwei Seiten pro Blatt
-gedruckt.
+Den Quellcode ist auf den nächsten Seiten zu finden. Um die Umwelt etwas zu schonen, wurde der Code auf zwei Seiten pro Blatt gedruckt.
 
 \end{document}
 
