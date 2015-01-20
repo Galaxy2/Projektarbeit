@@ -151,7 +151,11 @@ Dafür steigt der Schallpegel, wenn man Shift drückt. Dies haben wir nach kurze
 Parallel dazu haben wir noch eine dunkel Datei erstellt. Diese bezweckt, dass wir nicht mehr das ganze Level sehen. Es wird nur noch eine kleiner Ausschnitt gezeigt. Man kann es sich wie ein schwarzes Blatt vorstellen, mit einem Loch darin. Diese Datei wird der Figur hinzugefügt, sodass sich das Loch immer mitbewegt. Wir finden, das gibt dem ganzen einen ganz anderes Aussehen und eine grössere Spannung. 
 Der oben erwähnte Schallpegel wird links angezeigt. Für ihn haben wir eine Animation erstellt. Wenn man im roten Bereich angekommen ist, wird eine Zufallszahl bestimmt,
 bei der das Spiel beendet.
-Wir haben einen weiteren Zufallsgenerator erzeugt. Dieser kann, wenn es mehrere Möglichkeiten für ein Objekte gibt, per Zufall auswählen, welches er nun einfügt. Dadurch können wir ohne es manuell zu steuern, zum Beispiel verschiedene Schätze einfügen und dasselbe Level hat nicht immer die selben Schätze.
- 
-Wir haben uns hier entschieden mit dem Spiel soweit zufrieden zu sein und uns jetzt auf die stets fortgeführte Dokumentation zu konzentrieren. Von nun an haben wir nur noch an der Dokumentation geschrieben.
 
+### 17.01.15
+Unsere letzten Änderungen waren nur noch kleiner Dimension.
+Wir haben einen weiteren Zufallsgenerator erzeugt. Dieser kann, wenn es mehrere Möglichkeiten für ein Objekte gibt, per Zufall auswählen, welches er nun einfügt. Dadurch können wir ohne es manuell zu steuern, zum Beispiel verschiedene Schätze einfügen und dasselbe Level hat nicht immer die selben Schätze.
+Dazu haben wir noch die Pfeile auf die von uns ursprünglich geplante Version gebracht.
+So führen die roten Pfeile nun tiefer ins Haus hinein und die grünen wieder hinaus.
+Dies wird durch ein neues Argument für die Pfeile in der Leveldatei erreicht.
+Momentan ist das Schreiben der Dokumentation im Zentrum unserer Anstrengugen. Darum haben wir beschlossen, das Spiel in diesem Zustand zu lassen.
