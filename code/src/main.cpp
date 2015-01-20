@@ -186,7 +186,7 @@ int main(void)
     dunkel.setTexture(dunkelTextur);
 
     // Zentrum der Dunkelheit ist auf dem Spieler
-    dunkel.setOrigin(960, 540);
+    dunkel.setOrigin(960*2, 540*2);
 
     // Dunkelheit mitverschieben
     dunkel.setPosition(spieler.getPosition());
@@ -806,7 +806,7 @@ int main(void)
             aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
             // Spieler in die hauptmenu Level positionieren
-            spieler.setPosition(200, 300);
+            spieler.setPosition(520, 375);
 
             // Den Spieler wieder anzeigen
             renderList.push_back(&spieler);
