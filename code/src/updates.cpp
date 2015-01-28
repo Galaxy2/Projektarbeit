@@ -5,7 +5,7 @@
 #include "updates.h"
 
 
-std::string ROBBER_VERSION = "0.1-rc1";
+std::string ROBBER_VERSION = "0.1";
 std::string LATEST_VERSION;
 
 bool newVersionAvailable(void)
