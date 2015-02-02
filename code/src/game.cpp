@@ -16,6 +16,7 @@ game::game(void)
 {
     // Am Anfang des Spiels -> Punkte auf 0 setzen
     punkte = 0;
+    gewonnen = false;
 }
 
 void game::punkteHinzufuegen(int p)

@@ -808,11 +808,13 @@ int main(void)
         }
 
 
-        if(spiel.checkSieg())
+        if(spiel.checkSieg() && spiel.gewonnen == false)
         {
+            // Animationen nur einmal starten!
+            spiel.gewonnen = true;
             anzahlPunkte.text.setColor(sf::Color::Green);
 
-//Pfeile sollen sich jetzt aktivieren also blinken :/
+            //Pfeile sollen sich jetzt aktivieren!
             for(int i = 0; i<aktuellesLevel->pfeile.size(); i++)
             {
                 aktuellesLevel->pfeile[i]->p->start();
@@ -821,17 +823,18 @@ int main(void)
 
 
 
-// sollte so aussehen aber eben nicht von Kollision sondern von Sieg abhängig
 
-        /*int Kollision = aktuellesLevel->checkCollisionPfeile(spielerEcken);
+// sollte so aussehen aber eben nicht von Kollision sondern von Sieg abhängig
+/*
+        int Kollision = aktuellesLevel->checkCollisionPfeile(spielerEcken);
         if(Kollision == -1)
         {
             for(int i = 0; i<aktuellesLevel->pfeile.size(); i++)
             {
                 aktuellesLevel->pfeile[i]->p->start();
             }
-        }*/
-
+        }
+*/
 
 
 

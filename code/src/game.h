@@ -9,6 +9,7 @@ public:
     //laerm
 
     int punkte;
+    bool gewonnen;
     void punkteHinzufuegen(int p);
 
     std::string levelName;

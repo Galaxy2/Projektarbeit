@@ -98,6 +98,8 @@
 		<Unit filename="pfeil.h" />
 		<Unit filename="res.rc">
 			<Option compilerVar="WINDRES" />
+			<Option target="Debug" />
+			<Option target="Release" />
 		</Unit>
 		<Unit filename="resources/icon.ico" />
 		<Unit filename="schatz.cpp" />
