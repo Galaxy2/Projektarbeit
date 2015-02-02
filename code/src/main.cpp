@@ -440,7 +440,7 @@ int main(void)
             int pfeilNummer = aktuellesLevel->checkCollisionPfeile(spielerEcken);
 
             // Wenn mit Pfeil geschnitten
-            if(pfeilNummer != -1)
+            /*if(pfeilNummer != -1)
             {
                 // Lese x/y Koordinaten heraus, bevor sie verworfen werden!
                 float spielerX = aktuellesLevel->pfeile[pfeilNummer]->nX;
@@ -475,7 +475,7 @@ int main(void)
                 // Zeit für das Level zurücksetzen
                 Uhr.restart();
 
-            }
+            }*/
 
             // Schätze einsammeln
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::E) && verzoegerung.getElapsedTime().asSeconds() > 0.2)
@@ -639,6 +639,14 @@ int main(void)
                 Uhr.restart();
                 schallPegel = 0;
             }
+            else if(befehl == "dunkel")
+            {
+                renderList.remove(&dunkel);
+            }
+            else if(befehl == "exit")
+            {
+                fenster.close();
+            }
 
             // Wenn "Enter" gedrückt und Befehl eingelesen -> Konsole zurücksetzen und verstecken
             hideConsole();
@@ -799,9 +807,38 @@ int main(void)
 
         }
 
+
         if(spiel.checkSieg())
         {
-            spiel.punkte = 0;
+            anzahlPunkte.text.setColor(sf::Color::Green);
+
+//Pfeile sollen sich jetzt aktivieren also blinken :/
+            for(int i = 0; i<aktuellesLevel->pfeile.size(); i++)
+            {
+                aktuellesLevel->pfeile[i]->p->start();
+            }
+
+
+
+
+// sollte so aussehen aber eben nicht von Kollision sondern von Sieg abhängig
+
+        /*int Kollision = aktuellesLevel->checkCollisionPfeile(spielerEcken);
+        if(Kollision == -1)
+        {
+            for(int i = 0; i<aktuellesLevel->pfeile.size(); i++)
+            {
+                aktuellesLevel->pfeile[i]->p->start();
+            }
+        }*/
+
+
+
+
+
+
+
+            /* spiel.punkte = 0;
             aktuellesLevel = levelLaden("hauptmenu");
             aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
 
@@ -813,7 +850,7 @@ int main(void)
             renderList.push_back((sf::Drawable *)&version.text);
             renderList.push_back((sf::Drawable *)&debugMsg.text);
             renderList.push_back((sf::Drawable *)&debugMsg2.text);
-            renderList.push_back((sf::Drawable *)&console::eingabeFeld);
+            renderList.push_back((sf::Drawable *)&console::eingabeFeld); */
         }
     }
 

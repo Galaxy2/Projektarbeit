@@ -70,7 +70,7 @@ void level::loadFromFile(void)
         if(farbe == 0)
         {
             // Neue Animation für grünen Pfeil erstellen
-            pfeile[i]->p = (new animation("resources/pfeil", 8, true, true, true, 0.05, x, y));
+            pfeile[i]->p = (new animation("resources/pfeil", 8, true, false, true, 0.05, x, y));
         }
 
         // \todo In Konstruktor auslagern
