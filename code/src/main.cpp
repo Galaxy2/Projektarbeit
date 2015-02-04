@@ -254,6 +254,16 @@ int main(void)
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
         {
             // Bei Escape Hauptmenü laden
+            // Gespeicherte Levels zurücksetzen
+            for(auto l: levelListe)
+            {
+                cout << "Level '" << l.first << "' aus Speicher entfernt\n";
+                delete l.second;
+            }
+            cout << "Alle " << levelListe.size() << " Level entfernt\n";
+            levelListe.clear();
+
+
             // Punkte zurücksetzen
             spiel.punkte = 0;
             aktuellesLevel = levelLaden("hauptmenu");
