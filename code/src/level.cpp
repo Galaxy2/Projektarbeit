@@ -37,7 +37,6 @@ void level::loadFromFile(void)
     levelDatei >> spielerPosition.x >> spielerPosition.y;
 
     //Wert zum Angeben ob draussen( =1) oder drinnen( !=1) oder Hauptmenu( =2)
-    int Wert;
     levelDatei >> Wert;
 
     //Wert um anzugeben welche Punktezahl erreicht werden muss
@@ -48,7 +47,7 @@ void level::loadFromFile(void)
 
     // Anzahl Pfeile einlesen
     levelDatei >> N;
-    unsigned int x, y, nX, nY, farbe;
+    unsigned int x, y, nX, nY;
     int r;
     for(unsigned int i=0; i<N; i++)
     {

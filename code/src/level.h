@@ -34,6 +34,8 @@ public:
     void schallAnzeige(int i);
 
     int Punkt;
+    unsigned int farbe;
+    int Wert;
 
     list<sf::FloatRect> mauern;
     list<sf::FloatRect> schaetzePositionen;
