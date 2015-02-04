@@ -9,6 +9,9 @@ class pfeil
 public:
     animation *p;
     unsigned int nX, nY;
+    unsigned int farbe;
+    string nLevel;
+
 
     ~pfeil(void);
 };

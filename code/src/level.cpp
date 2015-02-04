@@ -17,9 +17,6 @@ void level::loadFromFile(void)
     // Datei öffnen (Fail -> Exception)
     fstream levelDatei(levelDateiName.c_str(), fstream::in);
 
-    // anhängige Datei
-    levelDatei >> deckeName;
-
     // Einlesen ob dunkel (= 1) oder hell (= 0)
     int dunkelInt;
     levelDatei >> dunkelInt;
@@ -47,12 +44,13 @@ void level::loadFromFile(void)
 
     // Anzahl Pfeile einlesen
     levelDatei >> N;
-    unsigned int x, y, nX, nY;
+    unsigned int x, y, nX, nY, farbe;
     int r;
+    string nLevel;
     for(unsigned int i=0; i<N; i++)
     {
         // Pfeilposition, Rotation, Teleportpunkt, Farbe einlesen
-        levelDatei >> x >> y >> r >> nX >> nY >> farbe;
+        levelDatei >> x >> y >> r >> nX >> nY >> farbe >> nLevel;
 
         pfeile.push_back(new pfeil);
         // 1 sagt, dass der Pfiel rot ist und somit tiefer ins haus hineinführt
@@ -77,9 +75,10 @@ void level::loadFromFile(void)
         pfeile[i]->p->sprite.setOrigin(100, 50);
         pfeile[i]->p->sprite.setRotation(r);
         pfeile[i]->p->Id = i;
+        pfeile[i]->farbe = farbe;
+        pfeile[i]->nLevel = nLevel;
         pfeile[i]->nX = nX;  //x-koordinate des Spielers im neuen Level
         pfeile[i]->nY = nY;  //y-koordinate des Spielers im neuen Level
-
     }
 
 

@@ -221,7 +221,6 @@ int main(void)
 
     // rand initialisieren (Zufallsseed aus der Zeit lesen)
     srand(time(0x0));
-
     // Solange das Fenster geöffnet ist:
     while(fenster.isOpen())
     {
@@ -449,17 +448,17 @@ int main(void)
             // Auf Pfeile achten: -> Wenn ja, wohin Teleportieren?
             int pfeilNummer = aktuellesLevel->checkCollisionPfeile(spielerEcken);
 
-            if(aktuellesLevel->farbe != 0 || (aktuellesLevel->farbe == 0 && spiel.gewonnen == true))
+            // Wenn mit Pfeil geschnitten
+            if(pfeilNummer != -1)
             {
-                // Wenn mit Pfeil geschnitten
-                if(pfeilNummer != -1)
+                if(aktuellesLevel->pfeile[pfeilNummer]->farbe != 0 || (aktuellesLevel->pfeile[pfeilNummer]->farbe == 0 && spiel.gewonnen == true))
                 {
                     // Lese x/y Koordinaten heraus, bevor sie verworfen werden!
                     float spielerX = aktuellesLevel->pfeile[pfeilNummer]->nX;
                     float spielerY = aktuellesLevel->pfeile[pfeilNummer]->nY;
 
                     // Neues Level laden
-                    aktuellesLevel = levelLaden(aktuellesLevel->deckeName); // ( deckeName wurde aus Leveldatei geladen )
+                    aktuellesLevel = levelLaden(aktuellesLevel->pfeile[pfeilNummer]->nLevel); // neuer Level wird durch den jeweiligen Pfeil bestummen
 
                     // Neues Level anzeigen
                     aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
@@ -824,9 +823,7 @@ int main(void)
 
         }
 
-        int pfeilNummer = aktuellesLevel->checkCollisionPfeile(spielerEcken);
-
-        if(spiel.checkSieg() && spiel.gewonnen == false && aktuellesLevel->farbe == 0)
+        if(spiel.checkSieg() && spiel.gewonnen == false)
         {
             // Animationen nur einmal starten!
             spiel.gewonnen = true;
@@ -835,46 +832,9 @@ int main(void)
             //Pfeile sollen sich jetzt aktivieren!
             for(int i = 0; i<aktuellesLevel->pfeile.size(); i++)
             {
-                aktuellesLevel->pfeile[i]->p->start();
+                if(aktuellesLevel->pfeile[i]->farbe == 0)
+                    aktuellesLevel->pfeile[i]->p->start();
             }
-            cout << "nope" << pfeilNummer << endl;
-             /*if(pfeilNummer == -1)
-                {
-                    cout << "jipp";
-                    // Lese x/y Koordinaten heraus, bevor sie verworfen werden!
-                    float spielerX = aktuellesLevel->pfeile[pfeilNummer]->nX;
-                    float spielerY = aktuellesLevel->pfeile[pfeilNummer]->nY;
-
-                    // Neues Level laden
-                    aktuellesLevel = levelLaden(aktuellesLevel->deckeName); // ( deckeName wurde aus Leveldatei geladen )
-
-                    // Neues Level anzeigen
-                    aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
-
-                    // Spieler an die dem i-ten Pfeil zugehörigen Position im neuen Level positionieren
-                    spieler.setPosition(spielerX, spielerY);
-
-                    // Wenn das Level dunkel ist
-                    if(aktuellesLevel->dunkel)
-                    {
-                        renderList.push_back(&dunkel);
-                        renderList.push_back(&schallAnimation.sprite);
-                        schallPegel = 0; // zurücksetzen
-                    }
-
-                    // Spieler und Benachrichtigungen wieder anzeigen
-                    renderList.push_back(&spieler);
-                    renderList.push_back((sf::Drawable *)&zeit.text);
-                    renderList.push_back((sf::Drawable *)&anzahlPunkte.text);
-                    renderList.push_back((sf::Drawable *)&version.text);
-                    renderList.push_back((sf::Drawable *)&debugMsg.text);
-                    renderList.push_back((sf::Drawable *)&debugMsg2.text);
-                    renderList.push_back((sf::Drawable *)&console::eingabeFeld);
-
-                    // Zeit für das Level zurücksetzen
-                    Uhr.restart();
-
-                }*/
         }
     }
 

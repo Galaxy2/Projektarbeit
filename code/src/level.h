@@ -34,7 +34,6 @@ public:
     void schallAnzeige(int i);
 
     int Punkt;
-    unsigned int farbe;
     int Wert;
 
     list<sf::FloatRect> mauern;
@@ -49,7 +48,6 @@ public:
     vector<laser *> lasers;
 
     sf::Vector2f spielerPosition;
-    string deckeName;
     bool collisionsActivated;
     string name;
     bool dunkel;
