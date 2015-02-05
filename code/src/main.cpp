@@ -221,6 +221,16 @@ int main(void)
 
     // rand initialisieren (Zufallsseed aus der Zeit lesen)
     srand(time(0x0));
+
+    //Sound für Schritte
+    sf::Sound schritt;
+    sf::SoundBuffer schrittbuffer;
+    schrittbuffer.loadFromFile("resources/sound/Schritte.wav");
+    schritt.setBuffer(schrittbuffer);
+
+    // Für die Schritte benötigt man eine Info ob sich der Spieler gerade bewegt oder nicht
+    bool Wert = false;
+
     // Solange das Fenster geöffnet ist:
     while(fenster.isOpen())
     {
@@ -298,10 +308,12 @@ int main(void)
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
                 {
                     s = 10;
+                    schritt.setPitch(2);
                 }
                 else
                 {
                     s = 5;
+                    schritt.setPitch(1);
                 }
 
                 // Nur in eine Richtung auf einmal!
@@ -318,6 +330,7 @@ int main(void)
                     {
                         // Nicht bewegen!
                         spielerEcken.top += s;
+                        Wert = false;
                     }
                     else
                     {
@@ -340,6 +353,7 @@ int main(void)
                         if(aktuellesLevel->checkCollision(spielerEcken))
                         {
                             spielerEcken.left +=s;
+                            Wert = false;
                         }
                         else
                         {
@@ -360,6 +374,7 @@ int main(void)
                             {
                                 // Nicht bewegen!
                                 spielerEcken.top -= s;
+                                Wert = false;
                             }
                             else
                             {
@@ -382,6 +397,7 @@ int main(void)
                                 if(aktuellesLevel->checkCollision(spielerEcken))
                                 {
                                     spielerEcken.width -=s;
+                                    Wert = false;
                                 }
                                 else
                                 {
@@ -390,6 +406,25 @@ int main(void)
                                 }
 
                             }
+                if((sf::Keyboard::isKeyPressed(sf::Keyboard::A) == true ||
+                   sf::Keyboard::isKeyPressed(sf::Keyboard::S) == true ||
+                   sf::Keyboard::isKeyPressed(sf::Keyboard::D) == true ||
+                   sf::Keyboard::isKeyPressed(sf::Keyboard::W) == true) &&
+                   Wert == false)
+                {
+                    schritt.play();
+                    schritt.setLoop(true);
+                    Wert = true;
+                }
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) == false &&
+                   sf::Keyboard::isKeyPressed(sf::Keyboard::S) == false &&
+                   sf::Keyboard::isKeyPressed(sf::Keyboard::D) == false &&
+                   sf::Keyboard::isKeyPressed(sf::Keyboard::W) == false)
+                {
+                    Wert = false;
+                    schritt.setLoop(false);
+                }
+
 
 
                 // Kollision überprüfen
