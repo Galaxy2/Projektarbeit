@@ -80,6 +80,8 @@ int main(void)
     // vsync!
     fenster.setVerticalSyncEnabled(true);
 
+    // Cursor off!
+    fenster.setMouseCursorVisible(false);
 
     // SFML View erstellen!
     sf::View ansicht(sf::FloatRect(0,0, aufloesung.width, aufloesung.height));
