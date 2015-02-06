@@ -12,6 +12,7 @@
 #include "schatz.h"
 #include "laser.h"
 #include "game.h"
+#include "gegenspieler.h"
 
 using namespace std;
 
@@ -40,12 +41,12 @@ public:
     list<sf::FloatRect> schaetzePositionen;
     list<sf::FloatRect> pfeilePositionen;
     list<sf::FloatRect> lasersPositionen;
-    // list<sf::FloatRect> schaetzePositionen;
 
     vector<pfeil *> pfeile;
     vector<tuere *> tueren;
     vector<schatz *> schaetze;
     vector<laser *> lasers;
+    vector<gegenspieler *> gegenspielers;
 
     sf::Vector2f spielerPosition;
     bool collisionsActivated;

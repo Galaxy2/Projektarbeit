@@ -171,6 +171,35 @@ void level::loadFromFile(void)
     levelDatei >> t;
     Zeit = sf::seconds(t);
 
+
+    // Gegenspieler einlesen
+    levelDatei >> N;
+    cerr << "Az GSP: " << N << endl;
+    for(int i=0; i<N; i++)
+    {
+        int anzahlWaypoints;
+        float speed;
+        levelDatei >> anzahlWaypoints >> speed;
+
+        gegenspielers.push_back(new gegenspieler(speed));
+        for(int j=0; j<anzahlWaypoints; j++)
+        {
+            float x, y;
+            levelDatei >> x >> y;
+            gegenspielers[i]->addWaypoint(new sf::Vector2f(x, y));
+
+            // Gegenspieler gleich positionieren
+            if(j == 0)
+            {
+                gegenspielers[i]->sprite.setPosition(x, y);
+                cerr << "Positioniert: " << x << ", " << y << endl;
+            }
+        }
+    }
+
+    // -----------------------------------------------------
+    // Leveldatei vollständig eingelesen
+
     // Bei einem Lesefehler
     if(levelDatei.fail())
     {
@@ -350,6 +379,12 @@ void level::loadToScreen(sf::Texture*& hintergrundTextur, sf::Sprite*& hintergru
         animationList.push_back(lasers[i]->l);
     }
 
+    // Alle Gegenspieler anzeigen
+    for(int i=0; i<gegenspielers.size(); i++)
+    {
+        renderList.push_back(&gegenspielers[i]->sprite);
+    }
+
     // Hintergrundbild laden...
     hintergrundLaden(name, hintergrund, hintergrundTextur);
 
@@ -393,6 +428,10 @@ level::~level(void)
         delete x;
     }
 
+    for(auto x : gegenspielers)
+    {
+        delete x;
+    }
 }
 
 

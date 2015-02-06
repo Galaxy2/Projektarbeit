@@ -792,10 +792,49 @@ int main(void)
         debugMsg.updateText(debugMsgText.str());
 
 
+        // Gegenspieler bewegen
+        for(gegenspieler* g : aktuellesLevel->gegenspielers)
+        {
+            g->bewegen();
+        }
+
         // Punkte aktualisieren
         stringstream anzahlPunkteAnzeige;
         anzahlPunkteAnzeige << "Punkte: " << spiel.punkte;
         anzahlPunkte.updateText(anzahlPunkteAnzeige.str());
+
+
+        // Gegenspielerkontakt -> GameOver
+        for(gegenspieler* g : aktuellesLevel->gegenspielers)
+        {
+            float dX = abs(g->sprite.getPosition().x - spieler.getPosition().x);
+            float dY = abs(g->sprite.getPosition().y - spieler.getPosition().y);
+
+            if(sqrt(dX*dX + dY*dY) < 120)
+            {
+                // Punkte zurücksetzen
+                spiel.punkte = 0;
+
+                cerr << "GAME OVER: GRUND 3" << endl;
+
+                // Neues Level laden und anzeigen
+                aktuellesLevel = levelLaden("gameOver"); // Wegen dem geht man GameOver ohne dass etwas passiert ist
+                aktuellesLevel->loadToScreen(hintergrundTextur, hintergrund, renderList, animationList);
+
+                // Hintergrund neu positionieren
+                hintergrund->setOrigin(0, 0);
+
+                // Spieler in Mitte setzen
+                spieler.setPosition(960, 540);
+
+                // Schall zurücksetzen
+                schallPegel = 0;
+
+                // Konsole wieder anzeigen, nachdem renderListe geleert wurde
+                renderList.push_back((sf::Drawable *)&console::eingabeFeld);
+            }
+        }
+
 
         //Wenn der Pegel im roten Bereich ist, ist nicht sofort gameOver sondern erst nach einer Zufallszeit
         int Zufall = rand() % 200;
