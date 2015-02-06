@@ -790,6 +790,12 @@ int main(void)
         debugMsg.updateText(debugMsgText.str());
 
 
+        // Gegenspieler bewegen
+        for(gegenspieler* g : aktuellesLevel->gegenspielers)
+        {
+            g->bewegen();
+        }
+
         // Punkte aktualisieren
         stringstream anzahlPunkteAnzeige;
         anzahlPunkteAnzeige << "Punkte: " << spiel.punkte;
