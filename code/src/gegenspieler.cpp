@@ -9,6 +9,7 @@ gegenspieler::gegenspieler(float s)
     sprite.setOrigin(50, 50);
     waypointNr = 0;
     speed = s;
+    vorwaerts = true;
 }
 
 
@@ -20,21 +21,38 @@ void gegenspieler::addWaypoint(sf::Vector2f *v)
 
 void gegenspieler::bewegen(void)
 {
-    if(waypointNr < waypoints.size()-1)
+    if(waypointNr < waypoints.size()-1 && vorwaerts)
     {
-        cerr << waypointNr << endl;
-
         float deltaX = waypoints[waypointNr+1]->x - waypoints[waypointNr]->x;
         float deltaY = waypoints[waypointNr+1]->y - waypoints[waypointNr]->y;
 
         sprite.move(deltaX/speed, deltaY/speed);
 
-        cerr << sprite.getPosition().x << " =?= " << waypoints[waypointNr+1]->x << endl;
-        cerr << sprite.getPosition().y << " =?= " <<  waypoints[waypointNr+1]->y << endl << "---------" << endl;
         if(sprite.getPosition().x == waypoints[waypointNr+1]->x && sprite.getPosition().y == waypoints[waypointNr+1]->y)
         {
             waypointNr++;
-            cerr << "Neuer Waypoint erreicht: " << waypointNr << endl;
+
+            if(waypointNr == waypoints.size()-1)
+            {
+                vorwaerts = false;
+            }
+        }
+    }
+    else if(waypointNr > 0 && !vorwaerts)
+    {
+        float deltaX = waypoints[waypointNr-1]->x - waypoints[waypointNr]->x;
+        float deltaY = waypoints[waypointNr-1]->y - waypoints[waypointNr]->y;
+
+        sprite.move(deltaX/speed, deltaY/speed);
+
+        if(sprite.getPosition().x == waypoints[waypointNr-1]->x && sprite.getPosition().y == waypoints[waypointNr-1]->y)
+        {
+            waypointNr--;
+
+            if(waypointNr == 0)
+            {
+                vorwaerts = true;
+            }
         }
     }
 }
