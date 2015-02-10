@@ -224,14 +224,12 @@ int main(void)
     // rand initialisieren (Zufallsseed aus der Zeit lesen)
     srand(time(0x0));
 
-    //Sound für Schritte
     sf::Sound schritt;
     sf::SoundBuffer schrittbuffer;
     schrittbuffer.loadFromFile("resources/sound/Schritte.wav");
     schritt.setBuffer(schrittbuffer);
-
-    // Für die Schritte benötigt man eine Info ob sich der Spieler gerade bewegt oder nicht
-    bool Wert = false;
+    schritt.play();
+    schritt.setLoop(true);
 
     // Solange das Fenster geöffnet ist:
     while(fenster.isOpen())
@@ -310,12 +308,10 @@ int main(void)
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
                 {
                     s = 10;
-                    schritt.setPitch(2);
                 }
                 else
                 {
                     s = 5;
-                    schritt.setPitch(1);
                 }
 
                 // Nur in eine Richtung auf einmal!
@@ -332,7 +328,6 @@ int main(void)
                     {
                         // Nicht bewegen!
                         spielerEcken.top += s;
-                        Wert = false;
                     }
                     else
                     {
@@ -355,7 +350,6 @@ int main(void)
                         if(aktuellesLevel->checkCollision(spielerEcken))
                         {
                             spielerEcken.left +=s;
-                            Wert = false;
                         }
                         else
                         {
@@ -376,7 +370,6 @@ int main(void)
                             {
                                 // Nicht bewegen!
                                 spielerEcken.top -= s;
-                                Wert = false;
                             }
                             else
                             {
@@ -399,7 +392,6 @@ int main(void)
                                 if(aktuellesLevel->checkCollision(spielerEcken))
                                 {
                                     spielerEcken.width -=s;
-                                    Wert = false;
                                 }
                                 else
                                 {
@@ -408,7 +400,7 @@ int main(void)
                                 }
 
                             }
-                if((sf::Keyboard::isKeyPressed(sf::Keyboard::A) == true ||
+              /*  if((sf::Keyboard::isKeyPressed(sf::Keyboard::A) == true ||
                    sf::Keyboard::isKeyPressed(sf::Keyboard::S) == true ||
                    sf::Keyboard::isKeyPressed(sf::Keyboard::D) == true ||
                    sf::Keyboard::isKeyPressed(sf::Keyboard::W) == true) &&
@@ -425,7 +417,7 @@ int main(void)
                 {
                     Wert = false;
                     schritt.setLoop(false);
-                }
+                }*/
 
 
 
@@ -459,11 +451,30 @@ int main(void)
                     }
                 }
 
-
-
-                // Dunkles Overlay wandert mit dem Spieler mit
+                // Dunk8les Overlay wandert mit dem Spieler mit
                 dunkel.setPosition(spieler.getPosition());
             }
+
+            float minAbstand=10000;
+            for(int i=0; i < aktuellesLevel->gegenspielers.size(); i++)
+            {
+                float abstand = aktuellesLevel->gegenspielers[i]->schrittAbstand(spielerEcken);
+                if(abstand < minAbstand)
+                {
+                    minAbstand = abstand;
+                }
+            }
+            if(minAbstand < 400)
+            {
+                float vol = 100 - minAbstand/4;
+                if(vol < 0)
+                    vol = 0;
+                else if(vol > 100)
+                    vol = 100;
+
+                schritt.setVolume(100 - minAbstand/4);
+            }
+
 
 
 

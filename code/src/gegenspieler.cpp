@@ -66,3 +66,13 @@ gegenspieler::~gegenspieler(void)
         delete x;
     }
 }
+
+int gegenspieler::schrittAbstand(sf::FloatRect spielerPostion)
+{
+    float dx, dy, Abstand;
+    dx = spielerPostion.top-sprite.getGlobalBounds().top;
+    dy = spielerPostion.left - sprite.getGlobalBounds().left;
+    Abstand = sqrt(dx*dx + dy*dy);
+    cout << Abstand << endl;
+    return Abstand;
+}

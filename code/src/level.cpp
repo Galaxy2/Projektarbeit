@@ -174,7 +174,6 @@ void level::loadFromFile(void)
 
     // Gegenspieler einlesen
     levelDatei >> N;
-    cerr << "Az GSP: " << N << endl;
     for(int i=0; i<N; i++)
     {
         int anzahlWaypoints;
@@ -192,7 +191,6 @@ void level::loadFromFile(void)
             if(j == 0)
             {
                 gegenspielers[i]->sprite.setPosition(x, y);
-                cerr << "Positioniert: " << x << ", " << y << endl;
             }
         }
     }

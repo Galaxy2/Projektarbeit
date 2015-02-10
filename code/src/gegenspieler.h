@@ -3,6 +3,8 @@
 
 #include <vector>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include <cmath>
 
 using namespace std;
 
@@ -21,7 +23,7 @@ public:
 
     void addWaypoint(sf::Vector2f *v);
     void bewegen(void);
-
+    int schrittAbstand(sf::FloatRect spielerPosition);
 
     sf::Sprite sprite;
 };
