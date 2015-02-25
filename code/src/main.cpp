@@ -692,7 +692,35 @@ int main(void)
                     renderList.remove(&dunkel);
                 else
                 {
-                    renderList.push_front(&dunkel);
+                    if(aktuellesLevel->dunkel)
+                    {
+                        renderList.remove(&dunkel);
+                        renderList.remove(&schallAnimation.sprite);
+                    }
+
+                    // Spieler und Labels wieder anzeigen!
+                    renderList.remove(&spieler);
+                    renderList.remove((sf::Drawable *)&zeit.text);
+                    renderList.remove((sf::Drawable *)&anzahlPunkte.text);
+                    renderList.remove((sf::Drawable *)&version.text);
+                    renderList.remove((sf::Drawable *)&debugMsg.text);
+                    renderList.remove((sf::Drawable *)&debugMsg2.text);
+                    renderList.remove((sf::Drawable *)&console::eingabeFeld);
+
+                    if(aktuellesLevel->dunkel)
+                    {
+                        renderList.push_back(&dunkel);
+                        renderList.push_back(&schallAnimation.sprite);
+                    }
+
+                    // Spieler und Labels wieder anzeigen!
+                    renderList.push_back(&spieler);
+                    renderList.push_back((sf::Drawable *)&zeit.text);
+                    renderList.push_back((sf::Drawable *)&anzahlPunkte.text);
+                    renderList.push_back((sf::Drawable *)&version.text);
+                    renderList.push_back((sf::Drawable *)&debugMsg.text);
+                    renderList.push_back((sf::Drawable *)&debugMsg2.text);
+                    renderList.push_back((sf::Drawable *)&console::eingabeFeld);
                 }
                 dunkelBefehl = !dunkelBefehl;
             }
