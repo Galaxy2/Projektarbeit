@@ -31,6 +31,8 @@ level *aktuellesLevel;
 sf::Clock Uhr;
 game spiel;
 
+bool dunkelBefehl = true;
+
 
 int main(void)
 {
@@ -400,24 +402,6 @@ int main(void)
                                 }
 
                             }
-              /*  if((sf::Keyboard::isKeyPressed(sf::Keyboard::A) == true ||
-                   sf::Keyboard::isKeyPressed(sf::Keyboard::S) == true ||
-                   sf::Keyboard::isKeyPressed(sf::Keyboard::D) == true ||
-                   sf::Keyboard::isKeyPressed(sf::Keyboard::W) == true) &&
-                   Wert == false)
-                {
-                    schritt.play();
-                    schritt.setLoop(true);
-                    Wert = true;
-                }
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) == false &&
-                   sf::Keyboard::isKeyPressed(sf::Keyboard::S) == false &&
-                   sf::Keyboard::isKeyPressed(sf::Keyboard::D) == false &&
-                   sf::Keyboard::isKeyPressed(sf::Keyboard::W) == false)
-                {
-                    Wert = false;
-                    schritt.setLoop(false);
-                }*/
 
 
 
@@ -645,7 +629,6 @@ int main(void)
 
         }
 
-
         // Wenn die Konsole aber aktiviert ist
         if(console::activated && sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
         {
@@ -705,7 +688,13 @@ int main(void)
             }
             else if(befehl == "dunkel")
             {
-                renderList.remove(&dunkel);
+                if(dunkelBefehl == true)
+                    renderList.remove(&dunkel);
+                else
+                {
+                    renderList.push_front(&dunkel);
+                }
+                dunkelBefehl = !dunkelBefehl;
             }
             else if(befehl == "exit")
             {
