@@ -243,17 +243,20 @@ int main(void)
             if(aktuellesLevel->name == "hauptmenu")
             {
                 hintergrundMusik("hauptmenu");
+                musik.setVolume(50);
             }
 
             else if(aktuellesLevel->name == "gameOver")
             {
                 hintergrundMusik("gameover");
+                musik.setVolume(50);
             }
 
             else
             {
                 // Wenn weder Menü noch Gameover -> main Musik
                 hintergrundMusik("main");
+                musik.setVolume(100);
             }
 
             // Zum Überprüfen nächstes Mal
